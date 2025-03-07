@@ -7,6 +7,7 @@ import User from "../models/user.model";
 export const configurePassport = async () => {
   passport.serializeUser((user, done) => {
     console.log("serializing user");
+    //@ts-ignore
     done(null, user.id);
   });
 
@@ -23,16 +24,15 @@ export const configurePassport = async () => {
 };
 
 passport.use(
+  //@ts-ignore
   new GraphQLLocalStrategy(async (username, password, done) => {
     try {
       const user = await User.findOne({ username });
-
       if (!user) {
         throw new Error("Invalid Username or Password");
       }
-
+      //@ts-ignore
       const validPassword = await bcrypt.compare(password, user.password);
-
       if (!validPassword) {
         throw new Error("Invalid Username or Password");
       }

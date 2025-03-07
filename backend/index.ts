@@ -20,6 +20,7 @@ import { configurePassport } from "./passport/passport.config";
 
 dotenv.config();
 configurePassport();
+
 const app = express();
 
 const httpServer = http.createServer(app);
