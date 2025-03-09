@@ -58,7 +58,7 @@ const Card = ({ CardType }: { CardType: string }) => {
   );
 };
 
-export const Cards = () => {
+const Cards = () => {
   return (
     <div className="w-full px-10 min-h-[40vh]">
       <p className="text-5xl font-bold text-center my-10">History</p>
@@ -73,3 +73,5 @@ export const Cards = () => {
     </div>
   );
 };
+
+export default Cards;
