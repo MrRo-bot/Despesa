@@ -3,7 +3,7 @@ import * as motion from "motion/react-client";
 
 const Header = () => {
   const glowAnim = {
-    x: [0 + "em", 20 + "em", -10 + "em", 0 + "em"],
+    x: [0 + "%", 75 + "%", -75 + "%", 0 + "%"],
   };
 
   const glowTran = {

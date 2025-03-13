@@ -43,7 +43,7 @@ const Home = () => {
     <>
       <div className="flex flex-col gap-6 items-center max-w-7xl mx-auto z-20 relative justify-center">
         <div className="flex items-center">
-          <p className="md:text-4xl text-2xl lg:text-4xl font-bold font-heading text-center relative z-50 mr-4 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 inline-block text-transparent bg-clip-text py-1">
+          <p className="md:text-3xl text-2xl lg:text-4xl font-bold font-heading text-center relative z-50 mr-4 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 inline-block text-transparent bg-clip-text py-1">
             Spend wisely, live well
           </p>
           <img
