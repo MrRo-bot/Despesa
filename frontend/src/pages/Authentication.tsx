@@ -63,7 +63,7 @@ const Authentication = () => {
     console.log(loginData);
   };
   return (
-    <main className="relative flex flex-col items-center overflow-hidden ">
+    <main className="relative flex flex-col items-center">
       <h2 className="flex text-base lg:text-xl font-bold font-heading relative z-50 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 text-transparent bg-clip-text">
         <span className="pl-5">Log In</span>
         <span className="ml-10">Sign Up</span>
@@ -114,6 +114,7 @@ const Authentication = () => {
                       placeHolder="Your Email"
                       value={loginData.username}
                       onChange={handleLoginChange}
+                      isRequired={false}
                     />
                   </div>
                   <div className="relative flex items-center justify-center max-w-max mx-auto mt-2">
@@ -127,6 +128,7 @@ const Authentication = () => {
                       placeHolder="Your Password"
                       value={loginData.password}
                       onChange={handleLoginChange}
+                      isRequired={false}
                     />
                   </div>
                   <button
@@ -163,6 +165,7 @@ const Authentication = () => {
                       placeHolder="Full name"
                       value={signUpData.name}
                       onChange={handleSignUpChange}
+                      isRequired={false}
                     />
                   </div>
 
@@ -177,6 +180,7 @@ const Authentication = () => {
                       placeHolder="Username"
                       value={signUpData.username}
                       onChange={handleSignUpChange}
+                      isRequired={false}
                     />
                   </div>
 
@@ -191,6 +195,7 @@ const Authentication = () => {
                       placeHolder="Password"
                       value={signUpData.password}
                       onChange={handleSignUpChange}
+                      isRequired={false}
                     />
                   </div>
                   <div className="flex gap-10 justify-center mt-4">

@@ -7,6 +7,7 @@ const InputField = ({
   value,
   placeHolder,
   customStyle,
+  isRequired,
 }: {
   label: string;
   id: string;
@@ -16,6 +17,7 @@ const InputField = ({
   value: string;
   placeHolder: string;
   customStyle: object;
+  isRequired: boolean;
 }) => {
   return (
     <div>
@@ -36,6 +38,7 @@ const InputField = ({
         onChange={onChange}
         autoComplete="off"
         placeholder={placeHolder}
+        required={isRequired}
       />
     </div>
   );

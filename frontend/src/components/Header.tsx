@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import * as motion from "motion/react-client";
 
+import { MdLogout } from "react-icons/md";
+
 const Header = () => {
   const glowAnim = {
     x: [0 + "%", 75 + "%", -75 + "%", 0 + "%"],
@@ -13,10 +15,16 @@ const Header = () => {
     repeat: Infinity,
     repeatDelay: 1,
   };
+
+  const handleLogout = () => {
+    console.log("Logging out...");
+  };
+
+  const loading = false;
   return (
     <>
       <div className="mb-10">
-        <div className="flex gap-2 justify-center items-center">
+        <div className="flex gap-2 justify-around items-center">
           <Link to="/">
             <img className="max-h-24" src="/logo.png" alt="" />
           </Link>
@@ -37,6 +45,23 @@ const Header = () => {
               </div>
             </span>
           </Link>
+          <div className="flex gap-2 items-center">
+            <img
+              src={"https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
+              className="w-11 h-11 rounded-full border cursor-pointer"
+              alt="Avatar"
+            />
+            {!loading && (
+              <MdLogout
+                className="mx-2 w-5 h-5 cursor-pointer"
+                onClick={handleLogout}
+              />
+            )}
+            {/* loading spinner */}
+            {loading && (
+              <div className="w-6 h-6 border-t-2 border-b-2 mx-2 rounded-full animate-spin"></div>
+            )}
+          </div>
         </div>
         <div className="relative mb-10 w-1/2 mx-auto hidden md:block">
           {/* Gradients */}

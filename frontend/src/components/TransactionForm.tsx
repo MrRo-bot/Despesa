@@ -1,3 +1,11 @@
+import {
+  MdOutlineCurrencyRupee,
+  MdOutlinePayment,
+  MdOutlinePostAdd,
+  MdOutlineShareLocation,
+} from "react-icons/md";
+import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
+
 declare function parseFloat(string: FormDataEntryValue | null): number;
 
 const TransactionForm = () => {
@@ -19,149 +27,133 @@ const TransactionForm = () => {
 
   return (
     <form
-      className="w-full max-w-lg flex flex-col gap-5 px-3"
+      className="w-full max-w-xl flex flex-col gap-3 px-3"
       onSubmit={handleSubmit}
     >
       {/* TRANSACTION */}
       <div className="flex flex-wrap">
         <div className="w-full">
-          <label
-            className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-            htmlFor="description"
-          >
-            Transaction
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="description"
-            name="description"
-            type="text"
-            required
-            placeholder="Rent, Groceries, Salary, etc."
-          />
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend font-heading ml-8 text-lg">
+              Transaction
+            </legend>
+            <div className="flex gap-2 items-center">
+              <TbTransactionRupee className="text-indigo-400 w-6 h-6" />
+              <input
+                type="text"
+                className="grow input input-lg font-content tracking-wider"
+                placeholder="Rent, Groceries, Salary, etc."
+              />
+            </div>
+          </fieldset>
         </div>
       </div>
-      {/* PAYMENT TYPE */}
-      <div className="flex flex-wrap gap-3">
-        <div className="w-full flex-1 mb-6 md:mb-0">
-          <label
-            className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-            htmlFor="paymentType"
-          >
-            Payment Type
-          </label>
-          <div className="relative">
-            <select
-              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="paymentType"
-              name="paymentType"
-            >
-              <option value={"card"}>Card</option>
-              <option value={"cash"}>Cash</option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg
-                className="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
-            </div>
+      <div className="grid gap-3">
+        {/* LOCATION */}
+        <div className="flex flex-wrap gap-3 col-start-1 col-end-3">
+          <div className="w-full flex-1 mb-6 md:mb-0">
+            <fieldset className="fieldset flex items-center">
+              <legend className="fieldset-legend font-heading ml-8 text-lg">
+                Location
+              </legend>
+              <MdOutlineShareLocation className="text-indigo-400 w-7 h-7" />
+              <input
+                type="text"
+                className="grow input-lg input font-content tracking-wider w-full"
+                placeholder="New York"
+              />
+            </fieldset>
           </div>
         </div>
 
         {/* CATEGORY */}
-        <div className="w-full flex-1 mb-6 md:mb-0">
-          <label
-            className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-            htmlFor="category"
-          >
-            Category
-          </label>
-          <div className="relative">
-            <select
-              className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="category"
-              name="category"
-            >
-              <option value={"saving"}>Saving</option>
-              <option value={"expense"}>Expense</option>
-              <option value={"investment"}>Investment</option>
-            </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-              <svg
-                className="fill-current h-4 w-4"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-              </svg>
+        <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+              Category
+            </legend>
+            <div className="flex gap-2 items-center">
+              <TbCategory className="text-indigo-400 w-7 h-7" />
+              <select className="select h-12 tracking-wider ">
+                <option disabled={true} className="tracking-wider">
+                  Pick an option
+                </option>
+                <option className="tracking-wider">Expense</option>
+                <option className="tracking-wider">Income</option>
+                <option className="tracking-wider">Saving</option>
+                <option className="tracking-wider">Investment</option>
+              </select>
             </div>
-          </div>
-        </div>
-
-        {/* AMOUNT */}
-        <div className="w-full flex-1 mb-6 md:mb-0">
-          <label
-            className="block uppercase text-white text-xs font-bold mb-2"
-            htmlFor="amount"
-          >
-            Amount($)
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            id="amount"
-            name="amount"
-            type="number"
-            placeholder="150"
-          />
-        </div>
-      </div>
-
-      {/* LOCATION */}
-      <div className="flex flex-wrap gap-3">
-        <div className="w-full flex-1 mb-6 md:mb-0">
-          <label
-            className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-            htmlFor="location"
-          >
-            Location
-          </label>
-          <input
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="location"
-            name="location"
-            type="text"
-            placeholder="New York"
-          />
+          </fieldset>
         </div>
 
         {/* DATE */}
-        <div className="w-full flex-1">
-          <label
-            className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-            htmlFor="date"
-          >
-            Date
-          </label>
-          <input
-            type="date"
-            name="date"
-            id="date"
-            className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-[11px] px-4 mb-3 leading-tight focus:outline-none
-						 focus:bg-white"
-            placeholder="Select date"
-          />
+        <div className="w-full flex-1 col-start-2 col-end-3">
+          <fieldset className="fieldset flex items-center">
+            <legend className="fieldset-legend font-heading text-lg ml-8">
+              Date
+            </legend>
+            <TbCalendar className="text-indigo-400 w-7 h-7" />
+            <input type="date" className="input input-lg font-content" />
+          </fieldset>
+        </div>
+
+        {/* PAYMENT TYPE */}
+        <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+              Payment Type{" "}
+            </legend>
+            <div className="flex gap-2 items-center">
+              <MdOutlinePayment className="text-indigo-400 w-7 h-7" />
+              <select className="select h-12 tracking-wider ">
+                <option disabled={true} className="tracking-wider">
+                  Pick an option
+                </option>
+                <option className="tracking-wider">Mobile Banking</option>
+                <option className="tracking-wider">Cash</option>
+                <option className="tracking-wider">Card</option>
+              </select>
+            </div>
+          </fieldset>
+        </div>
+
+        {/* AMOUNT */}
+        <div className="w-full flex-1 mb-6 col-start-2 col-end-3 md:mb-0">
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+              Amount{" "}
+            </legend>
+            <div className="flex gap-2 items-center">
+              <MdOutlineCurrencyRupee className="text-indigo-400 w-7 h-7" />
+              <input
+                type="number"
+                className="input validator input-lg font-content tracking-wider"
+                required
+                placeholder="Eg. 120"
+                title="Amount"
+              />
+            </div>
+          </fieldset>
         </div>
       </div>
+
       {/* SUBMIT BUTTON */}
       <button
-        className="text-white font-bold w-full rounded px-4 py-2 bg-gradient-to-br
-          from-pink-500 to-pink-500 hover:from-pink-600 hover:to-pink-600
-						disabled:opacity-70 disabled:cursor-not-allowed"
-        type="submit"
+        className="font-heading font-extrabold text-lg mt-5 rounded-xl btn py-6 bg-[#622069] w-max mx-auto text-white border-[#591660] 
+      shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
+                  active:bg-[#ffeba7]
+                  active:text-zinc-900
+                  active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                  focus:bg-[#ffeba7]
+                  focus:text-zinc-900
+                  focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                  hover:bg-[#ffeba7]
+                  hover:text-zinc-900
+                  hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+      "
       >
+        <MdOutlinePostAdd className="text-indigo-400 w-5 h-5" />
         Add Transaction
       </button>
     </form>

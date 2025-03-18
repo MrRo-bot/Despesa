@@ -12,6 +12,7 @@
   "dependencies": {
     "@apollo/client": "^3.13.3",
     "@tailwindcss/vite": "^4.0.12",
+    "daisyui": "^5.0.4",
     "graphql": "^16.10.0",
     "motion": "^12.4.10",
     "react": "^19.0.0",
