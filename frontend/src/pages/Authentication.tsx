@@ -1,12 +1,12 @@
 import { useState } from "react";
 import InputField from "../components/InputField";
 import {
-  TbAt,
   TbGenderFemale,
   TbGenderMale,
   TbLock,
   TbPassword,
   TbUser,
+  TbUserHeart,
 } from "react-icons/tb";
 import { SiNamemc } from "react-icons/si";
 import RadioButton from "../components/RadioButton";
@@ -29,7 +29,9 @@ const Authentication = () => {
     gender: "",
   });
 
-  const [signup, { loading }] = useMutation(SIGN_UP);
+  const [signup, { loading }] = useMutation(SIGN_UP, {
+    refetchQueries: ["GetAuthenticatedUser"],
+  });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -121,14 +123,14 @@ const Authentication = () => {
                 <div className="w-full text-center">
                   <form className="" onSubmit={handleSubmit}>
                     <div className="relative flex items-center justify-center max-w-max mx-auto">
-                      <TbAt className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
+                      <TbUserHeart className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
                       <InputField
                         customStyle={{ paddingLeft: 50 + "px" }}
                         label=""
                         id="username"
                         name="username"
                         type=""
-                        placeHolder="Your Email"
+                        placeHolder="Your Username"
                         value={loginData.username}
                         onChange={handleLoginChange}
                         isRequired={false}
@@ -253,6 +255,8 @@ const Authentication = () => {
                   hover:bg-[#102770]
                   hover:text-[#ffeba7]
                   hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                   disabled:bg-[rgba(255,255,167,.2)]
+                   disabled:text-zinc-50
                   "
                     >
                       {loading ? "loading" : "Sign up"}

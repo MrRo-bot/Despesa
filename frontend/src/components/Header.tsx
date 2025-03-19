@@ -2,8 +2,22 @@ import { Link } from "react-router-dom";
 import * as motion from "motion/react-client";
 
 import { MdLogout } from "react-icons/md";
+import { useMutation } from "@apollo/client";
+import { LOGOUT } from "../graphql/mutations/user.mutation";
 
 const Header = () => {
+  const [logout, { loading }] = useMutation(LOGOUT, {
+    refetchQueries: ["GetAuthenticatedUser"],
+  });
+
+  const handleLogout = async () => {
+    try {
+      await logout(); //logout and clears cache as well
+    } catch (error) {
+      console.log(`Error: ${error}`);
+    }
+  };
+
   const glowAnim = {
     x: [0 + "%", 75 + "%", -75 + "%", 0 + "%"],
   };
@@ -16,11 +30,6 @@ const Header = () => {
     repeatDelay: 1,
   };
 
-  const handleLogout = () => {
-    console.log("Logging out...");
-  };
-
-  const loading = false;
   return (
     <>
       <div className="mb-10">
