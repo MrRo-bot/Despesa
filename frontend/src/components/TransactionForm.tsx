@@ -5,24 +5,39 @@ import {
   MdOutlineShareLocation,
 } from "react-icons/md";
 import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
+import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
+import { useMutation } from "@apollo/client";
 
 declare function parseFloat(string: FormDataEntryValue | null): number;
 
 const TransactionForm = () => {
+  const [createTransaction, { loading }] = useMutation(CREATE_TRANSACTION);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    //@ts-expect-error requires HTMLFormElement but function is passing FormEvent<HTMLFormElement>
-    const formData = new FormData(e);
+    const form = e.currentTarget;
+
+    const formData = new FormData(form);
     const transactionData = {
-      description: formData.get("description"),
+      description: formData.get("description"), //NEED TO GET NAMES FROM INPUT FOR EACH FIELD
       paymentType: formData.get("paymentType"),
       category: formData.get("category"),
       amount: parseFloat(formData.get("amount")),
       location: formData.get("location"),
       date: formData.get("date"),
     };
-    console.log("transactionData", transactionData);
+
+    try {
+      await createTransaction({
+        variables: {
+          input: transactionData,
+        },
+      });
+      form.reset();
+    } catch (error) {
+      console.error(`Error in adding transaction: ${error}`);
+    }
   };
 
   return (
@@ -30,16 +45,17 @@ const TransactionForm = () => {
       className="w-full max-w-xl flex flex-col gap-3 px-3"
       onSubmit={handleSubmit}
     >
-      {/* TRANSACTION */}
+      {/* Description */}
       <div className="flex flex-wrap">
         <div className="w-full">
           <fieldset className="fieldset">
             <legend className="fieldset-legend font-heading ml-8 text-lg">
-              Transaction
+              Description
             </legend>
             <div className="flex gap-2 items-center">
               <TbTransactionRupee className="text-indigo-400 w-6 h-6" />
               <input
+                name="description"
                 type="text"
                 className="grow input input-lg font-content tracking-wider"
                 placeholder="Rent, Groceries, Salary, etc."
@@ -58,6 +74,7 @@ const TransactionForm = () => {
               </legend>
               <MdOutlineShareLocation className="text-indigo-400 w-7 h-7" />
               <input
+                name="location"
                 type="text"
                 className="grow input-lg input font-content tracking-wider w-full"
                 placeholder="New York"
@@ -74,14 +91,22 @@ const TransactionForm = () => {
             </legend>
             <div className="flex gap-2 items-center">
               <TbCategory className="text-indigo-400 w-7 h-7" />
-              <select className="select h-12 tracking-wider ">
+              <select name="category" className="select h-12 tracking-wider ">
                 <option disabled={true} className="tracking-wider">
                   Pick an option
                 </option>
-                <option className="tracking-wider">Expense</option>
-                <option className="tracking-wider">Income</option>
-                <option className="tracking-wider">Saving</option>
-                <option className="tracking-wider">Investment</option>
+                <option value={"expense"} className="tracking-wider">
+                  Expense
+                </option>
+                <option value={"income"} className="tracking-wider">
+                  Income
+                </option>
+                <option value={"saving"} className="tracking-wider">
+                  Saving
+                </option>
+                <option value={"investment"} className="tracking-wider">
+                  Investment
+                </option>
               </select>
             </div>
           </fieldset>
@@ -94,7 +119,11 @@ const TransactionForm = () => {
               Date
             </legend>
             <TbCalendar className="text-indigo-400 w-7 h-7" />
-            <input type="date" className="input input-lg font-content" />
+            <input
+              name="date"
+              type="date"
+              className="input input-lg font-content"
+            />
           </fieldset>
         </div>
 
@@ -106,13 +135,22 @@ const TransactionForm = () => {
             </legend>
             <div className="flex gap-2 items-center">
               <MdOutlinePayment className="text-indigo-400 w-7 h-7" />
-              <select className="select h-12 tracking-wider ">
+              <select
+                name="paymentType"
+                className="select h-12 tracking-wider "
+              >
                 <option disabled={true} className="tracking-wider">
                   Pick an option
                 </option>
-                <option className="tracking-wider">Mobile Banking</option>
-                <option className="tracking-wider">Cash</option>
-                <option className="tracking-wider">Card</option>
+                <option value={"mobile banking"} className="tracking-wider">
+                  Mobile Banking
+                </option>
+                <option value={"cash"} className="tracking-wider">
+                  Cash
+                </option>
+                <option value={"card"} className="tracking-wider">
+                  Card
+                </option>
               </select>
             </div>
           </fieldset>
@@ -127,6 +165,7 @@ const TransactionForm = () => {
             <div className="flex gap-2 items-center">
               <MdOutlineCurrencyRupee className="text-indigo-400 w-7 h-7" />
               <input
+                name="amount"
                 type="number"
                 className="input validator input-lg font-content tracking-wider"
                 required
@@ -140,6 +179,8 @@ const TransactionForm = () => {
 
       {/* SUBMIT BUTTON */}
       <button
+        type="submit"
+        disabled={loading}
         className="font-heading font-extrabold text-lg mt-5 rounded-xl btn py-6 bg-[#622069] w-max mx-auto text-white border-[#591660] 
       shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
                   active:bg-[#ffeba7]
@@ -151,10 +192,13 @@ const TransactionForm = () => {
                   hover:bg-[#ffeba7]
                   hover:text-zinc-900
                   hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                      disabled:bg-[rgba(255,255,167,.2)]
+                   disabled:text-zinc-50
+                   disabled:cursor-none
       "
       >
         <MdOutlinePostAdd className="text-indigo-400 w-5 h-5" />
-        Add Transaction
+        {loading ? "loading..." : "Add Transaction"}
       </button>
     </form>
   );

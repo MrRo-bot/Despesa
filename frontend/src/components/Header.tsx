@@ -17,7 +17,7 @@ const Header = () => {
     try {
       await logout(); //logout and clears cache as well
     } catch (error) {
-      console.log(`Error: ${error}`);
+      console.error(`Error: ${error}`);
     }
   };
 
@@ -62,22 +62,26 @@ const Header = () => {
               </div>
             </span>
           </Link>
-          <div className="flex gap-2 items-center">
-            <img
-              referrerPolicy="no-referrer"
-              src={data?.authUser?.profilePicture}
-              className="w-11 h-11 grid place-items-center rounded-full border cursor-pointer"
-              alt="U"
-            />
-            {!accLoading && (
-              <MdLogout
-                className="mx-2 w-5 h-5 cursor-pointer"
-                onClick={handleLogout}
-              />
-            )}
-            {/* Loading spinner */}
-            {accLoading && (
-              <div className="w-6 h-6 border-t-2 border-b-2 mx-2 rounded-full animate-spin"></div>
+          <div>
+            {data?.authUser && (
+              <div className="flex gap-2 items-center">
+                <img
+                  referrerPolicy="no-referrer"
+                  src={data?.authUser?.profilePicture}
+                  className="w-11 h-11 grid place-items-center rounded-full border cursor-pointer"
+                  alt="U"
+                />
+                {!accLoading && (
+                  <MdLogout
+                    className="mx-2 w-5 h-5 cursor-pointer"
+                    onClick={handleLogout}
+                  />
+                )}
+                {/* Loading spinner */}
+                {accLoading && (
+                  <div className="w-6 h-6 border-t-2 border-b-2 mx-2 rounded-full animate-spin"></div>
+                )}
+              </div>
             )}
           </div>
         </div>

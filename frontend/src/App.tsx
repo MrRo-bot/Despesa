@@ -11,7 +11,6 @@ import { GET_AUTHENTICATED_USER } from "./graphql/queries/user.query";
 function App() {
   const { data } = useQuery(GET_AUTHENTICATED_USER);
 
-  console.log(data);
   return (
     <>
       <Routes>

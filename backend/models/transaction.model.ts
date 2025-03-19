@@ -12,12 +12,12 @@ const transactionSchema = new mongoose.Schema({
   },
   paymentType: {
     type: String,
-    enum: ["cash", "card"],
+    enum: ["mobile banking", "cash", "card"],
     required: true,
   },
   category: {
     type: String,
-    enum: ["saving", "expense", "investment"],
+    enum: ["saving", "income", "expense", "investment"],
     required: true,
   },
   amount: {
