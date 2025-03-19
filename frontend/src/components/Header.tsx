@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import * as motion from "motion/react-client";
 
 import { MdLogout } from "react-icons/md";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { LOGOUT } from "../graphql/mutations/user.mutation";
+import { GET_AUTHENTICATED_USER } from "../graphql/queries/user.query";
 
 const Header = () => {
-  const [logout, { loading }] = useMutation(LOGOUT, {
+  const [logout] = useMutation(LOGOUT, {
     refetchQueries: ["GetAuthenticatedUser"],
   });
+
+  const { data, loading: accLoading } = useQuery(GET_AUTHENTICATED_USER);
 
   const handleLogout = async () => {
     try {
@@ -35,7 +38,12 @@ const Header = () => {
       <div className="mb-10">
         <div className="flex gap-2 justify-around items-center">
           <Link to="/" viewTransition>
-            <img className="max-h-24" src="/logo.png" alt="" />
+            <img
+              referrerPolicy="no-referrer"
+              className="max-h-24"
+              src="/logo.png"
+              alt=""
+            />
           </Link>
           <Link className="flex items-center" to="/" viewTransition>
             <h1 className="font-heading md:text-5xl text-4xl lg:text-7xl font-bold text-center relative z-50 text-white">
@@ -56,18 +64,19 @@ const Header = () => {
           </Link>
           <div className="flex gap-2 items-center">
             <img
-              src={"https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
-              className="w-11 h-11 rounded-full border cursor-pointer"
-              alt="Avatar"
+              referrerPolicy="no-referrer"
+              src={data?.authUser?.profilePicture}
+              className="w-11 h-11 grid place-items-center rounded-full border cursor-pointer"
+              alt="U"
             />
-            {!loading && (
+            {!accLoading && (
               <MdLogout
                 className="mx-2 w-5 h-5 cursor-pointer"
                 onClick={handleLogout}
               />
             )}
-            {/* loading spinner */}
-            {loading && (
+            {/* Loading spinner */}
+            {accLoading && (
               <div className="w-6 h-6 border-t-2 border-b-2 mx-2 rounded-full animate-spin"></div>
             )}
           </div>

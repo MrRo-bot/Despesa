@@ -5,7 +5,7 @@ const Error = () => {
         <div className="flex ">
           <div className="m-auto text-center">
             <div>
-              <img src="/404.svg" alt="404" />
+              <img referrerPolicy="no-referrer" src="/404.svg" alt="404" />
             </div>
 
             <a

@@ -12,7 +12,7 @@ import { SiNamemc } from "react-icons/si";
 import RadioButton from "../components/RadioButton";
 import Header from "../components/Header";
 import { useMutation } from "@apollo/client";
-import { SIGN_UP } from "../graphql/mutations/user.mutation";
+import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
 
 const Authentication = () => {
   const [toggle, setToggle] = useState(false);
@@ -29,11 +29,15 @@ const Authentication = () => {
     gender: "",
   });
 
-  const [signup, { loading }] = useMutation(SIGN_UP, {
+  const [signup, { loading: signUpLoading }] = useMutation(SIGN_UP, {
     refetchQueries: ["GetAuthenticatedUser"],
   });
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const [login, { loading: loginLoading }] = useMutation(LOGIN, {
+    refetchQueries: ["GetAuthenticatedUser"],
+  });
+
+  const handleSubmitSignUp = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     try {
       await signup({
@@ -44,6 +48,22 @@ const Authentication = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (er: any) {
       console.error(`Error signing up: ${er}`);
+    }
+  };
+
+  const handleSubmitLogin = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (!loginData.username || !loginData.password)
+      throw new Error("All fields are required");
+    try {
+      await login({
+        variables: {
+          input: loginData,
+        },
+      });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (er: any) {
+      console.error(`Error in login: ${er}`);
     }
   };
 
@@ -121,7 +141,7 @@ const Authentication = () => {
             <div className="w-full h-full bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-bottom bg-no-repeat bg-[auto_100%] absolute rounded-md left-0 top-0 transform-3d backface-hidden flex flex-col justify-start">
               <div className="absolute w-full px-9 left-0 translate-x-0 translate-y-1/2 translate-z-9 perspective-dramatic z-20 block">
                 <div className="w-full text-center">
-                  <form className="" onSubmit={handleSubmit}>
+                  <form className="" onSubmit={handleSubmitLogin}>
                     <div className="relative flex items-center justify-center max-w-max mx-auto">
                       <TbUserHeart className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
                       <InputField
@@ -151,6 +171,7 @@ const Authentication = () => {
                       />
                     </div>
                     <button
+                      disabled={loginLoading}
                       className="font-heading rounded-sm cursor-pointer h-11 text-sm mt-10 font-semibold uppercase transition-all duration-200 ease-linear px-8 tracking-widest inline-flex items-center justify-center text-center border-none bg-[#ffeba7] text-[#102770] shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
                   active:bg-[#102770]
                   active:text-[#ffeba7]
@@ -161,9 +182,12 @@ const Authentication = () => {
                   hover:bg-[#102770]
                   hover:text-[#ffeba7]
                   hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                      disabled:bg-[rgba(255,255,167,.2)]
+                   disabled:text-zinc-50
+                   disabled:cursor-none
                   "
                     >
-                      log in
+                      {loginLoading ? "loading..." : "Login"}
                     </button>
                   </form>
                 </div>
@@ -172,7 +196,7 @@ const Authentication = () => {
             <div className="w-full h-full bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-bottom bg-no-repeat bg-[auto_100%] absolute rounded-md left-0 top-0 transform-3d backface-hidden flex flex-col justify-start rotate-y-180">
               <div className="absolute w-full px-9 left-0 translate-x-0 translate-y-1/10 translate-z-9 perspective-dramatic z-20 block">
                 <div className="w-full text-center">
-                  <form className="" onSubmit={handleSubmit}>
+                  <form className="" onSubmit={handleSubmitSignUp}>
                     <div className="relative flex items-center justify-center max-w-max mx-auto mt-2">
                       <SiNamemc className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
                       <InputField
@@ -244,7 +268,7 @@ const Authentication = () => {
 
                     <button
                       type="submit"
-                      disabled={loading}
+                      disabled={signUpLoading}
                       className="font-heading rounded-sm cursor-pointer h-11 text-sm mt-10 font-semibold uppercase transition-all duration-200 ease-linear px-8 tracking-widest inline-flex items-center justify-center text-center border-none bg-[#ffeba7] text-[#102770] shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
                   active:bg-[#102770]
                   active:text-[#ffeba7]
@@ -257,9 +281,10 @@ const Authentication = () => {
                   hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
                    disabled:bg-[rgba(255,255,167,.2)]
                    disabled:text-zinc-50
+                   disabled:cursor-none
                   "
                     >
-                      {loading ? "loading" : "Sign up"}
+                      {signUpLoading ? "loading" : "Sign up"}
                     </button>
                   </form>
                 </div>
