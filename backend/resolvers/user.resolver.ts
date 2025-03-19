@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { users } from "../dummyData/data";
+
 import User from "../models/user.model";
 const userResolver = {
   Mutation: {
@@ -9,8 +9,8 @@ const userResolver = {
         if (!username || !name || !password || !gender) {
           throw new Error("All fields are required");
         }
-        const existingUser = User.findOne({ username });
-        if (username) {
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
           throw new Error(`${username} already exists`);
         }
 

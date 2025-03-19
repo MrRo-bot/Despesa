@@ -24,7 +24,7 @@ const Card = ({ CardType }: { CardType: string }) => {
           <h2 className="text-lg font-bold text-white">Saving</h2>
           <div className="flex items-center gap-2">
             <FaTrash className={"cursor-pointer"} />
-            <Link to={`/transaction/123`}>
+            <Link to={`/transaction/123`} viewTransition>
               <HiPencilAlt className="cursor-pointer" size={20} />
             </Link>
           </div>

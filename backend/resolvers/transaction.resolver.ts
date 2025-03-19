@@ -1,4 +1,3 @@
-import { Context } from "vm";
 import Transaction from "../models/transaction.model";
 
 const transactionResolver = {
