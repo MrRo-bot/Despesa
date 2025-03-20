@@ -6,12 +6,14 @@ import {
 } from "react-icons/md";
 import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
+import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 
 declare function parseFloat(string: FormDataEntryValue | null): number;
 
 const TransactionForm = () => {
   const [createTransaction, { loading }] = useMutation(CREATE_TRANSACTION);
+  const { refetch } = useQuery(GET_TRANSACTIONS);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,6 +37,7 @@ const TransactionForm = () => {
         },
       });
       form.reset();
+      refetch();
     } catch (error) {
       console.error(`Error in adding transaction: ${error}`);
     }
