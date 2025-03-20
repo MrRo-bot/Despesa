@@ -66,7 +66,6 @@ const Header = () => {
             {data?.authUser && (
               <div className="flex gap-2 items-center">
                 <img
-                  referrerPolicy="no-referrer"
                   src={data?.authUser?.profilePicture}
                   className="w-11 h-11 grid place-items-center rounded-full border cursor-pointer"
                   alt="U"

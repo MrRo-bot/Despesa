@@ -6,22 +6,45 @@ import { FaTrash } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
+import { formatDate } from "../utils/formatDate";
+
 const categoryColorMap = {
   saving: "from-green-700 to-green-400",
   expense: "from-pink-800 to-pink-600",
   investment: "from-blue-700 to-blue-400",
-  // Add more categories and corresponding color classes as needed
+  income: "from-orange-700 to-orange-400",
 };
 
-const Card = ({ CardType }: { CardType: string }) => {
-  //@ts-expect-error cardType is string but used as an index in finding the object property
-  const cardClass = categoryColorMap[CardType];
+const Card = ({
+  transactionData,
+  profilePicture,
+}: {
+  transactionData: {
+    _id: string;
+    description: string;
+    paymentType: string;
+    category: string;
+    amount: number;
+    location: string;
+    date: string;
+  };
+  profilePicture: string;
+}) => {
+  const { description, paymentType, category, amount, location, date } =
+    transactionData;
+
+  const dateStr = formatDate(date);
+
+  //@ts-expect-error //dont know why it has implicit any
+  const cardClass = categoryColorMap[category];
 
   return (
     <div className={`rounded-md p-4 bg-gradient-to-br ${cardClass}`}>
       <div className="flex flex-col gap-3">
         <div className="flex flex-row items-center justify-between">
-          <h2 className="text-lg font-bold text-white">Saving</h2>
+          <h2 className="text-lg font-bold text-white">
+            {category.toUpperCase()}
+          </h2>
           <div className="flex items-center gap-2">
             <FaTrash className={"cursor-pointer"} />
             <Link to={`/transaction/123`} viewTransition>
@@ -31,27 +54,27 @@ const Card = ({ CardType }: { CardType: string }) => {
         </div>
         <p className="text-white flex items-center gap-1">
           <BsCardText />
-          Description: Salary
+          {description.slice(0, 1).toUpperCase() + description.slice(1)}
         </p>
         <p className="text-white flex items-center gap-1">
           <MdOutlinePayments />
-          Payment Type: Cash
+          {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
         </p>
         <p className="text-white flex items-center gap-1">
           <FaSackDollar />
-          Amount: $150
+          {amount}
         </p>
         <p className="text-white flex items-center gap-1">
           <FaLocationDot />
-          Location: New York
+          {location.slice(0, 1).toUpperCase() + location.slice(1)}
         </p>
         <div className="flex justify-between items-center">
-          <p className="text-xs text-black font-bold">21 Sep, 2001</p>
+          <p className="text-xs text-zinc-50 font-bold">{dateStr}</p>
           <img
             referrerPolicy="no-referrer"
-            src={"https://tecdn.b-cdn.net/img/new/avatars/2.webp"}
-            className="h-8 w-8 border rounded-full"
-            alt=""
+            src={profilePicture}
+            className="grid place-items-centerh-8 w-8 border rounded-full"
+            alt="U"
           />
         </div>
       </div>
@@ -59,20 +82,4 @@ const Card = ({ CardType }: { CardType: string }) => {
   );
 };
 
-const Cards = () => {
-  return (
-    <div className="w-full px-10 min-h-[40vh]">
-      <p className="text-5xl font-bold text-center my-10">History</p>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-start mb-20">
-        <Card CardType={"saving"} />
-        <Card CardType={"expense"} />
-        <Card CardType={"investment"} />
-        <Card CardType={"investment"} />
-        <Card CardType={"saving"} />
-        <Card CardType={"expense"} />
-      </div>
-    </div>
-  );
-};
-
-export default Cards;
+export default Card;
