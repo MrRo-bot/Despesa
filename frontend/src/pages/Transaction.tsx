@@ -1,19 +1,55 @@
-import { useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
+import {
+  MdOutlineCurrencyRupee,
+  MdOutlinePayment,
+  MdOutlinePostAdd,
+  MdOutlineShareLocation,
+} from "react-icons/md";
+import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
+import { UPDATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
+import { useParams } from "react-router-dom";
+import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
 
 const Transaction = () => {
+  const { id } = useParams();
+
+  const { data } = useQuery(GET_TRANSACTION, {
+    variables: { id: id },
+  });
+
+  console.log(id, data);
+
+  const [updateTransaction, { loading: updateLoading }] =
+    useMutation(UPDATE_TRANSACTION);
+
   const [formData, setFormData] = useState({
-    description: "",
-    paymentType: "",
-    category: "",
-    amount: "",
-    location: "",
-    date: "",
+    description: data?.transaction?.description || "",
+    paymentType: data?.transaction?.paymentType || "",
+    category: data?.transaction?.category || "",
+    amount: data?.transaction?.amount || "",
+    location: data?.transaction?.location || "",
+    date: data?.transaction?.date || "",
   });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    console.log("formData", formData);
+    const amount = parseFloat(formData.amount); //string to number
+    try {
+      await updateTransaction({
+        variables: {
+          input: {
+            ...formData,
+            amount,
+            transactionId: id,
+          },
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   const handleInputChange = (e: {
     target: { name: string; value: string };
   }) => {
@@ -24,7 +60,20 @@ const Transaction = () => {
     }));
   };
 
-  // if (loading) return <TransactionFormSkeleton />;
+  useEffect(() => {
+    if (data) {
+      setFormData({
+        description: data?.transaction?.description,
+        paymentType: data?.transaction?.paymentType,
+        category: data?.transaction?.category,
+        amount: data?.transaction?.amount,
+        location: data?.transaction?.location,
+        date: new Date(+data.transaction.date).toISOString().substring(0, 10),
+      });
+    }
+  }, [data]);
+
+  // if (loading) return <TransactionFormSkeleton />; loading var comes from GET_TRANSACTION
 
   return (
     <div className="h-screen max-w-4xl mx-auto flex flex-col items-center">
@@ -32,160 +81,178 @@ const Transaction = () => {
         Update this transaction
       </p>
       <form
-        className="w-full max-w-lg flex flex-col gap-5 px-3 "
+        className="w-full max-w-xl flex flex-col gap-3 px-3"
         onSubmit={handleSubmit}
       >
-        {/* TRANSACTION */}
+        {/* Description */}
         <div className="flex flex-wrap">
           <div className="w-full">
-            <label
-              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              htmlFor="description"
-            >
-              Transaction
-            </label>
-            <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="description"
-              name="description"
-              type="text"
-              placeholder="Rent, Groceries, Salary, etc."
-              value={formData.description}
-              onChange={handleInputChange}
-            />
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend font-heading ml-8 text-lg">
+                Description
+              </legend>
+              <div className="flex gap-2 items-center">
+                <TbTransactionRupee className="text-indigo-400 w-6 h-6" />
+                <input
+                  name="description"
+                  type="text"
+                  className="grow input input-lg font-content tracking-wider"
+                  placeholder="Rent, Groceries, Salary, etc."
+                  value={formData.description}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </fieldset>
           </div>
         </div>
-        {/* PAYMENT TYPE */}
-        <div className="flex flex-wrap gap-3">
-          <div className="w-full flex-1 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              htmlFor="paymentType"
-            >
-              Payment Type
-            </label>
-            <div className="relative">
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="paymentType"
-                name="paymentType"
-                onChange={handleInputChange}
-                defaultValue={formData.paymentType}
-              >
-                <option value={"card"}>Card</option>
-                <option value={"cash"}>Cash</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg
-                  className="fill-current h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                </svg>
-              </div>
+        <div className="grid gap-3">
+          {/* LOCATION */}
+          <div className="flex flex-wrap gap-3 col-start-1 col-end-3">
+            <div className="w-full flex-1 mb-6 md:mb-0">
+              <fieldset className="fieldset flex items-center">
+                <legend className="fieldset-legend font-heading ml-8 text-lg">
+                  Location
+                </legend>
+                <MdOutlineShareLocation className="text-indigo-400 w-7 h-7" />
+                <input
+                  name="location"
+                  type="text"
+                  className="grow input-lg input font-content tracking-wider w-full"
+                  placeholder="New York"
+                  value={formData.location}
+                  onChange={handleInputChange}
+                />
+              </fieldset>
             </div>
           </div>
 
           {/* CATEGORY */}
-          <div className="w-full flex-1 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              htmlFor="category"
-            >
-              Category
-            </label>
-            <div className="relative">
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="category"
-                name="category"
-                onChange={handleInputChange}
-                defaultValue={formData.category}
-              >
-                <option value={"saving"}>Saving</option>
-                <option value={"expense"}>Expense</option>
-                <option value={"investment"}>Investment</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg
-                  className="fill-current h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
+          <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+                Category
+              </legend>
+              <div className="flex gap-2 items-center">
+                <TbCategory className="text-indigo-400 w-7 h-7" />
+                <select
+                  defaultValue={formData.category}
+                  onChange={handleInputChange}
+                  name="category"
+                  className="select h-12 tracking-wider "
                 >
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                </svg>
+                  <option disabled={true} className="tracking-wider">
+                    Pick an option
+                  </option>
+                  <option value={"expense"} className="tracking-wider">
+                    Expense
+                  </option>
+                  <option value={"income"} className="tracking-wider">
+                    Income
+                  </option>
+                  <option value={"saving"} className="tracking-wider">
+                    Saving
+                  </option>
+                  <option value={"investment"} className="tracking-wider">
+                    Investment
+                  </option>
+                </select>
               </div>
-            </div>
-          </div>
-
-          {/* AMOUNT */}
-          <div className="w-full flex-1 mb-6 md:mb-0">
-            <label
-              className="block uppercase text-white text-xs font-bold mb-2"
-              htmlFor="amount"
-            >
-              Amount($)
-            </label>
-            <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="amount"
-              name="amount"
-              type="number"
-              placeholder="150"
-              value={formData.amount}
-              onChange={handleInputChange}
-            />
-          </div>
-        </div>
-
-        {/* LOCATION */}
-        <div className="flex flex-wrap gap-3">
-          <div className="w-full flex-1 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              htmlFor="location"
-            >
-              Location
-            </label>
-            <input
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="location"
-              name="location"
-              type="text"
-              placeholder="New York"
-              value={formData.location}
-              onChange={handleInputChange}
-            />
+            </fieldset>
           </div>
 
           {/* DATE */}
-          <div className="w-full flex-1">
-            <label
-              className="block uppercase tracking-wide text-white text-xs font-bold mb-2"
-              htmlFor="date"
-            >
-              Date
-            </label>
-            <input
-              type="date"
-              name="date"
-              id="date"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-[11px] px-4 mb-3 leading-tight focus:outline-none
-						 focus:bg-white"
-              placeholder="Select date"
-              value={formData.date}
-              onChange={handleInputChange}
-            />
+          <div className="w-full flex-1 col-start-2 col-end-3">
+            <fieldset className="fieldset flex items-center">
+              <legend className="fieldset-legend font-heading text-lg ml-8">
+                Date
+              </legend>
+              <TbCalendar className="text-indigo-400 w-7 h-7" />
+              <input
+                name="date"
+                type="date"
+                className="input input-lg font-content"
+                value={formData.date}
+                onChange={handleInputChange}
+              />
+            </fieldset>
+          </div>
+
+          {/* PAYMENT TYPE */}
+          <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+                Payment Type{" "}
+              </legend>
+              <div className="flex gap-2 items-center">
+                <MdOutlinePayment className="text-indigo-400 w-7 h-7" />
+                <select
+                  name="paymentType"
+                  className="select h-12 tracking-wider "
+                  defaultValue={formData.paymentType}
+                  onChange={handleInputChange}
+                >
+                  <option disabled={true} className="tracking-wider">
+                    Pick an option
+                  </option>
+                  <option value={"mobile banking"} className="tracking-wider">
+                    Mobile Banking
+                  </option>
+                  <option value={"cash"} className="tracking-wider">
+                    Cash
+                  </option>
+                  <option value={"card"} className="tracking-wider">
+                    Card
+                  </option>
+                </select>
+              </div>
+            </fieldset>
+          </div>
+
+          {/* AMOUNT */}
+          <div className="w-full flex-1 mb-6 col-start-2 col-end-3 md:mb-0">
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+                Amount{" "}
+              </legend>
+              <div className="flex gap-2 items-center">
+                <MdOutlineCurrencyRupee className="text-indigo-400 w-7 h-7" />
+                <input
+                  name="amount"
+                  type="number"
+                  className="input validator input-lg font-content tracking-wider"
+                  required
+                  placeholder="Eg. 120"
+                  title="Amount"
+                  value={formData.amount}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </fieldset>
           </div>
         </div>
+
         {/* SUBMIT BUTTON */}
         <button
-          className="text-white font-bold w-full rounded px-4 py-2 bg-gradient-to-br
-          from-pink-500 to-pink-500 hover:from-pink-600 hover:to-pink-600"
           type="submit"
+          disabled={updateLoading}
+          className="font-heading font-extrabold text-lg mt-5 rounded-xl btn py-6 bg-[#622069] w-max mx-auto text-white border-[#591660] 
+      shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
+                  active:bg-[#ffeba7]
+                  active:text-zinc-900
+                  active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                  focus:bg-[#ffeba7]
+                  focus:text-zinc-900
+                  focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                  hover:bg-[#ffeba7]
+                  hover:text-zinc-900
+                  hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
+                      disabled:bg-[rgba(255,255,167,.2)]
+                   disabled:text-zinc-50
+                   disabled:cursor-none
+      "
         >
-          Update Transaction
+          <MdOutlinePostAdd className="text-indigo-400 w-5 h-5" />
+          {updateLoading ? "loading..." : "Update Transaction"}
         </button>
       </form>
     </div>
