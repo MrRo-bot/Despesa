@@ -7,6 +7,8 @@ import { HiPencilAlt } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 import { formatDate } from "../utils/formatDate";
+import { useMutation } from "@apollo/client";
+import { DELETE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 
 const categoryColorMap = {
   saving: "from-lime-700 to-green-400",
@@ -33,6 +35,22 @@ const Card = ({
   const { description, paymentType, category, amount, location, date } =
     transactionData;
 
+  const [deleteTransaction, { loading }] = useMutation(DELETE_TRANSACTION, {
+    refetchQueries: ["GetTransactions"],
+  });
+
+  const handleDelete = async () => {
+    try {
+      await deleteTransaction({
+        variables: {
+          transactionId: transactionData._id,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const dateStr = formatDate(date);
 
   //@ts-expect-error //dont know why it has implicit any
@@ -46,8 +64,10 @@ const Card = ({
             {category.toUpperCase()}
           </h2>
           <div className="flex items-center gap-2">
-            <FaTrash className={"cursor-pointer"} />
-            <Link to={`/transaction/123`} viewTransition>
+            {!loading && (
+              <FaTrash onClick={handleDelete} className={"cursor-pointer"} />
+            )}
+            <Link to={`/transaction/${transactionData._id}`} viewTransition>
               <HiPencilAlt className="cursor-pointer" size={20} />
             </Link>
           </div>
