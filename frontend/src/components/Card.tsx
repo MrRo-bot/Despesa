@@ -9,10 +9,10 @@ import { Link } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";
 
 const categoryColorMap = {
-  saving: "from-green-700 to-green-400",
-  expense: "from-pink-800 to-pink-600",
-  investment: "from-blue-700 to-blue-400",
-  income: "from-orange-700 to-orange-400",
+  saving: "from-lime-700 to-green-400",
+  expense: "from-pink-700 to-fuchsia-400",
+  investment: "from-blue-700 to-cyan-400",
+  income: "from-orange-700 to-amber-400",
 };
 
 const Card = ({
@@ -39,7 +39,7 @@ const Card = ({
   const cardClass = categoryColorMap[category];
 
   return (
-    <div className={`rounded-md p-4 bg-gradient-to-br ${cardClass}`}>
+    <div className={`rounded-md p-4 bg-gradient-to-b ${cardClass}`}>
       <div className="flex flex-col gap-3">
         <div className="flex flex-row items-center justify-between">
           <h2 className="text-lg font-bold text-white">
@@ -54,18 +54,21 @@ const Card = ({
         </div>
         <p className="text-white flex items-center gap-1">
           <BsCardText />
+          Transaction:{" "}
           {description.slice(0, 1).toUpperCase() + description.slice(1)}
         </p>
         <p className="text-white flex items-center gap-1">
           <MdOutlinePayments />
+          Payment Type:{" "}
           {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
         </p>
         <p className="text-white flex items-center gap-1">
           <FaSackDollar />
-          {amount}
+          Amount: {amount}
         </p>
         <p className="text-white flex items-center gap-1">
           <FaLocationDot />
+          Payment Location:{" "}
           {location.slice(0, 1).toUpperCase() + location.slice(1)}
         </p>
         <div className="flex justify-between items-center">
