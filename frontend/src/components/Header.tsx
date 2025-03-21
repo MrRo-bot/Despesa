@@ -37,7 +37,7 @@ const Header = () => {
     <>
       <div className="mb-10">
         <div className="flex gap-2 justify-around items-center">
-          <Link to="/" viewTransition>
+          <Link to="/">
             <img
               referrerPolicy="no-referrer"
               className="max-h-24"
@@ -45,7 +45,7 @@ const Header = () => {
               alt=""
             />
           </Link>
-          <Link className="flex items-center" to="/" viewTransition>
+          <Link className="flex items-center" to="/">
             <h1 className="font-heading md:text-5xl text-4xl lg:text-7xl font-bold text-center relative z-50 text-white">
               Despesa
             </h1>

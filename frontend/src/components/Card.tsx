@@ -67,7 +67,7 @@ const Card = ({
             {!loading && (
               <FaTrash onClick={handleDelete} className={"cursor-pointer"} />
             )}
-            <Link to={`/transaction/${transactionData._id}`} viewTransition>
+            <Link to={`/transaction/${transactionData._id}`}>
               <HiPencilAlt className="cursor-pointer" size={20} />
             </Link>
           </div>
