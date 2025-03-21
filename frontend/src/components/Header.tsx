@@ -5,19 +5,31 @@ import { MdLogout } from "react-icons/md";
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGOUT } from "../graphql/mutations/user.mutation";
 import { GET_AUTHENTICATED_USER } from "../graphql/queries/user.query";
+import { Bounce, toast } from "react-toastify";
 
 const Header = () => {
-  const [logout] = useMutation(LOGOUT, {
+  const [logout, { client, loading: logoutLoading }] = useMutation(LOGOUT, {
     refetchQueries: ["GetAuthenticatedUser"],
   });
 
-  const { data, loading: accLoading } = useQuery(GET_AUTHENTICATED_USER);
+  const { data: authData } = useQuery(GET_AUTHENTICATED_USER);
 
   const handleLogout = async () => {
     try {
-      await logout(); //logout and clears cache as well
+      await logout();
+      client.resetStore(); //clears the cache
     } catch (error) {
-      console.error(`Error: ${error}`);
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 
@@ -38,12 +50,7 @@ const Header = () => {
       <div className="mb-10">
         <div className="flex gap-2 justify-around items-center">
           <Link to="/">
-            <img
-              referrerPolicy="no-referrer"
-              className="max-h-24"
-              src="/logo.png"
-              alt=""
-            />
+            <img className="max-h-24" src="/logo.png" alt="" />
           </Link>
           <Link className="flex items-center" to="/">
             <h1 className="font-heading md:text-5xl text-4xl lg:text-7xl font-bold text-center relative z-50 text-white">
@@ -63,21 +70,21 @@ const Header = () => {
             </span>
           </Link>
           <div>
-            {data?.authUser && (
+            {authData?.authUser && (
               <div className="flex gap-2 items-center">
                 <img
-                  src={data?.authUser?.profilePicture}
+                  src={authData?.authUser?.profilePicture}
                   className="w-11 h-11 grid place-items-center rounded-full border cursor-pointer"
-                  alt="U"
+                  alt=""
                 />
-                {!accLoading && (
+                {!logoutLoading && (
                   <MdLogout
                     className="mx-2 w-5 h-5 cursor-pointer"
                     onClick={handleLogout}
                   />
                 )}
                 {/* Loading spinner */}
-                {accLoading && (
+                {logoutLoading && (
                   <div className="w-6 h-6 border-t-2 border-b-2 mx-2 rounded-full animate-spin"></div>
                 )}
               </div>

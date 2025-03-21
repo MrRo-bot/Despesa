@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { formatDate } from "../utils/formatDate";
 import { useMutation } from "@apollo/client";
 import { DELETE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
+import { Bounce, toast } from "react-toastify";
 
 const categoryColorMap = {
   saving: "from-lime-700 to-green-400",
@@ -35,9 +36,12 @@ const Card = ({
   const { description, paymentType, category, amount, location, date } =
     transactionData;
 
-  const [deleteTransaction, { loading }] = useMutation(DELETE_TRANSACTION, {
-    refetchQueries: ["GetTransactions"],
-  });
+  const [deleteTransaction, { loading: delLoading }] = useMutation(
+    DELETE_TRANSACTION,
+    {
+      refetchQueries: ["GetTransactions"],
+    }
+  );
 
   const handleDelete = async () => {
     try {
@@ -47,7 +51,17 @@ const Card = ({
         },
       });
     } catch (error) {
-      console.log(error);
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 
@@ -64,7 +78,7 @@ const Card = ({
             {category.toUpperCase()}
           </h2>
           <div className="flex items-center gap-2">
-            {!loading && (
+            {!delLoading && (
               <FaTrash onClick={handleDelete} className={"cursor-pointer"} />
             )}
             <Link to={`/transaction/${transactionData._id}`}>
@@ -94,10 +108,9 @@ const Card = ({
         <div className="flex justify-between items-center">
           <p className="text-xs text-zinc-50 font-bold">{dateStr}</p>
           <img
-            referrerPolicy="no-referrer"
             src={profilePicture}
             className="grid place-items-centerh-8 w-8 border rounded-full"
-            alt="U"
+            alt=""
           />
         </div>
       </div>

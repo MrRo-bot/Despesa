@@ -13,6 +13,7 @@ import RadioButton from "../components/RadioButton";
 import Header from "../components/Header";
 import { useMutation } from "@apollo/client";
 import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
+import { Bounce, toast } from "react-toastify";
 
 const Authentication = () => {
   const [toggle, setToggle] = useState(false);
@@ -45,9 +46,18 @@ const Authentication = () => {
           input: signUpData,
         },
       });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (er: any) {
-      console.error(`Error signing up: ${er}`);
+    } catch (error) {
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 
@@ -61,9 +71,18 @@ const Authentication = () => {
           input: loginData,
         },
       });
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (er: any) {
-      console.error(`Error in login: ${er}`);
+    } catch (error) {
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 

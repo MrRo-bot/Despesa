@@ -1,5 +1,7 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
+import { Bounce, toast } from "react-toastify";
+
 import {
   MdOutlineCurrencyRupee,
   MdOutlinePayment,
@@ -14,22 +16,44 @@ import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
 const Transaction = () => {
   const { id } = useParams();
 
-  const { data } = useQuery(GET_TRANSACTION, {
+  const { data: transactionData, error: getErr } = useQuery(GET_TRANSACTION, {
     variables: { id: id },
   });
 
-  console.log(id, data);
+  toast.error(`${getErr}`, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Bounce,
+  });
 
-  const [updateTransaction, { loading: updateLoading }] =
+  const [updateTransaction, { loading: updateLoading, error: updateErr }] =
     useMutation(UPDATE_TRANSACTION);
 
+  toast.error(`${updateErr}`, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    transition: Bounce,
+  });
+
   const [formData, setFormData] = useState({
-    description: data?.transaction?.description || "",
-    paymentType: data?.transaction?.paymentType || "",
-    category: data?.transaction?.category || "",
-    amount: data?.transaction?.amount || "",
-    location: data?.transaction?.location || "",
-    date: data?.transaction?.date || "",
+    description: transactionData?.transaction?.description || "",
+    paymentType: transactionData?.transaction?.paymentType || "",
+    category: transactionData?.transaction?.category || "",
+    amount: transactionData?.transaction?.amount || "",
+    location: transactionData?.transaction?.location || "",
+    date: transactionData?.transaction?.date || "",
   });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -46,7 +70,17 @@ const Transaction = () => {
         },
       });
     } catch (error) {
-      console.error(error);
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 
@@ -61,19 +95,19 @@ const Transaction = () => {
   };
 
   useEffect(() => {
-    if (data) {
+    if (transactionData) {
       setFormData({
-        description: data?.transaction?.description,
-        paymentType: data?.transaction?.paymentType,
-        category: data?.transaction?.category,
-        amount: data?.transaction?.amount,
-        location: data?.transaction?.location,
-        date: new Date(+data.transaction.date).toISOString().substring(0, 10),
+        description: transactionData?.transaction?.description,
+        paymentType: transactionData?.transaction?.paymentType,
+        category: transactionData?.transaction?.category,
+        amount: transactionData?.transaction?.amount,
+        location: transactionData?.transaction?.location,
+        date: new Date(+transactionData.transaction.date)
+          .toISOString()
+          .substring(0, 10),
       });
     }
-  }, [data]);
-
-  // if (loading) return <TransactionFormSkeleton />; loading var comes from GET_TRANSACTION
+  }, [transactionData]);
 
   return (
     <div className="h-screen max-w-4xl mx-auto flex flex-col items-center">

@@ -8,11 +8,13 @@ import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
+import { Bounce, toast } from "react-toastify";
 
 declare function parseFloat(string: FormDataEntryValue | null): number;
 
 const TransactionForm = () => {
-  const [createTransaction, { loading }] = useMutation(CREATE_TRANSACTION);
+  const [createTransaction, { loading: createLoading }] =
+    useMutation(CREATE_TRANSACTION);
   const { refetch } = useQuery(GET_TRANSACTIONS);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,7 +24,7 @@ const TransactionForm = () => {
 
     const formData = new FormData(form);
     const transactionData = {
-      description: formData.get("description"), //NEED TO GET NAMES FROM INPUT FOR EACH FIELD
+      description: formData.get("description"),
       paymentType: formData.get("paymentType"),
       category: formData.get("category"),
       amount: parseFloat(formData.get("amount")),
@@ -39,7 +41,17 @@ const TransactionForm = () => {
       form.reset();
       refetch();
     } catch (error) {
-      console.error(`Error in adding transaction: ${error}`);
+      toast.error(`${error}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 
@@ -183,7 +195,7 @@ const TransactionForm = () => {
       {/* SUBMIT BUTTON */}
       <button
         type="submit"
-        disabled={loading}
+        disabled={createLoading}
         className="font-heading font-extrabold text-lg mt-5 rounded-xl btn py-6 bg-[#622069] w-max mx-auto text-white border-[#591660] 
       shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
                   active:bg-[#ffeba7]
@@ -201,7 +213,7 @@ const TransactionForm = () => {
       "
       >
         <MdOutlinePostAdd className="text-indigo-400 w-5 h-5" />
-        {loading ? "loading..." : "Add Transaction"}
+        {createLoading ? "loading..." : "Add Transaction"}
       </button>
     </form>
   );

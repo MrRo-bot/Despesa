@@ -9,7 +9,7 @@ import { useQuery } from "@apollo/client";
 import { GET_AUTHENTICATED_USER } from "./graphql/queries/user.query";
 
 function App() {
-  const { data } = useQuery(GET_AUTHENTICATED_USER);
+  const { data: authData } = useQuery(GET_AUTHENTICATED_USER);
 
   return (
     <>
@@ -17,17 +17,23 @@ function App() {
         <Route
           path="/"
           element={
-            data?.authUser ? <Home /> : <Navigate to="/authentication" />
+            authData?.authUser ? <Home /> : <Navigate to="/authentication" />
           }
         />
         <Route
           path="/authentication"
-          element={!data?.authUser ? <Authentication /> : <Navigate to="/" />}
+          element={
+            !authData?.authUser ? <Authentication /> : <Navigate to="/" />
+          }
         />
         <Route
           path="/transaction/:id"
           element={
-            data?.authUser ? <Transaction /> : <Navigate to="/authentication" />
+            authData?.authUser ? (
+              <Transaction />
+            ) : (
+              <Navigate to="/authentication" />
+            )
           }
         />
         <Route path="*" element={<Error />} />
