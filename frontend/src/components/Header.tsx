@@ -16,11 +16,23 @@ const Header = () => {
 
   const handleLogout = async () => {
     try {
+      toast.info(`🥲👋 BYE BYE ${authData?.authUser?.username}`, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        className: "font-bold ",
+      });
       await logout();
       client.resetStore(); //clears the cache
     } catch (error) {
       toast.error(`${error}`, {
-        position: "top-center",
+        position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

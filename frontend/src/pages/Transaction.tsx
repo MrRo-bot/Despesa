@@ -20,32 +20,36 @@ const Transaction = () => {
     variables: { id: id },
   });
 
-  toast.error(`${getErr}`, {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    transition: Bounce,
-  });
+  if (getErr) {
+    toast.error(`${getErr}`, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  }
 
   const [updateTransaction, { loading: updateLoading, error: updateErr }] =
     useMutation(UPDATE_TRANSACTION);
 
-  toast.error(`${updateErr}`, {
-    position: "top-center",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-    transition: Bounce,
-  });
+  if (updateErr) {
+    toast.error(`${updateErr}`, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      transition: Bounce,
+    });
+  }
 
   const [formData, setFormData] = useState({
     description: transactionData?.transaction?.description || "",
@@ -69,9 +73,20 @@ const Transaction = () => {
           },
         },
       });
+      toast.info(`📝 Changes Made`, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     } catch (error) {
       toast.error(`${error}`, {
-        position: "top-center",
+        position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

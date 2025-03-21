@@ -46,9 +46,22 @@ const Authentication = () => {
           input: signUpData,
         },
       });
+
+      toast.info(`WELCOME! 🥳 ${signUpData?.name}`, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        className: "font-bold",
+      });
     } catch (error) {
       toast.error(`${error}`, {
-        position: "top-center",
+        position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -63,17 +76,28 @@ const Authentication = () => {
 
   const handleSubmitLogin = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    if (!loginData.username || !loginData.password)
-      throw new Error("All fields are required");
     try {
       await login({
         variables: {
           input: loginData,
         },
       });
+
+      toast.info(`WELCOME! 🥳 ${loginData?.username}`, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+        className: "font-bold",
+      });
     } catch (error) {
       toast.error(`${error}`, {
-        position: "top-center",
+        position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
