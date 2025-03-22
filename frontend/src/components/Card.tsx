@@ -50,16 +50,17 @@ const Card = ({
           transactionId: transactionData._id,
         },
       });
-      toast.info(`❌👋 POOF!! Gone`, {
+      toast(`❌👋 POOF!! Gone`, {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
+        closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "light",
         transition: Bounce,
+        className: "font-bold",
       });
     } catch (error) {
       toast.error(`${error}`, {

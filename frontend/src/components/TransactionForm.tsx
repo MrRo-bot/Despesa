@@ -10,6 +10,8 @@ import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import { Bounce, toast } from "react-toastify";
+// import { useEffect } from "react";
+// import { transactions } from "../../../backend/dummyData/data";
 
 declare function parseFloat(string: FormDataEntryValue | null): number;
 
@@ -17,6 +19,17 @@ const TransactionForm = () => {
   const [createTransaction, { loading: createLoading }] =
     useMutation(CREATE_TRANSACTION);
   const { refetch } = useQuery(GET_TRANSACTIONS);
+
+  // used this code only once to input 287 transactions from the custom dummy dataset
+  // useEffect(() => {
+  //   transactions.map(async (x) => {
+  //     await createTransaction({
+  //       variables: {
+  //         input: x,
+  //       },
+  //     });
+  //   });
+  // }, [createTransaction]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,15 +54,15 @@ const TransactionForm = () => {
       });
       form.reset();
       refetch();
-      toast.info(`Transaction added! 🥳`, {
+      toast(`Transaction added! 🥳`, {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
+        closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "light",
         transition: Bounce,
         className: "font-bold",
       });

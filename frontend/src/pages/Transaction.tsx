@@ -11,11 +11,13 @@ import {
 } from "react-icons/md";
 import { TbCalendar, TbTransactionRupee } from "react-icons/tb";
 import { UPDATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
 
 const Transaction = () => {
   const { id } = useParams();
+
+  const navigate = useNavigate();
 
   const { data: transactionData, error: getErr } = useQuery(GET_TRANSACTION, {
     variables: { id: id },
@@ -74,17 +76,19 @@ const Transaction = () => {
           },
         },
       });
-      toast.info(`📝 Changes Made`, {
+      toast(`📝 Changes Made`, {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
+        closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "light",
         transition: Bounce,
+        className: "font-bold",
       });
+      navigate("/");
     } catch (error) {
       toast.error(`${error}`, {
         position: "bottom-left",

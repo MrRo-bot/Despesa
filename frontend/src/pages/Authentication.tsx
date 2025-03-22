@@ -47,15 +47,15 @@ const Authentication = () => {
         },
       });
 
-      toast.info(`WELCOME! 🥳 ${signUpData?.name}`, {
+      toast(`WELCOME! 🥳 ${signUpData?.name}`, {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
+        closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "light",
         transition: Bounce,
         className: "font-bold",
       });
@@ -83,15 +83,15 @@ const Authentication = () => {
         },
       });
 
-      toast.info(`WELCOME! 🥳 ${loginData?.username}`, {
+      toast(`WELCOME! 🥳 ${loginData?.username}`, {
         position: "bottom-left",
         autoClose: 5000,
         hideProgressBar: false,
-        closeOnClick: true,
+        closeOnClick: false,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "colored",
+        theme: "light",
         transition: Bounce,
         className: "font-bold",
       });

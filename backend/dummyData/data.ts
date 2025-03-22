@@ -1,6 +1,6 @@
 export const transactions = [
   {
-    date: "02-03-2025",
+    date: new Date("2025-03-02T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Brownie",
@@ -8,7 +8,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "02-03-2025",
+    date: new Date("2025-03-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To lended people",
@@ -16,7 +16,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-03-2025",
+    date: new Date("2025-03-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -24,7 +24,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-03-2025",
+    date: new Date("2025-03-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Metro",
@@ -32,7 +32,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-03-2025",
+    date: new Date("2025-03-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -40,7 +40,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-03-2025",
+    date: new Date("2025-03-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From vicky",
@@ -48,7 +48,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "01-03-2025",
+    date: new Date("2025-03-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -56,7 +56,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "28-02-2025",
+    date: new Date("2025-02-28T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Pizza",
@@ -64,7 +64,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "28-02-2025",
+    date: new Date("2025-02-28T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "From kumara",
@@ -72,7 +72,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "27-02-2025",
+    date: new Date("2025-02-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -80,7 +80,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-02-2025",
+    date: new Date("2025-02-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Tata Elexi",
@@ -88,7 +88,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "26-02-2025",
+    date: new Date("2025-02-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snack",
@@ -96,7 +96,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-02-2025",
+    date: new Date("2025-02-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -104,7 +104,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "26-02-2025",
+    date: new Date("2025-02-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To karthi",
@@ -112,7 +112,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-02-2025",
+    date: new Date("2025-02-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Jabalpur",
     description: "Pravesh",
@@ -120,7 +120,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-02-2025",
+    date: new Date("2025-02-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -128,7 +128,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-02-2025",
+    date: new Date("2025-02-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Tea lights",
@@ -136,7 +136,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-02-2025",
+    date: new Date("2025-02-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Tea lights",
@@ -144,7 +144,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-02-2025",
+    date: new Date("2025-02-24T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Toiletrires",
@@ -152,7 +152,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-02-2025",
+    date: new Date("2025-02-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Creamstone",
@@ -160,7 +160,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-02-2025",
+    date: new Date("2025-02-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Tamen",
@@ -168,7 +168,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-02-2025",
+    date: new Date("2025-02-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Hoodie for gobi",
@@ -176,7 +176,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-02-2025",
+    date: new Date("2025-02-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Eggs",
@@ -184,7 +184,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-02-2025",
+    date: new Date("2025-02-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Earphone",
@@ -192,7 +192,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "22-02-2025",
+    date: new Date("2025-02-22T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Auto to laxmi mills",
@@ -200,7 +200,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-02-2025",
+    date: new Date("2025-02-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "It better be worth it",
@@ -208,7 +208,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-02-2025",
+    date: new Date("2025-02-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Adani solar",
@@ -216,7 +216,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "21-02-2025",
+    date: new Date("2025-02-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Travel to koyambedu",
@@ -224,7 +224,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-02-2025",
+    date: new Date("2025-02-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Stuffs",
@@ -232,7 +232,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-02-2025",
+    date: new Date("2025-02-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Train cbe to chn",
@@ -240,7 +240,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-02-2025",
+    date: new Date("2025-02-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -248,7 +248,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Random stuff for drinks",
@@ -256,7 +256,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -264,7 +264,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Bus ticket",
@@ -272,7 +272,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Took from sbi",
@@ -280,7 +280,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Ramen with gobi",
@@ -288,7 +288,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Nagpur",
     description: "Metro",
@@ -296,7 +296,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To auto anna",
@@ -304,7 +304,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-02-2025",
+    date: new Date("2025-02-19T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "To egmore",
@@ -312,7 +312,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-02-2025",
+    date: new Date("2025-02-18T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Kfc dinner",
@@ -320,7 +320,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "17-02-2025",
+    date: new Date("2025-02-17T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -328,7 +328,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "16-02-2025",
+    date: new Date("2025-02-16T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Side dishes",
@@ -336,7 +336,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "16-02-2025",
+    date: new Date("2025-02-16T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "FMC",
@@ -344,7 +344,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "16-02-2025",
+    date: new Date("2025-02-16T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Kfc",
@@ -352,7 +352,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "13-02-2025",
+    date: new Date("2025-02-13T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Jabalpur",
     description: "Games",
@@ -360,7 +360,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-02-2025",
+    date: new Date("2025-02-12T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner with aravind and buddies",
@@ -368,7 +368,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-02-2025",
+    date: new Date("2025-02-12T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Mirror",
@@ -376,7 +376,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-02-2025",
+    date: new Date("2025-02-12T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -384,7 +384,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-02-2025",
+    date: new Date("2025-02-12T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -392,7 +392,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "11-02-2025",
+    date: new Date("2025-02-11T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner with aravind",
@@ -400,7 +400,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "10-02-2025",
+    date: new Date("2025-02-10T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Kfc dinner",
@@ -408,7 +408,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "08-02-2025",
+    date: new Date("2025-02-08T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "From dad",
@@ -416,7 +416,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "08-02-2025",
+    date: new Date("2025-02-08T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Bean bag",
@@ -424,7 +424,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "07-02-2025",
+    date: new Date("2025-02-07T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Auto to Gobi's place",
@@ -432,7 +432,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-02-2025",
+    date: new Date("2025-02-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Cakepark",
@@ -440,7 +440,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-02-2025",
+    date: new Date("2025-02-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "To kumara",
@@ -448,7 +448,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-02-2025",
+    date: new Date("2025-02-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "To chennai",
@@ -456,7 +456,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-02-2025",
+    date: new Date("2025-02-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Salary from dad",
@@ -464,7 +464,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "06-02-2025",
+    date: new Date("2025-02-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To gobi",
@@ -472,7 +472,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-02-2025",
+    date: new Date("2025-02-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "FMC",
@@ -480,7 +480,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "04-02-2025",
+    date: new Date("2025-02-04T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Shawarma",
@@ -488,7 +488,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-02-2025",
+    date: new Date("2025-02-03T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Pune",
     description: "Good soup",
@@ -496,7 +496,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-02-2025",
+    date: new Date("2025-02-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To gowdham",
@@ -504,7 +504,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "02-02-2025",
+    date: new Date("2025-02-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Parotta",
@@ -512,7 +512,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "02-02-2025",
+    date: new Date("2025-02-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -520,7 +520,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "31-01-2025",
+    date: new Date("2025-01-31T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Vnr to apk",
@@ -528,7 +528,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "31-01-2025",
+    date: new Date("2025-01-31T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "To vicky",
@@ -536,7 +536,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "31-01-2025",
+    date: new Date("2025-01-31T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "To ksr station",
@@ -544,7 +544,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-01-2025",
+    date: new Date("2025-01-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -552,7 +552,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-01-2025",
+    date: new Date("2025-01-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Cycle gap",
@@ -560,7 +560,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-01-2025",
+    date: new Date("2025-01-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Brunch",
@@ -568,7 +568,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "29-01-2025",
+    date: new Date("2025-01-29T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Rapido to pg",
@@ -576,7 +576,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "29-01-2025",
+    date: new Date("2025-01-29T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "HDFC",
@@ -584,7 +584,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "29-01-2025",
+    date: new Date("2025-01-29T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Sent to barath",
@@ -592,7 +592,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "28-01-2025",
+    date: new Date("2025-01-28T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Banana",
@@ -600,7 +600,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "28-01-2025",
+    date: new Date("2025-01-28T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -608,7 +608,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-01-2025",
+    date: new Date("2025-01-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Rapido to pg",
@@ -616,7 +616,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-01-2025",
+    date: new Date("2025-01-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To vicky",
@@ -624,7 +624,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-01-2025",
+    date: new Date("2025-01-27T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "To vishnu",
@@ -632,7 +632,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-01-2025",
+    date: new Date("2025-01-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Zinger box meal",
@@ -640,7 +640,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-01-2025",
+    date: new Date("2025-01-27T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "From vicky",
@@ -648,7 +648,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "27-01-2025",
+    date: new Date("2025-01-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -656,7 +656,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "26-01-2025",
+    date: new Date("2025-01-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -664,7 +664,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-01-2025",
+    date: new Date("2025-01-26T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Indore",
     description: "Vishnu 100 gowdham 25",
@@ -672,7 +672,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "26-01-2025",
+    date: new Date("2025-01-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Paani poori",
@@ -680,15 +680,15 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-01-2025",
+    date: new Date("2025-01-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Kfc date with myself",
-    amount: 259,
+    amount: 450,
     account: "expense",
   },
   {
-    date: "25-01-2025",
+    date: new Date("2025-01-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lemon tea",
@@ -696,7 +696,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-01-2025",
+    date: new Date("2025-01-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Train to vnr",
@@ -704,7 +704,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-01-2025",
+    date: new Date("2025-01-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snack",
@@ -712,7 +712,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-01-2025",
+    date: new Date("2025-01-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -720,7 +720,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Pepsi",
@@ -728,7 +728,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -736,7 +736,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Sent to vicky",
@@ -744,7 +744,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -752,7 +752,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From vicky",
@@ -760,7 +760,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks with preethi and azar",
@@ -768,7 +768,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-01-2025",
+    date: new Date("2025-01-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Nestle India",
@@ -776,7 +776,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Jabalpur",
     description: "Badminton",
@@ -784,7 +784,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-01-2025",
+    date: new Date("2025-01-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -792,7 +792,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "21-01-2025",
+    date: new Date("2025-01-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -800,7 +800,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-01-2025",
+    date: new Date("2025-01-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -808,7 +808,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-01-2025",
+    date: new Date("2025-01-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From vicky",
@@ -816,7 +816,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "19-01-2025",
+    date: new Date("2025-01-19T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Lunch + chocolate for preethi",
@@ -824,7 +824,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-01-2025",
+    date: new Date("2025-01-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -832,7 +832,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-01-2025",
+    date: new Date("2025-01-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snack with preethi",
@@ -840,7 +840,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-01-2025",
+    date: new Date("2025-01-18T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Pune",
     description: "Lunch with company",
@@ -848,7 +848,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-01-2025",
+    date: new Date("2025-01-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To kumara",
@@ -856,7 +856,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-01-2025",
+    date: new Date("2025-01-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -864,7 +864,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "17-01-2025",
+    date: new Date("2025-01-17T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Eve snack",
@@ -872,7 +872,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "15-01-2025",
+    date: new Date("2025-01-15T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Bus to Bangalore",
@@ -880,7 +880,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "15-01-2025",
+    date: new Date("2025-01-15T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -888,7 +888,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "15-01-2025",
+    date: new Date("2025-01-15T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -896,7 +896,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "14-01-2025",
+    date: new Date("2025-01-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Kumara",
@@ -904,7 +904,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "14-01-2025",
+    date: new Date("2025-01-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Siva + 100 cash",
@@ -912,7 +912,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "14-01-2025",
+    date: new Date("2025-01-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "TCS",
@@ -920,7 +920,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "14-01-2025",
+    date: new Date("2025-01-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Gundan + prasanna",
@@ -928,7 +928,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "14-01-2025",
+    date: new Date("2025-01-14T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "Dinesh and maddy + 100 cash",
@@ -936,7 +936,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "14-01-2025",
+    date: new Date("2025-01-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From gowdham",
@@ -944,7 +944,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "14-01-2025",
+    date: new Date("2025-01-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch pongal",
@@ -952,7 +952,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "13-01-2025",
+    date: new Date("2025-01-13T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -960,7 +960,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "13-01-2025",
+    date: new Date("2025-01-13T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From dad",
@@ -968,7 +968,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "13-01-2025",
+    date: new Date("2025-01-13T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Rapido to pg",
@@ -976,7 +976,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-01-2025",
+    date: new Date("2025-01-12T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Indore",
     description: "Recharge by gowdham",
@@ -984,7 +984,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-01-2025",
+    date: new Date("2025-01-12T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Pizza",
@@ -992,7 +992,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-01-2025",
+    date: new Date("2025-01-12T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "From kumara",
@@ -1000,7 +1000,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "11-01-2025",
+    date: new Date("2025-01-11T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with not preethi",
@@ -1008,7 +1008,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "10-01-2025",
+    date: new Date("2025-01-10T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Friday snacks with preethi gang",
@@ -1016,7 +1016,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "08-01-2025",
+    date: new Date("2025-01-08T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From gowdham",
@@ -1024,7 +1024,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "08-01-2025",
+    date: new Date("2025-01-08T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with gowdham",
@@ -1032,7 +1032,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "08-01-2025",
+    date: new Date("2025-01-08T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Rent",
@@ -1040,7 +1040,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "07-01-2025",
+    date: new Date("2025-01-07T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Coffee + biscuit",
@@ -1048,7 +1048,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-01-2025",
+    date: new Date("2025-01-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From barath and shakur",
@@ -1056,7 +1056,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "06-01-2025",
+    date: new Date("2025-01-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Ketch up",
@@ -1064,7 +1064,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-01-2025",
+    date: new Date("2025-01-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner with roommate",
@@ -1072,7 +1072,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-01-2025",
+    date: new Date("2025-01-06T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Pune",
     description: "Bingo",
@@ -1080,7 +1080,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-01-2025",
+    date: new Date("2025-01-06T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Nagpur",
     description: "Rapido to pg",
@@ -1088,7 +1088,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "McDonald's with company",
@@ -1096,7 +1096,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Lended money returned to vishnu",
@@ -1104,7 +1104,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Lended money returned to kumara",
@@ -1112,7 +1112,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Jan 2nd with shakur and barath",
@@ -1120,7 +1120,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To gobi 1st 1-4th",
@@ -1128,7 +1128,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To abijith and to vicky lend money returned",
@@ -1136,7 +1136,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Refund for bus ticket",
@@ -1144,7 +1144,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Lunch with company",
@@ -1152,7 +1152,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-01-2025",
+    date: new Date("2025-01-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Castrol",
@@ -1160,7 +1160,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "04-01-2025",
+    date: new Date("2025-01-04T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Arrear and reval fee",
@@ -1168,7 +1168,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "04-01-2025",
+    date: new Date("2025-01-04T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Salary",
@@ -1176,7 +1176,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "04-01-2025",
+    date: new Date("2025-01-04T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -1184,7 +1184,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "04-01-2025",
+    date: new Date("2025-01-04T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To vicky",
@@ -1192,7 +1192,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "04-01-2025",
+    date: new Date("2025-01-04T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Sent to preethi",
@@ -1200,7 +1200,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-01-2025",
+    date: new Date("2025-01-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dairy milk",
@@ -1208,7 +1208,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-01-2025",
+    date: new Date("2025-01-03T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Indore",
     description: "From barath",
@@ -1216,7 +1216,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "03-01-2025",
+    date: new Date("2025-01-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From gpay",
@@ -1224,7 +1224,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "03-01-2025",
+    date: new Date("2025-01-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From shakur",
@@ -1232,7 +1232,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "03-01-2025",
+    date: new Date("2025-01-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch unlimited nv",
@@ -1240,7 +1240,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-01-2025",
+    date: new Date("2025-01-03T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "From abi",
@@ -1248,7 +1248,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "02-01-2025",
+    date: new Date("2025-01-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Tablet to gowdham",
@@ -1256,7 +1256,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "02-01-2025",
+    date: new Date("2025-01-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner with barath",
@@ -1264,7 +1264,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "02-01-2025",
+    date: new Date("2025-01-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Train to vnr",
@@ -1272,7 +1272,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-01-2025",
+    date: new Date("2025-01-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -1280,7 +1280,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-01-2025",
+    date: new Date("2025-01-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "From dad",
@@ -1288,7 +1288,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "To barath",
@@ -1296,7 +1296,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Pg to office",
@@ -1304,7 +1304,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From kumara",
@@ -1312,7 +1312,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Horlicks + kolakattai",
@@ -1320,7 +1320,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Nagpur",
     description: "Bommasandra to pg",
@@ -1328,7 +1328,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From Deepak",
@@ -1336,7 +1336,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Water",
@@ -1344,7 +1344,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From abi",
@@ -1352,7 +1352,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Castrol",
@@ -1360,7 +1360,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Rapido + toll",
@@ -1368,7 +1368,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-12-2024",
+    date: new Date("2024-12-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From Deepak",
@@ -1376,7 +1376,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "28-12-2024",
+    date: new Date("2024-12-28T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Coffee and thattai",
@@ -1384,7 +1384,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-12-2024",
+    date: new Date("2024-12-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with barath",
@@ -1392,7 +1392,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-12-2024",
+    date: new Date("2024-12-27T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Indore",
     description: "From vicky",
@@ -1400,7 +1400,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "27-12-2024",
+    date: new Date("2024-12-27T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "From ganesan",
@@ -1408,7 +1408,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "27-12-2024",
+    date: new Date("2024-12-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Coconut water with stu",
@@ -1416,7 +1416,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-12-2024",
+    date: new Date("2024-12-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner with barath",
@@ -1424,7 +1424,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-12-2024",
+    date: new Date("2024-12-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Cab",
@@ -1432,7 +1432,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-12-2024",
+    date: new Date("2024-12-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Books",
@@ -1440,7 +1440,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-12-2024",
+    date: new Date("2024-12-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Corn",
@@ -1448,7 +1448,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-12-2024",
+    date: new Date("2024-12-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Water",
@@ -1456,7 +1456,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-12-2024",
+    date: new Date("2024-12-25T00:00:00.000+00:00").toISOString(),
     paymentType: "card",
     location: "Pune",
     description: "Milk with bharath",
@@ -1464,7 +1464,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-12-2024",
+    date: new Date("2024-12-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Jabalpur",
     description: "Beer",
@@ -1472,7 +1472,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-12-2024",
+    date: new Date("2024-12-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -1480,7 +1480,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-12-2024",
+    date: new Date("2024-12-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lemon tea with company",
@@ -1488,7 +1488,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-12-2024",
+    date: new Date("2024-12-23T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Puffs and coffee",
@@ -1496,7 +1496,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-12-2024",
+    date: new Date("2024-12-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner with barath",
@@ -1504,7 +1504,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-12-2024",
+    date: new Date("2024-12-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Puffs",
@@ -1512,7 +1512,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-12-2024",
+    date: new Date("2024-12-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Bun",
@@ -1520,7 +1520,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-12-2024",
+    date: new Date("2024-12-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Milk with bharath",
@@ -1528,7 +1528,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-12-2024",
+    date: new Date("2024-12-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Taxi",
@@ -1536,7 +1536,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-12-2024",
+    date: new Date("2024-12-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -1544,7 +1544,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-12-2024",
+    date: new Date("2024-12-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Water",
@@ -1552,7 +1552,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-12-2024",
+    date: new Date("2024-12-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "LIC",
@@ -1560,7 +1560,7 @@ export const transactions = [
     account: "investment",
   },
   {
-    date: "20-12-2024",
+    date: new Date("2024-12-20T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Lunch with barath",
@@ -1568,7 +1568,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "20-12-2024",
+    date: new Date("2024-12-20T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Milk with bharath",
@@ -1576,7 +1576,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "19-12-2024",
+    date: new Date("2024-12-19T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To siva",
@@ -1584,7 +1584,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-12-2024",
+    date: new Date("2024-12-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To kumara",
@@ -1592,7 +1592,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-12-2024",
+    date: new Date("2024-12-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "To abijith",
@@ -1600,7 +1600,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-12-2024",
+    date: new Date("2024-12-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "To rahul",
@@ -1608,7 +1608,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-12-2024",
+    date: new Date("2024-12-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "From dad",
@@ -1616,7 +1616,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "18-12-2024",
+    date: new Date("2024-12-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Lended money",
@@ -1624,7 +1624,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "18-12-2024",
+    date: new Date("2024-12-18T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Jabalpur",
     description: "Spiderman",
@@ -1632,7 +1632,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "18-12-2024",
+    date: new Date("2024-12-18T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -1640,7 +1640,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "17-12-2024",
+    date: new Date("2024-12-17T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Milk with bharath",
@@ -1648,7 +1648,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "17-12-2024",
+    date: new Date("2024-12-17T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -1656,7 +1656,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "17-12-2024",
+    date: new Date("2024-12-17T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Gave to gowdham",
@@ -1664,7 +1664,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "16-12-2024",
+    date: new Date("2024-12-16T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Egg",
@@ -1672,7 +1672,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "16-12-2024",
+    date: new Date("2024-12-16T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Panipoori",
@@ -1680,7 +1680,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "16-12-2024",
+    date: new Date("2024-12-16T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -1688,7 +1688,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "16-12-2024",
+    date: new Date("2024-12-16T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Milk with bharath",
@@ -1696,7 +1696,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "14-12-2024",
+    date: new Date("2024-12-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -1704,7 +1704,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "14-12-2024",
+    date: new Date("2024-12-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -1712,7 +1712,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "14-12-2024",
+    date: new Date("2024-12-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Panipoori",
@@ -1720,7 +1720,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "14-12-2024",
+    date: new Date("2024-12-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snacks",
@@ -1728,7 +1728,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "14-12-2024",
+    date: new Date("2024-12-14T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Milk with bharath",
@@ -1736,7 +1736,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "12-12-2024",
+    date: new Date("2024-12-12T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Milk with bharath",
@@ -1744,7 +1744,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "11-12-2024",
+    date: new Date("2024-12-11T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "From dad",
@@ -1752,7 +1752,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "11-12-2024",
+    date: new Date("2024-12-11T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "From stu",
@@ -1760,7 +1760,7 @@ export const transactions = [
     account: "saving",
   },
   {
-    date: "10-12-2024",
+    date: new Date("2024-12-10T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Shopping",
@@ -1768,7 +1768,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "10-12-2024",
+    date: new Date("2024-12-10T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Momos",
@@ -1776,7 +1776,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "09-12-2024",
+    date: new Date("2024-12-09T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snack with bharath",
@@ -1784,7 +1784,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "09-12-2024",
+    date: new Date("2024-12-09T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -1792,7 +1792,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "09-12-2024",
+    date: new Date("2024-12-09T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Milk with bharath",
@@ -1800,7 +1800,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "09-12-2024",
+    date: new Date("2024-12-09T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Breakfast with stu",
@@ -1808,7 +1808,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "08-12-2024",
+    date: new Date("2024-12-08T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Lunch with stu",
@@ -1816,15 +1816,15 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "08-12-2024",
-    paymentType: "Cash",
+    date: new Date("2024-12-08T00:00:00.000+00:00").toISOString(),
+    paymentType: "cash",
     location: "Pune",
     description: "Grand Hyatt",
     amount: 1120.72,
     account: "expense",
   },
   {
-    date: "08-12-2024",
+    date: new Date("2024-12-08T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Milk",
@@ -1832,7 +1832,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "07-12-2024",
+    date: new Date("2024-12-07T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Milk with bharath",
@@ -1840,7 +1840,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "07-12-2024",
+    date: new Date("2024-12-07T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Horlicks",
@@ -1848,7 +1848,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-12-2024",
+    date: new Date("2024-12-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Milk with bharath",
@@ -1856,7 +1856,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-12-2024",
+    date: new Date("2024-12-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Shoe",
@@ -1864,7 +1864,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-12-2024",
+    date: new Date("2024-12-06T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Cap",
@@ -1872,7 +1872,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "06-12-2024",
+    date: new Date("2024-12-06T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Lunch with stu",
@@ -1880,7 +1880,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-12-2024",
+    date: new Date("2024-12-05T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Milk with bharath",
@@ -1888,7 +1888,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-12-2024",
+    date: new Date("2024-12-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Full hand and a hoodie",
@@ -1896,7 +1896,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-12-2024",
+    date: new Date("2024-12-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Rent",
@@ -1904,7 +1904,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "05-12-2024",
+    date: new Date("2024-12-05T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "From dad",
@@ -1912,7 +1912,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "04-12-2024",
+    date: new Date("2024-12-04T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Dinner",
@@ -1920,7 +1920,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "04-12-2024",
+    date: new Date("2024-12-04T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Snack",
@@ -1928,7 +1928,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "04-12-2024",
+    date: new Date("2024-12-04T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Indore",
     description: "For company",
@@ -1936,7 +1936,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "04-12-2024",
+    date: new Date("2024-12-04T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Breakfast",
@@ -1944,7 +1944,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-12-2024",
+    date: new Date("2024-12-03T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Milk with bharath",
@@ -1952,7 +1952,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-12-2024",
+    date: new Date("2024-12-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Belt",
@@ -1960,7 +1960,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-12-2024",
+    date: new Date("2024-12-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Mask",
@@ -1968,7 +1968,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-12-2024",
+    date: new Date("2024-12-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snack",
@@ -1976,7 +1976,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "03-12-2024",
+    date: new Date("2024-12-03T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "From dad",
@@ -1984,7 +1984,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "02-12-2024",
+    date: new Date("2024-12-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Ice cream",
@@ -1992,7 +1992,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "02-12-2024",
+    date: new Date("2024-12-02T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Vadapaav",
@@ -2000,7 +2000,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-12-2024",
+    date: new Date("2024-12-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Showergel",
@@ -2008,7 +2008,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "01-12-2024",
+    date: new Date("2024-12-01T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -2016,7 +2016,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-11-2024",
+    date: new Date("2024-11-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Bharath birthday",
@@ -2024,7 +2024,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-11-2024",
+    date: new Date("2024-11-30T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -2032,7 +2032,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "30-11-2024",
+    date: new Date("2024-11-30T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Breakfast",
@@ -2040,7 +2040,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "29-11-2024",
+    date: new Date("2024-11-29T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Lunch with company",
@@ -2048,7 +2048,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "29-11-2024",
+    date: new Date("2024-11-29T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Dinner",
@@ -2056,7 +2056,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "29-11-2024",
+    date: new Date("2024-11-29T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Panipoori",
@@ -2064,7 +2064,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "29-11-2024",
+    date: new Date("2024-11-29T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Breakfast",
@@ -2072,7 +2072,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "28-11-2024",
+    date: new Date("2024-11-28T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snack",
@@ -2080,7 +2080,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "28-11-2024",
+    date: new Date("2024-11-28T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Zomato",
@@ -2088,7 +2088,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-11-2024",
+    date: new Date("2024-11-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner with gowdham",
@@ -2096,7 +2096,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-11-2024",
+    date: new Date("2024-11-27T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Dinner with gowdham",
@@ -2104,7 +2104,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-11-2024",
+    date: new Date("2024-11-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Rapido",
@@ -2112,7 +2112,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-11-2024",
+    date: new Date("2024-11-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -2120,7 +2120,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "27-11-2024",
+    date: new Date("2024-11-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "From dad",
@@ -2128,7 +2128,7 @@ export const transactions = [
     account: "income",
   },
   {
-    date: "27-11-2024",
+    date: new Date("2024-11-27T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Breakfast",
@@ -2136,7 +2136,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-11-2024",
+    date: new Date("2024-11-26T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Beer",
@@ -2144,7 +2144,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-11-2024",
+    date: new Date("2024-11-26T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Snack",
@@ -2152,7 +2152,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-11-2024",
+    date: new Date("2024-11-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Panipoori",
@@ -2160,15 +2160,15 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-11-2024",
+    date: new Date("2024-11-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
-    description: "Cashback",
+    description: "cashback",
     amount: 3,
     account: "saving",
   },
   {
-    date: "26-11-2024",
+    date: new Date("2024-11-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -2176,7 +2176,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "26-11-2024",
+    date: new Date("2024-11-26T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Breakfast",
@@ -2184,7 +2184,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-11-2024",
+    date: new Date("2024-11-25T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Lunch with company",
@@ -2192,7 +2192,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-11-2024",
+    date: new Date("2024-11-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Rapido",
@@ -2200,7 +2200,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "25-11-2024",
+    date: new Date("2024-11-25T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -2208,7 +2208,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-11-2024",
+    date: new Date("2024-11-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Snack",
@@ -2216,7 +2216,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-11-2024",
+    date: new Date("2024-11-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -2224,7 +2224,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-11-2024",
+    date: new Date("2024-11-24T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Pune",
     description: "Panipoori",
@@ -2232,7 +2232,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "24-11-2024",
+    date: new Date("2024-11-24T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Nagpur",
     description: "Rapido",
@@ -2240,7 +2240,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-11-2024",
+    date: new Date("2024-11-23T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Nagpur",
     description: "Rapido",
@@ -2248,7 +2248,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "23-11-2024",
+    date: new Date("2024-11-23T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -2256,7 +2256,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "22-11-2024",
+    date: new Date("2024-11-22T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Dinner",
@@ -2264,7 +2264,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "22-11-2024",
+    date: new Date("2024-11-22T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch with company",
@@ -2272,7 +2272,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-11-2024",
+    date: new Date("2024-11-21T00:00:00.000+00:00").toISOString(),
     paymentType: "cash",
     location: "Nagpur",
     description: "Rapido",
@@ -2280,7 +2280,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-11-2024",
+    date: new Date("2024-11-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Pune",
     description: "Lunch",
@@ -2288,7 +2288,7 @@ export const transactions = [
     account: "expense",
   },
   {
-    date: "21-11-2024",
+    date: new Date("2024-11-21T00:00:00.000+00:00").toISOString(),
     paymentType: "mobile banking",
     location: "Indore",
     description: "Got from gobi",
