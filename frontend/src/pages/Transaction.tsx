@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { Bounce, toast } from "react-toastify";
 
 import {
+  MdOutlineAccountBalanceWallet,
   MdOutlineCurrencyRupee,
   MdOutlinePayment,
   MdOutlinePostAdd,
   MdOutlineShareLocation,
 } from "react-icons/md";
-import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
+import { TbCalendar, TbTransactionRupee } from "react-icons/tb";
 import { UPDATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useParams } from "react-router-dom";
 import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
@@ -182,7 +183,7 @@ const Transaction = () => {
                 Account
               </legend>
               <div className="flex gap-2 items-center">
-                <TbCategory className="text-indigo-400 w-7 h-7" />
+                <MdOutlineAccountBalanceWallet className="text-indigo-400 w-7 h-7" />
                 <select
                   defaultValue={formData.account}
                   onChange={handleInputChange}

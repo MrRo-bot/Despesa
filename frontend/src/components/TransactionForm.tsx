@@ -1,10 +1,11 @@
 import {
+  MdOutlineAccountBalanceWallet,
   MdOutlineCurrencyRupee,
   MdOutlinePayment,
   MdOutlinePostAdd,
   MdOutlineShareLocation,
 } from "react-icons/md";
-import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
+import { TbCalendar, TbTransactionRupee } from "react-icons/tb";
 import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
@@ -117,7 +118,7 @@ const TransactionForm = () => {
               Account
             </legend>
             <div className="flex gap-2 items-center">
-              <TbCategory className="text-indigo-400 w-7 h-7" />
+              <MdOutlineAccountBalanceWallet className="text-indigo-400 w-7 h-7" />
               <select name="account" className="select h-12 tracking-wider ">
                 <option disabled={true} className="tracking-wider">
                   Pick an option
