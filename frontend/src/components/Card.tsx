@@ -26,14 +26,14 @@ const Card = ({
     _id: string;
     description: string;
     paymentType: string;
-    category: string;
+    account: string;
     amount: number;
     location: string;
     date: string;
   };
   profilePicture: string;
 }) => {
-  const { description, paymentType, category, amount, location, date } =
+  const { description, paymentType, account, amount, location, date } =
     transactionData;
 
   const [deleteTransaction, { loading: delLoading }] = useMutation(
@@ -79,14 +79,14 @@ const Card = ({
   const dateStr = formatDate(date);
 
   //@ts-expect-error //dont know why it has implicit any
-  const cardClass = categoryColorMap[category];
+  const cardClass = categoryColorMap[account];
 
   return (
     <div className={`rounded-md p-4 bg-gradient-to-b ${cardClass}`}>
       <div className="flex flex-col gap-3">
         <div className="flex flex-row items-center justify-between">
           <h2 className="text-lg font-bold text-white">
-            {category.toUpperCase()}
+            {account.toUpperCase()}
           </h2>
           <div className="flex items-center gap-2">
             {!delLoading && (

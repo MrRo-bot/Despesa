@@ -15,7 +15,7 @@ const transactionSchema = new mongoose.Schema({
     enum: ["mobile banking", "cash", "card"],
     required: true,
   },
-  category: {
+  account: {
     type: String,
     enum: ["saving", "income", "expense", "investment"],
     required: true,

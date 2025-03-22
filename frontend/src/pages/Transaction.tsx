@@ -54,7 +54,7 @@ const Transaction = () => {
   const [formData, setFormData] = useState({
     description: transactionData?.transaction?.description || "",
     paymentType: transactionData?.transaction?.paymentType || "",
-    category: transactionData?.transaction?.category || "",
+    account: transactionData?.transaction?.account || "",
     amount: transactionData?.transaction?.amount || "",
     location: transactionData?.transaction?.location || "",
     date: transactionData?.transaction?.date || "",
@@ -114,7 +114,7 @@ const Transaction = () => {
       setFormData({
         description: transactionData?.transaction?.description,
         paymentType: transactionData?.transaction?.paymentType,
-        category: transactionData?.transaction?.category,
+        account: transactionData?.transaction?.account,
         amount: transactionData?.transaction?.amount,
         location: transactionData?.transaction?.location,
         date: new Date(+transactionData.transaction.date)
@@ -175,18 +175,18 @@ const Transaction = () => {
             </div>
           </div>
 
-          {/* CATEGORY */}
+          {/* Account */}
           <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
             <fieldset className="fieldset">
               <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
-                Category
+                Account
               </legend>
               <div className="flex gap-2 items-center">
                 <TbCategory className="text-indigo-400 w-7 h-7" />
                 <select
-                  defaultValue={formData.category}
+                  defaultValue={formData.account}
                   onChange={handleInputChange}
-                  name="category"
+                  name="account"
                   className="select h-12 tracking-wider "
                 >
                   <option disabled={true} className="tracking-wider">

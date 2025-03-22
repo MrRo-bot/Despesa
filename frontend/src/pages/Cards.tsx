@@ -23,7 +23,7 @@ const Cards = () => {
               _id: string;
               description: string;
               paymentType: string;
-              category: string;
+              account: string;
               amount: number;
               location: string;
               date: string;

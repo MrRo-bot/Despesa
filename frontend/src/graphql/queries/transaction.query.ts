@@ -6,7 +6,7 @@ export const GET_TRANSACTIONS = gql`
       _id
       description
       paymentType
-      category
+      account
       amount
       location
       date
@@ -20,7 +20,7 @@ export const GET_TRANSACTION = gql`
       _id
       description
       paymentType
-      category
+      account
       amount
       location
       date

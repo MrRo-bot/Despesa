@@ -4,7 +4,7 @@ const transactionTypeDef = `#graphql
         userId: ID!
         description: String!
         paymentType: String!
-        category: String!
+        account: String!
         amount: Float!
         location: String
         date: String!
@@ -24,7 +24,7 @@ const transactionTypeDef = `#graphql
     input CreateTransactionInput{
         description: String!
         paymentType: String!
-        category: String!
+        account: String!
         amount: Float!
         location: String
         date: String!
@@ -35,7 +35,7 @@ const transactionTypeDef = `#graphql
         transactionId: ID!
         description: String
         paymentType: String
-        category: String
+        account: String
         amount: Float
         location: String
         date: String

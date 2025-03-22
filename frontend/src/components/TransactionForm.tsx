@@ -26,7 +26,7 @@ const TransactionForm = () => {
     const transactionData = {
       description: formData.get("description"),
       paymentType: formData.get("paymentType"),
-      category: formData.get("category"),
+      account: formData.get("account"),
       amount: parseFloat(formData.get("amount")),
       location: formData.get("location"),
       date: formData.get("date"),
@@ -110,15 +110,15 @@ const TransactionForm = () => {
           </div>
         </div>
 
-        {/* CATEGORY */}
+        {/* Account */}
         <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
           <fieldset className="fieldset">
             <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
-              Category
+              Account
             </legend>
             <div className="flex gap-2 items-center">
               <TbCategory className="text-indigo-400 w-7 h-7" />
-              <select name="category" className="select h-12 tracking-wider ">
+              <select name="account" className="select h-12 tracking-wider ">
                 <option disabled={true} className="tracking-wider">
                   Pick an option
                 </option>
