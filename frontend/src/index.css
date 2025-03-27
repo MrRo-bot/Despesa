@@ -1,14 +1,24 @@
 @import "tailwindcss";
+
 @plugin "daisyui";
+
+.tooltip {
+  @apply invisible absolute;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible -top-5 z-50;
+}
 
 * {
   /* outline: 0.1px solid green; */
 }
 
 @theme {
-  --font-heading: "Orbitron";
-  --font-content: "Genos";
-  --animate-currency: autoScrolling 10s infinite cubic-bezier(0.5, -2, 0.5, 2);
+  --font-roboto: "Roboto Mono";
+  --font-inconsolata: "Inconsolata";
+  --animate-currency: autoScrolling 10s infinite cubic-bezier(1, 0, 0, 1);
+  --shadow-main: hsla(0, 0%, 0%, 0.7) 3px 3px;
 
   @keyframes autoScrolling {
     0%,

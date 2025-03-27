@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
 import App from "./App.tsx";
-import Background from "./components/Background.tsx";
+
 import { ToastContainer } from "react-toastify";
 
 const client = new ApolloClient({
@@ -15,11 +15,9 @@ const client = new ApolloClient({
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <Background>
-      <ApolloProvider client={client}>
-        <App />
-        <ToastContainer />
-      </ApolloProvider>
-    </Background>
-  </BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+      <ToastContainer />
+    </ApolloProvider>
+  </BrowserRouter>,
 );

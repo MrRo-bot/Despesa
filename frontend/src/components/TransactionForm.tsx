@@ -55,7 +55,7 @@ const TransactionForm = () => {
       form.reset();
       refetch();
       toast(`Transaction added! 🥳`, {
-        position: "bottom-left",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: false,
@@ -68,7 +68,7 @@ const TransactionForm = () => {
       });
     } catch (error) {
       toast.error(`${error}`, {
-        position: "bottom-left",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -83,7 +83,7 @@ const TransactionForm = () => {
 
   return (
     <form
-      className="w-full max-w-xl flex flex-col gap-3 px-3"
+      className="flex w-full max-w-xl flex-col gap-3 px-3"
       onSubmit={handleSubmit}
     >
       {/* Description */}
@@ -93,12 +93,12 @@ const TransactionForm = () => {
             <legend className="fieldset-legend font-heading ml-8 text-lg">
               Description
             </legend>
-            <div className="flex gap-2 items-center">
-              <TbTransactionRupee className="text-indigo-400 w-6 h-6" />
+            <div className="flex items-center gap-2">
+              <TbTransactionRupee className="h-6 w-6 text-indigo-400" />
               <input
                 name="description"
                 type="text"
-                className="grow input input-lg font-content tracking-wider"
+                className="input input-lg font-content grow tracking-wider"
                 placeholder="Rent, Groceries, Salary, etc."
               />
             </div>
@@ -107,17 +107,17 @@ const TransactionForm = () => {
       </div>
       <div className="grid gap-3">
         {/* LOCATION */}
-        <div className="flex flex-wrap gap-3 col-start-1 col-end-3">
-          <div className="w-full flex-1 mb-6 md:mb-0">
+        <div className="col-start-1 col-end-3 flex flex-wrap gap-3">
+          <div className="mb-6 w-full flex-1 md:mb-0">
             <fieldset className="fieldset flex items-center">
               <legend className="fieldset-legend font-heading ml-8 text-lg">
                 Location
               </legend>
-              <MdOutlineShareLocation className="text-indigo-400 w-7 h-7" />
+              <MdOutlineShareLocation className="h-7 w-7 text-indigo-400" />
               <input
                 name="location"
                 type="text"
-                className="grow input-lg input font-content tracking-wider w-full"
+                className="input-lg input font-content w-full grow tracking-wider"
                 placeholder="New York"
               />
             </fieldset>
@@ -125,14 +125,14 @@ const TransactionForm = () => {
         </div>
 
         {/* Account */}
-        <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
+        <div className="col-start-1 col-end-2 mb-6 w-full flex-1 md:mb-0">
           <fieldset className="fieldset">
-            <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+            <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
               Account
             </legend>
-            <div className="flex gap-2 items-center">
-              <MdOutlineAccountBalanceWallet className="text-indigo-400 w-7 h-7" />
-              <select name="account" className="select h-12 tracking-wider ">
+            <div className="flex items-center gap-2">
+              <MdOutlineAccountBalanceWallet className="h-7 w-7 text-indigo-400" />
+              <select name="account" className="select h-12 tracking-wider">
                 <option disabled={true} className="tracking-wider">
                   Pick an option
                 </option>
@@ -154,12 +154,12 @@ const TransactionForm = () => {
         </div>
 
         {/* DATE */}
-        <div className="w-full flex-1 col-start-2 col-end-3">
+        <div className="col-start-2 col-end-3 w-full flex-1">
           <fieldset className="fieldset flex items-center">
-            <legend className="fieldset-legend font-heading text-lg ml-8">
+            <legend className="fieldset-legend font-heading ml-8 text-lg">
               Date
             </legend>
-            <TbCalendar className="text-indigo-400 w-7 h-7" />
+            <TbCalendar className="h-7 w-7 text-indigo-400" />
             <input
               name="date"
               type="date"
@@ -169,17 +169,14 @@ const TransactionForm = () => {
         </div>
 
         {/* PAYMENT TYPE */}
-        <div className="w-full flex-1 mb-6 col-start-1 col-end-2 md:mb-0">
+        <div className="col-start-1 col-end-2 mb-6 w-full flex-1 md:mb-0">
           <fieldset className="fieldset">
-            <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+            <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
               Payment Type{" "}
             </legend>
-            <div className="flex gap-2 items-center">
-              <MdOutlinePayment className="text-indigo-400 w-7 h-7" />
-              <select
-                name="paymentType"
-                className="select h-12 tracking-wider "
-              >
+            <div className="flex items-center gap-2">
+              <MdOutlinePayment className="h-7 w-7 text-indigo-400" />
+              <select name="paymentType" className="select h-12 tracking-wider">
                 <option disabled={true} className="tracking-wider">
                   Pick an option
                 </option>
@@ -198,13 +195,13 @@ const TransactionForm = () => {
         </div>
 
         {/* AMOUNT */}
-        <div className="w-full flex-1 mb-6 col-start-2 col-end-3 md:mb-0">
+        <div className="col-start-2 col-end-3 mb-6 w-full flex-1 md:mb-0">
           <fieldset className="fieldset">
-            <legend className="fieldset-legend flex items-center font-heading text-lg ml-8">
+            <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
               Amount{" "}
             </legend>
-            <div className="flex gap-2 items-center">
-              <MdOutlineCurrencyRupee className="text-indigo-400 w-7 h-7" />
+            <div className="flex items-center gap-2">
+              <MdOutlineCurrencyRupee className="h-7 w-7 text-indigo-400" />
               <input
                 name="amount"
                 type="number"
@@ -222,23 +219,9 @@ const TransactionForm = () => {
       <button
         type="submit"
         disabled={createLoading}
-        className="font-heading font-extrabold text-lg mt-5 rounded-xl btn py-6 bg-[#622069] w-max mx-auto text-white border-[#591660] 
-      shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
-                  active:bg-[#ffeba7]
-                  active:text-zinc-900
-                  active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                  focus:bg-[#ffeba7]
-                  focus:text-zinc-900
-                  focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                  hover:bg-[#ffeba7]
-                  hover:text-zinc-900
-                  hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                      disabled:bg-[rgba(255,255,167,.2)]
-                   disabled:text-zinc-50
-                   disabled:cursor-none
-      "
+        className="font-heading btn mx-auto mt-5 w-max rounded-xl border-[#591660] bg-[#622069] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
       >
-        <MdOutlinePostAdd className="text-indigo-400 w-5 h-5" />
+        <MdOutlinePostAdd className="h-5 w-5 text-indigo-400" />
         {createLoading ? "loading..." : "Add Transaction"}
       </button>
     </form>

@@ -10,7 +10,7 @@ import {
 } from "react-icons/tb";
 import { SiNamemc } from "react-icons/si";
 import RadioButton from "../components/RadioButton";
-import Header from "../components/Header";
+import LoginHeader from "../components/authentication/LoginHeader";
 import { useMutation } from "@apollo/client";
 import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
 import { Bounce, toast } from "react-toastify";
@@ -48,7 +48,7 @@ const Authentication = () => {
       });
 
       toast(`WELCOME! 🥳 ${signUpData?.name}`, {
-        position: "bottom-left",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: false,
@@ -61,7 +61,7 @@ const Authentication = () => {
       });
     } catch (error) {
       toast.error(`${error}`, {
-        position: "bottom-left",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -84,7 +84,7 @@ const Authentication = () => {
       });
 
       toast(`WELCOME! 🥳 ${loginData?.username}`, {
-        position: "bottom-left",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: false,
@@ -97,7 +97,7 @@ const Authentication = () => {
       });
     } catch (error) {
       toast.error(`${error}`, {
-        position: "bottom-left",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -144,30 +144,17 @@ const Authentication = () => {
 
   return (
     <>
-      <Header />
+      <LoginHeader />
       <main className="relative flex flex-col items-center">
-        <h2 className="flex text-base lg:text-xl font-bold font-heading relative z-50 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 text-transparent bg-clip-text">
-          <span className="pl-5">Log In</span>
-          <span className="ml-10">Sign Up</span>
-        </h2>
+        <div className="rounded-full bg-zinc-50/50 px-3 py-1">
+          <h2 className="relative z-50 flex gap-6 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-2xl font-black text-transparent">
+            <span>SignIn</span>
+            <span>SignUp</span>
+          </h2>
+        </div>
         <label
           htmlFor="switch"
-          className={`relative cursor-pointer w-16 rounded-full h-3 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 mt-6 mb-10
-        before:content-["⇖"]
-        before:absolute
-        before:z-10
-        before:-top-[9px]
-        before:text-lg
-        before:text-center
-        before:rounded-full
-        before:w-8
-        before:h-8
-        before:bg-blue-800
-        before:text-zinc-50
-        before:transition-all
-        before:duration-500
-        has-checked:before:rotate-[-270deg]
-        has-checked:before:translate-x-10`}
+          className={`relative mt-6 h-3 w-16 cursor-pointer rounded-full bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 before:absolute before:-top-[9px] before:z-10 before:h-8 before:w-8 before:rounded-full before:bg-blue-800 before:text-center before:text-lg before:text-zinc-50 before:transition-all before:duration-500 before:content-["⇖"] has-checked:before:translate-x-10 has-checked:before:rotate-[-270deg]`}
         >
           <input
             onChange={handleCheck}
@@ -177,16 +164,16 @@ const Authentication = () => {
             id="switch"
           />
         </label>
-        <section className="relative transform-3d perspective-[800px] w-1/4 mx-auto my-5 h-[55vh]">
+        <section className="relative my-5 ml-5 h-[55vh] w-1/4 perspective-[800px] transform-3d">
           <div
-            className={`w-full h-full absolute top-0 left-0 transform-3d transition-all duration-700 ease-out ${toggle && "rotate-y-180"}`}
+            className={`absolute top-0 left-0 h-full w-full transition-all duration-700 ease-out transform-3d ${toggle && "rotate-y-180"}`}
           >
-            <div className="w-full h-full bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-bottom bg-no-repeat bg-[auto_100%] absolute rounded-md left-0 top-0 transform-3d backface-hidden flex flex-col justify-start">
-              <div className="absolute w-full px-9 left-0 translate-x-0 translate-y-1/2 translate-z-9 perspective-dramatic z-20 block">
+            <div className="absolute top-0 left-0 flex h-full w-full flex-col justify-start rounded-md bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-[auto_100%] bg-bottom bg-no-repeat backface-hidden transform-3d">
+              <div className="absolute left-0 z-20 block w-full translate-x-0 translate-y-1/2 translate-z-9 px-9 perspective-dramatic">
                 <div className="w-full text-center">
                   <form className="" onSubmit={handleSubmitLogin}>
-                    <div className="relative flex items-center justify-center max-w-max mx-auto">
-                      <TbUserHeart className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
+                    <div className="relative mx-auto flex max-w-max items-center justify-center">
+                      <TbUserHeart className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
                       <InputField
                         customStyle={{ paddingLeft: 50 + "px" }}
                         label=""
@@ -199,8 +186,8 @@ const Authentication = () => {
                         isRequired={false}
                       />
                     </div>
-                    <div className="relative flex items-center justify-center max-w-max mx-auto mt-2">
-                      <TbLock className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
+                    <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
+                      <TbLock className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
                       <InputField
                         customStyle={{ paddingLeft: 50 + "px" }}
                         label=""
@@ -215,33 +202,20 @@ const Authentication = () => {
                     </div>
                     <button
                       disabled={loginLoading}
-                      className="font-heading rounded-sm cursor-pointer h-11 text-sm mt-10 font-semibold uppercase transition-all duration-200 ease-linear px-8 tracking-widest inline-flex items-center justify-center text-center border-none bg-[#ffeba7] text-[#102770] shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
-                  active:bg-[#102770]
-                  active:text-[#ffeba7]
-                  active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                  focus:bg-[#102770]
-                  focus:text-[#ffeba7]
-                  focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                  hover:bg-[#102770]
-                  hover:text-[#ffeba7]
-                  hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                      disabled:bg-[rgba(255,255,167,.2)]
-                   disabled:text-zinc-50
-                   disabled:cursor-none
-                  "
+                      className="font-roboto mt-10 inline-flex h-11 cursor-pointer items-center justify-center rounded-sm border-none bg-[#ffeba7] px-8 text-center text-sm font-semibold tracking-widest text-[#102770] uppercase shadow-[0_8px_24px_0_rgba(255,255,167,.2)] transition-all duration-200 ease-linear hover:bg-[#102770] hover:text-[#ffeba7] hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#102770] focus:text-[#ffeba7] focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#102770] active:text-[#ffeba7] active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
                     >
-                      {loginLoading ? "loading..." : "Login"}
+                      {loginLoading ? "loading..." : "Sign In"}
                     </button>
                   </form>
                 </div>
               </div>
             </div>
-            <div className="w-full h-full bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-bottom bg-no-repeat bg-[auto_100%] absolute rounded-md left-0 top-0 transform-3d backface-hidden flex flex-col justify-start rotate-y-180">
-              <div className="absolute w-full px-9 left-0 translate-x-0 translate-y-1/10 translate-z-9 perspective-dramatic z-20 block">
+            <div className="absolute top-0 left-0 flex h-full w-full rotate-y-180 flex-col justify-start rounded-md bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-[auto_100%] bg-bottom bg-no-repeat backface-hidden transform-3d">
+              <div className="absolute left-0 z-20 block w-full translate-x-0 translate-y-1/10 translate-z-9 px-9 perspective-dramatic">
                 <div className="w-full text-center">
                   <form className="" onSubmit={handleSubmitSignUp}>
-                    <div className="relative flex items-center justify-center max-w-max mx-auto mt-2">
-                      <SiNamemc className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
+                    <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
+                      <SiNamemc className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
                       <InputField
                         customStyle={{ paddingLeft: 50 + "px" }}
                         label=""
@@ -255,8 +229,8 @@ const Authentication = () => {
                       />
                     </div>
 
-                    <div className="relative flex items-center justify-center max-w-max mx-auto mt-2">
-                      <TbUser className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
+                    <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
+                      <TbUser className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
                       <InputField
                         customStyle={{ paddingLeft: 50 + "px" }}
                         label=""
@@ -270,8 +244,8 @@ const Authentication = () => {
                       />
                     </div>
 
-                    <div className="relative flex items-center justify-center max-w-max mx-auto mt-2">
-                      <TbPassword className="absolute w-7 h-7 left-3 text-[#ffeba7]" />
+                    <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
+                      <TbPassword className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
                       <InputField
                         customStyle={{ paddingLeft: 50 + "px" }}
                         label=""
@@ -284,9 +258,9 @@ const Authentication = () => {
                         isRequired={false}
                       />
                     </div>
-                    <div className="flex gap-10 justify-center mt-4">
-                      <div className="flex gap-2 items-center">
-                        <TbGenderMale className=" w-7 h-7  text-[#ffeba7]" />
+                    <div className="mt-4 flex justify-center gap-10">
+                      <div className="flex items-center gap-2">
+                        <TbGenderMale className="h-7 w-7 text-[#ffeba7]" />
                         <RadioButton
                           id="male"
                           label=""
@@ -296,8 +270,8 @@ const Authentication = () => {
                           checked={signUpData.gender === "male"}
                         />
                       </div>
-                      <div className="flex gap-2 items-center">
-                        <TbGenderFemale className=" w-7 h-7  text-[#ffeba7]" />
+                      <div className="flex items-center gap-2">
+                        <TbGenderFemale className="h-7 w-7 text-[#ffeba7]" />
                         <RadioButton
                           id="female"
                           label=""
@@ -312,20 +286,7 @@ const Authentication = () => {
                     <button
                       type="submit"
                       disabled={signUpLoading}
-                      className="font-heading rounded-sm cursor-pointer h-11 text-sm mt-10 font-semibold uppercase transition-all duration-200 ease-linear px-8 tracking-widest inline-flex items-center justify-center text-center border-none bg-[#ffeba7] text-[#102770] shadow-[0_8px_24px_0_rgba(255,255,167,.2)]
-                  active:bg-[#102770]
-                  active:text-[#ffeba7]
-                  active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                  focus:bg-[#102770]
-                  focus:text-[#ffeba7]
-                  focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                  hover:bg-[#102770]
-                  hover:text-[#ffeba7]
-                  hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)]
-                   disabled:bg-[rgba(255,255,167,.2)]
-                   disabled:text-zinc-50
-                   disabled:cursor-none
-                  "
+                      className="font-roboto mt-10 inline-flex h-11 cursor-pointer items-center justify-center rounded-sm border-none bg-[#ffeba7] px-8 text-center text-sm font-semibold tracking-widest text-[#102770] uppercase shadow-[0_8px_24px_0_rgba(255,255,167,.2)] transition-all duration-200 ease-linear hover:bg-[#102770] hover:text-[#ffeba7] hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#102770] focus:text-[#ffeba7] focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#102770] active:text-[#ffeba7] active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
                     >
                       {signUpLoading ? "loading" : "Sign up"}
                     </button>
