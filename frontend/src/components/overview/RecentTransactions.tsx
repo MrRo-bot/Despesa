@@ -1,7 +1,41 @@
-import { TbBrandSpotify } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
+import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
+import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
+
+interface TransactionObjectType {
+  __typename: string;
+  _id: string;
+  account: string;
+  amount: number;
+  date: string;
+  description: string;
+  location: string;
+  paymentType: string;
+}
 
 const RecentTransactions = () => {
+  const [recentItems, setRecentItems] = useState<{
+    expenses: [TransactionObjectType];
+    income: [TransactionObjectType];
+  }>();
+  const { data: transaction } = useQuery(GET_TRANSACTIONS);
+
+  useEffect(() => {
+    (async () => {
+      const exp = await transaction?.transactions
+        ?.filter((x: { account: string }) => x.account === "expense")
+        .slice(0, 4);
+      const inc = await transaction?.transactions
+        ?.filter(
+          (x: { account: string }) =>
+            x.account === "saving" || x.account === "saving",
+        )
+        .slice(0, 4);
+      setRecentItems({ expenses: exp, income: inc });
+    })();
+  }, [transaction]);
+
   return (
     <div className="shadow-main bg-zinc-50 p-4">
       <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
@@ -16,138 +50,56 @@ const RecentTransactions = () => {
         </NavLink>
         <div>
           <h4 className="my-3 text-lg font-bold text-zinc-900">Expenses</h4>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-purple-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-red-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-indigo-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-yellow-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
+          <div className="flex flex-col gap-2">
+            {recentItems?.expenses &&
+              recentItems?.expenses.map((expense) => (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="h-12 w-12 bg-purple-400 p-3">
+                      {/* <TbBrandSpotify className="h-8 w-8" /> */}
+                    </div>
+                    <div>
+                      <h5 className="-my-1 line-clamp-1 text-lg font-semibold text-zinc-900">
+                        {expense.description}
+                      </h5>
+                      <p className="text-sm tracking-tight text-zinc-500">
+                        {expense.paymentType}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-lg font-semibold text-red-700">
+                    -₹{expense.amount}
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
         <div className="mt-6">
           <h4 className="my-3 text-lg font-bold text-zinc-900">
             Income & Savings
           </h4>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-green-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-teal-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-amber-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
-          </div>
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="bg-indigo-400 p-3">
-                <TbBrandSpotify className="h-8 w-8" />
-              </div>
-              <div>
-                <h5 className="-my-1 text-lg font-medium text-zinc-900">
-                  Spotify Subscription
-                </h5>
-                <p className="text-sm tracking-tighter text-zinc-500">
-                  Shopping
-                </p>
-              </div>
-            </div>
-            <div className="font-semibold text-red-700">-₹25.00</div>
+          <div className="flex flex-col gap-2">
+            {recentItems?.income &&
+              recentItems?.income.map((inc) => (
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="h-12 w-12 bg-green-400 p-3">
+                      {/* <TbBrandSpotify className="h-8 w-8" /> */}
+                    </div>
+                    <div>
+                      <h5 className="-my-1 text-lg font-semibold text-zinc-900">
+                        {inc.description}
+                      </h5>
+                      <p className="text-sm tracking-tight text-zinc-500">
+                        {inc.paymentType}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-lg font-semibold text-green-700">
+                    +₹{inc.amount}
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>

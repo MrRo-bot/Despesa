@@ -20,7 +20,7 @@ const TransactionForm = () => {
     useMutation(CREATE_TRANSACTION);
   const { refetch } = useQuery(GET_TRANSACTIONS);
 
-  // used this code only once to input 287 transactions from the custom dummy dataset
+  // used this code only once to input transactions from the custom dummy dataset
   // useEffect(() => {
   //   transactions.map(async (x) => {
   //     await createTransaction({

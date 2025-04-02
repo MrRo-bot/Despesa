@@ -6,11 +6,34 @@ const LoginHeader = () => {
     <>
       <div className="mb-10 py-2">
         <Link className="flex items-center justify-center" to="/">
-          <img className="h-16" src="/logo.png" alt="" />
-          <h1 className="font-roboto relative z-50 text-center text-2xl font-bold text-zinc-50 md:text-5xl">
+          <motion.img
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              delay: 0.3,
+            }}
+            className="mt-2 mr-1 h-9"
+            src="/logo.svg"
+            alt=""
+          />
+          <motion.h1
+            initial={{ opacity: 0, y: -100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.5,
+            }}
+            className="font-roboto relative z-50 text-center text-2xl leading-16 font-bold text-zinc-50 md:text-5xl"
+          >
             Despesa
-          </h1>
-          <span className="aspect-square h-8 w-6 self-start overflow-clip text-center">
+          </motion.h1>
+          <motion.span
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{
+              delay: 0.7,
+            }}
+            className="aspect-square h-7 w-5 self-start overflow-clip text-center"
+          >
             <div className="animate-currency flex flex-col">
               <motion.pre className="inline text-2xl">$</motion.pre>
               <motion.pre className="inline text-2xl">₣</motion.pre>
@@ -21,7 +44,7 @@ const LoginHeader = () => {
               <motion.pre className="inline text-2xl">₽</motion.pre>
               <motion.pre className="inline text-2xl">₿</motion.pre>
             </div>
-          </span>
+          </motion.span>
         </Link>
       </div>
     </>

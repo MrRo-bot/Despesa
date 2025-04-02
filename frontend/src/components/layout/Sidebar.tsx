@@ -119,7 +119,7 @@ const Sidebar = () => {
           </span>
         </NavLink>
       </nav>
-      <footer className="w-full text-zinc-50">
+      <footer className="my-2 w-full text-zinc-50">
         <div className="flex justify-start rounded-xl border border-zinc-300 p-2">
           <ul className="flex w-1/2 items-center justify-start gap-2">
             <li className="cursor-pointer rounded-lg bg-zinc-500 p-1">
