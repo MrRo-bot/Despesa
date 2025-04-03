@@ -11,7 +11,7 @@ import {
 import { SiNamemc } from "react-icons/si";
 import { useMutation } from "@apollo/client";
 import { Bounce, toast } from "react-toastify";
-import * as motion from "motion/react-client";
+import { motion } from "motion/react";
 
 import RadioButton from "../components/RadioButton";
 import LoginHeader from "../components/authentication/LoginHeader";
@@ -152,7 +152,7 @@ const Authentication = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            delay: 1.2,
+            delay: 0.4,
           }}
           className="rounded-full bg-zinc-50/50 px-3 py-1"
         >
@@ -165,7 +165,7 @@ const Authentication = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            delay: 1.5,
+            delay: 0.5,
           }}
           htmlFor="switch"
           className={`relative mt-6 h-3 w-16 cursor-pointer rounded-full bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 before:absolute before:-top-[9px] before:z-10 before:h-8 before:w-8 before:rounded-full before:bg-blue-800 before:text-center before:text-lg before:text-zinc-50 before:transition-all before:duration-500 before:content-["⇖"] has-checked:before:translate-x-10 has-checked:before:rotate-[-270deg]`}
@@ -182,7 +182,7 @@ const Authentication = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            delay: 1.8,
+            delay: 0.6,
           }}
           className="relative my-5 ml-5 h-[55vh] w-1/4 perspective-[800px] transform-3d"
         >
@@ -197,7 +197,7 @@ const Authentication = () => {
                       initial={{ opacity: 0, x: -100 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 2.1,
+                        delay: 0.7,
                       }}
                       className="relative mx-auto flex max-w-max items-center justify-center"
                     >
@@ -218,7 +218,7 @@ const Authentication = () => {
                       initial={{ opacity: 0, x: 100 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
-                        delay: 2.4,
+                        delay: 0.8,
                       }}
                       className="relative mx-auto mt-2 flex max-w-max items-center justify-center"
                     >

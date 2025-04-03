@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 import { useQuery } from "@apollo/client";
+import { motion } from "motion/react";
 
 interface InvestmentObjectType {
   __typename: string;
@@ -31,11 +32,19 @@ const Investments = () => {
       <h3 className="font-roboto mb-3 text-2xl tracking-tighter text-zinc-900">
         My Investments
       </h3>
-      <div className="flex flex-col items-center justify-center gap-2">
+      <ul className="flex flex-col items-center justify-center gap-2">
         {recentInvest?.map((investment) => {
           const date = new Date(+investment?.date);
           return (
-            <div className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3">
+            <motion.li
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.6,
+              }}
+              key={investment._id}
+              className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3"
+            >
               <div className="h-12 w-12 bg-blue-600 p-1.5">
                 {/* <FaApple className="mb-0.5 h-8 w-8 text-zinc-50" /> */}
               </div>
@@ -63,10 +72,10 @@ const Investments = () => {
                   <p className="tracking-tighter text-zinc-500">Date</p>
                 </div>
               </div>
-            </div>
+            </motion.li>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 };

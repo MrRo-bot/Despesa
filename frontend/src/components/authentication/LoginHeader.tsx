@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import * as motion from "motion/react-client";
+import { motion } from "motion/react";
 
 const LoginHeader = () => {
   return (
@@ -10,7 +10,7 @@ const LoginHeader = () => {
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
-              delay: 0.3,
+              delay: 0.1,
             }}
             className="mt-2 mr-1 h-9"
             src="/logo.svg"
@@ -20,7 +20,7 @@ const LoginHeader = () => {
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              delay: 0.5,
+              delay: 0.2,
             }}
             className="font-roboto relative z-50 text-center text-2xl leading-16 font-bold text-zinc-50 md:text-5xl"
           >
@@ -30,7 +30,7 @@ const LoginHeader = () => {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
-              delay: 0.7,
+              delay: 0.3,
             }}
             className="aspect-square h-7 w-5 self-start overflow-clip text-center"
           >

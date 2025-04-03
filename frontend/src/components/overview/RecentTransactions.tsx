@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
-import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { motion } from "motion/react";
+
+import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 
 interface TransactionObjectType {
   __typename: string;
@@ -37,7 +39,14 @@ const RecentTransactions = () => {
   }, [transaction]);
 
   return (
-    <div className="shadow-main bg-zinc-50 p-4">
+    <motion.div
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{
+        delay: 0.8,
+      }}
+      className="shadow-main bg-zinc-50 p-4"
+    >
       <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
         Recent Transactions
       </h3>
@@ -103,7 +112,7 @@ const RecentTransactions = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
