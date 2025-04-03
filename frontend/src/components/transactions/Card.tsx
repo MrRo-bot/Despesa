@@ -1,11 +1,12 @@
 import { FaTrash } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { Bounce, toast } from "react-toastify";
+import { useMutation } from "@apollo/client";
+import { motion } from "motion/react";
 
 import { formatDate } from "../../utils/formatDate";
-import { useMutation } from "@apollo/client";
 import { DELETE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
-import { Bounce, toast } from "react-toastify";
 
 const categoryColorMapText = {
   saving: "text-lime-600",
@@ -87,7 +88,13 @@ const Card = ({
   const cardClassText = categoryColorMapText[account];
 
   return (
-    <div className="mt-2 mr-2 grid grid-cols-12 items-center rounded-md bg-zinc-50 p-4 text-lg">
+    <motion.div
+      initial={{ opacity: 0, x: -400, scale: 0.5 }}
+      animate={{ opacity: 1, x: 0, scale: 1 }}
+      exit={{ opacity: 0, x: 200, scale: 1.2 }}
+      transition={{ duration: 0.6, type: "spring" }}
+      className="mt-5 grid grid-cols-12 items-center rounded-md bg-zinc-50 p-4 text-lg"
+    >
       <div className="has-tooltip relative col-span-3 pr-2 font-bold">
         <span className="tooltip w-max rounded border bg-zinc-100 p-1 text-sm text-zinc-900 shadow-lg transition-all ease-in-out">
           {description.slice(0, 1).toUpperCase() + description.slice(1)}
@@ -132,7 +139,7 @@ const Card = ({
           <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -62,7 +62,10 @@ const RecentTransactions = () => {
           <div className="flex flex-col gap-2">
             {recentItems?.expenses &&
               recentItems?.expenses.map((expense) => (
-                <div className="flex items-center justify-between">
+                <div
+                  key={expense._id}
+                  className="flex items-center justify-between"
+                >
                   <div className="flex items-center gap-2">
                     <div className="h-12 w-12 bg-purple-400 p-3">
                       {/* <TbBrandSpotify className="h-8 w-8" /> */}
@@ -90,7 +93,10 @@ const RecentTransactions = () => {
           <div className="flex flex-col gap-2">
             {recentItems?.income &&
               recentItems?.income.map((inc) => (
-                <div className="flex items-center justify-between">
+                <div
+                  key={inc._id}
+                  className="flex items-center justify-between"
+                >
                   <div className="flex items-center gap-2">
                     <div className="h-12 w-12 bg-green-400 p-3">
                       {/* <TbBrandSpotify className="h-8 w-8" /> */}
