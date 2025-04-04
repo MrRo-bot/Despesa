@@ -84,40 +84,60 @@ const Sidebar = () => {
         Navigation
       </h4>
       <nav className="mb-auto flex flex-col gap-6">
-        <NavLink
-          className={({ isActive, isPending }) =>
-            `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
-          }
-          to="/"
+        <motion.div
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{ scale: 0.95 }}
         >
-          <BiPieChart className="mr-1 ml-2 h-5 w-5" />
-          <span className="font-roboto ml-2 text-lg tracking-tighter">
-            Dashboard
-          </span>
-        </NavLink>
-        <NavLink
-          className={({ isActive, isPending }) =>
-            `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
-          }
-          to="/transactions"
+          <NavLink
+            className={({ isActive, isPending }) =>
+              `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
+            }
+            to="/"
+          >
+            <BiPieChart className="mr-1 ml-2 h-5 w-5" />
+            <span className="font-roboto ml-2 text-lg tracking-tighter">
+              Dashboard
+            </span>
+          </NavLink>
+        </motion.div>
+        <motion.div
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{ scale: 0.95 }}
         >
-          <GrTransaction className="mr-1 ml-2 h-5 w-5" />
-          <span className="font-roboto ml-2 text-lg tracking-tighter">
-            Transactions
-          </span>
-        </NavLink>
-
-        <NavLink
-          className={({ isActive, isPending }) =>
-            `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
-          }
-          to="/reports"
+          <NavLink
+            className={({ isActive, isPending }) =>
+              `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
+            }
+            to="/transactions"
+          >
+            <GrTransaction className="mr-1 ml-2 h-5 w-5" />
+            <span className="font-roboto ml-2 text-lg tracking-tighter">
+              Transactions
+            </span>
+          </NavLink>
+        </motion.div>
+        <motion.div
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{ scale: 0.95 }}
         >
-          <TbReportAnalytics className="mr-1 ml-2 h-5 w-5" />
-          <span className="font-roboto ml-2 text-lg tracking-tighter">
-            Reports
-          </span>
-        </NavLink>
+          <NavLink
+            className={({ isActive, isPending }) =>
+              `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
+            }
+            to="/reports"
+          >
+            <TbReportAnalytics className="mr-1 ml-2 h-5 w-5" />
+            <span className="font-roboto ml-2 text-lg tracking-tighter">
+              Reports
+            </span>
+          </NavLink>
+        </motion.div>
       </nav>
       <footer className="my-2 w-full text-zinc-50">
         <div className="flex justify-start rounded-xl border border-zinc-300 p-2">

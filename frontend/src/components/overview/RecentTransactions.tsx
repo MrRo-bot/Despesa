@@ -10,6 +10,7 @@ interface TransactionObjectType {
   _id: string;
   account: string;
   amount: number;
+  category: string;
   date: string;
   description: string;
   location: string;
@@ -26,12 +27,12 @@ const RecentTransactions = () => {
   useEffect(() => {
     (async () => {
       const exp = await transaction?.transactions
-        ?.filter((x: { account: string }) => x.account === "expense")
+        ?.filter((x: { account: string }) => x.account === "Expense")
         .slice(0, 4);
       const inc = await transaction?.transactions
         ?.filter(
           (x: { account: string }) =>
-            x.account === "saving" || x.account === "saving",
+            x.account === "Income" || x.account === "Saving",
         )
         .slice(0, 4);
       setRecentItems({ expenses: exp, income: inc });
@@ -68,7 +69,7 @@ const RecentTransactions = () => {
                 >
                   <div className="flex items-center gap-2">
                     <div className="h-12 w-12 bg-purple-400 p-3">
-                      {/* <TbBrandSpotify className="h-8 w-8" /> */}
+                      {/* <TbBrandSpotify className="w-8 h-8" /> */}
                     </div>
                     <div>
                       <h5 className="-my-1 line-clamp-1 text-lg font-semibold text-zinc-900">
@@ -99,7 +100,7 @@ const RecentTransactions = () => {
                 >
                   <div className="flex items-center gap-2">
                     <div className="h-12 w-12 bg-green-400 p-3">
-                      {/* <TbBrandSpotify className="h-8 w-8" /> */}
+                      {/* <TbBrandSpotify className="w-8 h-8" /> */}
                     </div>
                     <div>
                       <h5 className="-my-1 text-lg font-semibold text-zinc-900">

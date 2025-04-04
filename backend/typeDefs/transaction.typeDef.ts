@@ -5,6 +5,7 @@ const transactionTypeDef = `#graphql
         description: String!
         paymentType: String!
         account: String!
+        category: String!
         amount: Float!
         location: String
         date: String!
@@ -25,6 +26,7 @@ const transactionTypeDef = `#graphql
         description: String!
         paymentType: String!
         account: String!
+        category: String!
         amount: Float!
         location: String
         date: String!
@@ -36,6 +38,7 @@ const transactionTypeDef = `#graphql
         description: String
         paymentType: String
         account: String
+        category: String
         amount: Float
         location: String
         date: String

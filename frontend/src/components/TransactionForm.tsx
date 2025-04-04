@@ -5,11 +5,12 @@ import {
   MdOutlinePostAdd,
   MdOutlineShareLocation,
 } from "react-icons/md";
-import { TbCalendar, TbTransactionRupee } from "react-icons/tb";
+import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import { Bounce, toast } from "react-toastify";
+import { account, category, paymentType } from "../utils/selectOptions";
 // import { useEffect } from "react";
 // import { transactions } from "../../../backend/dummyData/data";
 
@@ -41,6 +42,7 @@ const TransactionForm = () => {
       description: formData.get("description"),
       paymentType: formData.get("paymentType"),
       account: formData.get("account"),
+      category: formData.get("category"),
       amount: parseFloat(formData.get("amount")),
       location: formData.get("location"),
       date: formData.get("date"),
@@ -136,18 +138,33 @@ const TransactionForm = () => {
                 <option disabled={true} className="tracking-wider">
                   Pick an option
                 </option>
-                <option value={"expense"} className="tracking-wider">
-                  Expense
+                {account.map((op) => (
+                  <option key={op} value={op} className="tracking-wider">
+                    {op[0].toUpperCase() + op.slice(1)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </fieldset>
+        </div>
+
+        {/* Category */}
+        <div className="col-start-1 col-end-2 mb-6 w-full flex-1 md:mb-0">
+          <fieldset className="fieldset">
+            <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
+              Category
+            </legend>
+            <div className="flex items-center gap-2">
+              <TbCategory className="h-7 w-7 text-indigo-400" />
+              <select name="category" className="select h-12 tracking-wider">
+                <option disabled={true} className="tracking-wider">
+                  Pick an option
                 </option>
-                <option value={"income"} className="tracking-wider">
-                  Income
-                </option>
-                <option value={"saving"} className="tracking-wider">
-                  Saving
-                </option>
-                <option value={"investment"} className="tracking-wider">
-                  Investment
-                </option>
+                {category.map((op) => (
+                  <option key={op} value={op} className="tracking-wider">
+                    {op[0].toUpperCase() + op.slice(1)}
+                  </option>
+                ))}
               </select>
             </div>
           </fieldset>
@@ -180,15 +197,11 @@ const TransactionForm = () => {
                 <option disabled={true} className="tracking-wider">
                   Pick an option
                 </option>
-                <option value={"mobile banking"} className="tracking-wider">
-                  Mobile Banking
-                </option>
-                <option value={"cash"} className="tracking-wider">
-                  Cash
-                </option>
-                <option value={"card"} className="tracking-wider">
-                  Card
-                </option>
+                {paymentType.map((op) => (
+                  <option key={op} value={op} className="tracking-wider">
+                    {op[0].toUpperCase() + op.slice(1)}
+                  </option>
+                ))}
               </select>
             </div>
           </fieldset>

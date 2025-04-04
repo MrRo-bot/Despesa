@@ -8,6 +8,7 @@ interface InvestmentObjectType {
   _id: string;
   account: string;
   amount: number;
+  category: string;
   date: string;
   description: string;
   location: string;
@@ -21,7 +22,7 @@ const Investments = () => {
   useEffect(() => {
     (async () => {
       const inv = await transaction?.transactions
-        ?.filter((x: { account: string }) => x.account === "investment")
+        ?.filter((x: { account: string }) => x.account === "Investment")
         .slice(0, 2);
       setRecentInvest(inv);
     })();

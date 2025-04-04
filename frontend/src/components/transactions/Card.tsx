@@ -9,17 +9,17 @@ import { formatDate } from "../../utils/formatDate";
 import { DELETE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
 
 const categoryColorMapText = {
-  saving: "text-lime-600",
-  expense: "text-rose-600",
-  investment: "text-orange-600",
-  income: "text-blue-600",
+  Saving: "text-lime-600",
+  Expense: "text-rose-600",
+  Investment: "text-orange-600",
+  Income: "text-blue-600",
 };
 
 const categoryColorMapBg = {
-  saving: "bg-lime-500",
-  expense: "bg-rose-500",
-  investment: "bg-orange-500",
-  income: "bg-blue-500",
+  Saving: "bg-lime-500",
+  Expense: "bg-rose-500",
+  Investment: "bg-orange-500",
+  Income: "bg-blue-500",
 };
 
 const Card = ({
@@ -30,13 +30,21 @@ const Card = ({
     description: string;
     paymentType: string;
     account: string;
+    category: string;
     amount: number;
     location: string;
     date: string;
   };
 }) => {
-  const { description, paymentType, amount, account, location, date } =
-    transactionData;
+  const {
+    description,
+    paymentType,
+    amount,
+    account,
+    category,
+    location,
+    date,
+  } = transactionData;
 
   const [deleteTransaction, { loading: delLoading }] = useMutation(
     DELETE_TRANSACTION,
@@ -93,10 +101,10 @@ const Card = ({
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, x: 200, scale: 1.2 }}
       transition={{ duration: 0.6, type: "spring" }}
-      className="mt-5 grid grid-cols-12 items-center rounded-md bg-zinc-50 p-4 text-lg"
+      className="mt-5 grid grid-cols-14 items-center rounded-md bg-zinc-50 p-4 text-lg"
     >
-      <div className="has-tooltip relative col-span-3 pr-2 font-bold">
-        <span className="tooltip w-max rounded border bg-zinc-100 p-1 text-sm text-zinc-900 shadow-lg transition-all ease-in-out">
+      <div className="has-tooltip relative col-span-3 font-bold">
+        <span className="tooltip w-max rounded border bg-zinc-100 p-1 text-center text-sm text-zinc-900 shadow-lg transition-all ease-in-out">
           {description.slice(0, 1).toUpperCase() + description.slice(1)}
         </span>
         <p className="line-clamp-1 text-zinc-900">
@@ -104,7 +112,7 @@ const Card = ({
         </p>
       </div>
 
-      <p className="col-span-2 line-clamp-1 font-semibold text-zinc-500">
+      <p className="col-span-2 line-clamp-1 text-center font-semibold text-zinc-500">
         {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
       </p>
 
@@ -120,7 +128,13 @@ const Card = ({
         {account[0].toUpperCase() + account.slice(1)}
       </p>
 
-      <p className="line-clamp-1 font-semibold text-zinc-500">
+      <p
+        className={`col-span-2 line-clamp-1 text-center ${cardClassText} font-bold`}
+      >
+        {category[0].toUpperCase() + category.slice(1)}
+      </p>
+
+      <p className="line-clamp-1 text-center font-semibold text-zinc-500">
         {location.slice(0, 1).toUpperCase() + location.slice(1)}
       </p>
 

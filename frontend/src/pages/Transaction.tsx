@@ -9,10 +9,11 @@ import {
   MdOutlinePostAdd,
   MdOutlineShareLocation,
 } from "react-icons/md";
-import { TbCalendar, TbTransactionRupee } from "react-icons/tb";
+import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { UPDATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useNavigate, useParams } from "react-router-dom";
 import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
+import { account, category, paymentType } from "../utils/selectOptions";
 
 const Transaction = () => {
   const { id } = useParams();
@@ -58,6 +59,7 @@ const Transaction = () => {
     description: transactionData?.transaction?.description || "",
     paymentType: transactionData?.transaction?.paymentType || "",
     account: transactionData?.transaction?.account || "",
+    category: transactionData?.transaction?.category || "",
     amount: transactionData?.transaction?.amount || "",
     location: transactionData?.transaction?.location || "",
     date: transactionData?.transaction?.date || "",
@@ -120,6 +122,7 @@ const Transaction = () => {
         description: transactionData?.transaction?.description,
         paymentType: transactionData?.transaction?.paymentType,
         account: transactionData?.transaction?.account,
+        category: transactionData?.transaction?.category,
         amount: transactionData?.transaction?.amount,
         location: transactionData?.transaction?.location,
         date: new Date(+transactionData.transaction.date)
@@ -188,27 +191,37 @@ const Transaction = () => {
               </legend>
               <div className="flex items-center gap-2">
                 <MdOutlineAccountBalanceWallet className="h-7 w-7 text-indigo-400" />
-                <select
-                  defaultValue={formData.account}
-                  onChange={handleInputChange}
-                  name="account"
-                  className="select h-12 tracking-wider"
-                >
+                <select name="account" className="select h-12 tracking-wider">
                   <option disabled={true} className="tracking-wider">
                     Pick an option
                   </option>
-                  <option value={"expense"} className="tracking-wider">
-                    Expense
+                  {account.map((op) => (
+                    <option key={op} value={op} className="tracking-wider">
+                      {op[0].toUpperCase() + op.slice(1)}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </fieldset>
+          </div>
+
+          {/* Category */}
+          <div className="col-start-1 col-end-2 mb-6 w-full flex-1 md:mb-0">
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
+                Category
+              </legend>
+              <div className="flex items-center gap-2">
+                <TbCategory className="h-7 w-7 text-indigo-400" />
+                <select name="category" className="select h-12 tracking-wider">
+                  <option disabled={true} className="tracking-wider">
+                    Pick an option
                   </option>
-                  <option value={"income"} className="tracking-wider">
-                    Income
-                  </option>
-                  <option value={"saving"} className="tracking-wider">
-                    Saving
-                  </option>
-                  <option value={"investment"} className="tracking-wider">
-                    Investment
-                  </option>
+                  {category.map((op) => (
+                    <option key={op} value={op} className="tracking-wider">
+                      {op[0].toUpperCase() + op.slice(1)}
+                    </option>
+                  ))}
                 </select>
               </div>
             </fieldset>
@@ -242,21 +255,15 @@ const Transaction = () => {
                 <select
                   name="paymentType"
                   className="select h-12 tracking-wider"
-                  defaultValue={formData.paymentType}
-                  onChange={handleInputChange}
                 >
                   <option disabled={true} className="tracking-wider">
                     Pick an option
                   </option>
-                  <option value={"mobile banking"} className="tracking-wider">
-                    Mobile Banking
-                  </option>
-                  <option value={"cash"} className="tracking-wider">
-                    Cash
-                  </option>
-                  <option value={"card"} className="tracking-wider">
-                    Card
-                  </option>
+                  {paymentType.map((op) => (
+                    <option key={op} value={op} className="tracking-wider">
+                      {op[0].toUpperCase() + op.slice(1)}
+                    </option>
+                  ))}
                 </select>
               </div>
             </fieldset>

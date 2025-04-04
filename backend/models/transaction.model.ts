@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
-
+import {
+  paymentType,
+  category,
+  account,
+} from "../../frontend/src/utils/selectOptions";
 const transactionSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -12,12 +16,17 @@ const transactionSchema = new mongoose.Schema({
   },
   paymentType: {
     type: String,
-    enum: ["mobile banking", "cash", "card"],
+    enum: paymentType,
     required: true,
   },
   account: {
     type: String,
-    enum: ["saving", "income", "expense", "investment"],
+    enum: account,
+    required: true,
+  },
+  category: {
+    type: String,
+    enum: category,
     required: true,
   },
   amount: {
