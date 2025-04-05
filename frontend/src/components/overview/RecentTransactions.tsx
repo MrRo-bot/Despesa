@@ -4,18 +4,8 @@ import { useQuery } from "@apollo/client";
 import { motion } from "motion/react";
 
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
-
-interface TransactionObjectType {
-  __typename: string;
-  _id: string;
-  account: string;
-  amount: number;
-  category: string;
-  date: string;
-  description: string;
-  location: string;
-  paymentType: string;
-}
+import DynamicIcon from "../DynamicIcon";
+import { TransactionObjectType } from "../../types/types";
 
 const RecentTransactions = () => {
   const [recentItems, setRecentItems] = useState<{
@@ -62,29 +52,31 @@ const RecentTransactions = () => {
           <h4 className="my-3 text-lg font-bold text-zinc-900">Expenses</h4>
           <div className="flex flex-col gap-2">
             {recentItems?.expenses &&
-              recentItems?.expenses.map((expense) => (
-                <div
-                  key={expense._id}
-                  className="flex items-center justify-between"
-                >
-                  <div className="flex items-center gap-2">
-                    <div className="h-12 w-12 bg-purple-400 p-3">
-                      {/* <TbBrandSpotify className="w-8 h-8" /> */}
+              recentItems?.expenses.map((expense) => {
+                return (
+                  <div
+                    key={expense._id}
+                    className="flex items-center justify-between"
+                  >
+                    <div className="flex items-center gap-2">
+                      <div className="grid h-12 w-12 place-items-center bg-rose-500 p-2">
+                        {<DynamicIcon icon={expense.category} />}
+                      </div>
+                      <div>
+                        <h5 className="-my-1 line-clamp-1 text-lg font-semibold text-zinc-900">
+                          {expense.description}
+                        </h5>
+                        <p className="text-sm tracking-tight text-zinc-500">
+                          {expense.paymentType}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h5 className="-my-1 line-clamp-1 text-lg font-semibold text-zinc-900">
-                        {expense.description}
-                      </h5>
-                      <p className="text-sm tracking-tight text-zinc-500">
-                        {expense.paymentType}
-                      </p>
+                    <div className="text-lg font-semibold text-red-700">
+                      -₹{expense.amount}
                     </div>
                   </div>
-                  <div className="text-lg font-semibold text-red-700">
-                    -₹{expense.amount}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
           </div>
         </div>
         <div className="mt-6">
@@ -99,8 +91,8 @@ const RecentTransactions = () => {
                   className="flex items-center justify-between"
                 >
                   <div className="flex items-center gap-2">
-                    <div className="h-12 w-12 bg-green-400 p-3">
-                      {/* <TbBrandSpotify className="w-8 h-8" /> */}
+                    <div className="grid h-12 w-12 place-items-center bg-blue-500 p-1">
+                      {<DynamicIcon icon={inc.category} />}
                     </div>
                     <div>
                       <h5 className="-my-1 text-lg font-semibold text-zinc-900">

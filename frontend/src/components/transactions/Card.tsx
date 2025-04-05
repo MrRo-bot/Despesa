@@ -104,7 +104,7 @@ const Card = ({
       className="mt-5 grid grid-cols-14 items-center rounded-md bg-zinc-50 p-4 text-lg"
     >
       <div className="has-tooltip relative col-span-3 font-bold">
-        <span className="tooltip w-max rounded border bg-zinc-100 p-1 text-center text-sm text-zinc-900 shadow-lg transition-all ease-in-out">
+        <span className="tooltip w-max rounded border bg-zinc-100 p-1 text-sm text-zinc-900 shadow-lg transition-all ease-in-out">
           {description.slice(0, 1).toUpperCase() + description.slice(1)}
         </span>
         <p className="line-clamp-1 text-zinc-900">
@@ -112,34 +112,29 @@ const Card = ({
         </p>
       </div>
 
-      <p className="col-span-2 line-clamp-1 text-center font-semibold text-zinc-500">
+      <p className="col-span-2 line-clamp-1 font-semibold text-zinc-500">
         {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
       </p>
 
       <p
-        className={`font-roboto mx-auto line-clamp-1 w-max rounded-md px-1 text-white ${cardClassBg}`}
+        className={`font-roboto mr-auto line-clamp-1 w-max rounded-md px-1 text-white ${cardClassBg}`}
       >
         {amount}
       </p>
 
-      <p
-        className={`col-span-2 line-clamp-1 text-center ${cardClassText} font-bold`}
-      >
+      <p className={`col-span-2 line-clamp-1 ${cardClassText} font-bold`}>
         {account[0].toUpperCase() + account.slice(1)}
       </p>
 
-      <p
-        className={`col-span-2 line-clamp-1 text-center ${cardClassText} font-bold`}
-      >
+      <p className={`col-span-2 line-clamp-1 ${cardClassText} font-bold`}>
         {category[0].toUpperCase() + category.slice(1)}
       </p>
 
-      <p className="line-clamp-1 text-center font-semibold text-zinc-500">
-        {location.slice(0, 1).toUpperCase() + location.slice(1)}
-      </p>
-
-      <p className="font-roboto col-span-2 line-clamp-1 text-center text-sm font-semibold text-zinc-700">
+      <p className="font-roboto col-span-2 line-clamp-1 text-sm font-semibold text-zinc-700">
         {dateStr}
+      </p>
+      <p className="line-clamp-1 font-semibold text-zinc-500">
+        {location.slice(0, 1).toUpperCase() + location.slice(1)}
       </p>
 
       <div className="flex items-center justify-center gap-2">

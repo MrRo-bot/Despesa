@@ -3,7 +3,7 @@ import {
   paymentType,
   category,
   account,
-} from "../../frontend/src/utils/selectOptions";
+} from "../../frontend/src/utils/constants";
 const transactionSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,

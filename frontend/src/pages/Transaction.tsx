@@ -13,7 +13,7 @@ import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { UPDATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useNavigate, useParams } from "react-router-dom";
 import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
-import { account, category, paymentType } from "../utils/selectOptions";
+import { account, category, paymentType } from "../utils/constants";
 
 const Transaction = () => {
   const { id } = useParams();

@@ -10,7 +10,7 @@ import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import { Bounce, toast } from "react-toastify";
-import { account, category, paymentType } from "../utils/selectOptions";
+import { account, category, paymentType } from "../utils/constants";
 // import { useEffect } from "react";
 // import { transactions } from "../../../backend/dummyData/data";
 

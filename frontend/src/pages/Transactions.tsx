@@ -20,12 +20,12 @@ const Transactions = () => {
             className="font-roboto shadow-main mb-2 grid grid-cols-14 items-center rounded-md bg-violet-200 px-4 py-3 font-semibold text-zinc-900/80"
           >
             <div className="col-span-3">Description</div>
-            <div className="col-span-2 text-center">Payment</div>
-            <div className="text-center">Amount</div>
-            <div className="col-span-2 text-center">Account</div>
-            <div className="col-span-2 text-center">Category</div>
-            <div className="text-center">Location</div>
-            <div className="col-span-2 text-center">Date</div>
+            <div className="col-span-2">Payment</div>
+            <div className="">Amount</div>
+            <div className="col-span-2">Account</div>
+            <div className="col-span-2">Category</div>
+            <div className="col-span-2">Date</div>
+            <div className="">Location</div>
             <div className="text-center">Actions</div>
           </motion.div>
           {!transactionLoading && transaction?.transactions?.length > 0 && (

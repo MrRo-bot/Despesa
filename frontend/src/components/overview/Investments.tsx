@@ -2,18 +2,8 @@ import { useEffect, useState } from "react";
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 import { useQuery } from "@apollo/client";
 import { motion } from "motion/react";
-
-interface InvestmentObjectType {
-  __typename: string;
-  _id: string;
-  account: string;
-  amount: number;
-  category: string;
-  date: string;
-  description: string;
-  location: string;
-  paymentType: string;
-}
+import { InvestmentObjectType } from "../../types/types";
+import DynamicIcon from "../DynamicIcon";
 
 const Investments = () => {
   const [recentInvest, setRecentInvest] = useState<[InvestmentObjectType]>();
@@ -46,8 +36,8 @@ const Investments = () => {
               key={investment._id}
               className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3"
             >
-              <div className="h-12 w-12 bg-blue-600 p-1.5">
-                {/* <FaApple className="mb-0.5 h-8 w-8 text-zinc-50" /> */}
+              <div className="grid h-12 w-12 place-items-center bg-orange-500 p-1">
+                {<DynamicIcon icon={investment.category} />}
               </div>
               <div className="flex w-full justify-between">
                 <div className="">
