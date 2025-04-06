@@ -2,14 +2,6 @@
 
 @plugin "daisyui";
 
-.tooltip {
-  @apply invisible absolute;
-}
-
-.has-tooltip:hover .tooltip {
-  @apply visible -top-5 z-50;
-}
-
 * {
   /* outline: 0.1px solid green; */
 }

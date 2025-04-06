@@ -9,17 +9,17 @@ import { formatDate } from "../../utils/formatDate";
 import { DELETE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
 
 const categoryColorMapText = {
-  Saving: "text-lime-600",
-  Expense: "text-rose-600",
-  Investment: "text-orange-600",
-  Income: "text-blue-600",
+  Saving: "text-lime-800",
+  Expense: "text-red-800",
+  Investment: "text-orange-800",
+  Income: "text-blue-800",
 };
 
 const categoryColorMapBg = {
-  Saving: "bg-lime-500",
-  Expense: "bg-rose-500",
-  Investment: "bg-orange-500",
-  Income: "bg-blue-500",
+  Saving: "bg-lime-500/20",
+  Expense: "bg-rose-500/20",
+  Investment: "bg-orange-500/20",
+  Income: "bg-blue-500/20",
 };
 
 const Card = ({
@@ -100,53 +100,59 @@ const Card = ({
       initial={{ opacity: 0, x: -400, scale: 0.5 }}
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, x: 200, scale: 1.2 }}
-      transition={{ duration: 0.6, type: "spring" }}
-      className="mt-5 grid grid-cols-14 items-center rounded-md bg-zinc-50 p-4 text-lg"
+      transition={{ duration: 0.4, type: "tween" }}
+      className="mb-5 grid grid-cols-6 items-center gap-2 rounded-md bg-zinc-50 p-4 text-lg"
     >
-      <div className="has-tooltip relative col-span-3 font-bold">
-        <span className="tooltip w-max rounded border bg-zinc-100 p-1 text-sm text-zinc-900 shadow-lg transition-all ease-in-out">
-          {description.slice(0, 1).toUpperCase() + description.slice(1)}
-        </span>
-        <p className="line-clamp-1 text-zinc-900">
-          {description.slice(0, 1).toUpperCase() + description.slice(1)}
-        </p>
+      <div className="col-start-1 col-end-5">
+        <div className="font-roboto line-clamp-1 flex items-end gap-2">
+          <strong className="text-xl text-slate-600">
+            {dateStr.slice(0, -6)}
+          </strong>
+          <strong className="text-sm text-zinc-400">{dateStr.slice(-4)}</strong>
+        </div>
+        <div className="pt-2 pb-4 font-bold">
+          <div className="line-clamp-1 text-2xl text-stone-800">
+            {description.slice(0, 1).toUpperCase() + description.slice(1)}
+          </div>
+        </div>
+        <div className="flex justify-start gap-2">
+          <div
+            className={`line-clamp-1 ${cardClassText} ${cardClassBg} border-2 border-${cardClassBg.slice(3, -3)} rounded-full px-3 py-0.5 text-base font-bold`}
+          >
+            {account[0].toUpperCase() + account.slice(1)}
+          </div>
+
+          <div
+            className={`line-clamp-1 rounded-full border-2 border-purple-800 bg-purple-400/20 px-3 py-0.5 text-base font-bold text-purple-800`}
+          >
+            {category[0].toUpperCase() + category.slice(1)}
+          </div>
+
+          <div className="line-clamp-1 rounded-full border-2 border-slate-400 bg-slate-400/20 px-3 py-0.5 text-base font-bold text-slate-800">
+            {location.slice(0, 1).toUpperCase() + location.slice(1)}
+          </div>
+        </div>
       </div>
-
-      <p className="col-span-2 line-clamp-1 font-semibold text-zinc-500">
-        {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
-      </p>
-
-      <p
-        className={`font-roboto mr-auto line-clamp-1 w-max rounded-md px-1 text-white ${cardClassBg}`}
-      >
-        {amount}
-      </p>
-
-      <p className={`col-span-2 line-clamp-1 ${cardClassText} font-bold`}>
-        {account[0].toUpperCase() + account.slice(1)}
-      </p>
-
-      <p className={`col-span-2 line-clamp-1 ${cardClassText} font-bold`}>
-        {category[0].toUpperCase() + category.slice(1)}
-      </p>
-
-      <p className="font-roboto col-span-2 line-clamp-1 text-sm font-semibold text-zinc-700">
-        {dateStr}
-      </p>
-      <p className="line-clamp-1 font-semibold text-zinc-500">
-        {location.slice(0, 1).toUpperCase() + location.slice(1)}
-      </p>
-
-      <div className="flex items-center justify-center gap-2">
-        {!delLoading && (
-          <FaTrash
-            onClick={handleDelete}
-            className={"cursor-pointer text-rose-500"}
-          />
-        )}
-        <Link to={`/transaction/${transactionData._id}`}>
-          <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
-        </Link>
+      <div className="col-start-5 col-end-7 flex h-full flex-col items-end justify-start">
+        <div
+          className={`font-roboto line-clamp-1 w-1/2 rounded-full p-1 text-center ${cardClassBg} font-bold ${cardClassText} `}
+        >
+          {amount}
+        </div>
+        <div className="mt-2 line-clamp-1 font-semibold text-zinc-500">
+          {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
+        </div>
+        <div className="mt-auto flex items-center justify-center gap-2">
+          {!delLoading && (
+            <FaTrash
+              onClick={handleDelete}
+              className={"cursor-pointer text-rose-500"}
+            />
+          )}
+          <Link to={`/transaction/${transactionData._id}`}>
+            <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
+          </Link>
+        </div>
       </div>
     </motion.div>
   );

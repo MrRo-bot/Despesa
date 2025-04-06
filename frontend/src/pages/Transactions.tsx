@@ -1,6 +1,5 @@
 import { useQuery } from "@apollo/client";
 import { Virtuoso } from "react-virtuoso";
-import { motion } from "motion/react";
 
 import Card from "../components/transactions/Card";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
@@ -11,9 +10,7 @@ const Transactions = () => {
 
   return (
     <div className="mx-auto w-[95%]">
-      <div className="w-full">
-        <div className="flex h-[90vh] w-full flex-col pt-5 pb-1">
-          <motion.div
+      {/* <motion.div
             initial={{ opacity: 0, x: 400, scale: 0.5 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.6, type: "spring" }}
@@ -27,17 +24,30 @@ const Transactions = () => {
             <div className="col-span-2">Date</div>
             <div className="">Location</div>
             <div className="text-center">Actions</div>
-          </motion.div>
-          {!transactionLoading && transaction?.transactions?.length > 0 && (
-            <Virtuoso
-              className="no-scrollbar"
-              style={{ height: "100%" }}
-              data={transaction?.transactions}
-              itemContent={(_, transaction) => (
-                <Card key={transaction._id} transactionData={transaction} />
-              )}
-            />
-          )}
+          </motion.div> */}
+      <div className="flex h-[90vh] w-full justify-between gap-5 pt-5 pb-1">
+        {!transactionLoading && transaction?.transactions?.length > 0 && (
+          <Virtuoso
+            className="no-scrollbar"
+            style={{ height: "100%", width: "100%" }}
+            data={transaction?.transactions}
+            itemContent={(_, transaction) => (
+              <Card key={transaction._id} transactionData={transaction} />
+            )}
+            components={{
+              Footer: function Footer() {
+                return (
+                  <div className="text-center text-xl font-black text-zinc-600">
+                    {" "}
+                    End of transactions{" "}
+                  </div>
+                );
+              },
+            }}
+          />
+        )}
+        <div className="w-[50%] border-6 border-dashed border-zinc-900 text-zinc-900">
+          Edit Transaction Pane
         </div>
       </div>
     </div>
