@@ -7,6 +7,7 @@ import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 import DynamicIcon from "../DynamicIcon";
 import { TransactionObjectType } from "../../types/types";
 import { TbPlus } from "react-icons/tb";
+import { NumericFormat } from "react-number-format";
 
 const RecentTransactions = () => {
   const [recentItems, setRecentItems] = useState<{
@@ -48,16 +49,16 @@ const RecentTransactions = () => {
         transition={{
           delay: 0.4,
         }}
-        className="mt-6 mb-2 bg-zinc-900 p-2 text-zinc-50"
+        className="mt-7 mb-2 w-max bg-zinc-900 p-2 text-zinc-50"
       >
         <div className="flex items-center gap-3">
           <NavLink
             to="/transaction"
-            className="aspect-square border-3 border-dashed border-zinc-50 p-3"
+            className="aspect-square border-3 border-dashed border-zinc-50 p-1"
           >
-            <TbPlus size={32} />
+            <TbPlus size={14} />
           </NavLink>
-          <div className="font-roboto text-2xl">Add Transaction</div>
+          <div className="font-roboto text-lg">Add Transaction</div>
         </div>
       </motion.div>
       <div className="relative">
@@ -68,7 +69,7 @@ const RecentTransactions = () => {
           See all
         </NavLink>
         <div>
-          <h4 className="my-3 text-lg font-bold text-zinc-900">Expenses</h4>
+          <h4 className="my-3 text-xl font-bold text-zinc-900">Expenses</h4>
           <div className="flex flex-col gap-2">
             {recentItems?.expenses &&
               recentItems?.expenses.map((expense) => {
@@ -78,7 +79,7 @@ const RecentTransactions = () => {
                     className="flex items-center justify-between"
                   >
                     <div className="flex items-center gap-2">
-                      <div className="grid h-12 w-12 place-items-center bg-rose-500 p-2">
+                      <div className="grid h-14 w-14 place-items-center bg-rose-500">
                         {<DynamicIcon icon={expense.category} />}
                       </div>
                       <div>
@@ -90,16 +91,22 @@ const RecentTransactions = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="text-lg font-semibold text-red-700">
-                      -₹{expense.amount}
+                    <div className="flex text-lg font-semibold text-red-700">
+                      -₹
+                      <NumericFormat
+                        value={expense.amount}
+                        thousandSeparator
+                        thousandsGroupStyle="lakh"
+                        displayType="text"
+                      />
                     </div>
                   </div>
                 );
               })}
           </div>
         </div>
-        <div className="mt-6">
-          <h4 className="my-3 text-lg font-bold text-zinc-900">
+        <div className="mt-7">
+          <h4 className="my-3 text-xl font-bold text-zinc-900">
             Income & Savings
           </h4>
           <div className="flex flex-col gap-2">
@@ -110,7 +117,7 @@ const RecentTransactions = () => {
                   className="flex items-center justify-between"
                 >
                   <div className="flex items-center gap-2">
-                    <div className="grid h-12 w-12 place-items-center bg-blue-500 p-1">
+                    <div className="grid h-14 w-14 place-items-center bg-blue-500">
                       {<DynamicIcon icon={inc.category} />}
                     </div>
                     <div>
@@ -122,8 +129,14 @@ const RecentTransactions = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="text-lg font-semibold text-green-700">
-                    +₹{inc.amount}
+                  <div className="flex text-lg font-semibold text-green-700">
+                    +₹
+                    <NumericFormat
+                      value={inc.amount}
+                      thousandSeparator
+                      thousandsGroupStyle="lakh"
+                      displayType="text"
+                    />
                   </div>
                 </div>
               ))}

@@ -26,64 +26,64 @@ import { GiLipstick } from "react-icons/gi";
 export default function DynamicIcon({ icon }: { icon: string }) {
   switch (icon) {
     case "Food":
-      return <FaBowlFood className="h-7 w-7" />;
+      return <FaBowlFood className="h-8 w-8" />;
       break;
     case "Social Life":
-      return <FaUserFriends className="h-7 w-7" />;
+      return <FaUserFriends className="h-8 w-8" />;
       break;
     case "Self Development":
-      return <FaHandshake className="h-7 w-7" />;
+      return <FaHandshake className="h-8 w-8" />;
       break;
     case "Transportation":
-      return <FaTaxi className="h-7 w-7" />;
+      return <FaTaxi className="h-8 w-8" />;
       break;
     case "Culture":
-      return <FaUserGroup className="h-7 w-7" />;
+      return <FaUserGroup className="h-8 w-8" />;
       break;
     case "Household":
-      return <FaHouseChimneyUser className="h-7 w-7" />;
+      return <FaHouseChimneyUser className="h-8 w-8" />;
       break;
     case "Apparel":
-      return <FaShirt className="h-7 w-7" />;
+      return <FaShirt className="h-8 w-8" />;
       break;
     case "Beauty":
-      return <GiLipstick className="h-7 w-7" />;
+      return <GiLipstick className="h-8 w-8" />;
       break;
     case "Sports":
-      return <FaMedal className="h-7 w-7" />;
+      return <FaMedal className="h-8 w-8" />;
       break;
     case "Health":
-      return <FaUserDoctor className="h-7 w-7" />;
+      return <FaUserDoctor className="h-8 w-8" />;
       break;
     case "Education":
-      return <FaSchool className="h-7 w-7" />;
+      return <FaSchool className="h-8 w-8" />;
       break;
     case "Gift":
-      return <FaGift className="h-7 w-7" />;
+      return <FaGift className="h-8 w-8" />;
       break;
     case "Electronics":
-      return <FaBolt className="h-7 w-7" />;
+      return <FaBolt className="h-8 w-8" />;
       break;
     case "Other":
-      return <FaEllipsis className="h-7 w-7" />;
+      return <FaEllipsis className="h-8 w-8" />;
       break;
     case "Bonus":
-      return <FaMoneyCheckDollar className="h-7 w-7" />;
+      return <FaMoneyCheckDollar className="h-8 w-8" />;
       break;
     case "Pocket Money":
-      return <FaMoneyBill className="h-7 w-7" />;
+      return <FaMoneyBill className="h-8 w-8" />;
       break;
     case "Salary":
-      return <FaMoneyBills className="h-7 w-7" />;
+      return <FaMoneyBills className="h-8 w-8" />;
       break;
     case "Profits":
-      return <FaMoneyBillTrendUp className="h-7 w-7" />;
+      return <FaMoneyBillTrendUp className="h-8 w-8" />;
       break;
     case "Allowance":
-      return <FaMoneyBillWave className="h-7 w-7" />;
+      return <FaMoneyBillWave className="h-8 w-8" />;
       break;
     case "Petty Cash":
-      return <FaRegMoneyBillAlt className="h-7 w-7" />;
+      return <FaRegMoneyBillAlt className="h-8 w-8" />;
       break;
   }
 }

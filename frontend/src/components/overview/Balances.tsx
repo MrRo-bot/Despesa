@@ -1,5 +1,6 @@
 import { TbChartPie, TbMoneybag } from "react-icons/tb";
 import { motion } from "motion/react";
+import { NumericFormat } from "react-number-format";
 
 const Balances = () => {
   return (
@@ -17,7 +18,13 @@ const Balances = () => {
         </div>
         <div className="flex flex-col gap-1 text-zinc-900">
           <h5 className="tracking-tight">Spending in Jul</h5>
-          <h3 className="text-3xl">1,250</h3>
+          <NumericFormat
+            value={1250}
+            thousandSeparator
+            thousandsGroupStyle="lakh"
+            displayType="text"
+            className="text-3xl"
+          />
         </div>
       </motion.div>
       <motion.div
@@ -33,7 +40,13 @@ const Balances = () => {
         </div>
         <div className="flex flex-col gap-1 text-zinc-50">
           <h5 className="tracking-tight">Investmented Amount</h5>
-          <h3 className="text-3xl">1,250</h3>
+          <NumericFormat
+            value={1250}
+            thousandSeparator
+            thousandsGroupStyle="lakh"
+            displayType="text"
+            className="text-3xl"
+          />
         </div>
       </motion.div>
     </div>

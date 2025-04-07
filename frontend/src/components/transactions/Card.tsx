@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 
 import { formatDate } from "../../utils/formatDate";
 import { DELETE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
+import { NumericFormat } from "react-number-format";
 
 const categoryColorMapText = {
   Saving: "text-lime-800",
@@ -134,11 +135,13 @@ const Card = ({
         </div>
       </div>
       <div className="col-start-5 col-end-7 flex h-full flex-col items-end justify-start">
-        <div
+        <NumericFormat
+          value={amount}
+          thousandSeparator
+          thousandsGroupStyle="lakh"
+          displayType="text"
           className={`font-roboto line-clamp-1 w-1/2 rounded-full p-1 text-center ${cardClassBg} font-bold ${cardClassText} `}
-        >
-          {amount}
-        </div>
+        />
         <div className="mt-2 line-clamp-1 font-semibold text-zinc-500">
           {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
         </div>

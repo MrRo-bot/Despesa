@@ -1,6 +1,7 @@
 import { TbChevronDown } from "react-icons/tb";
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
+import { NumericFormat } from "react-number-format";
 
 const Header = () => {
   const location = useLocation();
@@ -28,7 +29,15 @@ const Header = () => {
         <span className="text-sm font-extrabold tracking-tighter">
           My Balance
         </span>
-        <span className="text-xl font-extrabold text-pink-700">1,20,000</span>
+
+        <NumericFormat
+          value={120000}
+          thousandSeparator
+          thousandsGroupStyle="lakh"
+          displayType="text"
+          className="w-max text-xl font-extrabold text-pink-700"
+        />
+
         <span className="flex cursor-pointer items-center gap-2 text-lg font-black text-pink-700">
           - INR <TbChevronDown className="h-4" />
         </span>

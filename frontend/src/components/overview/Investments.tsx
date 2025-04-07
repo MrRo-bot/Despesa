@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { motion } from "motion/react";
 import { InvestmentObjectType } from "../../types/types";
 import DynamicIcon from "../DynamicIcon";
+import { NumericFormat } from "react-number-format";
 
 const Investments = () => {
   const [recentInvest, setRecentInvest] = useState<[InvestmentObjectType]>();
@@ -49,9 +50,13 @@ const Investments = () => {
                   </p>
                 </div>
                 <div className="">
-                  <h4 className="text-lg font-bold text-zinc-900">
-                    ₹{investment.amount}
-                  </h4>
+                  <NumericFormat
+                    value={investment.amount}
+                    thousandSeparator
+                    thousandsGroupStyle="lakh"
+                    displayType="text"
+                    className="text-lg font-bold text-zinc-900"
+                  />
                   <p className="tracking-tighter text-zinc-500">
                     Investment Value
                   </p>
