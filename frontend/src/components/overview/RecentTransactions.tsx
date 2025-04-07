@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 import DynamicIcon from "../DynamicIcon";
 import { TransactionObjectType } from "../../types/types";
+import { TbPlus } from "react-icons/tb";
 
 const RecentTransactions = () => {
   const [recentItems, setRecentItems] = useState<{
@@ -18,13 +19,13 @@ const RecentTransactions = () => {
     (async () => {
       const exp = await transaction?.transactions
         ?.filter((x: { account: string }) => x.account === "Expense")
-        .slice(0, 4);
+        .slice(0, 3);
       const inc = await transaction?.transactions
         ?.filter(
           (x: { account: string }) =>
             x.account === "Income" || x.account === "Saving",
         )
-        .slice(0, 4);
+        .slice(0, 3);
       setRecentItems({ expenses: exp, income: inc });
     })();
   }, [transaction]);
@@ -41,6 +42,24 @@ const RecentTransactions = () => {
       <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
         Recent Transactions
       </h3>
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          delay: 0.4,
+        }}
+        className="mt-6 mb-2 bg-zinc-900 p-2 text-zinc-50"
+      >
+        <div className="flex items-center gap-3">
+          <NavLink
+            to="/transaction"
+            className="aspect-square border-3 border-dashed border-zinc-50 p-3"
+          >
+            <TbPlus size={32} />
+          </NavLink>
+          <div className="font-roboto text-2xl">Add Transaction</div>
+        </div>
+      </motion.div>
       <div className="relative">
         <NavLink
           to="/transactions"
