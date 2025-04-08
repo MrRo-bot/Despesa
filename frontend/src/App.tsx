@@ -52,7 +52,12 @@ function App() {
               )
             }
           />
-          <Route path="*" element={<Error />} />
+          <Route
+            path="*"
+            element={
+              authData?.authUser ? <Error /> : <Navigate to="/authentication" />
+            }
+          />
         </Route>
       </Routes>
     </>

@@ -46,7 +46,7 @@ const Chart = () => {
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{
-        delay: 0.4,
+        delay: 0.2,
       }}
       className="shadow-main mr-auto h-[30vh] w-[90%] bg-zinc-50"
     >

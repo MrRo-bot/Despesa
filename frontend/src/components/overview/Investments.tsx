@@ -31,23 +31,27 @@ const Investments = () => {
           My Investments
         </h3>
         <ul className="flex flex-col items-center justify-center gap-2">
-          {recentInvest ? (
-            recentInvest?.map((investment) => {
-              const date = new Date(+investment?.date);
-              return (
-                <motion.li
-                  initial={{ opacity: 0, y: 100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.6,
-                  }}
-                  key={investment._id}
-                  className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3"
-                >
+          {recentInvest?.map((investment) => {
+            const date = new Date(+investment?.date);
+            return (
+              <motion.li
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.2,
+                }}
+                key={investment._id}
+                className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3"
+              >
+                {investment.category ? (
                   <div className="grid h-12 w-12 place-items-center bg-orange-500 p-1">
                     {<DynamicIcon icon={investment.category} />}
                   </div>
-                  <div className="flex w-full justify-between">
+                ) : (
+                  <Skeleton style={{ width: 3 + "em", height: 3 + "em" }} />
+                )}
+                <div className="flex w-full justify-between">
+                  {investment.description ? (
                     <div className="">
                       <h4 className="text-lg font-bold text-zinc-900">
                         {investment.description}
@@ -56,6 +60,18 @@ const Investments = () => {
                         {investment.location}
                       </p>
                     </div>
+                  ) : (
+                    <div className="flex flex-col gap-2">
+                      <Skeleton
+                        style={{ width: 11 + "em", height: 1 + "em" }}
+                      />
+                      <Skeleton
+                        style={{ width: 8 + "em", height: 0.75 + "em" }}
+                      />
+                    </div>
+                  )}
+
+                  {investment.amount ? (
                     <div className="">
                       <NumericFormat
                         value={investment.amount}
@@ -68,68 +84,37 @@ const Investments = () => {
                         Investment Value
                       </p>
                     </div>
+                  ) : (
+                    <div className="flex flex-col gap-2">
+                      <Skeleton
+                        style={{ width: 11 + "em", height: 1 + "em" }}
+                      />
+                      <Skeleton
+                        style={{ width: 8 + "em", height: 0.75 + "em" }}
+                      />
+                    </div>
+                  )}
+                  {date ? (
                     <div className="">
                       <h4 className="text-lg font-semibold text-zinc-900">
                         {date.toLocaleDateString()}
                       </h4>
                       <p className="tracking-tighter text-zinc-500">Date</p>
                     </div>
-                  </div>
-                </motion.li>
-              );
-            })
-          ) : (
-            <div className="flex flex-col gap-2">
-              <div className="shadow-main flex w-full items-center justify-between gap-6 bg-zinc-50 px-5 py-3">
-                <div className="flex items-center justify-start gap-2">
-                  <Skeleton style={{ width: 3 + "em", height: 3 + "em" }} />
-
-                  <div className="flex flex-col gap-2">
-                    <Skeleton style={{ width: 11 + "em", height: 1 + "em" }} />
-                    <Skeleton
-                      style={{ width: 8 + "em", height: 0.75 + "em" }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Skeleton style={{ width: 11 + "em", height: 1 + "em" }} />
-                    <Skeleton
-                      style={{ width: 8 + "em", height: 0.75 + "em" }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Skeleton style={{ width: 11 + "em", height: 1 + "em" }} />
-                    <Skeleton
-                      style={{ width: 8 + "em", height: 0.75 + "em" }}
-                    />
-                  </div>
+                  ) : (
+                    <div className="flex flex-col gap-2">
+                      <Skeleton
+                        style={{ width: 11 + "em", height: 1 + "em" }}
+                      />
+                      <Skeleton
+                        style={{ width: 8 + "em", height: 0.75 + "em" }}
+                      />
+                    </div>
+                  )}
                 </div>
-              </div>
-              <div className="shadow-main flex w-full items-center justify-between gap-6 bg-zinc-50 px-5 py-3">
-                <div className="flex items-center justify-start gap-2">
-                  <Skeleton style={{ width: 3 + "em", height: 3 + "em" }} />
-
-                  <div className="flex flex-col gap-2">
-                    <Skeleton style={{ width: 11 + "em", height: 1 + "em" }} />
-                    <Skeleton
-                      style={{ width: 8 + "em", height: 0.75 + "em" }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Skeleton style={{ width: 11 + "em", height: 1 + "em" }} />
-                    <Skeleton
-                      style={{ width: 8 + "em", height: 0.75 + "em" }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <Skeleton style={{ width: 11 + "em", height: 1 + "em" }} />
-                    <Skeleton
-                      style={{ width: 8 + "em", height: 0.75 + "em" }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+              </motion.li>
+            );
+          })}
         </ul>
       </div>
     </SkeletonTheme>

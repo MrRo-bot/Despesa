@@ -102,10 +102,10 @@ const Card = ({
       animate={{ opacity: 1, x: 0, scale: 1 }}
       exit={{ opacity: 0, x: 200, scale: 1.2 }}
       transition={{ duration: 0.4, type: "tween" }}
-      className="mb-5 grid grid-cols-6 items-center gap-2 rounded-md bg-zinc-50 p-4 text-lg"
+      className="mb-3 grid grid-cols-6 items-center gap-2 rounded-md bg-zinc-50 p-2.5 text-lg"
     >
       <div className="col-start-1 col-end-5">
-        <div className="font-roboto line-clamp-1 flex items-end gap-2">
+        <div className="font-roboto line-clamp-1 flex items-end gap-2 border-b-3 border-b-zinc-400/20">
           <strong className="text-xl text-slate-600">
             {dateStr.slice(0, -6)}
           </strong>
