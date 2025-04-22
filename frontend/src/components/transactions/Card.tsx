@@ -90,10 +90,10 @@ const Card = ({
 
   const dateStr = formatDate(date);
 
-  //@ts-expect-error dont know why it cant recognize
+  //@ts-expect-error don't know why it cant recognize
   const cardClassBg = categoryColorMapBg[account];
 
-  //@ts-expect-error dont know why it cant recognize
+  //@ts-expect-error don't know why it cant recognize
   const cardClassText = categoryColorMapText[account];
 
   return (
@@ -104,8 +104,8 @@ const Card = ({
       transition={{ duration: 0.4, type: "tween" }}
       className="mb-3 grid grid-cols-6 items-center gap-2 rounded-md bg-zinc-50 p-2.5 text-lg"
     >
-      <div className="col-start-1 col-end-5">
-        <div className="font-roboto line-clamp-1 flex items-end gap-2 border-b-3 border-b-zinc-400/20">
+      <div className="col-start-1 col-end-6">
+        <div className="font-roboto line-clamp-1 flex items-baseline gap-2 border-b-2 border-b-zinc-400/20">
           <strong className="text-xl text-slate-600">
             {dateStr.slice(0, -6)}
           </strong>
@@ -134,7 +134,7 @@ const Card = ({
           </div>
         </div>
       </div>
-      <div className="col-start-5 col-end-7 flex h-full flex-col items-end justify-start">
+      <div className="col-start-6 col-end-7 flex h-full flex-col items-end justify-start">
         <NumericFormat
           value={amount}
           thousandSeparator

@@ -59,7 +59,7 @@ const RecentTransactions = () => {
           <div>
             <h4 className="my-3 text-xl font-bold text-zinc-900">Expenses</h4>
             <div className="flex flex-col gap-2">
-              {recentItems?.expenses.map((expense) => (
+              {recentItems?.expenses?.map((expense) => (
                 <div
                   key={expense._id}
                   className="flex items-center justify-between"
@@ -119,7 +119,7 @@ const RecentTransactions = () => {
               Income & Savings
             </h4>
             <div className="flex flex-col gap-2">
-              {recentItems?.income.map((inc) => (
+              {recentItems?.income?.map((inc) => (
                 <div
                   key={inc._id}
                   className="flex items-center justify-between"

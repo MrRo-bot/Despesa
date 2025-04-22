@@ -8,6 +8,7 @@ import Authentication from "./pages/Authentication";
 import Overview from "./pages/Overview";
 import Layout from "./pages/Layout";
 import TransactionForm from "./components/TransactionForm";
+import Reports from "./pages/Reports";
 
 function App() {
   const { data: authData } = useQuery(GET_AUTHENTICATED_USER);
@@ -47,6 +48,16 @@ function App() {
             element={
               authData?.authUser ? (
                 <TransactionForm />
+              ) : (
+                <Navigate to="/authentication" />
+              )
+            }
+          />
+          <Route
+            path="/reports"
+            element={
+              authData?.authUser ? (
+                <Reports />
               ) : (
                 <Navigate to="/authentication" />
               )
