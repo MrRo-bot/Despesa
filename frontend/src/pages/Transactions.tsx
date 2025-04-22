@@ -10,21 +10,22 @@ const Transactions = () => {
 
   return (
     <div className="mx-auto w-[95%]">
-      {/* <motion.div
-            initial={{ opacity: 0, x: 400, scale: 0.5 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="font-roboto shadow-main mb-2 grid grid-cols-14 items-center rounded-md bg-violet-200 px-4 py-3 font-semibold text-zinc-900/80"
-          >
-            <div className="col-span-3">Description</div>
-            <div className="col-span-2">Payment</div>
-            <div className="">Amount</div>
-            <div className="col-span-2">Account</div>
-            <div className="col-span-2">Category</div>
-            <div className="col-span-2">Date</div>
-            <div className="">Location</div>
-            <div className="text-center">Actions</div>
-          </motion.div> */}
+      <div
+        // initial={{ opacity: 0, x: 400, scale: 0.5 }}
+        // animate={{ opacity: 1, x: 0, scale: 1 }}
+        // transition={{ duration: 0.6, type: "spring" }}
+        className="font-roboto shadow-main flex items-center justify-start gap-5 rounded-full bg-violet-200 px-6 py-3 text-lg font-bold text-zinc-900/80"
+      >
+        <div className="w-[3.5%]"></div>
+        <div className="w-[25%]">Description</div>
+        <div className="w-[12%]">Payment</div>
+        <div className="w-[10%]">Amount</div>
+        <div className="w-[10%]">Account</div>
+        <div className="w-[13%]">Category</div>
+        <div className="w-[10%]">Date</div>
+        <div className="w-[12%]">Location</div>
+        <div className="w-[6%]">Actions</div>
+      </div>
       <div className="flex h-[90vh] w-full justify-between gap-5 pt-5 pb-1">
         {!transactionLoading && transaction?.transactions?.length > 0 && (
           <Virtuoso
@@ -37,7 +38,7 @@ const Transactions = () => {
             components={{
               Footer: function Footer() {
                 return (
-                  <div className="text-center text-xl font-black text-zinc-600">
+                  <div className="mt-4 text-center text-xl font-black text-zinc-600">
                     {" "}
                     End of transactions{" "}
                   </div>
@@ -46,9 +47,6 @@ const Transactions = () => {
             }}
           />
         )}
-        <div className="w-[50%] border-6 border-dashed border-zinc-900 text-zinc-900">
-          Edit Transaction Pane
-        </div>
       </div>
     </div>
   );
