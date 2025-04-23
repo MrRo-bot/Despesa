@@ -122,13 +122,17 @@ const Card = ({
       </div>
 
       <div className="w-[10%]">
-        <NumericFormat
-          value={amount}
-          thousandSeparator
-          thousandsGroupStyle="lakh"
-          displayType="text"
-          className={`font-roboto rounded-full bg-slate-100 px-4 py-1.5 ${cardClassText} font-medium`}
-        />
+        <span
+          className={`font-roboto flex w-max gap-1 rounded-full bg-slate-100 px-4 py-1.5 ${cardClassText} font-medium`}
+        >
+          ₹
+          <NumericFormat
+            value={amount}
+            thousandSeparator
+            thousandsGroupStyle="lakh"
+            displayType="text"
+          />
+        </span>
       </div>
 
       <div className="line-clamp-1 w-[10%]">

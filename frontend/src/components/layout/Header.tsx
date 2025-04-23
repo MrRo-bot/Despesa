@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { NumericFormat } from "react-number-format";
-import { TbChevronDown } from "react-icons/tb";
 
 const Header = () => {
   const location = useLocation();
@@ -24,9 +23,9 @@ const Header = () => {
         initial={{ opacity: 0, x: 400, scale: 0.5 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ duration: 0.6, type: "spring" }}
-        className="font-roboto shadow-main flex items-center justify-between gap-2 border border-zinc-700 p-2 tracking-wider text-zinc-500"
+        className="font-roboto shadow-main flex items-center justify-between gap-3 border border-zinc-700 p-2 tracking-wider text-zinc-500"
       >
-        <span className="text-sm font-extrabold tracking-tighter">
+        <span className="text-md font-extrabold tracking-tighter">
           My Balance
         </span>
 
@@ -38,8 +37,8 @@ const Header = () => {
           className="w-max text-xl font-extrabold text-pink-700"
         />
 
-        <span className="flex cursor-pointer items-center gap-2 text-lg font-black text-pink-700">
-          - INR <TbChevronDown className="h-4" />
+        <span className="flex cursor-pointer items-center gap-2 text-2xl font-black text-pink-700">
+          ₹
         </span>
       </motion.div>
     </header>

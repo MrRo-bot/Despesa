@@ -5,13 +5,14 @@ import { LOGOUT } from "../../graphql/mutations/user.mutation";
 import { GET_AUTHENTICATED_USER } from "../../graphql/queries/user.query";
 import { Bounce, toast } from "react-toastify";
 
-// import { TiChevronRightOutline } from "react-icons/ti";
-import { BiPieChart, BiWorld } from "react-icons/bi";
+import { TiChevronRightOutline } from "react-icons/ti";
+import { BiPieChart } from "react-icons/bi";
 import { GrTransaction } from "react-icons/gr";
-import { TbPower, TbReportAnalytics, TbSettings, TbUser } from "react-icons/tb";
+import { TbPower, TbReportAnalytics, TbUser } from "react-icons/tb";
+import { useState } from "react";
 
 const Sidebar = () => {
-  // const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const [logout, { client }] = useMutation(LOGOUT, {
     refetchQueries: ["GetAuthenticatedUser"],
@@ -51,12 +52,12 @@ const Sidebar = () => {
   };
   return (
     <div className="text-zinc fixed top-0 bottom-0 left-0 flex h-screen w-80 flex-col justify-start bg-zinc-900 bg-[url('./navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7">
-      {/* <div
-      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-      className={`absolute top-[2.20%] -right-[8%] cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${!isSidebarOpen && "rotate-y-180"} `}
-    >
-      <TiChevronRightOutline className="h-8 w-8 text-zinc-50" />
-    </div> */}
+      <div
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className={`absolute top-[2.20%] -right-[8%] cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${!isSidebarOpen && "rotate-y-180"} `}
+      >
+        <TiChevronRightOutline className="h-8 w-8 text-zinc-50" />
+      </div>
 
       <div className="flex h-20 w-full items-center justify-start gap-2">
         <NavLink className="" to="/">
@@ -139,32 +140,25 @@ const Sidebar = () => {
           </NavLink>
         </motion.div>
       </nav>
-      <footer className="my-2 w-full text-zinc-50">
-        <div className="flex justify-start rounded-xl border border-zinc-300 p-2">
-          <ul className="flex w-1/2 items-center justify-start gap-2">
-            <li className="cursor-pointer rounded-lg bg-zinc-500 p-1">
-              {authData?.authUser ? (
-                <img
-                  src={authData?.authUser?.profilePicture}
-                  className="h-6 w-6"
-                  alt=""
-                />
-              ) : (
-                <TbUser className="h-6 w-6" />
-              )}
-            </li>
-            <li className="cursor-pointer rounded-lg bg-blue-500 p-1">
-              <TbSettings className="h-6 w-6" />
-            </li>
-            <li className="cursor-pointer rounded-lg bg-red-500 p-1">
-              <TbPower
-                className="h-6 w-6 cursor-pointer"
-                onClick={handleLogout}
+      <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2 text-zinc-50">
+        <div className="flex items-center justify-center gap-2">
+          <div className="cursor-pointer rounded-lg bg-zinc-500 p-1">
+            {authData?.authUser ? (
+              <img
+                src={authData?.authUser?.profilePicture}
+                className="h-6 w-6"
+                alt=""
               />
-            </li>
-          </ul>
-          <div className="font-roboto ml-auto flex items-center gap-2 tracking-tighter">
-            <BiWorld /> English
+            ) : (
+              <TbUser className="h-6 w-6" />
+            )}
+          </div>
+
+          <div className="cursor-pointer rounded-lg bg-red-500 p-1">
+            <TbPower
+              className="h-6 w-6 cursor-pointer"
+              onClick={handleLogout}
+            />
           </div>
         </div>
       </footer>

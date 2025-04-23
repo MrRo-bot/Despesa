@@ -25,7 +25,7 @@ const Investments = () => {
       <h3 className="font-roboto mb-3 text-2xl tracking-tighter text-zinc-900">
         My Investments
       </h3>
-      <ul className="flex flex-col items-center justify-center gap-2">
+      <ul className="flex flex-col items-center justify-center gap-4">
         {recentInvest?.map((investment) => {
           const date = new Date(+investment?.date);
           return (
@@ -59,13 +59,15 @@ const Investments = () => {
 
                 {investment.amount && (
                   <div className="w-2/6">
-                    <NumericFormat
-                      value={investment.amount}
-                      thousandSeparator
-                      thousandsGroupStyle="lakh"
-                      displayType="text"
-                      className="text-lg font-bold text-zinc-900"
-                    />
+                    <span className="flex gap-1 text-lg font-bold text-zinc-900">
+                      <NumericFormat
+                        value={investment.amount}
+                        thousandSeparator
+                        thousandsGroupStyle="lakh"
+                        displayType="text"
+                      />
+                      ₹
+                    </span>
                     <p className="tracking-tighter text-zinc-500">
                       Investment Value
                     </p>

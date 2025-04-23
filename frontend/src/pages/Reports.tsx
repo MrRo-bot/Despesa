@@ -91,8 +91,4 @@ const Reports = () => {
     </div>
   );
 };
-
-// rgb(255, 127, 144)
-// rgb(196, 153, 252)
-// rgb(255, 222, 148)
 export default Reports;

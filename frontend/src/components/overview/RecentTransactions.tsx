@@ -38,7 +38,7 @@ const RecentTransactions = () => {
       transition={{
         delay: 0.2,
       }}
-      className="shadow-main bg-zinc-50 p-4"
+      className="shadow-main bg-zinc-50 px-6 py-3"
     >
       <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
         Recent Transactions
@@ -59,7 +59,7 @@ const RecentTransactions = () => {
                 key={expense._id}
                 className="flex items-center justify-between"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-4">
                   {expense.category && (
                     <div
                       className={`${dynamicCategoryColor(expense.category)} grid h-12 w-12 place-items-center`}
@@ -100,7 +100,7 @@ const RecentTransactions = () => {
           <div className="flex flex-col gap-2">
             {recentItems?.income?.map((inc) => (
               <div key={inc._id} className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-4">
                   {inc.category && (
                     <div
                       className={`grid h-12 w-12 place-items-center ${dynamicCategoryColor(inc.category)}`}

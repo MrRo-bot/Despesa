@@ -13,32 +13,32 @@ import { motion } from "motion/react";
 const Chart = () => {
   const data = [
     {
-      month: "Jan",
-      balance: 100,
+      Month: "Jan",
+      Balance: 100,
     },
     {
-      month: "Feb",
-      balance: 3000,
+      Month: "Feb",
+      Balance: 3000,
     },
     {
-      month: "Mar",
-      balance: 2000,
+      Month: "Mar",
+      Balance: 2000,
     },
     {
-      month: "Apr",
-      balance: 2780,
+      Month: "Apr",
+      Balance: 2780,
     },
     {
-      month: "May",
-      balance: 1890,
+      Month: "May",
+      Balance: 1890,
     },
     {
-      month: "Jun",
-      balance: 2390,
+      Month: "Jun",
+      Balance: 2390,
     },
     {
-      month: "Jul",
-      balance: 3490,
+      Month: "Jul",
+      Balance: 3490,
     },
   ];
   return (
@@ -70,16 +70,15 @@ const Chart = () => {
               <stop offset="95%" stopColor="#9f9fa9" stopOpacity={0} />
             </linearGradient>
           </defs>
-
           <Label value="Balance History" offset={10} position="top" />
           <CartesianGrid strokeDasharray="2 2" />
-          <XAxis dataKey="month" />
-          <YAxis dataKey="balance" />
-          <Tooltip />
+          <XAxis dataKey="Month" />
+          <YAxis dataKey="Balance" />
+          <Tooltip labelClassName="text-slate-600 font-roboto font-medium" />
 
           <Area
             type="monotone"
-            dataKey="balance"
+            dataKey="Balance"
             stroke="#52525b"
             fillOpacity={1}
             fill="url(#colorUv)"

@@ -19,13 +19,15 @@ const Balances = () => {
         </div>
         <div className="flex flex-col gap-1 text-zinc-900">
           <h5 className="text-lg tracking-tight">Spending in Jul</h5>
-          <NumericFormat
-            value={1250}
-            thousandSeparator
-            thousandsGroupStyle="lakh"
-            displayType="text"
-            className="text-3xl"
-          />
+          <span className="flex gap-1 text-3xl">
+            <NumericFormat
+              value={1250}
+              thousandSeparator
+              thousandsGroupStyle="lakh"
+              displayType="text"
+            />
+            ₹
+          </span>
         </div>
       </motion.div>
       <motion.div
@@ -41,13 +43,16 @@ const Balances = () => {
         </div>
         <div className="flex flex-col gap-1 text-zinc-50">
           <h5 className="text-lg tracking-tight">Total Investment</h5>
-          <NumericFormat
-            value={1250}
-            thousandSeparator
-            thousandsGroupStyle="lakh"
-            displayType="text"
-            className="text-3xl"
-          />
+
+          <span className="flex gap-1 text-3xl">
+            <NumericFormat
+              value={1250}
+              thousandSeparator
+              thousandsGroupStyle="lakh"
+              displayType="text"
+            />
+            ₹
+          </span>
         </div>
       </motion.div>
       <motion.div
