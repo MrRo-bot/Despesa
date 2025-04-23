@@ -147,7 +147,7 @@ const Authentication = () => {
   return (
     <>
       <LoginHeader />
-      <main className="relative flex flex-col items-center">
+      <main className="relative flex flex-col items-center gap-2">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -184,8 +184,16 @@ const Authentication = () => {
           transition={{
             delay: 0.6,
           }}
-          className="relative my-5 ml-5 h-[55vh] w-1/4 perspective-[800px] transform-3d"
+          className="relative my-5 ml-5 h-[45vh] min-h-96 w-1/4 min-w-80 perspective-[800px] transform-3d"
         >
+          <div className="font-roboto absolute top-[52px] -left-[77px] flex -rotate-90 items-center justify-between gap-1 rounded-md bg-[#170b35b4] px-1">
+            Secured by
+            <img
+              className="inline h-5 w-5"
+              src="https://www.passportjs.org/images/logo.svg"
+              alt="P"
+            />
+          </div>
           <div
             className={`absolute top-0 left-0 h-full w-full transition-all duration-700 ease-out transform-3d ${toggle && "rotate-y-180"}`}
           >
