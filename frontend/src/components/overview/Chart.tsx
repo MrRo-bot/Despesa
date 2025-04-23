@@ -48,7 +48,7 @@ const Chart = () => {
       transition={{
         delay: 0.2,
       }}
-      className="shadow-main mr-auto h-[30vh] w-[90%] bg-zinc-50"
+      className="shadow-main h-[30vh] w-[90%] bg-zinc-50"
     >
       <h3 className="font-roboto mt-4 mb-3 ml-5 text-2xl text-zinc-900">
         Balance History

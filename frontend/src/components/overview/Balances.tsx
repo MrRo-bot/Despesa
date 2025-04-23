@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const Balances = () => {
   return (
-    <div className="mr-auto flex w-[90%] items-center gap-8">
+    <div className="flex items-center gap-8">
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}

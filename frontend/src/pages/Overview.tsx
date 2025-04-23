@@ -5,8 +5,8 @@ import RecentTransactions from "../components/overview/RecentTransactions";
 
 const Overview = () => {
   return (
-    <div className="mx-auto flex h-[90vh] w-full justify-between px-10 pt-4 pb-2">
-      <div className="flex w-[65%] flex-col items-center gap-5">
+    <div className="mx-auto flex w-full justify-between gap-14 px-10 pt-4 pb-2">
+      <div className="flex w-[65%] flex-col items-stretch gap-7">
         <Balances />
         <Chart />
         <Investments />

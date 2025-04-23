@@ -15,13 +15,13 @@ const Investments = () => {
     (async () => {
       const inv = await transaction?.transactions
         ?.filter((x: { account: string }) => x.account === "Investment")
-        .slice(0, 2);
+        .slice(0, 3);
       setRecentInvest(inv);
     })();
   }, [transaction]);
 
   return (
-    <div className="mt-14 mr-auto w-[90%]">
+    <div className="mt-14">
       <h3 className="font-roboto mb-3 text-2xl tracking-tighter text-zinc-900">
         My Investments
       </h3>
@@ -45,9 +45,9 @@ const Investments = () => {
                   {<DynamicIcon icon={investment.category} />}
                 </div>
               )}
-              <div className="flex w-full justify-between">
+              <div className="flex w-full justify-start">
                 {investment.description && (
-                  <div className="">
+                  <div className="w-3/6">
                     <h4 className="text-lg font-bold text-zinc-900">
                       {investment.description}
                     </h4>
@@ -58,7 +58,7 @@ const Investments = () => {
                 )}
 
                 {investment.amount && (
-                  <div className="">
+                  <div className="w-2/6">
                     <NumericFormat
                       value={investment.amount}
                       thousandSeparator
@@ -72,7 +72,7 @@ const Investments = () => {
                   </div>
                 )}
                 {date && (
-                  <div className="">
+                  <div className="w-1/6">
                     <h4 className="text-lg font-semibold text-zinc-900">
                       {date.toLocaleDateString()}
                     </h4>

@@ -20,13 +20,13 @@ const RecentTransactions = () => {
     (async () => {
       const exp = await transaction?.transactions
         ?.filter((x: { account: string }) => x.account === "Expense")
-        .slice(0, 4);
+        .slice(0, 6);
       const inc = await transaction?.transactions
         ?.filter(
           (x: { account: string }) =>
             x.account === "Income" || x.account === "Saving",
         )
-        .slice(0, 4);
+        .slice(0, 6);
       setRecentItems({ expenses: exp, income: inc });
     })();
   }, [transaction]);
