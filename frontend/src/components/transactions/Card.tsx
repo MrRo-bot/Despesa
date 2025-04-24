@@ -1,6 +1,6 @@
 import { FaTrash } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 import { useMutation } from "@apollo/client";
 import { motion } from "motion/react";
@@ -103,27 +103,24 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="mt-4 flex items-center justify-start gap-5 rounded-full bg-zinc-50 px-6 py-3 text-lg"
+      className="mb-4 flex items-center justify-start gap-5 rounded-full bg-zinc-50 p-2 text-lg"
     >
       <div
         className={`${dynamicCategoryColor(category)} grid aspect-square h-12 w-12 place-items-center rounded-full p-2`}
       >
         {<DynamicIcon icon={category} />}
       </div>
-
-      <div className="line-clamp-1 w-[25%] text-2xl font-bold text-stone-800">
+      <div className="line-clamp-1 w-[25%] text-xl font-bold text-stone-800">
         {description.slice(0, 1).toUpperCase() + description.slice(1)}
       </div>
-
       <div className="w-[12%]">
         <div className="text-zinc-500">
           {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
         </div>
       </div>
-
       <div className="w-[10%]">
         <span
-          className={`font-roboto flex w-max gap-1 rounded-full bg-slate-100 px-4 py-1.5 ${cardClassText} font-medium`}
+          className={`font-roboto mx-auto flex w-max gap-1 rounded-full bg-slate-100 px-3 ${cardClassText} font-medium`}
         >
           ₹
           <NumericFormat
@@ -134,31 +131,26 @@ const Card = ({
           />
         </span>
       </div>
-
       <div className="line-clamp-1 w-[10%]">
         <div
-          className={`${cardClassText} ${cardClassBg} w-max rounded-full px-2 py-1 text-base font-semibold`}
+          className={`${cardClassText} ${cardClassBg} mx-auto w-max rounded-full px-2 py-0.5 text-base font-semibold`}
         >
           {account[0].toUpperCase() + account.slice(1)}
         </div>
       </div>
-
       <div className="w-[13%]">
         <div
-          className={`w-max rounded-full bg-purple-400/20 px-2 py-1 text-base font-semibold text-purple-800`}
+          className={`mx-auto w-max rounded-full bg-purple-400/20 px-2 py-0.5 text-base font-semibold text-purple-800`}
         >
           {category[0].toUpperCase() + category.slice(1)}
         </div>
       </div>
-
-      <div className="font-roboto line-clamp-1 flex w-[10%] items-baseline gap-2 text-base font-medium text-slate-600">
+      <div className="font-roboto line-clamp-1 w-[10%] gap-2 text-center text-base font-medium text-slate-600">
         {dateStr}
       </div>
-
-      <div className="text-medium line-clamp-1 w-[12%] px-2 py-1 font-semibold text-slate-800">
+      <div className="text-medium line-clamp-1 w-[12%] px-2 text-center font-semibold text-slate-800">
         {location.slice(0, 1).toUpperCase() + location.slice(1)}
       </div>
-
       <div className="flex w-[6%] items-center justify-center gap-2">
         {!delLoading && (
           <FaTrash
@@ -166,9 +158,9 @@ const Card = ({
             className={"cursor-pointer text-rose-500"}
           />
         )}
-        <Link to={`/transaction/${transactionData._id}`}>
-          <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
-        </Link>
+        {/* <Link to={`/transaction/${transactionData._id}`}> */}
+        <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
+        {/* </Link> */}
       </div>
     </motion.div>
   );
