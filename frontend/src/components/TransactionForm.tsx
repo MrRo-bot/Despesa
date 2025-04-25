@@ -5,12 +5,13 @@ import {
   MdOutlinePostAdd,
   MdOutlineShareLocation,
 } from "react-icons/md";
+
+import { useMutation, useQuery } from "@apollo/client";
 import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
-import { useMutation, useQuery } from "@apollo/client";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
-import { Bounce, toast } from "react-toastify";
 import { account, category, paymentType } from "../utils/constants";
+import customToastFunction from "./Toastify";
 // import { useEffect } from "react";
 // import { transactions } from "../../../backend/dummyData/data";
 
@@ -56,30 +57,9 @@ const TransactionForm = () => {
       });
       form.reset();
       refetch();
-      toast(`Transaction added! 🥳`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        className: "font-bold",
-      });
+      customToastFunction("Transaction added! 🥳", "top-center", "light", "");
     } catch (error) {
-      toast.error(`${error}`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      customToastFunction(`${error}`, "top-center", "colored", "error");
     }
   };
 

@@ -1,7 +1,6 @@
 import { FaTrash } from "react-icons/fa";
 import { HiPencilAlt } from "react-icons/hi";
 // import { Link } from "react-router-dom";
-import { Bounce, toast } from "react-toastify";
 import { useMutation } from "@apollo/client";
 import { motion } from "motion/react";
 
@@ -10,20 +9,8 @@ import { DELETE_TRANSACTION } from "../../graphql/mutations/transaction.mutation
 import { NumericFormat } from "react-number-format";
 import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
 import DynamicIcon from "../DynamicIcon";
-
-const accountColorMap = {
-  Saving: "text-green-800",
-  Expense: "text-red-800",
-  Investment: "text-orange-800",
-  Income: "text-blue-800",
-};
-
-const accountColorBgMap = {
-  Saving: "bg-green-500/10",
-  Expense: "bg-rose-500/10",
-  Investment: "bg-orange-500/10",
-  Income: "bg-blue-500/10",
-};
+import { accountColorBgMap, accountColorMap } from "../../utils/constants";
+import customToastFunction from "../Toastify";
 
 const Card = ({
   transactionData,
@@ -63,30 +50,9 @@ const Card = ({
           transactionId: transactionData._id,
         },
       });
-      toast(`❌👋 POOF!! Gone`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        className: "font-bold",
-      });
+      customToastFunction(`❌👋 POOF!! Gone`, "top-center", "light", "");
     } catch (error) {
-      toast.error(`${error}`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      customToastFunction(`${error}`, "top-center", "colored", "");
     }
   };
 

@@ -3,16 +3,16 @@ import { motion } from "motion/react";
 import { useMutation, useQuery } from "@apollo/client";
 import { LOGOUT } from "../../graphql/mutations/user.mutation";
 import { GET_AUTHENTICATED_USER } from "../../graphql/queries/user.query";
-import { Bounce, toast } from "react-toastify";
 
 import { TiChevronRightOutline } from "react-icons/ti";
 import { BiPieChart } from "react-icons/bi";
 import { GrTransaction } from "react-icons/gr";
 import { TbPower, TbReportAnalytics, TbUser } from "react-icons/tb";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
+import customToastFunction from "../Toastify";
 
 const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
   const [logout, { client }] = useMutation(LOGOUT, {
     refetchQueries: ["GetAuthenticatedUser"],
@@ -22,32 +22,16 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     try {
-      toast(`🥲👋 BYE BYE ${authData?.authUser?.username}`, {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        className: "font-bold",
-      });
+      customToastFunction(
+        `🥲👋 BYE BYE ${authData?.authUser?.username}`,
+        "bottom-left",
+        "light",
+        "",
+      );
       await logout();
       client.resetStore(); //clears the cache
     } catch (error) {
-      toast.error(`${error}`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      customToastFunction(`${error}`, "top-center", "colored", "error");
     }
   };
   return (
@@ -85,60 +69,21 @@ const Sidebar = () => {
         Navigation
       </h4>
       <nav className="mb-auto flex flex-col gap-6">
-        <motion.div
-          whileHover={{
-            scale: 1.05,
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <NavLink
-            className={({ isActive, isPending }) =>
-              `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
-            }
-            to="/"
-          >
-            <BiPieChart className="mr-1 ml-2 h-5 w-5" />
-            <span className="font-roboto ml-2 text-lg tracking-tighter">
-              Dashboard
-            </span>
-          </NavLink>
-        </motion.div>
-        <motion.div
-          whileHover={{
-            scale: 1.05,
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <NavLink
-            className={({ isActive, isPending }) =>
-              `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
-            }
-            to="/transactions"
-          >
-            <GrTransaction className="mr-1 ml-2 h-5 w-5" />
-            <span className="font-roboto ml-2 text-lg tracking-tighter">
-              Transactions
-            </span>
-          </NavLink>
-        </motion.div>
-        <motion.div
-          whileHover={{
-            scale: 1.05,
-          }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <NavLink
-            className={({ isActive, isPending }) =>
-              `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
-            }
-            to="/reports"
-          >
-            <TbReportAnalytics className="mr-1 ml-2 h-5 w-5" />
-            <span className="font-roboto ml-2 text-lg tracking-tighter">
-              Reports
-            </span>
-          </NavLink>
-        </motion.div>
+        <NavItem
+          navigateTo={"/"}
+          title={"Dashboard"}
+          icon={<BiPieChart className="mr-1 ml-2 h-5 w-5" />}
+        />
+        <NavItem
+          navigateTo={"/transactions"}
+          title={"Transactions"}
+          icon={<GrTransaction className="mr-1 ml-2 h-5 w-5" />}
+        />
+        <NavItem
+          navigateTo={"/reports"}
+          title={"Reports"}
+          icon={<TbReportAnalytics className="mr-1 ml-2 h-5 w-5" />}
+        />
       </nav>
       <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2 text-zinc-50">
         <div className="flex items-center justify-center gap-2">
@@ -163,6 +108,37 @@ const Sidebar = () => {
         </div>
       </footer>
     </div>
+  );
+};
+
+const NavItem = ({
+  navigateTo,
+  title,
+  icon,
+}: {
+  navigateTo: string;
+  title: string;
+  icon: ReactNode;
+}) => {
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.05,
+      }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <NavLink
+        className={({ isActive, isPending }) =>
+          `${isPending ? "text-blue-300" : isActive ? "text-zinc-50" : "text-zinc-500"} flex items-center justify-start transition-colors duration-400 ease-in-out`
+        }
+        to={navigateTo}
+      >
+        {icon}
+        <span className="font-roboto ml-2 text-lg tracking-tighter">
+          {title}
+        </span>
+      </NavLink>
+    </motion.div>
   );
 };
 

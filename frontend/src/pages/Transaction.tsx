@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { Bounce, toast } from "react-toastify";
 
 import {
   MdOutlineAccountBalanceWallet,
@@ -14,6 +13,8 @@ import { UPDATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { useNavigate, useParams } from "react-router-dom";
 import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
 import { account, category, paymentType } from "../utils/constants";
+import customToastFunction from "../components/Toastify";
+import { TransactionFormType } from "../types/types";
 
 const Transaction = () => {
   const { id } = useParams();
@@ -25,37 +26,17 @@ const Transaction = () => {
   });
 
   if (getErr) {
-    toast.error(`${getErr}`, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      transition: Bounce,
-    });
+    customToastFunction(`${getErr}`, "top-center", "colored", "error");
   }
 
   const [updateTransaction, { loading: updateLoading, error: updateErr }] =
     useMutation(UPDATE_TRANSACTION);
 
   if (updateErr) {
-    toast.error(`${updateErr}`, {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-      transition: Bounce,
-    });
+    customToastFunction(`${updateErr}`, "top-center", "colored", "error");
   }
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<TransactionFormType>({
     description: transactionData?.transaction?.description || "",
     paymentType: transactionData?.transaction?.paymentType || "",
     account: transactionData?.transaction?.account || "",
@@ -67,7 +48,7 @@ const Transaction = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const amount = parseFloat(formData.amount); //string to number
+    const amount = formData.amount; //check if string is given or number
     try {
       await updateTransaction({
         variables: {
@@ -78,31 +59,10 @@ const Transaction = () => {
           },
         },
       });
-      toast(`📝 Changes Made`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        className: "font-bold",
-      });
+      customToastFunction(`📝 Changes Made`, "top-center", "light", "");
       navigate("/");
     } catch (error) {
-      toast.error(`${error}`, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
+      customToastFunction(`${error}`, "top-center", "colored", "error");
     }
   };
 

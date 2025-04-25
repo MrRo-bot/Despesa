@@ -10,6 +10,16 @@ export interface TransactionObjectType {
   paymentType: string;
 }
 
+export interface TransactionFormType {
+  account: string;
+  amount: number;
+  category: string;
+  date: string;
+  description: string;
+  location: string;
+  paymentType: string;
+}
+
 export interface InvestmentObjectType {
   __typename: string;
   _id: string;

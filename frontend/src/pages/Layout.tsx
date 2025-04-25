@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import FullPageLoading from "../components/layout/FullPageLoading";
 
 const Layout = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const location = useLocation();
 
   useEffect(() => {
