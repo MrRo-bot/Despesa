@@ -103,7 +103,7 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="mb-4 flex items-center justify-start gap-5 rounded-full bg-zinc-50 p-2 text-lg"
+      className="mb-4 flex cursor-no-drop items-center justify-start gap-5 rounded-full bg-zinc-50 p-2 text-lg transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100"
     >
       <div
         className={`${dynamicCategoryColor(category)} grid aspect-square h-12 w-12 place-items-center rounded-full p-2`}
