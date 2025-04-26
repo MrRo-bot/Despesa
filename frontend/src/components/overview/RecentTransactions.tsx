@@ -62,9 +62,10 @@ const RecentTransactions = () => {
             <h4 className="my-3 text-xl font-bold text-zinc-900">Expenses</h4>
             <div className="flex flex-col gap-2">
               {!recentItems?.expenses?.length &&
-                new Array(6).fill(0).map(() => (
+                new Array(6).fill(0).map((_, i) => (
                   <>
                     <motion.li
+                      key={i}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{
@@ -132,9 +133,10 @@ const RecentTransactions = () => {
             </h4>
             <div className="flex flex-col gap-2">
               {!recentItems?.income?.length &&
-                new Array(6).fill(0).map(() => (
+                new Array(6).fill(0).map((_, i) => (
                   <>
                     <motion.li
+                      key={i}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{

@@ -2,8 +2,10 @@ import { TbChartPie, TbMoneybag, TbPlus } from "react-icons/tb";
 import { motion } from "motion/react";
 import { NumericFormat } from "react-number-format";
 import { NavLink } from "react-router-dom";
+import { BalancesType } from "../../types/types";
 
-const Balances = () => {
+const Balances = ({ balance }: { balance: BalancesType }) => {
+  console.log(balance);
   return (
     <div className="flex items-center gap-8">
       <motion.div
@@ -18,10 +20,10 @@ const Balances = () => {
           <TbMoneybag className="h-8 w-8 text-zinc-50" />
         </div>
         <div className="flex flex-col gap-1 text-zinc-900">
-          <h5 className="text-lg tracking-tight">Spending in Jul</h5>
+          <h5 className="text-lg tracking-tight">Total Savings</h5>
           <span className="flex gap-1 text-3xl">
             <NumericFormat
-              value={1250}
+              value={balance?.saving}
               thousandSeparator
               thousandsGroupStyle="lakh"
               displayType="text"
@@ -46,7 +48,7 @@ const Balances = () => {
 
           <span className="flex gap-1 text-3xl">
             <NumericFormat
-              value={1250}
+              value={balance?.investment}
               thousandSeparator
               thousandsGroupStyle="lakh"
               displayType="text"

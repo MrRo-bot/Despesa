@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { NumericFormat } from "react-number-format";
 
-const Header = () => {
+const Header = ({ total }: { total: string | number | null | undefined }) => {
   const location = useLocation();
 
   return (
@@ -30,7 +30,7 @@ const Header = () => {
         </span>
 
         <NumericFormat
-          value={120000}
+          value={total}
           thousandSeparator
           thousandsGroupStyle="lakh"
           displayType="text"

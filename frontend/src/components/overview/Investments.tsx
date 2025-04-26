@@ -11,7 +11,7 @@ import { NumericFormat } from "react-number-format";
 import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
 
 const Investments = () => {
-  const [recentInvest, setRecentInvest] = useState<[InvestmentObjectType]>();
+  const [recentInvest, setRecentInvest] = useState<InvestmentObjectType[]>();
   const { data: transaction } = useQuery(GET_TRANSACTIONS);
 
   useEffect(() => {
@@ -35,9 +35,10 @@ const Investments = () => {
         </h3>
         <ul className="flex flex-col items-center justify-center gap-4">
           {!recentInvest?.length &&
-            new Array(3).fill(0).map(() => (
+            new Array(3).fill(0).map((_, i) => (
               <>
                 <motion.li
+                  key={i}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{

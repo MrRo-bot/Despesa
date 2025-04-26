@@ -31,3 +31,10 @@ export interface InvestmentObjectType {
   location: string;
   paymentType: string;
 }
+
+export interface BalancesType {
+  income: number;
+  expense: number;
+  saving: number;
+  investment: number;
+}
