@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { Virtuoso } from "react-virtuoso";
 import { motion } from "motion/react";
 import { BiSearchAlt } from "react-icons/bi";
+import GridLoader from "react-spinners/GridLoader";
 
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import { TransactionObjectType } from "../types/types";
@@ -107,6 +108,9 @@ const Transactions = () => {
       </motion.div>
 
       <div className="flex h-[87.5%] w-full justify-between gap-5">
+        {!filteredTransactions?.length && (
+          <GridLoader size={24} className="mx-auto my-auto" color="#402094" />
+        )}
         {!transactionLoading && transaction?.transactions?.length > 0 && (
           <Virtuoso
             className="no-scrollbar h-full w-full"
