@@ -9,38 +9,87 @@ import {
   YAxis,
 } from "recharts";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 
 const Chart = () => {
-  const data = [
-    {
-      Month: "Jan",
-      Balance: 100,
-    },
-    {
-      Month: "Feb",
-      Balance: 3000,
-    },
-    {
-      Month: "Mar",
-      Balance: 2000,
-    },
-    {
-      Month: "Apr",
-      Balance: 2780,
-    },
-    {
-      Month: "May",
-      Balance: 1890,
-    },
-    {
-      Month: "Jun",
-      Balance: 2390,
-    },
-    {
-      Month: "Jul",
-      Balance: 3490,
-    },
-  ];
+  const [monthWiseExp, setMonthWiseExp] = useState([]);
+
+  const { data: transaction } = useQuery(GET_TRANSACTIONS);
+
+  useEffect(() => {
+    (() => {
+      const monthExp = {
+        Jan: 0,
+        Feb: 0,
+        Mar: 0,
+        Apr: 0,
+        May: 0,
+        Jun: 0,
+        Jul: 0,
+        Aug: 0,
+        Sep: 0,
+        Oct: 0,
+        Nov: 0,
+        Dec: 0,
+      };
+
+      // Create a new Date object
+      const today = new Date();
+      const sevenMonthsAgo = new Date();
+      sevenMonthsAgo.setMonth(today.getMonth() - 6); // Set to 6 months ago
+
+      // Format as YYYY-MM
+      const startDate = sevenMonthsAgo.toISOString().slice(0, 7);
+      const endDate = today.toISOString().slice(0, 7);
+
+      // Filter transactions within the last 6 months
+      const lastSixMonthTransactions = transaction?.transactions.filter(
+        (item: { date: string | number }) => {
+          const date = new Date(+item.date).toISOString().slice(0, 7);
+          return date >= startDate && date <= endDate;
+        },
+      );
+
+      // Sort by date in descending order and Group by month and sum the amounts
+      lastSixMonthTransactions
+        .sort((a: { date: string }, b: { date: string }) =>
+          b.date.localeCompare(a.date),
+        )
+        .map(
+          (item: {
+            date: string | number;
+            account: string;
+            amount: number;
+          }) => {
+            const date: string = new Intl.DateTimeFormat("en-US", {
+              month: "long",
+            })
+              .format(new Date(+item.date))
+              .slice(0, 3);
+            const amount: number = item.account === "Expense" ? item.amount : 0;
+
+            // @ts-expect-error: same ol string used as array index error
+            return (monthExp[date] += amount);
+          },
+        );
+
+      for (const mon in monthExp) {
+        // @ts-expect-error: same ol string used as array index error
+        if (monthExp[mon] > 0)
+          // @ts-expect-error: not known as of now
+          setMonthWiseExp((prev) => [
+            ...prev,
+            // @ts-expect-error: same ol string used as array index error
+            { Month: mon, Balance: monthExp[mon] },
+          ]);
+      }
+    })();
+  }, [transaction?.transactions]);
+
+  console.log(monthWiseExp);
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 100 }}
@@ -51,7 +100,7 @@ const Chart = () => {
       className="shadow-main h-[30vh] w-[90%] bg-zinc-50"
     >
       <h3 className="font-roboto mt-4 mb-3 ml-5 text-2xl text-zinc-900">
-        Balance History
+        Total of Expenses
       </h3>
       <ResponsiveContainer
         width="100%"
@@ -61,7 +110,7 @@ const Chart = () => {
         <AreaChart
           width={730}
           height={250}
-          data={data}
+          data={monthWiseExp}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <defs>

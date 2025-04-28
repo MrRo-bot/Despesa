@@ -58,10 +58,11 @@ const Layout = () => {
           <Sidebar />
           <main className="ml-80 h-screen w-full overflow-y-scroll">
             <Header
+              //@ts-expect-error: not recognizing number even though ive defined types and value is not string
               total={(
                 balance?.income +
                 balance?.saving -
-                balance?.expense
+                (balance?.expense + balance?.investment)
               ).toFixed(2)}
             />
             <Outlet context={balance} />

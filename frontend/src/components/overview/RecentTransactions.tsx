@@ -183,7 +183,7 @@ const RecentTransactions = () => {
                     )}
                   </div>
                   <div className="flex text-lg font-semibold text-green-700">
-                    -₹
+                    +₹
                     {inc.amount && (
                       <NumericFormat
                         value={inc.amount}

@@ -108,7 +108,7 @@ const Transactions = () => {
       </motion.div>
 
       <div className="flex h-[87.5%] w-full justify-between gap-5">
-        {!filteredTransactions?.length && (
+        {transactionLoading && (
           <GridLoader size={24} className="mx-auto my-auto" color="#402094" />
         )}
         {!transactionLoading && transaction?.transactions?.length > 0 && (
