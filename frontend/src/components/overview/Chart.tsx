@@ -88,8 +88,6 @@ const Chart = () => {
     })();
   }, [transaction?.transactions]);
 
-  console.log(monthWiseExp);
-
   return (
     <motion.div
       initial={{ opacity: 0, x: 100 }}
@@ -99,41 +97,45 @@ const Chart = () => {
       }}
       className="shadow-main h-[30vh] w-[90%] bg-zinc-50"
     >
-      <h3 className="font-roboto mt-4 mb-3 ml-5 text-2xl text-zinc-900">
+      <h3 className="mt-4 mb-3 ml-5 text-2xl font-roboto text-zinc-900">
         Total of Expenses
       </h3>
-      <ResponsiveContainer
-        width="100%"
-        height="100%"
-        className={"shadow-main bg-zinc-50"}
-      >
-        <AreaChart
-          width={730}
-          height={250}
-          data={monthWiseExp}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+      {monthWiseExp ? (
+        <ResponsiveContainer
+          width="100%"
+          height="100%"
+          className={"shadow-main bg-zinc-50"}
         >
-          <defs>
-            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#9f9fa9" stopOpacity={0.4} />
-              <stop offset="95%" stopColor="#9f9fa9" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <Label value="Balance History" offset={10} position="top" />
-          <CartesianGrid strokeDasharray="2 2" />
-          <XAxis dataKey="Month" />
-          <YAxis dataKey="Balance" />
-          <Tooltip labelClassName="text-slate-600 font-roboto font-medium" />
+          <AreaChart
+            width={730}
+            height={250}
+            data={monthWiseExp}
+            margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+          >
+            <defs>
+              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#9f9fa9" stopOpacity={0.4} />
+                <stop offset="95%" stopColor="#9f9fa9" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <Label value="Balance History" offset={10} position="top" />
+            <CartesianGrid strokeDasharray="2 2" />
+            <XAxis dataKey="Month" />
+            <YAxis dataKey="Balance" />
+            <Tooltip labelClassName="text-slate-600 font-roboto font-medium" />
 
-          <Area
-            type="monotone"
-            dataKey="Balance"
-            stroke="#52525b"
-            fillOpacity={1}
-            fill="url(#colorUv)"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
+            <Area
+              type="monotone"
+              dataKey="Balance"
+              stroke="#52525b"
+              fillOpacity={1}
+              fill="url(#colorUv)"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      ) : (
+        <div>Either haven't calculated data or data not available</div>
+      )}
     </motion.div>
   );
 };

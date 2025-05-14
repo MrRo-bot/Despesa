@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { NumericFormat } from "react-number-format";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { nanoid } from "nanoid";
 
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 import DynamicIcon from "../DynamicIcon";
@@ -62,10 +63,10 @@ const RecentTransactions = () => {
             <h4 className="my-3 text-xl font-bold text-zinc-900">Expenses</h4>
             <div className="flex flex-col gap-2">
               {!recentItems?.expenses?.length &&
-                new Array(6).fill(0).map((_, i) => (
+                new Array(6).fill(0).map(() => (
                   <>
                     <motion.li
-                      key={i}
+                      key={nanoid()}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{
@@ -133,10 +134,10 @@ const RecentTransactions = () => {
             </h4>
             <div className="flex flex-col gap-2">
               {!recentItems?.income?.length &&
-                new Array(6).fill(0).map((_, i) => (
+                new Array(6).fill(0).map(() => (
                   <>
                     <motion.li
-                      key={i}
+                      key={nanoid()}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{

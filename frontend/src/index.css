@@ -2,9 +2,9 @@
 
 @plugin "daisyui";
 
-* {
-  /* outline: 0.1px solid green; */
-}
+/* * {
+  outline: 0.1px solid green;
+} */
 
 @theme {
   --font-roboto: "Roboto Mono";

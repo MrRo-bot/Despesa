@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { motion } from "motion/react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { nanoid } from "nanoid";
 
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 import { InvestmentObjectType } from "../../types/types";
@@ -35,10 +36,10 @@ const Investments = () => {
         </h3>
         <ul className="flex flex-col items-center justify-center gap-4">
           {!recentInvest?.length &&
-            new Array(3).fill(0).map((_, i) => (
+            new Array(3).fill(0).map(() => (
               <>
                 <motion.li
-                  key={i}
+                  key={nanoid()}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{
