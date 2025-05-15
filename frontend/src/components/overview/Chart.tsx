@@ -53,27 +53,30 @@ const Chart = () => {
       );
 
       // Sort by date in descending order and Group by month and sum the amounts
-      lastSixMonthTransactions
-        .sort((a: { date: string }, b: { date: string }) =>
-          b.date.localeCompare(a.date),
-        )
-        .map(
-          (item: {
-            date: string | number;
-            account: string;
-            amount: number;
-          }) => {
-            const date: string = new Intl.DateTimeFormat("en-US", {
-              month: "long",
-            })
-              .format(new Date(+item.date))
-              .slice(0, 3);
-            const amount: number = item.account === "Expense" ? item.amount : 0;
+      if (lastSixMonthTransactions) {
+        lastSixMonthTransactions
+          .sort((a: { date: string }, b: { date: string }) =>
+            b.date.localeCompare(a.date),
+          )
+          .map(
+            (item: {
+              date: string | number;
+              account: string;
+              amount: number;
+            }) => {
+              const date: string = new Intl.DateTimeFormat("en-US", {
+                month: "long",
+              })
+                .format(new Date(+item.date))
+                .slice(0, 3);
+              const amount: number =
+                item.account === "Expense" ? item.amount : 0;
 
-            // @ts-expect-error: same ol string used as array index error
-            return (monthExp[date] += amount);
-          },
-        );
+              // @ts-expect-error: same ol string used as array index error
+              return (monthExp[date] += amount);
+            },
+          );
+      }
 
       for (const mon in monthExp) {
         // @ts-expect-error: same ol string used as array index error
@@ -82,7 +85,7 @@ const Chart = () => {
           setMonthWiseExp((prev) => [
             ...prev,
             // @ts-expect-error: same ol string used as array index error
-            { Month: mon, Balance: monthExp[mon] },
+            { Month: mon, Total: monthExp[mon] },
           ]);
       }
     })();
@@ -121,12 +124,12 @@ const Chart = () => {
             <Label value="Balance History" offset={10} position="top" />
             <CartesianGrid strokeDasharray="2 2" />
             <XAxis dataKey="Month" />
-            <YAxis dataKey="Balance" />
+            <YAxis dataKey="Total" />
             <Tooltip labelClassName="text-slate-600 font-roboto font-medium" />
 
             <Area
               type="monotone"
-              dataKey="Balance"
+              dataKey="Total"
               stroke="#52525b"
               fillOpacity={1}
               fill="url(#colorUv)"
