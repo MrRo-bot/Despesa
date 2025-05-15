@@ -22,7 +22,7 @@ const RadioButton = ({
         <input
           name={name}
           type="radio"
-          className="appearance-none  h-5 w-5 cursor-pointer rounded-full border-4 border-[#274b52] transition-all checked:border-[#ffeba7]"
+          className="h-5 w-5 cursor-pointer appearance-none rounded-full border-4 border-[#274b52] transition-all checked:border-[#ffeba7]"
           id={id}
           value={value}
           onChange={onChange}

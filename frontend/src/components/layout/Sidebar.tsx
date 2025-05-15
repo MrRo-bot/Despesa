@@ -10,6 +10,8 @@ import { GrTransaction } from "react-icons/gr";
 import { TbPower, TbReportAnalytics, TbUser } from "react-icons/tb";
 import { ReactNode, useState } from "react";
 import customToastFunction from "../Toastify";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
@@ -35,79 +37,93 @@ const Sidebar = () => {
     }
   };
   return (
-    <div className="text-zinc fixed top-0 bottom-0 left-0 flex h-screen w-80 flex-col justify-start bg-zinc-900 bg-[url('./navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7">
-      <div
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        className={`absolute top-[2.20%] -right-[8%] cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${!isSidebarOpen && "rotate-y-180"} `}
-      >
-        <TiChevronRightOutline className="h-8 w-8 text-zinc-50" />
-      </div>
+    <SkeletonTheme
+      duration={1}
+      baseColor="rgba(220,220,220,0.2)"
+      customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
+    >
+      <div className="text-zinc fixed top-0 bottom-0 left-0 flex h-screen min-w-80 flex-col justify-start bg-zinc-900 bg-[url('./navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7">
+        <div
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className={`absolute top-[2.20%] -right-[8%] cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${!isSidebarOpen && "rotate-y-180"} `}
+        >
+          <TiChevronRightOutline className="w-8 h-8 text-zinc-50" />
+        </div>
 
-      <div className="flex h-20 w-full items-center justify-start gap-2">
-        <NavLink className="" to="/">
-          <img className="h-9" src="/logo.svg" alt="" />
-        </NavLink>
-        <NavLink className="ml-1 flex items-center" to="/">
-          <h1 className="font-roboto relative text-center text-3xl font-semibold tracking-tighter text-zinc-50">
-            Despesa
-          </h1>
-          <span className="mb-1 aspect-square h-6 w-4 overflow-clip text-center">
-            <div className="animate-currency flex flex-col text-zinc-50">
-              <motion.pre className="inline">$</motion.pre>
-              <motion.pre className="inline">₣</motion.pre>
-              <motion.pre className="inline">₩</motion.pre>
-              <motion.pre className="inline">€</motion.pre>
-              <motion.pre className="inline">₱</motion.pre>
-              <motion.pre className="inline">₹</motion.pre>
-              <motion.pre className="inline">₽</motion.pre>
-              <motion.pre className="inline">₿</motion.pre>
-            </div>
-          </span>
-        </NavLink>
-      </div>
-      <h4 className="mt-7 mb-6 text-sm tracking-tighter text-zinc-400">
-        Navigation
-      </h4>
-      <nav className="mb-auto flex flex-col gap-6">
-        <NavItem
-          navigateTo={"/"}
-          title={"Dashboard"}
-          icon={<BiPieChart className="mr-1 ml-2 h-5 w-5" />}
-        />
-        <NavItem
-          navigateTo={"/transactions"}
-          title={"Transactions"}
-          icon={<GrTransaction className="mr-1 ml-2 h-5 w-5" />}
-        />
-        <NavItem
-          navigateTo={"/reports"}
-          title={"Reports"}
-          icon={<TbReportAnalytics className="mr-1 ml-2 h-5 w-5" />}
-        />
-      </nav>
-      <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2 text-zinc-50">
-        <div className="flex items-center justify-center gap-2">
-          <div className="cursor-pointer rounded-lg bg-zinc-500 p-1">
-            {authData?.authUser ? (
-              <img
-                src={authData?.authUser?.profilePicture}
-                className="h-6 w-6"
-                alt=""
-              />
+        <div className="flex items-center justify-start w-full h-20 gap-2">
+          <NavLink className="" to="/">
+            <img className="h-9" src="/logo.svg" alt="" />
+          </NavLink>
+          <NavLink className="flex items-center ml-1" to="/">
+            <h1 className="relative text-3xl font-semibold tracking-tighter text-center font-roboto text-zinc-50">
+              Despesa
+            </h1>
+            <span className="w-4 h-6 mb-1 text-center aspect-square overflow-clip">
+              <div className="flex flex-col animate-currency text-zinc-50">
+                <motion.pre className="inline">$</motion.pre>
+                <motion.pre className="inline">₣</motion.pre>
+                <motion.pre className="inline">₩</motion.pre>
+                <motion.pre className="inline">€</motion.pre>
+                <motion.pre className="inline">₱</motion.pre>
+                <motion.pre className="inline">₹</motion.pre>
+                <motion.pre className="inline">₽</motion.pre>
+                <motion.pre className="inline">₿</motion.pre>
+              </div>
+            </span>
+          </NavLink>
+        </div>
+        <h4 className="mb-6 text-sm tracking-tighter mt-7 text-zinc-400">
+          Navigation
+        </h4>
+        <nav className="flex flex-col gap-6 mb-auto">
+          <NavItem
+            navigateTo={"/"}
+            title={"Dashboard"}
+            icon={<BiPieChart className="w-5 h-5 ml-2 mr-1" />}
+          />
+          <NavItem
+            navigateTo={"/transactions"}
+            title={"Transactions"}
+            icon={<GrTransaction className="w-5 h-5 ml-2 mr-1" />}
+          />
+          <NavItem
+            navigateTo={"/reports"}
+            title={"Reports"}
+            icon={<TbReportAnalytics className="w-5 h-5 ml-2 mr-1" />}
+          />
+        </nav>
+        <footer className="p-2 mx-auto my-2 border w-max rounded-xl border-zinc-300 text-zinc-50">
+          <div className="mb-2 text-sm font-bold font-roboto">
+            {!authData?.authUser?.username ? (
+              <Skeleton className="h-full min-w-18" />
             ) : (
-              <TbUser className="h-6 w-6" />
+              (authData?.authUser?.username || "").toUpperCase()
             )}
           </div>
+          <div className="flex items-center justify-center gap-2">
+            <div className="p-1 rounded-lg bg-zinc-500">
+              {!authData?.authUser?.profilePicture ? (
+                <TbUser className="w-6 h-6" />
+              ) : (
+                <img
+                  referrerPolicy="no-referrer"
+                  src={authData?.authUser?.profilePicture}
+                  className="w-6 h-6"
+                  alt=""
+                />
+              )}
+            </div>
 
-          <div className="cursor-pointer rounded-lg bg-red-500 p-1">
-            <TbPower
-              className="h-6 w-6 cursor-pointer"
-              onClick={handleLogout}
-            />
+            <div className="p-1 bg-red-500 rounded-lg cursor-pointer">
+              <TbPower
+                className="w-6 h-6 cursor-pointer"
+                onClick={handleLogout}
+              />
+            </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </SkeletonTheme>
   );
 };
 
@@ -134,7 +150,7 @@ const NavItem = ({
         to={navigateTo}
       >
         {icon}
-        <span className="font-roboto ml-2 text-lg tracking-tighter">
+        <span className="ml-2 text-lg tracking-tighter font-roboto">
           {title}
         </span>
       </NavLink>

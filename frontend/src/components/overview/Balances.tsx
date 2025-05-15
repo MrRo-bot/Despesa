@@ -4,6 +4,7 @@ import { NumericFormat } from "react-number-format";
 import { NavLink } from "react-router-dom";
 import { BalancesType } from "../../types/types";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Balances = ({ balance }: { balance: BalancesType }) => {
   return (
