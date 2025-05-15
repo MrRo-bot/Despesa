@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 const userResolver = {
   Mutation: {
     signUp: async (_: any, { input }: any, context: any) => {

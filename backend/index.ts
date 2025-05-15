@@ -13,10 +13,10 @@ import session from "express-session";
 import { buildContext } from "graphql-passport";
 import connectMongo from "connect-mongodb-session";
 
-import mergedResolvers from "./resolvers/index";
-import mergedTypeDefs from "./typeDefs/index";
-import { connectDB } from "./db/connectDB";
-import { configurePassport } from "./passport/passport.config";
+import mergedResolvers from "./resolvers/index.js";
+import mergedTypeDefs from "./typeDefs/index.js";
+import { connectDB } from "./db/connectDB.js";
+import { configurePassport } from "./passport/passport.config.js";
 
 dotenv.config();
 configurePassport();
@@ -56,7 +56,6 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-//@ts-ignore
 await server.start();
 
 app.use(
@@ -72,12 +71,10 @@ app.use(
   })
 );
 
-//@ts-ignore
 await new Promise<void>((resolve) =>
   httpServer.listen({ port: 4000 }, resolve)
 );
 
-//@ts-ignore
 await connectDB();
 
 console.log(`🚀 Server ready at http://localhost:4000/graphql`);
