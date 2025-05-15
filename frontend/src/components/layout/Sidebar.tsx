@@ -143,21 +143,45 @@ const Sidebar = ({
           </div>
           <h4 className="mb-6 ml-3 tracking-tighter mt-7 text-zinc-400">Nav</h4>
           <nav className="flex flex-col gap-6 mb-auto">
-            <NavItem
-              navigateTo={"/"}
-              title={""}
-              icon={<BiPieChart className="ml-2 mr-1 h-7 w-7" />}
-            />
-            <NavItem
-              navigateTo={"/transactions"}
-              title={""}
-              icon={<GrTransaction className="ml-2 mr-1 h-7 w-7" />}
-            />
-            <NavItem
-              navigateTo={"/reports"}
-              title={""}
-              icon={<TbReportAnalytics className="ml-2 mr-1 h-7 w-7" />}
-            />
+            <div className="tooltip tooltip-right">
+              <div className="tooltip-content shadow-main bg-zinc-800">
+                <div className="text-base font-black text-orange-400">
+                  Overview
+                </div>
+              </div>
+
+              <NavItem
+                navigateTo={"/"}
+                title={""}
+                icon={<BiPieChart className="ml-2 mr-1 h-7 w-7" />}
+              />
+            </div>
+            <div className="tooltip tooltip-right">
+              <div className="tooltip-content shadow-main bg-zinc-800">
+                <div className="text-base font-black text-orange-400">
+                  Transactions
+                </div>
+              </div>
+
+              <NavItem
+                navigateTo={"/transactions"}
+                title={""}
+                icon={<GrTransaction className="ml-2 mr-1 h-7 w-7" />}
+              />
+            </div>
+            <div className="tooltip tooltip-right">
+              <div className="tooltip-content shadow-main bg-zinc-800">
+                <div className="text-base font-black text-orange-400">
+                  Reports
+                </div>
+              </div>
+
+              <NavItem
+                navigateTo={"/reports"}
+                title={""}
+                icon={<TbReportAnalytics className="ml-2 mr-1 h-7 w-7" />}
+              />
+            </div>
           </nav>
           <footer className="p-2 mx-auto my-2 border w-max rounded-xl border-zinc-300 text-zinc-50">
             <div className="flex flex-col items-center justify-center gap-2">
@@ -173,12 +197,18 @@ const Sidebar = ({
                   />
                 )}
               </div>
-
-              <div className="p-1 bg-red-500 rounded-lg cursor-pointer">
-                <TbPower
-                  className="w-6 h-6 cursor-pointer"
-                  onClick={handleLogout}
-                />
+              <div className="tooltip tooltip-right">
+                <div className="tooltip-content shadow-main bg-zinc-800">
+                  <div className="text-base font-black text-orange-400">
+                    Logout
+                  </div>
+                </div>
+                <div className="p-1 bg-red-500 rounded-lg cursor-pointer">
+                  <TbPower
+                    className="w-6 h-6 cursor-pointer"
+                    onClick={handleLogout}
+                  />
+                </div>
               </div>
             </div>
           </footer>
