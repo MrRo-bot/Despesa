@@ -13,7 +13,7 @@ const Header = ({ total }: { total: number }) => {
       baseColor="rgba(220,220,220,0.2)"
       customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
     >
-      <header className="flex items-center justify-between w-full px-10 border-b h-18 border-b-zinc-800/40">
+      <header className="flex items-center justify-between w-full h-20 px-10 border-b border-b-zinc-800/40">
         <div>
           <motion.h1
             initial={{ opacity: 0, x: -400, scale: 0.5 }}

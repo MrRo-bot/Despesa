@@ -9,6 +9,7 @@ import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import { BalancesType } from "../types/types";
 
 const Layout = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
   const location = useLocation();
 
@@ -54,9 +55,12 @@ const Layout = () => {
       {!loading ? (
         <FullPageLoading />
       ) : (
-        <div className="no-scrollbar flex">
-          <Sidebar />
-          <main className="ml-80 h-screen w-full overflow-y-scroll">
+        <div className="flex w-screen no-scrollbar justify-stretch">
+          <Sidebar
+            sidebarStatus={isSidebarOpen}
+            sidebarSetter={setIsSidebarOpen}
+          />
+          <main className="w-full h-screen overflow-y-scroll">
             <Header
               //@ts-expect-error: not recognizing number even though ive defined types and value is not string
               total={(

@@ -101,7 +101,10 @@ const Chart = () => {
       className="shadow-main h-[30vh] w-[90%] bg-zinc-50"
     >
       <h3 className="mt-4 mb-3 ml-5 text-2xl font-roboto text-zinc-900">
-        Total of Expenses
+        Total of Expenses{" "}
+        <sub className="text-xs tracking-tighter text-zinc-500">
+          (past 6 months)
+        </sub>
       </h3>
       {monthWiseExp ? (
         <ResponsiveContainer
