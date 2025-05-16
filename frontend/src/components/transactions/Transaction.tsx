@@ -9,18 +9,13 @@ import {
   MdOutlineShareLocation,
 } from "react-icons/md";
 import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
-import { UPDATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
-import { useNavigate, useParams } from "react-router-dom";
-import { GET_TRANSACTION } from "../graphql/queries/transaction.query";
-import { account, category, paymentType } from "../utils/constants";
-import customToastFunction from "../components/Toastify";
-import { TransactionFormType } from "../types/types";
+import { UPDATE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
+import { GET_TRANSACTION } from "../../graphql/queries/transaction.query";
+import { account, category, paymentType } from "../../utils/constants";
+import customToastFunction from "../Toastify";
+import { TransactionFormType } from "../../types/types";
 
-const Transaction = () => {
-  const { id } = useParams();
-
-  const navigate = useNavigate();
-
+const Transaction = ({ id }: { id: string }) => {
   const { data: transactionData, error: getErr } = useQuery(GET_TRANSACTION, {
     variables: { id: id },
   });
@@ -41,38 +36,36 @@ const Transaction = () => {
     paymentType: transactionData?.transaction?.paymentType || "",
     account: transactionData?.transaction?.account || "",
     category: transactionData?.transaction?.category || "",
-    amount: transactionData?.transaction?.amount || "",
+    amount: transactionData?.transaction?.amount || 0,
     location: transactionData?.transaction?.location || "",
     date: transactionData?.transaction?.date || "",
   });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const amount = formData.amount; //check if string is given or number
     try {
       await updateTransaction({
         variables: {
           input: {
             ...formData,
-            amount,
             transactionId: id,
           },
         },
       });
+
       customToastFunction(`📝 Changes Made`, "top-center", "light", "");
-      navigate("/");
     } catch (error) {
       customToastFunction(`${error}`, "top-center", "colored", "error");
     }
   };
 
   const handleInputChange = (e: {
-    target: { name: string; value: string };
+    target: { name: string; value: string | number };
   }) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value,
+      [name]: name === "amount" ? +value : value,
     }));
   };
 
@@ -92,28 +85,30 @@ const Transaction = () => {
     }
   }, [transactionData]);
 
+  console.log(transactionData, formData);
+
   return (
-    <div className="mx-auto flex h-screen max-w-4xl flex-col items-center">
-      <p className="relative z-50 mr-4 mb-4 inline-block bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-center text-2xl font-bold text-transparent md:text-4xl lg:text-4xl">
+    <div className="flex flex-col items-center max-w-4xl gap-5 pt-5 pb-10 m-auto">
+      <h3 className="relative z-50 inline-block mx-auto text-2xl font-bold text-transparent bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text md:text-4xl lg:text-4xl">
         Update this transaction
-      </p>
+      </h3>
       <form
-        className="flex w-full max-w-xl flex-col gap-3 px-3"
+        className="flex flex-col w-full max-w-xl gap-3 px-3"
         onSubmit={handleSubmit}
       >
         {/* Description */}
         <div className="flex flex-wrap">
           <div className="w-full">
             <fieldset className="fieldset">
-              <legend className="fieldset-legend font-heading ml-8 text-lg">
+              <legend className="ml-8 text-lg fieldset-legend font-heading">
                 Description
               </legend>
               <div className="flex items-center gap-2">
-                <TbTransactionRupee className="h-6 w-6 text-indigo-400" />
+                <TbTransactionRupee className="w-6 h-6 text-indigo-400" />
                 <input
                   name="description"
                   type="text"
-                  className="input input-lg font-content grow tracking-wider"
+                  className="tracking-wider input input-lg font-content grow"
                   placeholder="Rent, Groceries, Salary, etc."
                   value={formData.description}
                   onChange={handleInputChange}
@@ -124,17 +119,17 @@ const Transaction = () => {
         </div>
         <div className="grid gap-3">
           {/* LOCATION */}
-          <div className="col-start-1 col-end-3 flex flex-wrap gap-3">
-            <div className="mb-6 w-full flex-1 md:mb-0">
-              <fieldset className="fieldset flex items-center">
-                <legend className="fieldset-legend font-heading ml-8 text-lg">
+          <div className="flex flex-wrap col-start-1 col-end-3 gap-3">
+            <div className="flex-1 w-full mb-6 md:mb-0">
+              <fieldset className="flex items-center fieldset">
+                <legend className="ml-8 text-lg fieldset-legend font-heading">
                   Location
                 </legend>
-                <MdOutlineShareLocation className="h-7 w-7 text-indigo-400" />
+                <MdOutlineShareLocation className="text-indigo-400 h-7 w-7" />
                 <input
                   name="location"
                   type="text"
-                  className="input-lg input font-content w-full grow tracking-wider"
+                  className="w-full tracking-wider input-lg input font-content grow"
                   placeholder="New York"
                   value={formData.location}
                   onChange={handleInputChange}
@@ -144,14 +139,18 @@ const Transaction = () => {
           </div>
 
           {/* Account */}
-          <div className="col-start-1 col-end-2 mb-6 w-full flex-1 md:mb-0">
+          <div className="flex-1 w-full col-start-1 col-end-2 mb-6 md:mb-0">
             <fieldset className="fieldset">
-              <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
+              <legend className="flex items-center ml-8 text-lg fieldset-legend font-heading">
                 Account
               </legend>
               <div className="flex items-center gap-2">
-                <MdOutlineAccountBalanceWallet className="h-7 w-7 text-indigo-400" />
-                <select name="account" className="select h-12 tracking-wider">
+                <MdOutlineAccountBalanceWallet className="text-indigo-400 h-7 w-7" />
+                <select
+                  name="account"
+                  className="h-12 tracking-wider select"
+                  defaultValue={formData.account}
+                >
                   <option disabled={true} className="tracking-wider">
                     Pick an option
                   </option>
@@ -166,14 +165,18 @@ const Transaction = () => {
           </div>
 
           {/* Category */}
-          <div className="col-start-1 col-end-2 mb-6 w-full flex-1 md:mb-0">
+          <div className="flex-1 w-full col-start-1 col-end-2 mb-6 md:mb-0">
             <fieldset className="fieldset">
-              <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
+              <legend className="flex items-center ml-8 text-lg fieldset-legend font-heading">
                 Category
               </legend>
               <div className="flex items-center gap-2">
-                <TbCategory className="h-7 w-7 text-indigo-400" />
-                <select name="category" className="select h-12 tracking-wider">
+                <TbCategory className="text-indigo-400 h-7 w-7" />
+                <select
+                  name="category"
+                  className="h-12 tracking-wider select"
+                  defaultValue={formData.category}
+                >
                   <option disabled={true} className="tracking-wider">
                     Pick an option
                   </option>
@@ -188,12 +191,12 @@ const Transaction = () => {
           </div>
 
           {/* DATE */}
-          <div className="col-start-2 col-end-3 w-full flex-1">
-            <fieldset className="fieldset flex items-center">
-              <legend className="fieldset-legend font-heading ml-8 text-lg">
+          <div className="flex-1 w-full col-start-2 col-end-3">
+            <fieldset className="flex items-center fieldset">
+              <legend className="ml-8 text-lg fieldset-legend font-heading">
                 Date
               </legend>
-              <TbCalendar className="h-7 w-7 text-indigo-400" />
+              <TbCalendar className="text-indigo-400 h-7 w-7" />
               <input
                 name="date"
                 type="date"
@@ -205,16 +208,17 @@ const Transaction = () => {
           </div>
 
           {/* PAYMENT TYPE */}
-          <div className="col-start-1 col-end-2 mb-6 w-full flex-1 md:mb-0">
+          <div className="flex-1 w-full col-start-1 col-end-2 mb-6 md:mb-0">
             <fieldset className="fieldset">
-              <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
+              <legend className="flex items-center ml-8 text-lg fieldset-legend font-heading">
                 Payment Type{" "}
               </legend>
               <div className="flex items-center gap-2">
-                <MdOutlinePayment className="h-7 w-7 text-indigo-400" />
+                <MdOutlinePayment className="text-indigo-400 h-7 w-7" />
                 <select
                   name="paymentType"
-                  className="select h-12 tracking-wider"
+                  className="h-12 tracking-wider select"
+                  defaultValue={formData.paymentType}
                 >
                   <option disabled={true} className="tracking-wider">
                     Pick an option
@@ -230,17 +234,17 @@ const Transaction = () => {
           </div>
 
           {/* AMOUNT */}
-          <div className="col-start-2 col-end-3 mb-6 w-full flex-1 md:mb-0">
+          <div className="flex-1 w-full col-start-2 col-end-3 mb-6 md:mb-0">
             <fieldset className="fieldset">
-              <legend className="fieldset-legend font-heading ml-8 flex items-center text-lg">
+              <legend className="flex items-center ml-8 text-lg fieldset-legend font-heading">
                 Amount{" "}
               </legend>
               <div className="flex items-center gap-2">
-                <MdOutlineCurrencyRupee className="h-7 w-7 text-indigo-400" />
+                <MdOutlineCurrencyRupee className="text-indigo-400 h-7 w-7" />
                 <input
                   name="amount"
-                  type="number"
-                  className="input validator input-lg font-content tracking-wider"
+                  type="text"
+                  className="tracking-wider input validator input-lg font-content"
                   required
                   placeholder="Eg. 120"
                   title="Amount"
@@ -258,7 +262,7 @@ const Transaction = () => {
           disabled={updateLoading}
           className="font-heading btn mx-auto mt-5 w-max rounded-xl border-[#591660] bg-[#622069] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
         >
-          <MdOutlinePostAdd className="h-5 w-5 text-indigo-400" />
+          <MdOutlinePostAdd className="w-5 h-5 text-indigo-400" />
           {updateLoading ? "loading..." : "Update Transaction"}
         </button>
       </form>

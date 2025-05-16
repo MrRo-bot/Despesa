@@ -11,6 +11,8 @@ import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
 import DynamicIcon from "../DynamicIcon";
 import { accountColorBgMap, accountColorMap } from "../../utils/constants";
 import customToastFunction from "../Toastify";
+import { useEffect, useRef, useState } from "react";
+import Transaction from "./Transaction";
 
 const Card = ({
   transactionData,
@@ -27,6 +29,7 @@ const Card = ({
   };
 }) => {
   const {
+    _id,
     description,
     paymentType,
     amount,
@@ -35,6 +38,31 @@ const Card = ({
     location,
     date,
   } = transactionData;
+
+  const [isOpen, setIsOpen] = useState(false);
+  const delDialogRef = useRef<HTMLDialogElement>(null);
+  const updDialogRef = useRef<HTMLDialogElement>(null);
+
+  const openModal = (e: { currentTarget: { id: string } }) => {
+    setIsOpen(true);
+    return e.currentTarget.id === "delete"
+      ? delDialogRef.current?.showModal()
+      : updDialogRef.current?.showModal();
+  };
+
+  const closeModal = (e: { currentTarget: { id: string } }) => {
+    setIsOpen(false);
+    return e.currentTarget.id === "delete"
+      ? delDialogRef.current?.close()
+      : updDialogRef.current?.close();
+  };
+
+  useEffect(() => {
+    if (updDialogRef.current?.open && !isOpen) updDialogRef.current?.close();
+    if (delDialogRef.current?.open && !isOpen) delDialogRef.current?.close();
+    if (updDialogRef.current?.open && isOpen) updDialogRef.current?.showModal();
+    if (delDialogRef.current?.open && isOpen) delDialogRef.current?.showModal();
+  }, [isOpen]);
 
   const [deleteTransaction, { loading: delLoading }] = useMutation(
     DELETE_TRANSACTION,
@@ -69,7 +97,7 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="mb-4 flex cursor-no-drop items-center justify-start gap-5 rounded-full bg-zinc-50 p-2 text-lg transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100"
+      className="flex items-center justify-start gap-5 p-2 mb-4 text-lg transition-colors duration-100 ease-in-out rounded-full cursor-no-drop bg-zinc-50 hover:bg-pink-100 focus:bg-pink-100"
     >
       <div
         className={`${dynamicCategoryColor(category)} grid aspect-square h-12 w-12 place-items-center rounded-full p-2`}
@@ -119,14 +147,51 @@ const Card = ({
       </div>
       <div className="flex w-[6%] items-center justify-center gap-2">
         {!delLoading && (
-          <FaTrash
-            onClick={handleDelete}
-            className={"cursor-pointer text-rose-500"}
-          />
+          <>
+            <button id="delete" onClick={openModal}>
+              <FaTrash className={"cursor-pointer text-rose-500"} />
+            </button>
+            <dialog ref={delDialogRef} className="modal">
+              <div className="modal-box shadow-main flex aspect-square h-2/12 w-2/12 flex-col justify-between bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat">
+                <h3 className="mx-auto text-2xl font-black text-transparent max-w-max bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text">
+                  Are you SURE!!!!
+                </h3>
+
+                <form method="dialog">
+                  <div className="flex items-center justify-center gap-3 mx-auto max-w-max">
+                    <button
+                      className="font-black btn font-roboto shadow-main bg-zinc-100 text-zinc-900/80 active:shadow-none"
+                      onClick={handleDelete}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className="font-black btn font-roboto shadow-main bg-zinc-100 text-zinc-900/80 active:shadow-none"
+                      onClick={closeModal}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </dialog>
+          </>
         )}
-        {/* <Link to={`/transaction/${transactionData._id}`}> */}
-        <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
-        {/* </Link> */}
+
+        <button id="update" onClick={openModal}>
+          <HiPencilAlt className="text-yellow-600 cursor-pointer" size={20} />
+        </button>
+        <dialog ref={updDialogRef} className="modal">
+          <div className="modal-box shadow-main flex max-h-max flex-col bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat pt-10">
+            {isOpen && <Transaction id={_id} />}
+            <button
+              className="absolute btn btn-sm btn-circle btn-secondary top-2 right-2"
+              onClick={closeModal}
+            >
+              ✕
+            </button>
+          </div>
+        </dialog>
       </div>
     </motion.div>
   );
