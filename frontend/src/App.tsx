@@ -7,7 +7,7 @@ import Error from "./pages/Error";
 import Authentication from "./pages/Authentication";
 import Overview from "./pages/Overview";
 import Layout from "./pages/Layout";
-import TransactionForm from "./components/TransactionForm";
+import TransactionForm from "./pages/TransactionForm";
 import Reports from "./pages/Reports";
 
 function App() {

@@ -61,7 +61,7 @@ const Transactions = () => {
 
   return (
     <div className="mx-auto h-[90vh] w-[95%]">
-      <div className="flex items-center py-4">
+      <div className="flex items-center pt-8 pb-4">
         <motion.div
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -94,7 +94,7 @@ const Transactions = () => {
         initial={{ opacity: 0, x: 400, scale: 0.5 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ duration: 0.6, type: "spring" }}
-        className="flex items-center justify-start gap-5 px-2 py-1 mb-4 text-lg font-bold rounded-full font-roboto shadow-main bg-violet-200 text-zinc-900/80"
+        className="font-roboto shadow-main mb-4 flex items-center justify-start gap-5 rounded-full bg-violet-200 px-2 py-1 text-lg font-bold text-zinc-900/80"
       >
         <div className="w-[3.25%]">Icon</div>
         <div className="w-[22%]">Description</div>
@@ -113,7 +113,7 @@ const Transactions = () => {
         )}
         {!transactionLoading && transaction?.transactions?.length > 0 && (
           <Virtuoso
-            className="w-full h-full no-scrollbar"
+            className="no-scrollbar h-full w-full"
             totalCount={filteredTransactions?.length}
             data={filteredTransactions}
             itemContent={(_, t: TransactionObjectType) => (
@@ -122,7 +122,7 @@ const Transactions = () => {
             components={{
               Footer: function Footer() {
                 return (
-                  <div className="text-xl font-black text-center text-zinc-600">
+                  <div className="text-center text-xl font-black text-zinc-600">
                     End of transactions
                   </div>
                 );

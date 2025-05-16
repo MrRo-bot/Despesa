@@ -97,7 +97,7 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="flex items-center justify-start gap-5 p-2 mb-4 text-lg transition-colors duration-100 ease-in-out rounded-full cursor-no-drop bg-zinc-50 hover:bg-pink-100 focus:bg-pink-100"
+      className="mb-4 flex cursor-no-drop items-center justify-start gap-5 rounded-full bg-zinc-50 p-2 text-lg transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100"
     >
       <div
         className={`${dynamicCategoryColor(category)} grid aspect-square h-12 w-12 place-items-center rounded-full p-2`}
@@ -152,21 +152,23 @@ const Card = ({
               <FaTrash className={"cursor-pointer text-rose-500"} />
             </button>
             <dialog ref={delDialogRef} className="modal">
-              <div className="modal-box shadow-main flex aspect-square h-2/12 w-2/12 flex-col justify-between bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat">
-                <h3 className="mx-auto text-2xl font-black text-transparent max-w-max bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text">
-                  Are you SURE!!!!
-                </h3>
+              <div className="modal-box shadow-main flex aspect-square h-[25%] w-1/6 flex-col justify-around bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat">
+                <div className="mx-auto w-max rounded-full bg-zinc-900/10 px-4 py-1">
+                  <h3 className="bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text text-2xl font-black text-transparent">
+                    Are you SURE!!!!
+                  </h3>
+                </div>
 
                 <form method="dialog">
-                  <div className="flex items-center justify-center gap-3 mx-auto max-w-max">
+                  <div className="mx-auto flex max-w-max items-center justify-center gap-3">
                     <button
-                      className="font-black btn font-roboto shadow-main bg-zinc-100 text-zinc-900/80 active:shadow-none"
+                      className="font-roboto btn mx-auto mt-5 w-max rounded-xl border-[#591660] bg-[#622069] py-2 font-black text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
                       onClick={handleDelete}
                     >
                       Delete
                     </button>
                     <button
-                      className="font-black btn font-roboto shadow-main bg-zinc-100 text-zinc-900/80 active:shadow-none"
+                      className="font-roboto btn mx-auto mt-5 w-max rounded-xl border-[#591660] bg-[#622069] py-2 font-black text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
                       onClick={closeModal}
                     >
                       Cancel
@@ -179,13 +181,13 @@ const Card = ({
         )}
 
         <button id="update" onClick={openModal}>
-          <HiPencilAlt className="text-yellow-600 cursor-pointer" size={20} />
+          <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
         </button>
         <dialog ref={updDialogRef} className="modal">
-          <div className="modal-box shadow-main flex max-h-max flex-col bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat pt-10">
+          <div className="modal-box shadow-main flex !min-w-[45rem] flex-col bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat pt-10">
             {isOpen && <Transaction id={_id} />}
             <button
-              className="absolute btn btn-sm btn-circle btn-secondary top-2 right-2"
+              className="btn btn-sm btn-circle btn-secondary absolute top-2 right-2"
               onClick={closeModal}
             >
               ✕
