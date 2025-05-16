@@ -10,7 +10,7 @@ import { NumericFormat } from "react-number-format";
 import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
 import DynamicIcon from "../DynamicIcon";
 import { accountColorBgMap, accountColorMap } from "../../utils/constants";
-import customToastFunction from "../Toastify";
+import customToastFunction from "../../utils/Toastify";
 import { useEffect, useRef, useState } from "react";
 import Transaction from "./Transaction";
 

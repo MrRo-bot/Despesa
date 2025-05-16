@@ -1,17 +1,20 @@
 import { motion } from "motion/react";
+import { ChangeEventHandler, FormEventHandler } from "react";
 import { TbLock, TbUserHeart } from "react-icons/tb";
 
-import InputField from "../InputField";
-
 const SignIn = ({
-  //@ts-expect-error: function
   handleSubmitLogin,
-  //@ts-expect-error: function
   handleLoginChange,
-  //@ts-expect-error: object containing username and password
   loginData,
-  //@ts-expect-error: boolean
   loginLoading,
+}: {
+  handleSubmitLogin: FormEventHandler<HTMLFormElement>;
+  handleLoginChange: ChangeEventHandler<HTMLInputElement>;
+  loginData: {
+    username: string;
+    password: string;
+  };
+  loginLoading: boolean;
 }) => {
   return (
     <div className="absolute top-0 left-0 flex h-full w-full flex-col justify-start rounded-md bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-[auto_100%] bg-bottom bg-no-repeat backface-hidden transform-3d">
@@ -27,16 +30,17 @@ const SignIn = ({
               className="relative mx-auto flex max-w-max items-center justify-center"
             >
               <TbUserHeart className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
-              <InputField
-                customStyle={{ paddingLeft: 50 + "px" }}
-                label=""
+
+              <input
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
                 id="username"
+                type="text"
                 name="username"
-                type=""
-                placeHolder="Your Username"
                 value={loginData.username}
                 onChange={handleLoginChange}
-                isRequired={false}
+                autoComplete="on"
+                placeholder="Your Username"
+                required
               />
             </motion.div>
             <motion.div
@@ -48,16 +52,17 @@ const SignIn = ({
               className="relative mx-auto mt-2 flex max-w-max items-center justify-center"
             >
               <TbLock className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
-              <InputField
-                customStyle={{ paddingLeft: 50 + "px" }}
-                label=""
+
+              <input
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
                 id="password"
+                type="password"
                 name="password"
-                type={"password"}
-                placeHolder="Your Password"
                 value={loginData.password}
                 onChange={handleLoginChange}
-                isRequired={false}
+                autoComplete="off"
+                placeholder="Your Password"
+                required
               />
             </motion.div>
             <button

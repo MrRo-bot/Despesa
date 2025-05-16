@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 import LoginHeader from "../components/authentication/LoginHeader";
 import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
-import customToastFunction from "../components/Toastify";
+import customToastFunction from "../utils/Toastify";
 import SignUp from "../components/authentication/SignUp";
 import SignIn from "../components/authentication/SignIn";
 

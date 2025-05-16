@@ -9,7 +9,7 @@ import { BiPieChart } from "react-icons/bi";
 import { GrTransaction } from "react-icons/gr";
 import { TbPower, TbReportAnalytics, TbUser } from "react-icons/tb";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
-import customToastFunction from "../Toastify";
+import customToastFunction from "../../utils/Toastify";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import NavItem from "./NavItem";

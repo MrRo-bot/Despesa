@@ -5,19 +5,23 @@ import {
   TbUser,
 } from "react-icons/tb";
 import { SiNamemc } from "react-icons/si";
-
-import RadioButton from "../RadioButton";
-import InputField from "../InputField";
+import { ChangeEventHandler, FormEventHandler } from "react";
 
 const SignUp = ({
-  //@ts-expect-error: function
   handleSubmitSignUp,
-  //@ts-expect-error: function
   handleSignUpChange,
-  //@ts-expect-error: object containing name, username, pass and gender
   signUpData,
-  //@ts-expect-error: boolean
   signUpLoading,
+}: {
+  handleSubmitSignUp: FormEventHandler<HTMLFormElement>;
+  handleSignUpChange: ChangeEventHandler<HTMLInputElement>;
+  signUpData: {
+    name: string;
+    username: string;
+    password: string;
+    gender: string;
+  };
+  signUpLoading: boolean;
 }) => {
   return (
     <div className="absolute top-0 left-0 flex h-full w-full rotate-y-180 flex-col justify-start rounded-md bg-[#170b35] bg-[url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg')] bg-[auto_100%] bg-bottom bg-no-repeat backface-hidden transform-3d">
@@ -26,70 +30,89 @@ const SignUp = ({
           <form className="" onSubmit={handleSubmitSignUp}>
             <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
               <SiNamemc className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
-              <InputField
-                customStyle={{ paddingLeft: 50 + "px" }}
-                label=""
+
+              <input
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
                 id="name"
+                type="text"
                 name="name"
-                type=""
-                placeHolder="Full name"
+                placeholder="Full name"
                 value={signUpData.name}
                 onChange={handleSignUpChange}
-                isRequired={false}
+                autoComplete="off"
               />
             </div>
 
             <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
               <TbUser className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
-              <InputField
-                customStyle={{ paddingLeft: 50 + "px" }}
-                label=""
+
+              <input
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
                 id="username"
+                type="text"
                 name="username"
-                type=""
-                placeHolder="Username"
                 value={signUpData.username}
                 onChange={handleSignUpChange}
-                isRequired={false}
+                placeholder="Your Username"
+                required
               />
             </div>
 
             <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
               <TbPassword className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
-              <InputField
-                customStyle={{ paddingLeft: 50 + "px" }}
-                label=""
+
+              <input
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
                 id="password"
-                name="password"
                 type="password"
-                placeHolder="Password"
+                name="password"
                 value={signUpData.password}
                 onChange={handleSignUpChange}
-                isRequired={false}
+                autoComplete="off"
+                placeholder="Your Password"
+                required
               />
             </div>
             <div className="mt-4 flex justify-center gap-10">
               <div className="flex items-center gap-2">
                 <TbGenderMale className="h-7 w-7 text-[#ffeba7]" />
-                <RadioButton
-                  id="male"
-                  label=""
-                  name="gender"
-                  value="male"
-                  onChange={handleSignUpChange}
-                  checked={signUpData.gender === "male"}
-                />
+
+                <div className="inline-flex items-center">
+                  <label
+                    className="relative flex cursor-pointer items-center rounded-full p-3"
+                    htmlFor="male"
+                  >
+                    <input
+                      name="gender"
+                      type="radio"
+                      className="h-5 w-5 cursor-pointer appearance-none rounded-full border-4 border-[#274b52] transition-all checked:border-[#ffeba7]"
+                      id="male"
+                      value="male"
+                      onChange={handleSignUpChange}
+                      checked={signUpData.gender === "male"}
+                    />
+                  </label>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <TbGenderFemale className="h-7 w-7 text-[#ffeba7]" />
-                <RadioButton
-                  id="female"
-                  label=""
-                  name="gender"
-                  value="female"
-                  onChange={handleSignUpChange}
-                  checked={signUpData.gender === "female"}
-                />
+
+                <div className="inline-flex items-center">
+                  <label
+                    className="relative flex cursor-pointer items-center rounded-full p-3"
+                    htmlFor="female"
+                  >
+                    <input
+                      name="gender"
+                      type="radio"
+                      className="h-5 w-5 cursor-pointer appearance-none rounded-full border-4 border-[#274b52] transition-all checked:border-[#ffeba7]"
+                      id="female"
+                      value="female"
+                      onChange={handleSignUpChange}
+                      checked={signUpData.gender === "female"}
+                    />
+                  </label>
+                </div>
               </div>
             </div>
 

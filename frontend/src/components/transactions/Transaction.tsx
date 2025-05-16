@@ -12,7 +12,7 @@ import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { UPDATE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
 import { GET_TRANSACTION } from "../../graphql/queries/transaction.query";
 import { account, category, paymentType } from "../../utils/constants";
-import customToastFunction from "../Toastify";
+import customToastFunction from "../../utils/Toastify";
 import { TransactionFormType } from "../../types/types";
 
 const Transaction = ({ id }: { id: string }) => {

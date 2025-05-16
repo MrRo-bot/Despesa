@@ -12,7 +12,7 @@ import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import { account, category, paymentType } from "../utils/constants";
-import customToastFunction from "../components/Toastify";
+import customToastFunction from "../utils/Toastify";
 import { useNavigate } from "react-router-dom";
 // import { useEffect } from "react";
 // import { transactions } from "../../../backend/dummyData/data";
@@ -238,7 +238,7 @@ const TransactionForm = () => {
         <button
           type="submit"
           onClick={() => navigate("/")}
-          className="font-roboto btn mx-auto mt-2 w-max rounded-xl border-[#591660] bg-[#622069] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
+          className="font-roboto btn mx-auto mt-2 w-max rounded-xl border-[#7b2185] bg-[#912f9c] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
         >
           <MdOutlineAddHome className="h-5 w-5 text-indigo-400" />
           Go Home
