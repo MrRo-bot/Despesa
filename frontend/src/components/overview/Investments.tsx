@@ -13,7 +13,7 @@ import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
 
 const Investments = () => {
   const [recentInvest, setRecentInvest] = useState<InvestmentObjectType[]>();
-  const { data: transaction } = useQuery(GET_TRANSACTIONS);
+  const { data: transaction, loading } = useQuery(GET_TRANSACTIONS);
 
   useEffect(() => {
     (async () => {
@@ -31,11 +31,11 @@ const Investments = () => {
       customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
     >
       <div className="mt-14">
-        <h3 className="mb-3 text-2xl tracking-tighter font-roboto text-zinc-900">
+        <h3 className="font-roboto mb-3 text-2xl tracking-tighter text-zinc-900">
           My Investments
         </h3>
         <ul className="flex flex-col items-center justify-center gap-4">
-          {!recentInvest?.length &&
+          {loading &&
             new Array(3).fill(0).map(() => (
               <motion.li
                 key={nanoid()}
@@ -44,11 +44,11 @@ const Investments = () => {
                 transition={{
                   delay: 0.2,
                 }}
-                className="flex items-center justify-start w-full gap-6 px-5 py-3 shadow-main bg-zinc-50"
+                className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3"
               >
-                <Skeleton className="w-12 h-12 aspect-square" />
+                <Skeleton className="aspect-square h-12 w-12" />
 
-                <div className="flex justify-start w-full">
+                <div className="flex w-full justify-start">
                   <div className="w-3/6">
                     <Skeleton className="max-w-1/2" />
                     <Skeleton className="max-w-1/3" />
@@ -71,7 +71,7 @@ const Investments = () => {
             return (
               <li
                 key={investment._id}
-                className="flex items-center justify-start w-full gap-6 px-5 py-3 shadow-main bg-zinc-50"
+                className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3"
               >
                 {investment.category && (
                   <div
@@ -80,7 +80,7 @@ const Investments = () => {
                     {<DynamicIcon icon={investment.category} />}
                   </div>
                 )}
-                <div className="flex justify-start w-full">
+                <div className="flex w-full justify-start">
                   {investment.description && (
                     <div className="w-3/6">
                       <h4 className="text-lg font-bold text-zinc-900">
@@ -120,6 +120,11 @@ const Investments = () => {
               </li>
             );
           })}
+          {!recentInvest?.length && (
+            <div className="text-2xl font-semibold text-zinc-900/70">
+              No Investments found
+            </div>
+          )}
         </ul>
       </div>
     </SkeletonTheme>

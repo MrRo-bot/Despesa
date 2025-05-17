@@ -5,8 +5,22 @@ import { NavLink } from "react-router-dom";
 import { BalancesType } from "../../types/types";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useEffect, useState } from "react";
 
 const Balances = ({ balance }: { balance: BalancesType }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => {
+      setLoading(false);
+      clearTimeout(timeout);
+    };
+  }, [balance]);
+
   return (
     <SkeletonTheme
       duration={1}
@@ -27,7 +41,8 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
           </div>
           <div className="flex flex-col gap-1 text-zinc-900">
             <h5 className="text-lg tracking-tight">Total Savings</h5>
-            {balance?.saving ? (
+
+            {balance?.saving > 0 && !loading ? (
               <span className="flex gap-1 text-3xl">
                 <NumericFormat
                   value={balance?.saving}
@@ -37,8 +52,10 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
                 />
                 ₹
               </span>
-            ) : (
+            ) : loading ? (
               <Skeleton className="h-full w-full" />
+            ) : (
+              balance?.saving === 0 && !loading && "..."
             )}
           </div>
         </motion.div>
@@ -55,7 +72,8 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
           </div>
           <div className="flex flex-col gap-1 text-zinc-50">
             <h5 className="text-lg tracking-tight">Total Investment</h5>
-            {balance?.investment ? (
+
+            {balance?.investment > 0 && !loading ? (
               <span className="flex gap-1 text-3xl">
                 <NumericFormat
                   value={balance?.investment}
@@ -65,8 +83,10 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
                 />
                 ₹
               </span>
-            ) : (
+            ) : loading ? (
               <Skeleton className="h-full w-full" />
+            ) : (
+              balance?.saving === 0 && !loading && "..."
             )}
           </div>
         </motion.div>

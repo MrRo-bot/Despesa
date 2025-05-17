@@ -111,6 +111,11 @@ const Transactions = () => {
         {transactionLoading && (
           <GridLoader size={24} className="mx-auto my-auto" color="#402094" />
         )}
+        {transaction?.transactions?.length === 0 && (
+          <div className="mx-auto text-xl font-black text-zinc-600">
+            No transactions found
+          </div>
+        )}
         {!transactionLoading && transaction?.transactions?.length > 0 && (
           <Virtuoso
             className="no-scrollbar h-full w-full"

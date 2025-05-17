@@ -39,7 +39,8 @@ const SignUp = ({
                 placeholder="Full name"
                 value={signUpData.name}
                 onChange={handleSignUpChange}
-                autoComplete="off"
+                autoComplete="on"
+                required
               />
             </div>
 
@@ -54,6 +55,7 @@ const SignUp = ({
                 value={signUpData.username}
                 onChange={handleSignUpChange}
                 placeholder="Your Username"
+                autoComplete="on"
                 required
               />
             </div>

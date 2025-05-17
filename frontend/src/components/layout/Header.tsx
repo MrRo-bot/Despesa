@@ -3,9 +3,22 @@ import { motion } from "motion/react";
 import { NumericFormat } from "react-number-format";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useEffect, useState } from "react";
 
 const Header = ({ total }: { total: number }) => {
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => {
+      setLoading(false);
+      clearTimeout(timeout);
+    };
+  }, [total]);
 
   return (
     <SkeletonTheme
@@ -35,7 +48,8 @@ const Header = ({ total }: { total: number }) => {
           <span className="text-md font-extrabold tracking-tighter">
             My Balance
           </span>
-          {total > 0 ? (
+
+          {total > 0 && !loading ? (
             <span className="flex items-center gap-2 text-2xl font-black text-pink-700">
               <NumericFormat
                 value={total}
@@ -46,8 +60,13 @@ const Header = ({ total }: { total: number }) => {
               />
               ₹
             </span>
-          ) : (
+          ) : loading ? (
             <Skeleton className="h-full min-w-18" />
+          ) : (
+            ""
+          )}
+          {parseInt(total) === 0 && !loading && (
+            <span className="min-w-18 text-end">{total}</span>
           )}
         </motion.div>
       </header>

@@ -17,7 +17,7 @@ const RecentTransactions = () => {
     expenses: [TransactionObjectType];
     income: [TransactionObjectType];
   }>();
-  const { data: transaction } = useQuery(GET_TRANSACTIONS);
+  const { data: transaction, loading } = useQuery(GET_TRANSACTIONS);
 
   useEffect(() => {
     (async () => {
@@ -46,9 +46,9 @@ const RecentTransactions = () => {
         transition={{
           delay: 0.2,
         }}
-        className="px-6 py-3 shadow-main bg-zinc-50"
+        className="shadow-main bg-zinc-50 px-6 py-3"
       >
-        <h3 className="mb-2 text-2xl tracking-tighter font-roboto text-zinc-900">
+        <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
           Recent Transactions
         </h3>
 
@@ -62,7 +62,7 @@ const RecentTransactions = () => {
           <div>
             <h4 className="my-3 text-xl font-bold text-zinc-900">Expenses</h4>
             <div className="flex flex-col gap-2">
-              {!recentItems?.expenses?.length &&
+              {loading &&
                 new Array(6).fill(0).map(() => (
                   <motion.li
                     key={nanoid()}
@@ -75,12 +75,12 @@ const RecentTransactions = () => {
                   >
                     <Skeleton className="aspect-square h-11 w-11" />
 
-                    <div className="flex justify-between w-full">
+                    <div className="flex w-full justify-between">
                       <div className="w-5/6">
                         <Skeleton className="max-w-4/6" />
                         <Skeleton className="max-w-1/3" />
                       </div>
-                      <div className="w-1/6 my-auto">
+                      <div className="my-auto w-1/6">
                         <Skeleton />
                       </div>
                     </div>
@@ -102,7 +102,7 @@ const RecentTransactions = () => {
                     )}
                     {expense.description && (
                       <div>
-                        <h5 className="-my-1 text-lg font-semibold line-clamp-1 text-zinc-900">
+                        <h5 className="-my-1 line-clamp-1 text-lg font-semibold text-zinc-900">
                           {expense.description}
                         </h5>
                         <p className="text-sm tracking-tight text-zinc-500">
@@ -124,6 +124,11 @@ const RecentTransactions = () => {
                   </div>
                 </div>
               ))}
+              {!recentItems?.expenses?.length && (
+                <div className="my-5 text-center text-lg font-semibold text-zinc-900/70 uppercase">
+                  No transactions found
+                </div>
+              )}
             </div>
           </div>
           <div className="mt-7">
@@ -131,7 +136,7 @@ const RecentTransactions = () => {
               Income & Savings
             </h4>
             <div className="flex flex-col gap-2">
-              {!recentItems?.income?.length &&
+              {loading &&
                 new Array(6).fill(0).map(() => (
                   <motion.li
                     key={nanoid()}
@@ -144,12 +149,12 @@ const RecentTransactions = () => {
                   >
                     <Skeleton className="aspect-square h-11 w-11" />
 
-                    <div className="flex justify-between w-full">
+                    <div className="flex w-full justify-between">
                       <div className="w-5/6">
                         <Skeleton className="max-w-4/6" />
                         <Skeleton className="max-w-1/3" />
                       </div>
-                      <div className="w-1/6 my-auto">
+                      <div className="my-auto w-1/6">
                         <Skeleton />
                       </div>
                     </div>
@@ -170,7 +175,7 @@ const RecentTransactions = () => {
                     )}
                     {inc.description && (
                       <div>
-                        <h5 className="-my-1 text-lg font-semibold line-clamp-1 text-zinc-900">
+                        <h5 className="-my-1 line-clamp-1 text-lg font-semibold text-zinc-900">
                           {inc.description}
                         </h5>
                         <p className="text-sm tracking-tight text-zinc-500">
@@ -192,6 +197,11 @@ const RecentTransactions = () => {
                   </div>
                 </div>
               ))}
+              {!recentItems?.income?.length && (
+                <div className="my-5 text-center text-lg font-semibold text-zinc-900/70 uppercase">
+                  No income & savings found
+                </div>
+              )}
             </div>
           </div>
         </div>

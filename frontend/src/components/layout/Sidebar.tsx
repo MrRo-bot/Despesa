@@ -108,7 +108,7 @@ const Sidebar = ({
               {!authData?.authUser?.username ? (
                 <Skeleton className="h-full min-w-18" />
               ) : (
-                (authData?.authUser?.username || "").toUpperCase()
+                (authData?.authUser?.name || "").toUpperCase()
               )}
             </div>
             <div className="flex items-center justify-center gap-2">

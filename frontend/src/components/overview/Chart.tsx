@@ -21,18 +21,18 @@ const Chart = () => {
   useEffect(() => {
     (() => {
       const monthExp = {
-        Jan: 0,
-        Feb: 0,
-        Mar: 0,
-        Apr: 0,
-        May: 0,
-        Jun: 0,
-        Jul: 0,
-        Aug: 0,
-        Sep: 0,
-        Oct: 0,
-        Nov: 0,
-        Dec: 0,
+        Jan: { total: 0, epochTime: 0 },
+        Feb: { total: 0, epochTime: 0 },
+        Mar: { total: 0, epochTime: 0 },
+        Apr: { total: 0, epochTime: 0 },
+        May: { total: 0, epochTime: 0 },
+        Jun: { total: 0, epochTime: 0 },
+        Jul: { total: 0, epochTime: 0 },
+        Aug: { total: 0, epochTime: 0 },
+        Sep: { total: 0, epochTime: 0 },
+        Oct: { total: 0, epochTime: 0 },
+        Nov: { total: 0, epochTime: 0 },
+        Dec: { total: 0, epochTime: 0 },
       };
 
       // Create a new Date object
@@ -73,24 +73,27 @@ const Chart = () => {
                 item.account === "Expense" ? item.amount : 0;
 
               // @ts-expect-error: same ol string used as array index error
-              return (monthExp[date] += amount);
+              return (monthExp[date] = {
+                // @ts-expect-error: same ol string used as array index error
+                total: monthExp[date].total + amount,
+                epochTime: item.date,
+              });
             },
           );
       }
-
       for (const mon in monthExp) {
         // @ts-expect-error: same ol string used as array index error
-        if (monthExp[mon] > 0)
+        if (monthExp[mon].total > 0)
           // @ts-expect-error: not known as of now
           setMonthWiseExp((prev) => [
             ...prev,
             // @ts-expect-error: same ol string used as array index error
-            { Month: mon, Total: monthExp[mon] },
+            { Month: mon, Total: monthExp[mon].total },
           ]);
       }
     })();
   }, [transaction?.transactions]);
-
+  // console.log(monthWiseExp);
   return (
     <motion.div
       initial={{ opacity: 0, x: 100 }}
@@ -98,15 +101,15 @@ const Chart = () => {
       transition={{
         delay: 0.2,
       }}
-      className="shadow-main h-[30vh] w-[90%] bg-zinc-50"
+      className="shadow-main max-h-[30vh] w-[90%] bg-zinc-50"
     >
-      <h3 className="mt-4 mb-3 ml-5 text-2xl font-roboto text-zinc-900">
+      <h3 className="font-roboto mt-4 mb-3 ml-5 text-2xl text-zinc-900">
         Total of Expenses{" "}
         <sub className="text-xs tracking-tighter text-zinc-500">
           (past 6 months)
         </sub>
       </h3>
-      {monthWiseExp ? (
+      {monthWiseExp.length > 0 ? (
         <ResponsiveContainer
           width="100%"
           height="100%"
@@ -140,7 +143,9 @@ const Chart = () => {
           </AreaChart>
         </ResponsiveContainer>
       ) : (
-        <div>Either haven't calculated data or data not available</div>
+        <div className="my-5 ml-5 text-center text-lg font-semibold text-zinc-900/70 uppercase">
+          Either haven't calculated data or data not available
+        </div>
       )}
     </motion.div>
   );
