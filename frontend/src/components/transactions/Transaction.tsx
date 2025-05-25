@@ -104,7 +104,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <input
                   name="description"
                   type="text"
-                  className="input input-lg font-content grow tracking-wider"
+                  className="input input-lg font-content grow rounded-full tracking-wider"
                   placeholder="Rent, Groceries, Salary, etc."
                   value={formData.description}
                   onChange={handleInputChange}
@@ -124,7 +124,7 @@ const Transaction = ({ id }: { id: string }) => {
               <input
                 name="location"
                 type="text"
-                className="input-lg input font-content w-full grow tracking-wider"
+                className="input-lg input font-content w-full grow rounded-full tracking-wider"
                 placeholder="New York"
                 value={formData.location}
                 onChange={handleInputChange}
@@ -143,7 +143,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <MdOutlineAccountBalanceWallet className="h-7 w-7 text-indigo-800" />
                 <select
                   name="account"
-                  className="select h-12 tracking-wider"
+                  className="select h-12 rounded-full tracking-wider"
                   defaultValue={formData.account}
                   onChange={handleInputChange}
                 >
@@ -170,7 +170,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <TbCategory className="h-7 w-7 text-indigo-800" />
                 <select
                   name="category"
-                  className="select h-12 tracking-wider"
+                  className="select h-12 rounded-full tracking-wider"
                   defaultValue={formData.category}
                   onChange={handleInputChange}
                 >
@@ -197,7 +197,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <MdOutlinePayment className="h-7 w-7 text-indigo-800" />
                 <select
                   name="paymentType"
-                  className="select h-12 tracking-wider"
+                  className="select h-12 rounded-full tracking-wider"
                   defaultValue={formData.paymentType}
                   onChange={handleInputChange}
                 >
@@ -225,7 +225,7 @@ const Transaction = ({ id }: { id: string }) => {
               <input
                 name="date"
                 type="date"
-                className="input input-lg font-content"
+                className="input input-lg font-content rounded-full"
                 value={formData.date}
                 onChange={handleInputChange}
               />
@@ -243,7 +243,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <input
                   name="amount"
                   type="text"
-                  className="input validator input-lg font-content tracking-wider"
+                  className="input validator input-lg font-content rounded-full tracking-wider"
                   required
                   placeholder="Eg. 120"
                   title="Amount"
@@ -259,7 +259,7 @@ const Transaction = ({ id }: { id: string }) => {
         <button
           type="submit"
           disabled={updateLoading}
-          className="font-roboto btn mx-auto mt-5 w-max rounded-xl border-[#591660] bg-[#622069] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
+          className="font-roboto btn mx-auto mt-5 w-max rounded-full border-[#591660] bg-[#622069] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
         >
           <MdOutlinePostAdd className="h-5 w-5 text-indigo-400" />
           {updateLoading ? "loading..." : "Update Transaction"}

@@ -374,7 +374,7 @@ const Reports = () => {
         });
       }
     }
-    console.log(monthWiseExp);
+
     //@ts-expect-error: {Month:string,Total:number,EpochTime:number}
     setMonthWiseExp(finalList.sort((a, b) => a.EpochTime - b.EpochTime));
 
@@ -383,14 +383,17 @@ const Reports = () => {
 
   return (
     <div className="h-[90vh] w-full p-5">
-      <div className="grid h-full grid-cols-[2fr_1fr_1fr_1fr] grid-rows-2 gap-3">
+      <div className="grid h-full grid-cols-[2fr_1fr_1fr_1fr] grid-rows-[1.25fr_1fr] gap-3">
+        {/* doughnut chart */}
         <div className="relative col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
-          <div className="pointer-events-none absolute top-0 right-0 flex rotate-6 flex-col items-center justify-center gap-1">
-            <div className="rounded-2xl bg-amber-400 px-4 py-1 text-center text-lg font-bold text-amber-950">
-              CLICK TO TOGGLE
+          {expCategoryMap.length && (
+            <div className="pointer-events-none absolute top-0 right-0 flex rotate-6 flex-col items-center justify-center gap-1">
+              <div className="rounded-2xl bg-amber-400 px-4 py-1 text-center text-lg font-bold text-amber-950">
+                CLICK TO TOGGLE
+              </div>
+              <GiLobArrow className="h-10 w-10 rotate-[105deg] text-amber-600" />
             </div>
-            <GiLobArrow className="h-10 w-10 rotate-[105deg] text-amber-600" />
-          </div>
+          )}
           {expCategoryMap.length ? (
             <Doughnut
               options={{
@@ -478,14 +481,15 @@ const Reports = () => {
             </div>
           )}
         </div>
-        <div className="relative col-start-2 col-end-5 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 px-2 shadow-sm shadow-zinc-50/70">
+        {/* bar chart */}
+        <div className="relative col-start-2 col-end-5 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
           {monthWiseExp.length ? (
             <Bar
               options={{
                 responsive: true,
                 maintainAspectRatio: false,
                 layout: {
-                  padding: 5,
+                  padding: 10,
                 },
                 plugins: {
                   legend: {
@@ -722,6 +726,7 @@ const Reports = () => {
             </div>
           )}
         </div>
+        {/* pie chart */}
         <div className="relative col-start-1 col-end-2 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
           {incCategoryMap.length ? (
             <Pie
@@ -782,12 +787,21 @@ const Reports = () => {
             </div>
           )}
         </div>
-        <div className="relative col-start-2 col-end-3 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 px-1 shadow-sm shadow-zinc-50/70">
+        {/* polarArea chart */}
+        <div className="relative col-start-2 col-end-3 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
           {accountMap.length ? (
             <PolarArea
               options={{
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                  padding: {
+                    top: 5,
+                    bottom: 5,
+                    left: 7,
+                    right: 7,
+                  },
+                },
                 plugins: {
                   legend: {
                     labels: {
@@ -893,112 +907,142 @@ const Reports = () => {
             </div>
           )}
         </div>
-        <div className="relative col-start-3 col-end-4 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 px-1 shadow-sm shadow-zinc-50/70">
-          <Line
-            options={{
-              responsive: true,
-              maintainAspectRatio: false,
-              scales: {
-                x: {
-                  beginAtZero: false,
-                  grid: {
-                    display: false,
-                  },
-                },
-                y: {
-                  grid: {
-                    display: false,
-                  },
-                },
-              },
-              interaction: {
-                intersect: false,
-                axis: "x",
-              },
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Income - Expense Ratio (Less is BETTER)",
+        {/* line chart */}
+        <div className="relative col-start-3 col-end-4 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
+          {monthWiseExp.length ? (
+            <Line
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
                   padding: {
-                    top: 10,
-                    bottom: 10,
+                    top: 5,
+                    bottom: 5,
+                    left: 7,
+                    right: 7,
                   },
                 },
-                legend: {
-                  labels: {
-                    font: { family: "Roboto Mono", weight: "bold" },
+                scales: {
+                  x: {
+                    beginAtZero: false,
+                    grid: {
+                      display: false,
+                    },
+                  },
+                  y: {
+                    grid: {
+                      display: false,
+                    },
                   },
                 },
-              },
-              elements: {
-                point: {
-                  radius: 0,
+                interaction: {
+                  intersect: false,
+                  axis: "x",
                 },
-              },
-            }}
-            data={{
-              labels: [...monthWiseExp.map((monExp) => monExp.Month)],
-              datasets: [
-                {
-                  label: "Ratio",
-                  data: [...monthWiseExp.map((monRatio) => monRatio.Ratio)],
-                  fill: true,
-                  tension: 0.4,
-                  borderColor: "transparent",
-                  backgroundColor: function (context) {
-                    const chart = context.chart;
-                    const { ctx, chartArea } = chart;
-                    let width: number,
-                      height: number,
-                      gradient: {
-                        addColorStop: (arg0: number, arg1: string) => void;
-                      };
-                    function getGradient(
-                      ctx: CanvasRenderingContext2D,
-                      chartArea: ChartArea,
-                    ) {
-                      const chartWidth = chartArea.right - chartArea.left;
-                      const chartHeight = chartArea.bottom - chartArea.top;
-                      if (
-                        !gradient ||
-                        width !== chartWidth ||
-                        height !== chartHeight
+                plugins: {
+                  title: {
+                    display: true,
+                    text: "Income - Expense Ratio (Less is BETTER)",
+                    padding: {
+                      top: 10,
+                      bottom: 10,
+                    },
+                  },
+                  legend: {
+                    labels: {
+                      font: { family: "Roboto Mono", weight: "bold" },
+                    },
+                  },
+                },
+                elements: {
+                  point: {
+                    radius: 0,
+                  },
+                },
+              }}
+              data={{
+                labels: [...monthWiseExp.map((monExp) => monExp.Month)],
+                datasets: [
+                  {
+                    label: "Ratio",
+                    data: [...monthWiseExp.map((monRatio) => monRatio.Ratio)],
+                    fill: true,
+                    tension: 0.4,
+                    borderColor: "transparent",
+                    backgroundColor: function (context) {
+                      const chart = context.chart;
+                      const { ctx, chartArea } = chart;
+                      let width: number,
+                        height: number,
+                        gradient: {
+                          addColorStop: (arg0: number, arg1: string) => void;
+                        };
+                      function getGradient(
+                        ctx: CanvasRenderingContext2D,
+                        chartArea: ChartArea,
                       ) {
-                        // Create the gradient because this is either the first render
-                        // or the size of the chart has changed
-                        width = chartWidth;
-                        height = chartHeight;
-                        gradient = ctx.createLinearGradient(
-                          0,
-                          chartArea.bottom,
-                          0,
-                          chartArea.top,
-                        );
-                        gradient.addColorStop(0, "oklch(0.398 0.195 277.366)");
-                        gradient.addColorStop(0.5, "oklch(0.459 0.187 3.815)");
-                        gradient.addColorStop(1, "oklch(0.459 1.187 3.815)");
+                        const chartWidth = chartArea.right - chartArea.left;
+                        const chartHeight = chartArea.bottom - chartArea.top;
+                        if (
+                          !gradient ||
+                          width !== chartWidth ||
+                          height !== chartHeight
+                        ) {
+                          // Create the gradient because this is either the first render
+                          // or the size of the chart has changed
+                          width = chartWidth;
+                          height = chartHeight;
+                          gradient = ctx.createLinearGradient(
+                            0,
+                            chartArea.bottom,
+                            0,
+                            chartArea.top,
+                          );
+                          gradient.addColorStop(
+                            0,
+                            "oklch(0.398 0.195 277.366)",
+                          );
+                          gradient.addColorStop(
+                            0.5,
+                            "oklch(0.459 0.187 3.815)",
+                          );
+                          gradient.addColorStop(1, "oklch(0.459 1.187 3.815)");
+                        }
+
+                        return gradient;
                       }
 
-                      return gradient;
-                    }
-
-                    if (!chartArea) {
-                      // This case happens on initial chart load
-                      return;
-                    }
-                    return getGradient(ctx, chartArea);
+                      if (!chartArea) {
+                        // This case happens on initial chart load
+                        return;
+                      }
+                      return getGradient(ctx, chartArea);
+                    },
                   },
-                },
-              ],
-            }}
-          />
+                ],
+              }}
+            />
+          ) : (
+            <div className="text-center text-2xl font-semibold text-zinc-900/70">
+              No ratio found
+            </div>
+          )}
         </div>
-        <div className="relative col-start-4 col-end-5 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 px-1 shadow-sm shadow-zinc-50/70">
+        {/* polarArea chart */}
+        <div className="relative col-start-4 col-end-5 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
           {paymentMap.length ? (
             <PolarArea
               options={{
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                  padding: {
+                    top: 5,
+                    bottom: 5,
+                    left: 7,
+                    right: 7,
+                  },
+                },
                 plugins: {
                   legend: {
                     labels: {
