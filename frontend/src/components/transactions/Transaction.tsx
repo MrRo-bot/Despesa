@@ -20,6 +20,16 @@ const Transaction = ({ id }: { id: string }) => {
     variables: { id: id },
   });
 
+  const [formData, setFormData] = useState<TransactionFormType>({
+    description: transactionData?.transaction?.description || "",
+    paymentType: transactionData?.transaction?.paymentType || "",
+    account: transactionData?.transaction?.account || "",
+    category: transactionData?.transaction?.category || "",
+    amount: transactionData?.transaction?.amount || 0,
+    location: transactionData?.transaction?.location || "",
+    date: transactionData?.transaction?.date || "",
+  });
+
   if (getErr) {
     customToastFunction(`${getErr}`, "top-center", "colored", "error");
   }
@@ -30,16 +40,6 @@ const Transaction = ({ id }: { id: string }) => {
   if (updateErr) {
     customToastFunction(`${updateErr}`, "top-center", "colored", "error");
   }
-
-  const [formData, setFormData] = useState<TransactionFormType>({
-    description: transactionData?.transaction?.description || "",
-    paymentType: transactionData?.transaction?.paymentType || "",
-    account: transactionData?.transaction?.account || "",
-    category: transactionData?.transaction?.category || "",
-    amount: transactionData?.transaction?.amount || 0,
-    location: transactionData?.transaction?.location || "",
-    date: transactionData?.transaction?.date || "",
-  });
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -52,7 +52,6 @@ const Transaction = ({ id }: { id: string }) => {
           },
         },
       });
-
       customToastFunction(`📝 Changes Made`, "top-center", "light", "");
     } catch (error) {
       customToastFunction(`${error}`, "top-center", "colored", "error");
@@ -146,6 +145,7 @@ const Transaction = ({ id }: { id: string }) => {
                   name="account"
                   className="select h-12 tracking-wider"
                   defaultValue={formData.account}
+                  onChange={handleInputChange}
                 >
                   <option disabled={true} className="tracking-wider">
                     Pick an option
@@ -172,6 +172,7 @@ const Transaction = ({ id }: { id: string }) => {
                   name="category"
                   className="select h-12 tracking-wider"
                   defaultValue={formData.category}
+                  onChange={handleInputChange}
                 >
                   <option disabled={true} className="tracking-wider">
                     Pick an option
@@ -198,6 +199,7 @@ const Transaction = ({ id }: { id: string }) => {
                   name="paymentType"
                   className="select h-12 tracking-wider"
                   defaultValue={formData.paymentType}
+                  onChange={handleInputChange}
                 >
                   <option disabled={true} className="tracking-wider">
                     Pick an option

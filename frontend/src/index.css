@@ -11,6 +11,9 @@
   --font-inconsolata: "Inconsolata";
   --animate-currency: autoScrolling 10s infinite cubic-bezier(1, 0, 0, 1);
   --shadow-main: hsla(0, 0%, 0%, 0.7) 3px 3px;
+  --color-lavender: hsl(267, 90%, 75%);
+  --color-light-yellow: hsl(41, 100%, 78%);
+  --color-rose: hsl(354, 100%, 78%);
 
   @keyframes autoScrolling {
     0%,

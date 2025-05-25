@@ -55,12 +55,12 @@ const Layout = () => {
       {!loading ? (
         <FullPageLoading />
       ) : (
-        <div className="flex w-screen no-scrollbar justify-stretch">
+        <div className="no-scrollbar flex w-screen justify-stretch">
           <Sidebar
             sidebarStatus={isSidebarOpen}
             sidebarSetter={setIsSidebarOpen}
           />
-          <main className="w-full h-screen overflow-y-scroll">
+          <main className="h-screen w-full overflow-y-scroll">
             <Header
               //@ts-expect-error: not recognizing number even though ive defined types and value is not string
               total={(

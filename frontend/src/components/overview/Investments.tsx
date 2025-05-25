@@ -30,8 +30,8 @@ const Investments = () => {
       baseColor="rgba(220,220,220,0.2)"
       customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
     >
-      <div className="mt-14">
-        <h3 className="font-roboto mb-3 text-2xl tracking-tighter text-zinc-900">
+      <div>
+        <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
           My Investments
         </h3>
         <ul className="flex flex-col items-center justify-center gap-4">
