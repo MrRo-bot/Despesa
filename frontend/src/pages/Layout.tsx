@@ -42,7 +42,7 @@ const Layout = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setLoading(true);
-    }, 500);
+    }, 1500);
 
     return () => {
       clearInterval(interval);

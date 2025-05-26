@@ -15,7 +15,7 @@ import { account, category, paymentType } from "../../utils/constants";
 import customToastFunction from "../../utils/Toastify";
 import { TransactionFormType } from "../../types/types";
 
-const Transaction = ({ id }: { id: string }) => {
+const UpdateTransaction = ({ id }: { id: string }) => {
   const { data: transactionData, error: getErr } = useQuery(GET_TRANSACTION, {
     variables: { id: id },
   });
@@ -104,7 +104,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <input
                   name="description"
                   type="text"
-                  className="input input-lg font-content grow rounded-full tracking-wider"
+                  className="input input-lg font-content grow rounded-full bg-gray-900/70 tracking-wider"
                   placeholder="Rent, Groceries, Salary, etc."
                   value={formData.description}
                   onChange={handleInputChange}
@@ -124,7 +124,7 @@ const Transaction = ({ id }: { id: string }) => {
               <input
                 name="location"
                 type="text"
-                className="input-lg input font-content w-full grow rounded-full tracking-wider"
+                className="input-lg input font-content w-full grow rounded-full bg-gray-900/70 tracking-wider"
                 placeholder="New York"
                 value={formData.location}
                 onChange={handleInputChange}
@@ -143,7 +143,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <MdOutlineAccountBalanceWallet className="h-7 w-7 text-indigo-800" />
                 <select
                   name="account"
-                  className="select h-12 rounded-full tracking-wider"
+                  className="select h-12 rounded-full bg-gray-900/70 tracking-wider"
                   defaultValue={formData.account}
                   onChange={handleInputChange}
                 >
@@ -170,7 +170,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <TbCategory className="h-7 w-7 text-indigo-800" />
                 <select
                   name="category"
-                  className="select h-12 rounded-full tracking-wider"
+                  className="select h-12 rounded-full bg-gray-900/70 tracking-wider"
                   defaultValue={formData.category}
                   onChange={handleInputChange}
                 >
@@ -197,7 +197,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <MdOutlinePayment className="h-7 w-7 text-indigo-800" />
                 <select
                   name="paymentType"
-                  className="select h-12 rounded-full tracking-wider"
+                  className="select h-12 rounded-full bg-gray-900/70 tracking-wider"
                   defaultValue={formData.paymentType}
                   onChange={handleInputChange}
                 >
@@ -225,7 +225,7 @@ const Transaction = ({ id }: { id: string }) => {
               <input
                 name="date"
                 type="date"
-                className="input input-lg font-content rounded-full"
+                className="input input-lg font-content rounded-full bg-gray-900/70"
                 value={formData.date}
                 onChange={handleInputChange}
               />
@@ -243,7 +243,7 @@ const Transaction = ({ id }: { id: string }) => {
                 <input
                   name="amount"
                   type="text"
-                  className="input validator input-lg font-content rounded-full tracking-wider"
+                  className="input validator input-lg font-content rounded-full bg-gray-900/70 tracking-wider"
                   required
                   placeholder="Eg. 120"
                   title="Amount"
@@ -268,4 +268,4 @@ const Transaction = ({ id }: { id: string }) => {
     </div>
   );
 };
-export default Transaction;
+export default UpdateTransaction;

@@ -10,6 +10,7 @@
   --font-roboto: "Roboto Mono";
   --font-inconsolata: "Inconsolata";
   --animate-currency: autoScrolling 10s infinite cubic-bezier(1, 0, 0, 1);
+  --animate-tick: tick 500ms infinite alternate;
   --shadow-main: hsla(0, 0%, 0%, 0.7) 3px 3px;
   --color-lavender: hsl(267, 90%, 75%);
   --color-light-yellow: hsl(41, 100%, 78%);
@@ -48,6 +49,15 @@
     91%,
     97.5% {
       transform: translate3d(0, -87.5%, 0);
+    }
+  }
+  @keyframes tick {
+    0% {
+      transform: rotate(30deg);
+    }
+
+    100% {
+      transform: rotate(-30deg);
     }
   }
 }

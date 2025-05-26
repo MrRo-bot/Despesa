@@ -104,7 +104,7 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
             </div>
             <div className="flex flex-col gap-1 text-zinc-50">
               <h5 className="text-xl tracking-tight">
-                Add
+                Add a
                 <br />
                 Transaction
               </h5>

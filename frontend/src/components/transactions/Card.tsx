@@ -12,7 +12,7 @@ import DynamicIcon from "../DynamicIcon";
 import { accountColorBgMap, accountColorMap } from "../../utils/constants";
 import customToastFunction from "../../utils/Toastify";
 import { useEffect, useRef, useState } from "react";
-import Transaction from "./Transaction";
+import UpdateTransaction from "./UpdateTransaction";
 
 const Card = ({
   transactionData,
@@ -185,7 +185,7 @@ const Card = ({
         </button>
         <dialog ref={updDialogRef} className="modal">
           <div className="modal-box shadow-main flex !min-w-[45rem] flex-col bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat pt-10">
-            {isOpen && <Transaction id={_id} />}
+            {isOpen && <UpdateTransaction id={_id} />}
             <button
               className="btn btn-sm btn-circle btn-secondary absolute top-2 right-2"
               onClick={closeModal}
