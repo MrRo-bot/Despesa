@@ -10,9 +10,26 @@ import Layout from "./pages/Layout";
 import TransactionForm from "./pages/TransactionForm";
 import Reports from "./pages/Reports";
 
+import { useLayoutEffect, useRef } from "react";
+import { useNavigatorOnLine } from "./hooks/useNavigatorOnline";
+import customToastFunction from "./utils/Toastify";
+
 function App() {
   const { data: authData } = useQuery(GET_AUTHENTICATED_USER);
-
+  const isOnline = useNavigatorOnLine();
+  const firstUpdate = useRef(true);
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    customToastFunction(
+      isOnline ? "We're back Online 🛜✔️" : "Offline 🛜❌",
+      "top-center",
+      "light",
+      "",
+    );
+  }, [isOnline]);
   return (
     <>
       <Routes>

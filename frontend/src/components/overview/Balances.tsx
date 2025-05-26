@@ -13,7 +13,7 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => {
       setLoading(false);

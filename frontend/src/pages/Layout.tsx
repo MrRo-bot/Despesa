@@ -43,7 +43,6 @@ const Layout = () => {
     const interval = setInterval(() => {
       setLoading(true);
     }, 1000);
-
     return () => {
       clearInterval(interval);
       setLoading(false);
