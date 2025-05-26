@@ -9,6 +9,7 @@ import { TransactionObjectType } from "../types/types";
 import Card from "../components/transactions/Card";
 import SortBy from "../components/transactions/SortBy";
 import OrderBy from "../components/transactions/OrderBy";
+import formatDate from "../utils/formatDate";
 
 const Transactions = () => {
   const [search, setSearch] = useState<string>("");
@@ -27,8 +28,12 @@ const Transactions = () => {
 
     if (search) {
       const filteredData = transaction?.transactions?.filter(
-        (item: { [s: string]: unknown } | ArrayLike<unknown>) => {
-          return Object.values(item)
+        (item: { [s: string]: string } | ArrayLike<string>) => {
+          const finalItems = [
+            ...Object.values(item).slice(0, -1),
+            formatDate(Object.values(item)[Object.values(item).length - 1]),
+          ];
+          return finalItems
             .join("")
             .toLowerCase()
             .includes(search.toLowerCase());
