@@ -152,7 +152,7 @@ const Card = ({
               <FaTrash className={"cursor-pointer text-rose-500"} />
             </button>
             <dialog ref={delDialogRef} className="modal">
-              <div className="modal-box shadow-main flex aspect-square h-[25%] w-1/6 flex-col justify-around bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat">
+              <div className="modal-box shadow-main flex aspect-square h-[25%] w-1/6 flex-col justify-around bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat">
                 <div className="mx-auto w-max rounded-full bg-zinc-900/10 px-4 py-1">
                   <h3 className="bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text text-2xl font-black text-transparent">
                     Are you SURE!!!!
@@ -184,7 +184,7 @@ const Card = ({
           <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
         </button>
         <dialog ref={updDialogRef} className="modal">
-          <div className="modal-box shadow-main flex !min-w-[45rem] flex-col bg-zinc-50 bg-[url('/bg_enhanced.png')] bg-cover bg-fixed bg-center bg-no-repeat pt-10">
+          <div className="modal-box shadow-main flex !min-w-[45rem] flex-col bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat pt-10">
             {isOpen && <UpdateTransaction id={_id} />}
             <button
               className="btn btn-sm btn-circle btn-secondary absolute top-2 right-2"
