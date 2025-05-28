@@ -7,7 +7,7 @@ import Error from "./pages/Error";
 import Authentication from "./pages/Authentication";
 import Overview from "./pages/Overview";
 import Layout from "./pages/Layout";
-import TransactionForm from "./pages/TransactionForm";
+import TransactionForm from "./pages/AddTransaction";
 import Reports from "./pages/Reports";
 
 import { useLayoutEffect, useRef } from "react";

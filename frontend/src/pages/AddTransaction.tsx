@@ -6,7 +6,7 @@ import {
   MdOutlinePostAdd,
   MdOutlineShareLocation,
 } from "react-icons/md";
-
+import { motion } from "motion/react";
 import { useMutation, useQuery } from "@apollo/client";
 import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
 import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
@@ -21,7 +21,7 @@ import { useState } from "react";
 // import { useEffect } from "react";
 // import { transactions } from "../../../backend/dummyData/data";
 
-const TransactionForm = () => {
+const AddTransaction = () => {
   const [formData, setFormData] = useState<TransactionFormType>({
     description: "",
     paymentType: "",
@@ -86,9 +86,14 @@ const TransactionForm = () => {
     <div className="flex h-[90vh] flex-col items-center justify-center">
       <div className="shadow-main flex min-w-1/2 flex-col gap-10 rounded-2xl bg-zinc-800/20 px-4 py-8">
         <div className="mx-auto rounded-full bg-zinc-900/10 px-4 py-1">
-          <h3 className="bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text text-2xl font-bold text-transparent md:text-4xl lg:text-4xl">
+          <motion.h3
+            initial={{ opacity: 0, y: -400, scale: 0.5 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, type: "spring" }}
+            className="bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text text-2xl font-bold text-transparent md:text-4xl lg:text-4xl"
+          >
             Add Transaction
-          </h3>
+          </motion.h3>
         </div>
         <form
           className="mx-auto flex w-full flex-col gap-10"
@@ -96,7 +101,12 @@ const TransactionForm = () => {
         >
           <div className="flex justify-between gap-2">
             {/* DESCRIPTION */}
-            <div className="w-4/6">
+            <motion.div
+              initial={{ opacity: 0, x: -400, scale: 0.5 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.1 }}
+              className="w-4/6"
+            >
               <Input
                 type="text"
                 title="description"
@@ -107,10 +117,15 @@ const TransactionForm = () => {
                 inputValue={formData?.description}
                 change={handleInputChange}
               />
-            </div>
+            </motion.div>
 
             {/* LOCATION */}
-            <div className="mb-6 w-full flex-1 md:mb-0">
+            <motion.div
+              initial={{ opacity: 0, x: 400, scale: 0.5 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.2 }}
+              className="mb-6 w-full flex-1 md:mb-0"
+            >
               <Input
                 type="text"
                 title="location"
@@ -121,12 +136,17 @@ const TransactionForm = () => {
                 inputValue={formData?.location}
                 change={handleInputChange}
               />
-            </div>
+            </motion.div>
           </div>
 
           <div className="flex justify-between gap-2">
             {/* ACCOUNT */}
-            <div className="mb-6 w-full flex-1 md:mb-0">
+            <motion.div
+              initial={{ opacity: 0, x: -400, scale: 0.5 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.3 }}
+              className="mb-6 w-full flex-1 md:mb-0"
+            >
               <SelectInput
                 title="account"
                 icon={
@@ -136,10 +156,15 @@ const TransactionForm = () => {
                 change={handleInputChange}
                 options={account}
               />
-            </div>
+            </motion.div>
 
             {/* CATEGORY */}
-            <div className="mb-6 w-full flex-1 md:mb-0">
+            <motion.div
+              initial={{ opacity: 0, y: 400, scale: 0.5 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
+              className="mb-6 w-full flex-1 md:mb-0"
+            >
               <SelectInput
                 title="category"
                 icon={<TbCategory className="h-7 w-7 text-indigo-800" />}
@@ -147,10 +172,15 @@ const TransactionForm = () => {
                 change={handleInputChange}
                 options={category}
               />
-            </div>
+            </motion.div>
 
             {/* PAYMENT TYPE */}
-            <div className="mb-6 w-full flex-1 md:mb-0">
+            <motion.div
+              initial={{ opacity: 0, x: 400, scale: 0.5 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.5 }}
+              className="mb-6 w-full flex-1 md:mb-0"
+            >
               <SelectInput
                 title="paymentType"
                 icon={<MdOutlinePayment className="h-7 w-7 text-indigo-800" />}
@@ -158,12 +188,17 @@ const TransactionForm = () => {
                 change={handleInputChange}
                 options={paymentType}
               />
-            </div>
+            </motion.div>
           </div>
 
           <div className="flex justify-between gap-2">
             {/* DATE */}
-            <div className="w-full flex-1">
+            <motion.div
+              initial={{ opacity: 0, x: -400, scale: 0.5 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.6 }}
+              className="w-full flex-1"
+            >
               <Input
                 type="date"
                 title="date"
@@ -171,10 +206,15 @@ const TransactionForm = () => {
                 inputValue={formData?.date}
                 change={handleInputChange}
               />
-            </div>
+            </motion.div>
 
             {/* AMOUNT */}
-            <div className="mb-6 w-full flex-1 md:mb-0">
+            <motion.div
+              initial={{ opacity: 0, x: 400, scale: 0.5 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.6, type: "spring", delay: 0.7 }}
+              className="mb-6 w-full flex-1 md:mb-0"
+            >
               <Input
                 type="text"
                 title="amount"
@@ -185,31 +225,37 @@ const TransactionForm = () => {
                 change={handleInputChange}
                 placeHolder="1500"
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* SUBMIT BUTTON */}
-          <button
+          <motion.button
+            initial={{ opacity: 0, y: 400, scale: 0.5 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.6, type: "spring", delay: 0.8 }}
             type="submit"
             disabled={createLoading}
             className="font-roboto btn mx-auto mt-2 w-max rounded-full border-[#591660] bg-[#622069] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
           >
             <MdOutlinePostAdd className="h-5 w-5 text-indigo-400" />
             {createLoading ? "loading..." : "Add Transaction"}
-          </button>
+          </motion.button>
         </form>
         {/* HOME BUTTON */}
-        <button
+        <motion.button
+          initial={{ opacity: 0, y: 400, scale: 0.5 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, type: "spring", delay: 0.9 }}
           type="submit"
           onClick={() => navigate("/")}
-          className="font-roboto btn mx-auto w-max border-[#7b218597] bg-[#912f9c7a] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7b6] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeaa7b6] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7b6] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
+          className="font-roboto btn mx-auto w-max border-[#7b218597] bg-[#912f9c10] py-4 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7b6] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeaa7b6] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7b6] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
         >
           <MdOutlineAddHome className="h-5 w-5 text-indigo-400" />
           Go Home
-        </button>
+        </motion.button>
       </div>
     </div>
   );
 };
 
-export default TransactionForm;
+export default AddTransaction;

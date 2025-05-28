@@ -10,6 +10,7 @@ import "chart.js/auto";
 import { GiLobArrow } from "react-icons/gi";
 import { ChartArea, ScriptableContext } from "chart.js";
 import { color, getHoverColor } from "chart.js/helpers";
+import { motion } from "motion/react";
 
 const Reports = () => {
   const [expCategoryMap, setExpCategoryMap] = useState<
@@ -385,7 +386,12 @@ const Reports = () => {
     <div className="h-[90vh] w-full p-5">
       <div className="grid h-full grid-cols-[2fr_1fr_1fr_1fr] grid-rows-[1.25fr_1fr] gap-3">
         {/* doughnut chart */}
-        <div className="relative col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
+        <motion.div
+          initial={{ opacity: 0, x: 400 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring", delay: 0.1 }}
+          className="relative col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
+        >
           {expCategoryMap.length && (
             <div className="pointer-events-none absolute top-0 right-0 flex rotate-6 flex-col items-center justify-center gap-1">
               <div className="rounded-2xl bg-amber-400 px-4 py-1 text-center text-lg font-bold text-amber-950">
@@ -480,9 +486,14 @@ const Reports = () => {
               No category report found
             </div>
           )}
-        </div>
+        </motion.div>
         {/* bar chart */}
-        <div className="relative col-start-2 col-end-5 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
+        <motion.div
+          initial={{ opacity: 0, x: 400 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring", delay: 0.2 }}
+          className="relative col-start-2 col-end-5 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
+        >
           {monthWiseExp.length ? (
             <Bar
               options={{
@@ -725,9 +736,14 @@ const Reports = () => {
               No Payment report found
             </div>
           )}
-        </div>
+        </motion.div>
         {/* pie chart */}
-        <div className="relative col-start-1 col-end-2 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
+        <motion.div
+          initial={{ opacity: 0, x: 400 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring", delay: 0.3 }}
+          className="relative col-start-1 col-end-2 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
+        >
           {incCategoryMap.length ? (
             <Pie
               options={{
@@ -786,9 +802,14 @@ const Reports = () => {
               No Income report found
             </div>
           )}
-        </div>
+        </motion.div>
         {/* polarArea chart */}
-        <div className="relative col-start-2 col-end-3 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
+        <motion.div
+          initial={{ opacity: 0, x: 400 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
+          className="relative col-start-2 col-end-3 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
+        >
           {accountMap.length ? (
             <PolarArea
               options={{
@@ -906,9 +927,14 @@ const Reports = () => {
               No Account report found
             </div>
           )}
-        </div>
+        </motion.div>
         {/* line chart */}
-        <div className="relative col-start-3 col-end-4 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
+        <motion.div
+          initial={{ opacity: 0, x: 400 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring", delay: 0.5 }}
+          className="relative col-start-3 col-end-4 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
+        >
           {monthWiseExp.length ? (
             <Line
               options={{
@@ -1027,9 +1053,14 @@ const Reports = () => {
               No ratio found
             </div>
           )}
-        </div>
+        </motion.div>
         {/* polarArea chart */}
-        <div className="relative col-start-4 col-end-5 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70">
+        <motion.div
+          initial={{ opacity: 0, x: 400 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: "spring", delay: 0.6 }}
+          className="relative col-start-4 col-end-5 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
+        >
           {paymentMap.length ? (
             <PolarArea
               options={{
@@ -1147,7 +1178,7 @@ const Reports = () => {
               No Payment report found
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
