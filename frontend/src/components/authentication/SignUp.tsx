@@ -55,6 +55,7 @@ const SignUp = ({
                 value={signUpData.username}
                 onChange={handleSignUpChange}
                 placeholder="Your Username"
+                pattern="^(?=.{3,20}$)(?![_.-])(?!.*[_.-]{2})[a-zA-Z0-9_-]+([^._-])$"
                 autoComplete="on"
                 required
               />
@@ -70,8 +71,9 @@ const SignUp = ({
                 name="password"
                 value={signUpData.password}
                 onChange={handleSignUpChange}
-                autoComplete="off"
                 placeholder="Your Password"
+                pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$"
+                autoComplete="off"
                 required
               />
             </div>

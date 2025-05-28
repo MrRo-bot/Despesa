@@ -7,7 +7,7 @@ import {
 } from "../utils/constants";
 import { Bar, Doughnut, Line, Pie, PolarArea } from "react-chartjs-2";
 import "chart.js/auto";
-import { GiLobArrow } from "react-icons/gi";
+import { GiBottomRight3dArrow } from "react-icons/gi";
 import { ChartArea, ScriptableContext } from "chart.js";
 import { color, getHoverColor } from "chart.js/helpers";
 import { motion } from "motion/react";
@@ -389,7 +389,7 @@ const Reports = () => {
         <motion.div
           initial={{ opacity: 0, x: 400 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: "spring", delay: 0.1 }}
+          transition={{ duration: 0.6, type: "spring" }}
           className="relative col-start-1 col-end-2 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
         >
           {expCategoryMap.length && (
@@ -397,7 +397,18 @@ const Reports = () => {
               <div className="rounded-2xl bg-amber-400 px-4 py-1 text-center text-lg font-bold text-amber-950">
                 CLICK TO TOGGLE
               </div>
-              <GiLobArrow className="h-10 w-10 rotate-[105deg] text-amber-600" />
+              <motion.div
+                animate={{ rotate: [0, 20, 0, -20, 0] }}
+                transition={{
+                  duration: 1,
+                  repeatDelay: 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+                className="rotate-[90deg]"
+              >
+                <GiBottomRight3dArrow className="h-10 w-10 text-amber-600" />
+              </motion.div>
             </div>
           )}
           {expCategoryMap.length ? (
@@ -491,7 +502,7 @@ const Reports = () => {
         <motion.div
           initial={{ opacity: 0, x: 400 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: "spring", delay: 0.2 }}
+          transition={{ duration: 0.6, type: "spring" }}
           className="relative col-start-2 col-end-5 row-start-1 row-end-2 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
         >
           {monthWiseExp.length ? (
@@ -741,7 +752,7 @@ const Reports = () => {
         <motion.div
           initial={{ opacity: 0, x: 400 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: "spring", delay: 0.3 }}
+          transition={{ duration: 0.6, type: "spring" }}
           className="relative col-start-1 col-end-2 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
         >
           {incCategoryMap.length ? (
@@ -807,7 +818,7 @@ const Reports = () => {
         <motion.div
           initial={{ opacity: 0, x: 400 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: "spring", delay: 0.4 }}
+          transition={{ duration: 0.6, type: "spring" }}
           className="relative col-start-2 col-end-3 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
         >
           {accountMap.length ? (
@@ -932,7 +943,7 @@ const Reports = () => {
         <motion.div
           initial={{ opacity: 0, x: 400 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: "spring", delay: 0.5 }}
+          transition={{ duration: 0.6, type: "spring" }}
           className="relative col-start-3 col-end-4 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
         >
           {monthWiseExp.length ? (
@@ -1058,7 +1069,7 @@ const Reports = () => {
         <motion.div
           initial={{ opacity: 0, x: 400 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: "spring", delay: 0.6 }}
+          transition={{ duration: 0.6, type: "spring" }}
           className="relative col-start-4 col-end-5 row-start-2 row-end-3 flex h-full w-full items-center justify-center rounded-xl bg-zinc-50/90 shadow-sm shadow-zinc-50/70"
         >
           {paymentMap.length ? (

@@ -38,8 +38,9 @@ const SignIn = ({
                 name="username"
                 value={loginData.username}
                 onChange={handleLoginChange}
-                autoComplete="on"
                 placeholder="Your Username"
+                pattern="^(?=.{3,20}$)(?![_.-])(?!.*[_.-]{2})[a-zA-Z0-9_-]+([^._-])$"
+                autoComplete="on"
                 required
               />
             </motion.div>
@@ -60,8 +61,9 @@ const SignIn = ({
                 name="password"
                 value={loginData.password}
                 onChange={handleLoginChange}
-                autoComplete="off"
                 placeholder="Your Password"
+                pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$"
+                autoComplete="off"
                 required
               />
             </motion.div>

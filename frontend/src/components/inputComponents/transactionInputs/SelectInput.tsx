@@ -24,7 +24,7 @@ const SelectInput = ({
         {icon}
         <select
           name={title}
-          className="select h-12 rounded-full bg-gray-900/70 tracking-wider"
+          className="select h-12 rounded-full bg-zinc-900/70 tracking-wider"
           defaultValue={selectValue || "default"}
           onChange={change}
         >

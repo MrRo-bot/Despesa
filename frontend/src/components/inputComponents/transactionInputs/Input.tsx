@@ -27,10 +27,12 @@ const Input = ({
         <input
           name={title}
           type={type}
-          className="input input-lg font-content grow rounded-full bg-gray-900/70 tracking-wider"
+          className="input input-lg font-content grow rounded-full bg-zinc-900/70 tracking-wider"
           placeholder={placeHolder}
           value={inputValue}
           onChange={change}
+          autoComplete="on"
+          required
         />
       </div>
     </fieldset>
