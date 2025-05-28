@@ -14,10 +14,24 @@ import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import { account, category, paymentType } from "../utils/constants";
 import customToastFunction from "../utils/Toastify";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/inputComponents/transactionInputs/Input";
+import SelectInput from "../components/inputComponents/transactionInputs/SelectInput";
+import { TransactionFormType } from "../types/types";
+import { useState } from "react";
 // import { useEffect } from "react";
 // import { transactions } from "../../../backend/dummyData/data";
 
 const TransactionForm = () => {
+  const [formData, setFormData] = useState<TransactionFormType>({
+    description: "",
+    paymentType: "",
+    account: "",
+    category: "",
+    amount: 0,
+    location: "",
+    date: "",
+  });
+
   const [createTransaction, { loading: createLoading }] =
     useMutation(CREATE_TRANSACTION);
   const { refetch } = useQuery(GET_TRANSACTIONS);
@@ -34,34 +48,38 @@ const TransactionForm = () => {
   //   });
   // }, [createTransaction]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-
-    const form = e.currentTarget;
-
-    const formData = new FormData(form);
-    const transactionData = {
-      description: formData.get("description"),
-      paymentType: formData.get("paymentType"),
-      account: formData.get("account"),
-      category: formData.get("category"),
-      amount: Number(formData.get("amount")) || 0,
-      location: formData.get("location"),
-      date: formData.get("date"),
-    };
-
     try {
       await createTransaction({
         variables: {
-          input: transactionData,
+          input: formData,
         },
       });
-      form.reset();
+      setFormData({
+        description: "",
+        paymentType: "",
+        account: "",
+        category: "",
+        amount: 0,
+        location: "",
+        date: "",
+      });
       refetch();
       customToastFunction("Transaction added! 🥳", "top-center", "light", "");
     } catch (error) {
       customToastFunction(`${error}`, "top-center", "colored", "error");
     }
+  };
+
+  const handleInputChange = (e: {
+    target: { name: string; value: string | number };
+  }) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: name === "amount" ? +value : value,
+    }));
   };
 
   return (
@@ -77,153 +95,96 @@ const TransactionForm = () => {
           onSubmit={handleSubmit}
         >
           <div className="flex justify-between gap-2">
-            {/* Description */}
+            {/* DESCRIPTION */}
             <div className="w-4/6">
-              <fieldset className="fieldset">
-                <legend className="fieldset-legend font-roboto ml-8 text-lg">
-                  Description
-                </legend>
-                <div className="flex items-center gap-2">
+              <Input
+                type="text"
+                title="description"
+                placeHolder="Rent, Groceries, Salary, etc."
+                icon={
                   <TbTransactionRupee className="h-6 w-6 text-indigo-800" />
-                  <input
-                    name="description"
-                    type="text"
-                    className="input input-lg font-content grow rounded-full bg-gray-900/70 tracking-wider"
-                    placeholder="Rent, Groceries, Salary, etc."
-                  />
-                </div>
-              </fieldset>
+                }
+                inputValue={formData?.description}
+                change={handleInputChange}
+              />
             </div>
 
             {/* LOCATION */}
-
             <div className="mb-6 w-full flex-1 md:mb-0">
-              <fieldset className="fieldset flex items-center">
-                <legend className="fieldset-legend font-roboto ml-8 text-lg">
-                  Location
-                </legend>
-                <MdOutlineShareLocation className="h-7 w-7 text-indigo-800" />
-                <input
-                  name="location"
-                  type="text"
-                  className="input-lg input font-content w-full grow rounded-full bg-gray-900/70 tracking-wider"
-                  placeholder="New York"
-                />
-              </fieldset>
+              <Input
+                type="text"
+                title="location"
+                placeHolder="New York"
+                icon={
+                  <MdOutlineShareLocation className="h-7 w-7 text-indigo-800" />
+                }
+                inputValue={formData?.location}
+                change={handleInputChange}
+              />
             </div>
           </div>
 
           <div className="flex justify-between gap-2">
-            {/* Account */}
+            {/* ACCOUNT */}
             <div className="mb-6 w-full flex-1 md:mb-0">
-              <fieldset className="fieldset">
-                <legend className="fieldset-legend font-roboto ml-8 flex items-center text-lg">
-                  Account
-                </legend>
-                <div className="flex items-center gap-2">
+              <SelectInput
+                title="account"
+                icon={
                   <MdOutlineAccountBalanceWallet className="h-7 w-7 text-indigo-800" />
-                  <select
-                    name="account"
-                    className="select h-12 rounded-full bg-gray-900/70 tracking-wider"
-                  >
-                    <option disabled={true} className="tracking-wider">
-                      Pick an option
-                    </option>
-                    {account.map((op) => (
-                      <option key={op} value={op} className="tracking-wider">
-                        {op[0].toUpperCase() + op.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </fieldset>
+                }
+                selectValue={formData?.account}
+                change={handleInputChange}
+                options={account}
+              />
             </div>
 
-            {/* Category */}
+            {/* CATEGORY */}
             <div className="mb-6 w-full flex-1 md:mb-0">
-              <fieldset className="fieldset">
-                <legend className="fieldset-legend font-roboto ml-8 flex items-center text-lg">
-                  Category
-                </legend>
-                <div className="flex items-center gap-2">
-                  <TbCategory className="h-7 w-7 text-indigo-800" />
-                  <select
-                    name="category"
-                    className="select h-12 rounded-full bg-gray-900/70 tracking-wider"
-                  >
-                    <option disabled={true} className="tracking-wider">
-                      Pick an option
-                    </option>
-                    {category.map((op) => (
-                      <option key={op} value={op} className="tracking-wider">
-                        {op[0].toUpperCase() + op.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </fieldset>
+              <SelectInput
+                title="category"
+                icon={<TbCategory className="h-7 w-7 text-indigo-800" />}
+                selectValue={formData?.category}
+                change={handleInputChange}
+                options={category}
+              />
             </div>
 
             {/* PAYMENT TYPE */}
             <div className="mb-6 w-full flex-1 md:mb-0">
-              <fieldset className="fieldset">
-                <legend className="fieldset-legend font-roboto ml-8 flex items-center text-lg">
-                  Payment Type{" "}
-                </legend>
-                <div className="flex items-center gap-2">
-                  <MdOutlinePayment className="h-7 w-7 text-indigo-800" />
-                  <select
-                    name="paymentType"
-                    className="select h-12 rounded-full bg-gray-900/70 tracking-wider"
-                  >
-                    <option disabled={true} className="tracking-wider">
-                      Pick an option
-                    </option>
-                    {paymentType.map((op) => (
-                      <option key={op} value={op} className="tracking-wider">
-                        {op[0].toUpperCase() + op.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </fieldset>
+              <SelectInput
+                title="paymentType"
+                icon={<MdOutlinePayment className="h-7 w-7 text-indigo-800" />}
+                selectValue={formData?.paymentType}
+                change={handleInputChange}
+                options={paymentType}
+              />
             </div>
           </div>
 
           <div className="flex justify-between gap-2">
             {/* DATE */}
             <div className="w-full flex-1">
-              <fieldset className="fieldset flex items-center">
-                <legend className="fieldset-legend font-roboto ml-8 text-lg">
-                  Date
-                </legend>
-                <TbCalendar className="h-7 w-7 text-indigo-800" />
-                <input
-                  name="date"
-                  type="date"
-                  className="input input-lg font-content rounded-full bg-gray-900/70"
-                />
-              </fieldset>
+              <Input
+                type="date"
+                title="date"
+                icon={<TbCalendar className="h-7 w-7 text-indigo-800" />}
+                inputValue={formData?.date}
+                change={handleInputChange}
+              />
             </div>
 
             {/* AMOUNT */}
             <div className="mb-6 w-full flex-1 md:mb-0">
-              <fieldset className="fieldset">
-                <legend className="fieldset-legend font-roboto ml-8 flex items-center text-lg">
-                  Amount{" "}
-                </legend>
-                <div className="flex items-center gap-2">
+              <Input
+                type="text"
+                title="amount"
+                icon={
                   <MdOutlineCurrencyRupee className="h-7 w-7 text-indigo-800" />
-                  <input
-                    name="amount"
-                    type="text"
-                    className="input validator input-lg font-content rounded-full bg-gray-900/70 tracking-wider"
-                    required
-                    placeholder="Eg. 120"
-                    title="Amount"
-                  />
-                </div>
-              </fieldset>
+                }
+                inputValue={!formData?.amount ? "" : formData?.amount}
+                change={handleInputChange}
+                placeHolder="1500"
+              />
             </div>
           </div>
 
