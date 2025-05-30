@@ -1,7 +1,11 @@
+import { useLayoutEffect, useRef } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import { GET_AUTHENTICATED_USER } from "./graphql/queries/user.query";
+import { useNavigatorOnLine } from "./hooks/useNavigatorOnline";
+import customToastFunction from "./utils/Toastify";
+
 import Transactions from "./pages/Transactions";
 import Error from "./pages/Error";
 import Authentication from "./pages/Authentication";
@@ -10,14 +14,12 @@ import Layout from "./pages/Layout";
 import TransactionForm from "./pages/AddTransaction";
 import Reports from "./pages/Reports";
 
-import { useLayoutEffect, useRef } from "react";
-import { useNavigatorOnLine } from "./hooks/useNavigatorOnline";
-import customToastFunction from "./utils/Toastify";
-
 function App() {
+  const firstUpdate = useRef(true);
+
   const { data: authData } = useQuery(GET_AUTHENTICATED_USER);
   const isOnline = useNavigatorOnLine();
-  const firstUpdate = useRef(true);
+
   useLayoutEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
@@ -30,6 +32,7 @@ function App() {
       "",
     );
   }, [isOnline]);
+
   return (
     <>
       <Routes>

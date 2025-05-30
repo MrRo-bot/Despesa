@@ -1,10 +1,9 @@
+import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
 import App from "./App.tsx";
-
 import { ToastContainer } from "react-toastify";
 
 const client = new ApolloClient({

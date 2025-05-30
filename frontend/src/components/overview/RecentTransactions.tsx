@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { useQuery } from "@apollo/client";
 import { motion } from "motion/react";
+import { useQuery } from "@apollo/client";
 import { NumericFormat } from "react-number-format";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { nanoid } from "nanoid";
 
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
+
 import DynamicIcon from "../DynamicIcon";
-import { TransactionObjectType } from "../../types/types";
 import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
+
+import { TransactionObjectType } from "../../types/types";
 
 const RecentTransactions = () => {
   const [recentItems, setRecentItems] = useState<{

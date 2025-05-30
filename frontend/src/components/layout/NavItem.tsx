@@ -1,6 +1,6 @@
-import { motion } from "motion/react";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
+import { motion } from "motion/react";
 
 const NavItem = ({
   navigateTo,
@@ -25,7 +25,7 @@ const NavItem = ({
         to={navigateTo}
       >
         {icon}
-        <span className="ml-2 text-lg tracking-tighter font-roboto">
+        <span className="font-roboto ml-2 text-lg tracking-tighter">
           {title}
         </span>
       </NavLink>

@@ -1,19 +1,22 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "motion/react";
 import { useMutation, useQuery } from "@apollo/client";
-import { LOGOUT } from "../../graphql/mutations/user.mutation";
-import { GET_AUTHENTICATED_USER } from "../../graphql/queries/user.query";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import { TiChevronRightOutline } from "react-icons/ti";
 import { BiPieChart } from "react-icons/bi";
 import { GrTransaction } from "react-icons/gr";
 import { TbPower, TbReportAnalytics, TbUser } from "react-icons/tb";
 import { HiOutlineDocumentAdd } from "react-icons/hi";
+
+import { LOGOUT } from "../../graphql/mutations/user.mutation";
+import { GET_AUTHENTICATED_USER } from "../../graphql/queries/user.query";
+
 import customToastFunction from "../../utils/Toastify";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+
 import NavItem from "./NavItem";
-import React from "react";
 
 const Sidebar = ({
   sidebarStatus,

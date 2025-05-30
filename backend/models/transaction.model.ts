@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
+
 import {
   paymentType,
-  category,
+  income,
+  expenses,
   account,
 } from "../../frontend/src/utils/constants.js";
+
 const transactionSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -26,7 +29,7 @@ const transactionSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: category,
+    enum: [...income, ...expenses],
     required: true,
   },
   amount: {

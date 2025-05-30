@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
 import { motion } from "motion/react";
+import { useQuery } from "@apollo/client";
+import { NumericFormat } from "react-number-format";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { nanoid } from "nanoid";
 
 import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
-import { InvestmentObjectType } from "../../types/types";
+
 import DynamicIcon from "../DynamicIcon";
-import { NumericFormat } from "react-number-format";
 import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
+
+import { InvestmentObjectType } from "../../types/types";
 
 const Investments = () => {
   const [recentInvest, setRecentInvest] = useState<InvestmentObjectType[]>();

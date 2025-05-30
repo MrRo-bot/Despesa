@@ -1,5 +1,5 @@
-import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
 
 import {
   MdOutlineAccountBalanceWallet,
@@ -9,15 +9,20 @@ import {
   MdOutlineShareLocation,
 } from "react-icons/md";
 import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
+
 import { UPDATE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
 import { GET_TRANSACTION } from "../../graphql/queries/transaction.query";
-import { account, category, paymentType } from "../../utils/constants";
 import customToastFunction from "../../utils/Toastify";
-import { TransactionFormType } from "../../types/types";
+
+import { account, income, expenses, paymentType } from "../../utils/constants";
+
 import Input from "../inputComponents/transactionInputs/Input";
 import SelectInput from "../inputComponents/transactionInputs/SelectInput";
 
+import { TransactionFormType } from "../../types/types";
+
 const UpdateTransaction = ({ id }: { id: string }) => {
+  const category = [...expenses, ...income];
   const { data: transactionData, error: getErr } = useQuery(GET_TRANSACTION, {
     variables: { id: id },
   });

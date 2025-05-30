@@ -1,12 +1,4 @@
-import { ChangeEventHandler, JSX } from "react";
-
-interface SelectType {
-  selectValue?: string;
-  change?: ChangeEventHandler<HTMLSelectElement> | undefined;
-  title: string;
-  icon: JSX.Element;
-  options: string[];
-}
+import { SelectType } from "../../../types/types";
 
 const SelectInput = ({
   selectValue,

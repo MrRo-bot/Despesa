@@ -1,32 +1,28 @@
 import { useState } from "react";
-
-import { useMutation } from "@apollo/client";
 import { motion } from "motion/react";
+import { useMutation } from "@apollo/client";
+
+import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
+
+import customToastFunction from "../utils/Toastify";
 
 import LoginHeader from "../components/authentication/LoginHeader";
-import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
-import customToastFunction from "../utils/Toastify";
 import SignUp from "../components/authentication/SignUp";
 import SignIn from "../components/authentication/SignIn";
 
+import { SignInType, SignUpType } from "../types/types";
+
 const Authentication = () => {
   const [toggle, setToggle] = useState<boolean>(false);
+
   const [visible, setVisible] = useState<boolean>(false);
 
-  const [loginData, setLoginData] = useState<{
-    username: string;
-    password: string;
-  }>({
+  const [loginData, setLoginData] = useState<SignInType>({
     username: "",
     password: "",
   });
 
-  const [signUpData, setSignUpData] = useState<{
-    name: string;
-    username: string;
-    password: string;
-    gender: string;
-  }>({
+  const [signUpData, setSignUpData] = useState<SignUpType>({
     name: "",
     username: "",
     password: "",

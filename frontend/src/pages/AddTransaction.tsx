@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
+
 import {
   MdOutlineAccountBalanceWallet,
   MdOutlineAddHome,
@@ -6,22 +11,22 @@ import {
   MdOutlinePostAdd,
   MdOutlineShareLocation,
 } from "react-icons/md";
-import { motion } from "motion/react";
-import { useMutation, useQuery } from "@apollo/client";
 import { TbCalendar, TbCategory, TbTransactionRupee } from "react-icons/tb";
-import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
+
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
-import { account, category, paymentType } from "../utils/constants";
+import { CREATE_TRANSACTION } from "../graphql/mutations/transaction.mutation";
+
 import customToastFunction from "../utils/Toastify";
-import { useNavigate } from "react-router-dom";
+
 import Input from "../components/inputComponents/transactionInputs/Input";
 import SelectInput from "../components/inputComponents/transactionInputs/SelectInput";
+
+import { account, income, expenses, paymentType } from "../utils/constants";
+
 import { TransactionFormType } from "../types/types";
-import { useState } from "react";
-// import { useEffect } from "react";
-// import { transactions } from "../../../backend/dummyData/data";
 
 const AddTransaction = () => {
+  const category = [...expenses, ...income];
   const [formData, setFormData] = useState<TransactionFormType>({
     description: "",
     paymentType: "",
@@ -32,21 +37,12 @@ const AddTransaction = () => {
     date: "",
   });
 
-  const [createTransaction, { loading: createLoading }] =
-    useMutation(CREATE_TRANSACTION);
+  const navigate = useNavigate();
+
   const { refetch } = useQuery(GET_TRANSACTIONS);
 
-  const navigate = useNavigate();
-  // used this code only once to input transactions from the custom dummy dataset
-  // useEffect(() => {
-  //   transactions.map(async (x) => {
-  //     await createTransaction({
-  //       variables: {
-  //         input: x,
-  //       },
-  //     });
-  //   });
-  // }, [createTransaction]);
+  const [createTransaction, { loading: createLoading }] =
+    useMutation(CREATE_TRANSACTION);
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -241,6 +237,7 @@ const AddTransaction = () => {
             {createLoading ? "loading..." : "Add Transaction"}
           </motion.button>
         </form>
+
         {/* HOME BUTTON */}
         <motion.button
           initial={{ opacity: 0, y: 400, scale: 0.5 }}

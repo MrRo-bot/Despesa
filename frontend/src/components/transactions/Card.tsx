@@ -1,18 +1,22 @@
-import { FaTrash } from "react-icons/fa";
-import { HiPencilAlt } from "react-icons/hi";
-// import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { motion } from "motion/react";
+import { NumericFormat } from "react-number-format";
+// import { Link } from "react-router-dom";
+
+import { FaTrash } from "react-icons/fa";
+import { HiPencilAlt } from "react-icons/hi";
+
+import { DELETE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
 
 import formatDate from "../../utils/formatDate";
-import { DELETE_TRANSACTION } from "../../graphql/mutations/transaction.mutation";
-import { NumericFormat } from "react-number-format";
 import dynamicCategoryColor from "../../utils/dynamicCategoryColor";
-import DynamicIcon from "../DynamicIcon";
-import { accountColorBgMap, accountColorMap } from "../../utils/constants";
 import customToastFunction from "../../utils/Toastify";
-import { useEffect, useRef, useState } from "react";
+
+import DynamicIcon from "../DynamicIcon";
 import UpdateTransaction from "./UpdateTransaction";
+
+import { accountColorBgMap, accountColorMap } from "../../utils/constants";
 
 const Card = ({
   transactionData,
@@ -86,10 +90,7 @@ const Card = ({
 
   const dateStr = formatDate(date);
 
-  //@ts-expect-error don't know why it cant recognize
   const cardClassBg = accountColorBgMap[account];
-
-  //@ts-expect-error don't know why it cant recognize
   const cardClassText = accountColorMap[account];
 
   return (

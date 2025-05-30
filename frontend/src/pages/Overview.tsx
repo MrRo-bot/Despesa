@@ -1,8 +1,10 @@
 import { useOutletContext } from "react-router-dom";
+
 import Balances from "../components/overview/Balances";
 import Chart from "../components/overview/Chart";
 import Investments from "../components/overview/Investments";
 import RecentTransactions from "../components/overview/RecentTransactions";
+
 import { BalancesType } from "../types/types";
 
 const Overview = () => {

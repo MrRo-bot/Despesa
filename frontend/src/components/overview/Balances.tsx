@@ -1,11 +1,13 @@
-import { TbChartPie, TbMoneybag, TbPlus } from "react-icons/tb";
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { motion } from "motion/react";
 import { NumericFormat } from "react-number-format";
-import { NavLink } from "react-router-dom";
-import { BalancesType } from "../../types/types";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { useEffect, useState } from "react";
+
+import { TbChartPie, TbMoneybag, TbPlus } from "react-icons/tb";
+
+import { BalancesType } from "../../types/types";
 
 const Balances = ({ balance }: { balance: BalancesType }) => {
   const [loading, setLoading] = useState(true);

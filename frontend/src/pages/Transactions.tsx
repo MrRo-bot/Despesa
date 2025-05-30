@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { useQuery } from "@apollo/client";
 import { Virtuoso } from "react-virtuoso";
-import { motion } from "motion/react";
+
 import { BiSearchAlt } from "react-icons/bi";
 
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
-import { TransactionObjectType } from "../types/types";
+
 import Card from "../components/transactions/Card";
 import SortBy from "../components/transactions/SortBy";
 import OrderBy from "../components/transactions/OrderBy";
 import formatDate from "../utils/formatDate";
+
+import { TransactionObjectType } from "../types/types";
 
 const Transactions = () => {
   const [search, setSearch] = useState<string>("");
@@ -48,8 +51,9 @@ const Transactions = () => {
     if (sortBy === "" || orderBy === "") {
       setFilteredTransactions(transaction?.transactions);
     } else {
-      //@ts-expect-error: i know x and y are transaction object
+      //@ts-expect-error: x and y are TransactionObjectType
       const finalSorted = transaction?.transactions?.toSorted((x, y) => {
+        console.log(x, y);
         const a = x[sortBy];
         const b = y[sortBy];
         if (orderBy === "ascending") {

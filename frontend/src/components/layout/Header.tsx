@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { NumericFormat } from "react-number-format";
 
-const Header = ({ total }: { total: number }) => {
+const Header = ({ total }: { total: string }) => {
   const location = useLocation();
 
   return (

@@ -1,21 +1,14 @@
 @import "tailwindcss";
-
 @plugin "daisyui";
-
-/* * {
-  outline: 0.1px solid green;
-} */
-
 @theme {
+  --shadow-main: hsla(0, 0%, 0%, 0.7) 3px 3px;
   --font-roboto: "Roboto Mono";
   --font-inconsolata: "Inconsolata";
-  --animate-currency: autoScrolling 10s infinite cubic-bezier(1, 0, 0, 1);
-  --animate-tick: tick 500ms infinite alternate;
-  --shadow-main: hsla(0, 0%, 0%, 0.7) 3px 3px;
   --color-lavender: hsl(267, 90%, 75%);
   --color-light-yellow: hsl(41, 100%, 78%);
   --color-rose: hsl(354, 100%, 78%);
-
+  --animate-tick: tick 500ms infinite alternate;
+  --animate-currency: autoScrolling 10s infinite cubic-bezier(1, 0, 0, 1);
   @keyframes autoScrolling {
     0%,
     6.5%,

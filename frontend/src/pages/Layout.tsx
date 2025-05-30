@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
+
 import Header from "../components/layout/Header";
 import Sidebar from "../components/layout/Sidebar";
 import FullPageLoading from "../components/layout/FullPageLoading";
-import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
+
 import { BalancesType } from "../types/types";
 
 const Layout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+
   const [loading, setLoading] = useState<boolean>(false);
+
   const location = useLocation();
 
   const [balance, setBalance] = useState<BalancesType>({
@@ -19,6 +23,7 @@ const Layout = () => {
     saving: 0,
     investment: 0,
   });
+
   const { data: transaction } = useQuery(GET_TRANSACTIONS);
 
   useEffect(() => {
@@ -61,7 +66,6 @@ const Layout = () => {
           />
           <main className="h-screen w-full overflow-y-scroll">
             <Header
-              //@ts-expect-error: not recognizing number even though ive defined types and value is not string
               total={(
                 balance?.income +
                 balance?.saving -

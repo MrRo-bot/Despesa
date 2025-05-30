@@ -1,10 +1,11 @@
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { useQuery } from "@apollo/client";
-import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 import { Line } from "react-chartjs-2";
-import "chart.js/auto";
 import { ChartArea } from "chart.js/auto";
+import "chart.js/auto";
+
+import { GET_TRANSACTIONS } from "../../graphql/queries/transaction.query";
 
 const Chart = () => {
   const [monthWiseExp, setMonthWiseExp] = useState<
@@ -26,7 +27,13 @@ const Chart = () => {
   const { data: transaction } = useQuery(GET_TRANSACTIONS);
 
   useEffect(() => {
-    const monthExp = {
+    const monthExp: Record<
+      string,
+      {
+        total: number;
+        epochTime: number | string;
+      }
+    > = {
       Jan: { total: 0, epochTime: 0 },
       Feb: { total: 0, epochTime: 0 },
       Mar: { total: 0, epochTime: 0 },
@@ -41,7 +48,6 @@ const Chart = () => {
       Dec: { total: 0, epochTime: 0 },
     };
 
-    // Create a new Date object
     const today = new Date();
     const sevenMonthsAgo = new Date();
     sevenMonthsAgo.setMonth(today.getMonth() - 6); // Set to 6 months ago
@@ -51,7 +57,7 @@ const Chart = () => {
     const endDate = today.toISOString().slice(0, 7);
 
     // Filter transactions within the last 6 months
-    const lastSixMonthTransactions = transaction?.transactions.filter(
+    const lastSixMonthTransactions = transaction?.transactions?.filter(
       (item: { date: string | number }) => {
         const date = new Date(+item.date).toISOString().slice(0, 7);
         return date >= startDate && date <= endDate;
@@ -80,9 +86,7 @@ const Chart = () => {
                 ? item.amount
                 : 0;
 
-            // @ts-expect-error: same ol string used as array index error
             return (monthExp[date] = {
-              // @ts-expect-error: same ol string used as array index error
               total: monthExp[date].total + amount,
               epochTime: item.date,
             });
@@ -92,20 +96,18 @@ const Chart = () => {
 
     const finalList = [];
     for (const mon in monthExp) {
-      // @ts-expect-error: same ol string used as array index error
       if (monthExp[mon].epochTime !== 0) {
         finalList.push({
           Month: mon,
-          // @ts-expect-error: same ol string used as array index error
           Total: monthExp[mon].total,
-          // @ts-expect-error: same ol string used as array index error
           EpochTime: monthExp[mon].epochTime,
         });
       }
     }
-    //@ts-expect-error: {Month:string,Total:number,EpochTime:number}
+
+    //@ts-expect-error: a and b are monthExp object
     setMonthWiseExp(finalList.sort((a, b) => a.EpochTime - b.EpochTime));
-  }, [transaction?.transactions]);
+  }, [transaction, transaction.transactions]);
 
   return (
     <motion.div

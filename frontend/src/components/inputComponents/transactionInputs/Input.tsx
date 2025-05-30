@@ -1,13 +1,4 @@
-import { ChangeEventHandler, JSX } from "react";
-
-interface InputType {
-  inputValue?: string | number;
-  change?: ChangeEventHandler<HTMLInputElement> | undefined;
-  title: string;
-  type: string;
-  placeHolder?: string;
-  icon: JSX.Element;
-}
+import { InputType } from "../../../types/types";
 
 const Input = ({
   inputValue,

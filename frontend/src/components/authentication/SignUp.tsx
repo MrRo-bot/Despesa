@@ -1,3 +1,5 @@
+import { ChangeEventHandler, FormEventHandler } from "react";
+
 import {
   TbGenderFemale,
   TbGenderMale,
@@ -5,7 +7,6 @@ import {
   TbUser,
 } from "react-icons/tb";
 import { SiNamemc } from "react-icons/si";
-import { ChangeEventHandler, FormEventHandler } from "react";
 
 const SignUp = ({
   handleSubmitSignUp,
