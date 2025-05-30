@@ -11,6 +11,7 @@ import SignIn from "../components/authentication/SignIn";
 
 const Authentication = () => {
   const [toggle, setToggle] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
 
   const [loginData, setLoginData] = useState<{
     username: string;
@@ -154,6 +155,45 @@ const Authentication = () => {
           }}
           className="relative my-5 ml-5 h-[45vh] min-h-96 w-1/4 min-w-80 perspective-[800px] transform-3d"
         >
+          <div className="absolute top-0 -right-6.25 flex">
+            <div
+              style={{
+                textOrientation: "upright",
+                writingMode: "vertical-lr",
+              }}
+              onClick={() => setVisible(!visible)}
+              className="font-roboto cursor-pointer rounded-md bg-[#170b35b4] px-1 -tracking-[0.25em] select-none"
+            >
+              hint
+            </div>
+            {visible && (
+              <motion.div
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="shadow-main absolute left-8 !min-w-max rounded-md bg-zinc-800 before:absolute before:top-6 before:-left-3.75 before:-rotate-90 before:content-['🔺']"
+              >
+                <pre className="p-1 text-left text-sm">
+                  <strong className="text-orange-500">USERNAME:</strong>
+                  <span className="text-fuchsia-400">
+                    <br />- Between 3 and 20 characters
+                    <br />- Does not start or end with an _, ., or -
+                    <br />- Does not contain consecutive _, ., or -
+                    <br />- Consists only of alphanumeric characters, _, and -
+                    <br />
+                  </span>
+                  <br />
+                  <strong className="text-orange-500">PASSWORD:</strong>
+                  <span className="text-fuchsia-400">
+                    <br />- (8-16) characters with no space
+                    <br />- Must contain atleast 1 number
+                    <br />- Must contain atleast 1 uppercase letter
+                    <br />- Must contain atleast 1 lowercase letter
+                    <br />- Must contain 1 non-alpha numeric number
+                  </span>
+                </pre>
+              </motion.div>
+            )}
+          </div>
           <div
             className="tooltip tooltip-left tooltip-secondary"
             data-tip="Passport.js"
@@ -167,6 +207,7 @@ const Authentication = () => {
               />
             </div>
           </div>
+
           <div
             className={`absolute top-0 left-0 h-full w-full transition-all duration-700 ease-out transform-3d ${toggle && "rotate-y-180"}`}
           >

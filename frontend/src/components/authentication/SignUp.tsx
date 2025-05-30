@@ -32,7 +32,7 @@ const SignUp = ({
               <SiNamemc className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
 
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
                 id="name"
                 type="text"
                 name="name"
@@ -48,14 +48,14 @@ const SignUp = ({
               <TbUser className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
 
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
                 id="username"
                 type="text"
                 name="username"
                 value={signUpData.username}
                 onChange={handleSignUpChange}
                 placeholder="Your Username"
-                pattern="^(?=.{3,20}$)(?![_.-])(?!.*[_.-]{2})[a-zA-Z0-9_-]+([^._-])$"
+                pattern="^(?=.{3,20}$)(?![_.\-])(?!.*[_.\-]{2})[a-zA-Z0-9_\-]+([^._\-])$"
                 autoComplete="on"
                 required
               />
@@ -65,7 +65,7 @@ const SignUp = ({
               <TbPassword className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
 
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 shadow-[0_4px_8px_0_rgb(32,16,75)] transition-all duration-200 ease-linear outline-none focus:shadow-[0_4px_8px_3px_rgb(39,19,92)] active:shadow-[0_4px_8px_3px_rgb(39,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider text-zinc-50 transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
                 id="password"
                 type="password"
                 name="password"
