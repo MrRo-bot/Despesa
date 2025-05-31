@@ -19,10 +19,14 @@ const Investments = () => {
 
   useEffect(() => {
     (async () => {
-      const inv = await transaction?.transactions
+      const inv = [...(await transaction.transactions)];
+      const invSorted = inv
+        ?.sort((a: { date: string }, b: { date: string }) =>
+          b.date.localeCompare(a.date),
+        )
         ?.filter((x: { account: string }) => x.account === "Investment")
         .slice(0, 3);
-      setRecentInvest(inv);
+      setRecentInvest(invSorted);
     })();
   }, [transaction]);
 

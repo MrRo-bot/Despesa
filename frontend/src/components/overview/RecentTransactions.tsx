@@ -16,23 +16,35 @@ import { TransactionObjectType } from "../../types/types";
 
 const RecentTransactions = () => {
   const [recentItems, setRecentItems] = useState<{
-    expenses: [TransactionObjectType];
-    income: [TransactionObjectType];
+    expenses: TransactionObjectType[];
+    income: TransactionObjectType[];
   }>();
   const { data: transaction, loading } = useQuery(GET_TRANSACTIONS);
 
   useEffect(() => {
     (async () => {
-      const exp = await transaction?.transactions
+      const exp: TransactionObjectType[] = [
+        ...(await transaction.transactions),
+      ];
+      const expSorted: TransactionObjectType[] = exp
+        ?.sort((a: { date: string }, b: { date: string }) =>
+          b.date.localeCompare(a.date),
+        )
         ?.filter((x: { account: string }) => x.account === "Expense")
-        .slice(0, 6);
-      const inc = await transaction?.transactions
+        ?.slice(0, 6);
+      const inc: TransactionObjectType[] = [
+        ...(await transaction.transactions),
+      ];
+      const incSorted: TransactionObjectType[] = inc
+        ?.sort((a: { date: string }, b: { date: string }) =>
+          b.date.localeCompare(a.date),
+        )
         ?.filter(
           (x: { account: string }) =>
             x.account === "Income" || x.account === "Saving",
         )
-        .slice(0, 6);
-      setRecentItems({ expenses: exp, income: inc });
+        ?.slice(0, 6);
+      setRecentItems({ expenses: expSorted, income: incSorted });
     })();
   }, [transaction]);
 

@@ -42,18 +42,26 @@ const Transactions = () => {
             .includes(search.toLowerCase());
         },
       );
-      setFilteredTransactions(filteredData);
+      setFilteredTransactions(
+        filteredData.sort((a: { date: string }, b: { date: string }) =>
+          b.date.localeCompare(a.date),
+        ),
+      );
     }
   }, [search, transaction?.transactions]);
 
   //sort and order
   useEffect(() => {
     if (sortBy === "" || orderBy === "") {
-      setFilteredTransactions(transaction?.transactions);
+      const copy = [...transaction.transactions];
+      setFilteredTransactions(
+        copy?.sort((a: { date: string }, b: { date: string }) =>
+          b.date.localeCompare(a.date),
+        ),
+      );
     } else {
       //@ts-expect-error: x and y are TransactionObjectType
       const finalSorted = transaction?.transactions?.toSorted((x, y) => {
-        console.log(x, y);
         const a = x[sortBy];
         const b = y[sortBy];
         if (orderBy === "ascending") {
