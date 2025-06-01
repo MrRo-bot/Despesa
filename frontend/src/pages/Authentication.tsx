@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useMutation } from "@apollo/client";
 
 import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
@@ -14,8 +14,7 @@ import { SignInType, SignUpType } from "../types/types";
 
 const Authentication = () => {
   const [toggle, setToggle] = useState<boolean>(false);
-
-  const [visible, setVisible] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const [loginData, setLoginData] = useState<SignInType>({
     username: "",
@@ -121,7 +120,7 @@ const Authentication = () => {
           }}
           className="rounded-full bg-zinc-50/50 px-3 py-1"
         >
-          <h2 className="relative z-50 flex gap-6 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-2xl font-black text-transparent">
+          <h2 className="relative z-50 flex gap-6 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-xl font-black text-transparent sm:text-2xl">
             <span>SignIn</span>
             <span>SignUp</span>
           </h2>
@@ -133,7 +132,7 @@ const Authentication = () => {
             delay: 0.5,
           }}
           htmlFor="switch"
-          className={`relative mt-6 h-3 w-16 cursor-pointer rounded-full bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 before:absolute before:-top-[9px] before:z-10 before:h-8 before:w-8 before:rounded-full before:bg-blue-800 before:text-center before:text-lg before:text-zinc-50 before:transition-all before:duration-500 before:content-["⇖"] has-checked:before:translate-x-10 has-checked:before:rotate-[-270deg]`}
+          className={`relative mt-4 h-3 w-16 cursor-pointer rounded-full bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 before:absolute before:-top-[9px] before:z-10 before:h-8 before:w-8 before:rounded-full before:bg-blue-800 before:text-center before:text-lg before:text-zinc-50 before:transition-all before:duration-500 before:content-["⇖"] has-checked:before:translate-x-10 has-checked:before:rotate-[-270deg] md:mt-6`}
         >
           <input
             onChange={handleCheck}
@@ -149,58 +148,59 @@ const Authentication = () => {
           transition={{
             delay: 0.6,
           }}
-          className="relative my-5 ml-5 h-[45vh] min-h-96 w-1/4 min-w-80 perspective-[800px] transform-3d"
+          className="relative my-10 h-[45vh] min-h-96 w-1/4 min-w-80 perspective-[800px] transform-3d sm:my-5"
         >
-          <div className="absolute top-0 -right-6.25 flex">
-            <div
-              style={{
-                textOrientation: "upright",
-                writingMode: "vertical-lr",
-              }}
-              onClick={() => setVisible(!visible)}
-              className="font-roboto cursor-pointer rounded-md bg-[#170b35b4] px-1 -tracking-[0.25em] select-none"
-            >
+          <div
+            className="absolute top-0 -right-6.75 flex"
+            onClick={() => setIsVisible(!isVisible)}
+          >
+            <div className="font-roboto writingMode cursor-pointer rounded-md bg-[#170b35b4] px-1 -tracking-[0.25em] select-none">
               hint
             </div>
-            {visible && (
+          </div>
+          <AnimatePresence>
+            {isVisible && (
               <motion.div
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="shadow-main absolute left-8 !min-w-max rounded-md bg-zinc-800 before:absolute before:top-6 before:-left-3.75 before:-rotate-90 before:content-['🔺']"
+                exit={{ opacity: 0, x: -100 }}
+                className="shadow-main absolute top-[102%] left-1/2 !min-w-max -translate-x-1/2 rounded-md bg-zinc-800"
               >
-                <pre className="p-1 text-left text-sm">
+                <pre className="p-1 text-left text-xs xl:text-sm">
                   <strong className="text-orange-500">USERNAME:</strong>
                   <span className="text-fuchsia-400">
-                    <br />- Between 3 and 20 characters
-                    <br />- Does not start or end with an _, ., or -
+                    <br />- 3 and 20 characters
+                    <br />- Does not start with _, ., or -
+                    <br />- Does not end with _, ., or -
                     <br />- Does not contain consecutive _, ., or -
-                    <br />- Consists only of alphanumeric characters, _, and -
+                    <br />- Consists only _ -
                     <br />
                   </span>
                   <br />
                   <strong className="text-orange-500">PASSWORD:</strong>
                   <span className="text-fuchsia-400">
                     <br />- (8-16) characters with no space
-                    <br />- Must contain atleast 1 number
-                    <br />- Must contain atleast 1 uppercase letter
-                    <br />- Must contain atleast 1 lowercase letter
-                    <br />- Must contain 1 non-alpha numeric number
+                    <br />- Must contain 1 number
+                    <br />- Must contain 1 uppercase letter
+                    <br />- Must contain 1 lowercase letter
+                    <br />- Must contain 1 non-alpha number
                   </span>
                 </pre>
               </motion.div>
             )}
-          </div>
+          </AnimatePresence>
+
           <div
-            className="tooltip tooltip-left tooltip-secondary"
+            className="tooltip tooltip-right sm:tooltip-left tooltip-secondary"
             data-tip="Passport.js"
           >
-            <div className="font-roboto absolute top-[34px] -left-[77px] flex w-32 -rotate-90 cursor-pointer items-center justify-between rounded-md bg-[#170b35b4] px-1">
-              Secured by
+            <div className="font-roboto writingMode absolute -top-4.5 -left-6.75 flex h-max cursor-pointer items-center gap-2 rounded-md bg-[#170b35b4] px-2 text-base -tracking-[0.25em]">
               <img
                 className="h-4 w-4"
                 src="https://www.passportjs.org/images/logo.svg"
                 alt="P"
               />
+              Secured by
             </div>
           </div>
 

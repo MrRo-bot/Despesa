@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 const LoginHeader = () => {
   return (
     <>
-      <div className="mb-10 py-2">
+      <div className="mb-5 py-2 sm:mb-10">
         <Link className="flex items-center justify-center" to="/">
           <motion.img
             initial={{ opacity: 0, x: -100 }}
@@ -22,7 +22,7 @@ const LoginHeader = () => {
             transition={{
               delay: 0.2,
             }}
-            className="font-roboto relative z-50 text-center text-2xl leading-16 font-bold text-zinc-50 md:text-5xl"
+            className="font-roboto relative z-50 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-center text-3xl leading-16 font-bold text-transparent sm:text-4xl md:text-5xl"
           >
             Despesa
           </motion.h1>
