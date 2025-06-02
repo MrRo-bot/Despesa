@@ -60,9 +60,9 @@ const RecentTransactions = () => {
         transition={{
           delay: 0.2,
         }}
-        className="shadow-main bg-zinc-50 px-6 py-3"
+        className="shadow-main bg-zinc-50 p-2 md:px-6 md:py-3"
       >
-        <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
+        <h3 className="font-roboto mb-2 text-xl tracking-tighter text-zinc-900">
           Recent Transactions
         </h3>
 
@@ -109,7 +109,7 @@ const RecentTransactions = () => {
                   <div className="flex items-center gap-4">
                     {expense.category && (
                       <div
-                        className={`${dynamicCategoryColor(expense.category)} grid h-12 w-12 place-items-center`}
+                        className={`${dynamicCategoryColor(expense.category)} grid h-12 w-12 place-items-center p-1`}
                       >
                         {<DynamicIcon icon={expense.category} />}
                       </div>
@@ -182,7 +182,7 @@ const RecentTransactions = () => {
                   <div className="flex items-center gap-4">
                     {inc.category && (
                       <div
-                        className={`grid h-12 w-12 place-items-center ${dynamicCategoryColor(inc.category)}`}
+                        className={`grid h-12 w-12 place-items-center p-1 ${dynamicCategoryColor(inc.category)}`}
                       >
                         {<DynamicIcon icon={inc.category} />}
                       </div>

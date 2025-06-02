@@ -37,7 +37,7 @@ const Investments = () => {
       customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
     >
       <div>
-        <h3 className="font-roboto mb-2 text-2xl tracking-tighter text-zinc-900">
+        <h3 className="font-roboto mb-2 text-lg font-semibold tracking-tighter text-zinc-900/90 md:tracking-normal lg:text-xl xl:text-2xl">
           My Investments
         </h3>
         <ul className="flex flex-col items-center justify-center gap-4">
@@ -77,19 +77,19 @@ const Investments = () => {
             return (
               <li
                 key={investment._id}
-                className="shadow-main flex w-full items-center justify-start gap-6 bg-zinc-50 px-5 py-3"
+                className="shadow-main flex w-full items-center justify-start gap-2 bg-zinc-50 px-2 py-1 md:gap-6 md:px-5 md:py-3"
               >
                 {investment.category && (
                   <div
-                    className={`${dynamicCategoryColor(investment.category)} grid h-12 w-12 place-items-center p-1`}
+                    className={`${dynamicCategoryColor(investment.category)} grid h-10 w-10 place-items-center p-1 md:h-12 md:w-12`}
                   >
                     {<DynamicIcon icon={investment.category} />}
                   </div>
                 )}
-                <div className="flex w-full justify-start">
+                <div className="flex w-full flex-wrap justify-start md:flex-row">
                   {investment.description && (
-                    <div className="w-3/6">
-                      <h4 className="text-lg font-bold text-zinc-900">
+                    <div className="w-1/3 md:w-3/6">
+                      <h4 className="font-bold text-zinc-900 md:text-lg">
                         {investment.description}
                       </h4>
                       <p className="tracking-tighter text-zinc-500">
@@ -99,8 +99,8 @@ const Investments = () => {
                   )}
 
                   {investment.amount && (
-                    <div className="w-2/6">
-                      <span className="flex gap-1 text-lg font-bold text-zinc-900">
+                    <div className="w-1/3 md:w-2/6">
+                      <span className="flex gap-1 font-bold text-zinc-900 md:text-lg">
                         <NumericFormat
                           value={investment.amount}
                           thousandSeparator
@@ -109,14 +109,12 @@ const Investments = () => {
                         />
                         ₹
                       </span>
-                      <p className="tracking-tighter text-zinc-500">
-                        Investment Value
-                      </p>
+                      <p className="tracking-tighter text-zinc-500">Value</p>
                     </div>
                   )}
                   {date && (
-                    <div className="w-1/6">
-                      <h4 className="text-lg font-semibold text-zinc-900">
+                    <div className="w-1/3 md:w-1/6">
+                      <h4 className="font-semibold text-zinc-900 md:text-lg">
                         {date.toLocaleDateString()}
                       </h4>
                       <p className="tracking-tighter text-zinc-500">Date</p>

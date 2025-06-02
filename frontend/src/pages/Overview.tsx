@@ -11,13 +11,13 @@ const Overview = () => {
   const balance = useOutletContext<BalancesType>();
 
   return (
-    <div className="mx-auto flex w-full justify-between gap-14 px-10 pt-4 pb-2">
-      <div className="flex w-[65%] flex-col items-stretch gap-6">
+    <div className="mx-auto flex w-full flex-col px-3 py-4 sm:px-6 md:px-10 lg:flex-row lg:justify-between lg:gap-10 lg:pt-4 lg:pb-2">
+      <div className="flex flex-col items-stretch gap-4 lg:w-[65%] lg:gap-5">
         <Balances balance={balance} />
         <Chart />
         <Investments />
       </div>
-      <div className="w-[35%]">
+      <div className="mt-5 lg:mt-0 lg:w-[35%]">
         <RecentTransactions />
       </div>
     </div>

@@ -116,14 +116,16 @@ const Chart = () => {
       transition={{
         delay: 0.2,
       }}
-      className="shadow-main w-[90%] bg-zinc-50"
+      className="shadow-main bg-zinc-50 lg:w-[90%]"
     >
-      <h3 className="font-roboto my-3 px-2 text-2xl text-zinc-900">
-        Total of Expenses + Investment{" "}
+      <div className="my-3 flex flex-col px-2">
+        <h3 className="font-roboto tracking-tight text-zinc-900 md:text-lg md:tracking-normal xl:text-xl 2xl:text-2xl">
+          Total of Expenses + Investment{" "}
+        </h3>
         <sub className="text-xs tracking-tighter text-zinc-500">
           (past 6 months)
         </sub>
-      </h3>
+      </div>
 
       {monthWiseExp.length > 0 ? (
         <div className="relative min-h-[35vh] w-full px-2">
