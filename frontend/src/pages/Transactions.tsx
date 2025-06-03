@@ -52,7 +52,7 @@ const Transactions = () => {
 
   //sort and order
   useEffect(() => {
-    if (sortBy === "" || orderBy === "") {
+    if (sortBy === "" && orderBy === "") {
       const copy = [...transaction.transactions];
       setFilteredTransactions(
         copy?.sort((a: { date: string }, b: { date: string }) =>
@@ -76,22 +76,13 @@ const Transactions = () => {
   }, [transaction?.transactions, sortBy, orderBy]);
 
   return (
-    <div className="mx-auto h-[90vh] w-[95%]">
-      <div className="flex items-center pt-8 pb-4">
+    <div className="mx-auto h-full w-[95%]">
+      <div className="flex flex-col items-center gap-2 pt-4 pb-5 sm:mx-auto sm:max-w-5/6 sm:px-2 md:gap-4 lg:max-w-10/12 lg:flex-row-reverse lg:justify-between lg:gap-0 xl:max-w-8/12 2xl:max-w-7/12">
         <motion.div
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, type: "spring" }}
-          className="flex items-center gap-4"
-        >
-          <SortBy sortBy={sortBy} setSortBy={setSortBy} />
-          <OrderBy orderBy={orderBy} setOrderBy={setOrderBy} />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: -400, scale: 0.5 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.6, type: "spring" }}
-          className="shadow-main ml-auto flex w-[24%] gap-2 rounded-full bg-zinc-50 px-2 py-1 transition-colors duration-100 ease-in-out hover:bg-purple-100 focus:bg-purple-100"
+          className="shadow-main flex w-full gap-2 rounded-full bg-zinc-50 px-2 py-1 transition-colors duration-100 ease-in-out hover:bg-purple-100 focus:bg-purple-100"
         >
           <BiSearchAlt className="mt-0.5 h-7 w-7 text-zinc-800" />
           <input
@@ -104,26 +95,18 @@ const Transactions = () => {
             placeholder="Search transactions..."
           />
         </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: -400, scale: 0.5 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, type: "spring" }}
+          className="flex w-full items-center justify-between sm:justify-evenly lg:justify-normal lg:gap-4"
+        >
+          <SortBy sortBy={sortBy} setSortBy={setSortBy} />
+          <OrderBy orderBy={orderBy} setOrderBy={setOrderBy} />
+        </motion.div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, x: 400, scale: 0.5 }}
-        animate={{ opacity: 1, x: 0, scale: 1 }}
-        transition={{ duration: 0.6, type: "spring" }}
-        className="font-roboto shadow-main mb-4 flex items-center justify-start gap-5 rounded-full bg-violet-200 px-2 py-1 text-lg font-bold text-zinc-900/80"
-      >
-        <div className="w-[3.25%]">Icon</div>
-        <div className="w-[22%]">Description</div>
-        <div className="w-[10.5%]">Payment</div>
-        <div className="w-[8.6%] text-center">Amount</div>
-        <div className="w-[8.8%] text-center">Account</div>
-        <div className="w-[11.4%] text-center">Category</div>
-        <div className="w-[8.8%] text-center">Date</div>
-        <div className="w-[10.6%] text-center">Location</div>
-        <div className="w-[5.25%]">Actions</div>
-      </motion.div>
-
-      <div className="flex h-[87.5%] w-full justify-between gap-5">
+      <div className="mx-auto flex h-[90%] w-full justify-between gap-5 sm:max-w-5/6">
         {transactionLoading && (
           <div className="h-10 w-10 animate-spin rounded-full border-8 border-b-fuchsia-950"></div>
         )}

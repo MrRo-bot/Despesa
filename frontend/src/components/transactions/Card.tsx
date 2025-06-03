@@ -98,63 +98,50 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="mb-4 flex cursor-no-drop items-center justify-start gap-5 rounded-full bg-zinc-50 p-2 text-lg shadow-sm shadow-zinc-50/70 transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100"
+      className="mb-4 grid cursor-no-drop grid-cols-[0.5fr_1fr_1fr_0.75fr] grid-rows-[1.5fr_1fr] gap-2 rounded-2xl bg-zinc-50 p-2 text-lg shadow-sm shadow-zinc-50/70 transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100 sm:px-4 sm:py-3 xl:mx-auto xl:max-w-3/4 xl:grid-cols-[0.5fr_1fr_1fr_0.75fr] xl:grid-rows-[2fr_1fr] xl:px-8 2xl:mx-auto 2xl:max-w-8/12 2xl:grid-cols-[0.5fr_1fr_1fr_0.5fr] 2xl:grid-rows-[2.5fr_1.5fr] 2xl:px-10"
     >
+      {/* icon */}
       <div
-        className={`${dynamicCategoryColor(category)} grid aspect-square h-12 w-12 place-items-center rounded-full p-2`}
+        className={`${dynamicCategoryColor(category)} grid aspect-square min-h-12 w-max min-w-12 place-items-center rounded-2xl p-2 md:min-h-13 md:min-w-13 2xl:min-h-14 2xl:min-w-14`}
       >
         {<DynamicIcon icon={category} />}
       </div>
-      <div className="line-clamp-1 w-[25%] text-xl font-bold text-stone-800">
-        {description.slice(0, 1).toUpperCase() + description.slice(1)}
-      </div>
-      <div className="w-[12%]">
-        <div className="text-zinc-500">
-          {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
+
+      {/* description */}
+      {/* date */}
+      <div className="col-start-2 col-end-4 flex flex-col gap-1">
+        <div className="line-clamp-2 rounded-2xl bg-blue-50 px-2 font-bold text-ellipsis text-stone-800 md:text-xl">
+          {description.slice(0, 1).toUpperCase() + description.slice(1)}
+        </div>
+
+        <div className="text-left text-sm font-semibold text-slate-700 md:text-base">
+          {dateStr}
         </div>
       </div>
-      <div className="w-[10%]">
-        <span
-          className={`font-roboto mx-auto flex w-max gap-1 rounded-full bg-slate-100 px-3 ${cardClassText} font-medium`}
-        >
-          ₹
-          <NumericFormat
-            value={amount}
-            thousandSeparator
-            thousandsGroupStyle="lakh"
-            displayType="text"
-          />
-        </span>
+
+      {/* amount */}
+      <div
+        className={`font-roboto mx-auto flex h-max max-w-max gap-1 rounded-2xl bg-amber-100/40 px-2 text-sm md:px-3 md:text-base ${cardClassText} md:font-medium`}
+      >
+        ₹
+        <NumericFormat
+          value={amount}
+          thousandSeparator
+          thousandsGroupStyle="lakh"
+          displayType="text"
+        />
       </div>
-      <div className="line-clamp-1 w-[10%]">
-        <div
-          className={`${cardClassText} ${cardClassBg} mx-auto w-max rounded-full px-2 py-0.5 text-base font-semibold`}
-        >
-          {account[0].toUpperCase() + account.slice(1)}
-        </div>
-      </div>
-      <div className="w-[13%]">
-        <div
-          className={`mx-auto w-max rounded-full bg-purple-400/20 px-2 py-0.5 text-base font-semibold text-purple-800`}
-        >
-          {category[0].toUpperCase() + category.slice(1)}
-        </div>
-      </div>
-      <div className="font-roboto line-clamp-1 w-[10%] gap-2 text-center text-base font-medium text-slate-600">
-        {dateStr}
-      </div>
-      <div className="text-medium line-clamp-1 w-[12%] px-2 text-center font-semibold text-slate-800">
-        {location.slice(0, 1).toUpperCase() + location.slice(1)}
-      </div>
-      <div className="flex w-[6%] items-center justify-center gap-2">
+
+      {/* actions */}
+      <div className="justify-left col-start-1 col-end-2 row-start-2 row-end-3 my-auto ml-1 flex items-end gap-2">
         {!delLoading && (
           <>
             <button id="delete" onClick={openModal}>
               <FaTrash className={"cursor-pointer text-rose-500"} />
             </button>
             <dialog ref={delDialogRef} className="modal">
-              <div className="modal-box shadow-main flex aspect-square h-[25%] w-1/6 flex-col justify-around bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat">
-                <div className="mx-auto w-max rounded-full bg-zinc-900/10 px-4 py-1">
+              <div className="modal-box shadow-main flex aspect-square w-10/12 flex-col justify-around bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat sm:h-4/12 sm:w-1/2 2xl:h-[25%] 2xl:w-1/6">
+                <div className="mx-auto w-max rounded-2xl bg-zinc-900/10 px-4 py-1">
                   <h3 className="bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text text-2xl font-black text-transparent">
                     Are you SURE!!!!
                   </h3>
@@ -185,7 +172,7 @@ const Card = ({
           <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
         </button>
         <dialog ref={updDialogRef} className="modal">
-          <div className="modal-box shadow-main flex !min-w-[45rem] flex-col bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat pt-10">
+          <div className="modal-box shadow-main flex !h-[80vh] flex-col bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat pt-10 xl:!max-w-[60vw] 2xl:!max-w-[50vw]">
             {isOpen && <UpdateTransaction id={_id} />}
             <button
               className="btn btn-sm btn-circle btn-secondary absolute top-2 right-2"
@@ -195,6 +182,34 @@ const Card = ({
             </button>
           </div>
         </dialog>
+      </div>
+
+      {/* account */}
+      {/* category */}
+      {/* location */}
+      <div className="col-start-2 col-end-4 row-start-2 row-end-3 my-auto flex flex-wrap items-end justify-start gap-2 md:gap-8 xl:gap-14">
+        <div
+          className={`${cardClassText} ${cardClassBg} max-w-max rounded-2xl px-2 py-0.5 text-sm font-semibold md:text-base`}
+        >
+          {account[0].toUpperCase() + account.slice(1)}
+        </div>
+
+        <div
+          className={`max-w-max rounded-2xl bg-purple-400/20 px-2 py-0.5 text-sm font-semibold text-purple-800 md:text-base`}
+        >
+          {category[0].toUpperCase() + category.slice(1)}
+        </div>
+
+        <div className="rounded-2xl bg-zinc-200/80 px-2 py-0.5 text-sm font-semibold text-slate-800 md:text-base">
+          {location.slice(0, 1).toUpperCase() + location.slice(1)}
+        </div>
+      </div>
+
+      {/* paymentType */}
+      <div className="row-start-2 row-end-3 my-auto text-center text-sm md:text-base">
+        <div className="font-semibold text-zinc-500">
+          {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
+        </div>
       </div>
     </motion.div>
   );

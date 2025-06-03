@@ -1,8 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
 * {
   outline: 0.1px solid red;
 }
+
 @theme {
   --shadow-main: hsla(0, 0%, 0%, 0.7) 3px 3px;
   --font-roboto: "Roboto Mono";

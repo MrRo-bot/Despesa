@@ -99,9 +99,9 @@ const UpdateTransaction = ({ id }: { id: string }) => {
         </h3>
       </div>
       <form className="flex w-full flex-col gap-3 px-3" onSubmit={handleSubmit}>
-        <div className="flex justify-between gap-2">
+        <div className="flex flex-col justify-between gap-2 xl:flex-row">
           {/* DESCRIPTION */}
-          <div className="w-4/6">
+          <div className="xl:w-4/6">
             <Input
               type="text"
               title="description"
@@ -113,7 +113,7 @@ const UpdateTransaction = ({ id }: { id: string }) => {
           </div>
 
           {/* LOCATION */}
-          <div className="mb-6 w-full flex-1 md:mb-0">
+          <div className="w-full flex-1">
             <Input
               type="text"
               title="location"
@@ -126,9 +126,9 @@ const UpdateTransaction = ({ id }: { id: string }) => {
             />
           </div>
         </div>
-        <div className="flex justify-between gap-2">
+        <div className="flex flex-col justify-between gap-2 xl:flex-row">
           {/* ACCOUNT */}
-          <div className="mb-6 w-full flex-1 md:mb-0">
+          <div className="w-full flex-1">
             {formData?.account.length > 1 && (
               <SelectInput
                 title="account"
@@ -143,7 +143,7 @@ const UpdateTransaction = ({ id }: { id: string }) => {
           </div>
 
           {/* CATEGORY */}
-          <div className="mb-6 w-full flex-1 md:mb-0">
+          <div className="w-full flex-1">
             {formData?.category.length > 1 && (
               <SelectInput
                 title="category"
@@ -156,7 +156,7 @@ const UpdateTransaction = ({ id }: { id: string }) => {
           </div>
 
           {/* PAYMENT TYPE */}
-          <div className="mb-6 w-full flex-1 md:mb-0">
+          <div className="w-full flex-1">
             {formData?.paymentType.length > 1 && (
               <SelectInput
                 title="paymentType"
@@ -168,7 +168,7 @@ const UpdateTransaction = ({ id }: { id: string }) => {
             )}
           </div>
         </div>
-        <div className="flex justify-between gap-2">
+        <div className="flex flex-col justify-between gap-2 xl:flex-row">
           {/* DATE */}
           <div className="w-full flex-1">
             <Input
@@ -181,7 +181,7 @@ const UpdateTransaction = ({ id }: { id: string }) => {
           </div>
 
           {/* AMOUNT */}
-          <div className="mb-6 w-full flex-1 md:mb-0">
+          <div className="w-full flex-1">
             <Input
               type="text"
               title="amount"
@@ -202,7 +202,7 @@ const UpdateTransaction = ({ id }: { id: string }) => {
           className="font-roboto btn mx-auto mt-5 w-max rounded-full border-[#591660] bg-[#622069] py-6 text-lg font-extrabold text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
         >
           <MdOutlinePostAdd className="h-5 w-5 text-indigo-400" />
-          {updateLoading ? "loading..." : "Update Transaction"}
+          {updateLoading ? "loading..." : "Update"}
         </button>
       </form>
     </div>
