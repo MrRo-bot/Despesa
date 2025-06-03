@@ -11,7 +11,7 @@ import Error from "./pages/Error";
 import Authentication from "./pages/Authentication";
 import Overview from "./pages/Overview";
 import Layout from "./pages/Layout";
-import TransactionForm from "./pages/AddTransaction";
+import AddTransaction from "./pages/AddTransaction";
 import Reports from "./pages/Reports";
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
             path="/transaction"
             element={
               authData?.authUser ? (
-                <TransactionForm />
+                <AddTransaction />
               ) : (
                 <Navigate to="/authentication" />
               )

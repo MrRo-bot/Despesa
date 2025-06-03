@@ -164,7 +164,7 @@ const Authentication = () => {
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                className="shadow-main absolute top-[102%] left-1/2 !min-w-max -translate-x-1/2 rounded-md bg-zinc-800"
+                className="shadow-main absolute top-[102%] left-1/2 !min-w-max -translate-x-1/2 rounded-md bg-zinc-800 lg:top-0 lg:left-0 lg:translate-x-90"
               >
                 <pre className="p-1 text-left text-xs xl:text-sm">
                   <strong className="text-orange-500">USERNAME:</strong>

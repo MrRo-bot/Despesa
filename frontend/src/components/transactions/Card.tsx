@@ -98,7 +98,7 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="mb-4 grid cursor-no-drop grid-cols-[0.5fr_1fr_1fr_0.75fr] grid-rows-[1.5fr_1fr] gap-2 rounded-2xl bg-zinc-50 p-2 text-lg shadow-sm shadow-zinc-50/70 transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100 sm:px-4 sm:py-3 xl:mx-auto xl:max-w-3/4 xl:grid-cols-[0.5fr_1fr_1fr_0.75fr] xl:grid-rows-[2fr_1fr] xl:px-8 2xl:mx-auto 2xl:max-w-8/12 2xl:grid-cols-[0.5fr_1fr_1fr_0.5fr] 2xl:grid-rows-[2.5fr_1.5fr] 2xl:px-10"
+      className="mb-4 grid cursor-no-drop grid-cols-[0.5fr_1fr_1fr_0.75fr] grid-rows-[1.5fr_1fr] gap-2 rounded-2xl bg-zinc-50 p-2 text-lg shadow-sm shadow-zinc-50/70 transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100 sm:px-4 sm:py-3 xl:mx-auto xl:max-w-10/12 xl:grid-cols-[0.5fr_1fr_1fr_0.75fr] xl:grid-rows-[2fr_1fr] xl:px-8 2xl:mx-auto 2xl:max-w-9/12 2xl:grid-cols-[0.5fr_1fr_1fr_0.5fr] 2xl:grid-rows-[2.5fr_1.5fr] 2xl:px-10"
     >
       {/* icon */}
       <div
@@ -114,7 +114,7 @@ const Card = ({
           {description.slice(0, 1).toUpperCase() + description.slice(1)}
         </div>
 
-        <div className="text-left text-sm font-semibold text-slate-700 md:text-base">
+        <div className="pl-2 text-left text-sm font-semibold text-slate-700 md:text-base">
           {dateStr}
         </div>
       </div>
@@ -187,7 +187,7 @@ const Card = ({
       {/* account */}
       {/* category */}
       {/* location */}
-      <div className="col-start-2 col-end-4 row-start-2 row-end-3 my-auto flex flex-wrap items-end justify-start gap-2 md:gap-8 xl:gap-14">
+      <div className="col-start-2 col-end-4 row-start-2 row-end-3 my-auto flex flex-wrap items-end justify-start gap-2 pl-2 md:gap-8 xl:gap-14">
         <div
           className={`${cardClassText} ${cardClassBg} max-w-max rounded-2xl px-2 py-0.5 text-sm font-semibold md:text-base`}
         >

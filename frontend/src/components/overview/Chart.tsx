@@ -107,7 +107,7 @@ const Chart = () => {
 
     //@ts-expect-error: a and b are monthExp object
     setMonthWiseExp(finalList.sort((a, b) => a.EpochTime - b.EpochTime));
-  }, [transaction, transaction.transactions]);
+  }, [transaction, transaction?.transactions]);
 
   return (
     <motion.div

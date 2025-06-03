@@ -5,13 +5,13 @@ import { useQuery } from "@apollo/client";
 import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 
 import Header from "../components/layout/Header";
-// import Sidebar from "../components/layout/Sidebar";
+import Sidebar from "../components/layout/Sidebar";
 import FullPageLoading from "../components/layout/FullPageLoading";
 
 import { BalancesType } from "../types/types";
 
 const Layout = () => {
-  // const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -60,10 +60,10 @@ const Layout = () => {
         <FullPageLoading />
       ) : (
         <div className="no-scrollbar flex w-screen justify-stretch">
-          {/* <Sidebar
+          <Sidebar
             sidebarStatus={isSidebarOpen}
             sidebarSetter={setIsSidebarOpen}
-          /> */}
+          />
           <main className="h-screen w-full overflow-y-scroll">
             <Header
               total={(
