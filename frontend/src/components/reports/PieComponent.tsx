@@ -67,7 +67,7 @@ const PieComponent = ({
     <Pie
       options={{
         responsive: true,
-        aspectRatio: 16 / 9,
+        maintainAspectRatio: false,
         layout: {
           padding: {
             top: 5,
