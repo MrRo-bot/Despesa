@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useMutation } from "@apollo/client";
 
 import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
@@ -14,7 +14,6 @@ import { SignInType, SignUpType } from "../types/types";
 
 const Authentication = () => {
   const [toggle, setToggle] = useState<boolean>(false);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const [loginData, setLoginData] = useState<SignInType>({
     username: "",
@@ -150,10 +149,8 @@ const Authentication = () => {
           }}
           className="relative my-10 h-[45vh] min-h-96 w-1/4 min-w-80 perspective-[800px] transform-3d sm:my-5"
         >
-          <div
-            className="absolute top-0 -right-6.75 flex"
-            onClick={() => setIsVisible(!isVisible)}
-          >
+          {/* 
+          <div className="absolute top-0 -right-6.75 flex">
             <div className="font-roboto writingMode cursor-pointer rounded-md bg-[#170b35b4] px-1 -tracking-[0.25em] select-none">
               hint
             </div>
@@ -188,20 +185,15 @@ const Authentication = () => {
                 </pre>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
 
-          <div
-            className="tooltip tooltip-right sm:tooltip-left tooltip-secondary"
-            data-tip="Passport.js"
-          >
-            <div className="font-roboto writingMode absolute -top-4.5 -left-6.75 flex h-max cursor-pointer items-center gap-2 rounded-md bg-[#170b35b4] px-2 text-base -tracking-[0.25em]">
-              <img
-                className="h-4 w-4"
-                src="https://www.passportjs.org/images/logo.svg"
-                alt="P"
-              />
-              Secured by
-            </div>
+          <div className="font-roboto absolute -bottom-6 left-1/2 flex w-max -translate-x-1/2 cursor-pointer items-center justify-between gap-2 rounded-md bg-[#170b35b4] px-2 text-zinc-50">
+            Secured by
+            <img
+              className="h-4 w-4"
+              src="https://www.passportjs.org/images/logo.svg"
+              alt="P"
+            />
           </div>
 
           <div
