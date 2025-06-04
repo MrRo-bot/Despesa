@@ -34,7 +34,7 @@ const LoginHeader = () => {
             }}
             className="aspect-square h-7 w-5 self-start overflow-clip text-center"
           >
-            <div className="animate-currency flex flex-col px-0.5 tracking-tighter text-zinc-50">
+            <div className="animate-currency flex flex-col px-0.5 tracking-tighter">
               <motion.pre className="inline text-2xl">$</motion.pre>
               <motion.pre className="inline text-2xl">₣</motion.pre>
               <motion.pre className="inline text-2xl">€</motion.pre>

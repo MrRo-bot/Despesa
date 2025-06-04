@@ -131,7 +131,7 @@ const Authentication = () => {
             delay: 0.5,
           }}
           htmlFor="switch"
-          className={`relative mt-4 h-3 w-16 cursor-pointer rounded-full bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 before:absolute before:-top-[9px] before:z-10 before:h-8 before:w-8 before:rounded-full before:bg-blue-800 before:text-center before:text-lg before:text-zinc-50 before:transition-all before:duration-500 before:content-["⇖"] has-checked:before:translate-x-10 has-checked:before:rotate-[-270deg] md:mt-6`}
+          className={`relative mt-4 h-3 w-16 cursor-pointer rounded-full bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 before:absolute before:-top-[9px] before:z-10 before:h-8 before:w-8 before:rounded-full before:bg-blue-800 before:text-center before:text-lg before:transition-all before:duration-500 before:content-["⇖"] has-checked:before:translate-x-10 has-checked:before:rotate-[-270deg] md:mt-6`}
         >
           <input
             onChange={handleCheck}
@@ -187,7 +187,7 @@ const Authentication = () => {
             )}
           </AnimatePresence> */}
 
-          <div className="font-roboto absolute -bottom-6 left-1/2 flex w-max -translate-x-1/2 cursor-pointer items-center justify-between gap-2 rounded-md bg-[#170b35b4] px-2 text-zinc-50">
+          <div className="font-roboto absolute -bottom-7 left-1/2 flex w-max -translate-x-1/2 cursor-pointer items-center justify-between gap-2 rounded-md bg-[#170b35b4] px-2 py-0.5">
             Secured by
             <img
               className="h-4 w-4"

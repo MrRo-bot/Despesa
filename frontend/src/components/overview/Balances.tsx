@@ -39,7 +39,7 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
           className="flex items-center justify-center gap-2 rounded-full bg-zinc-50 px-3 py-1 sm:px-4 sm:py-2 md:px-6 md:py-3 xl:gap-3"
         >
           <div className="grid min-h-10 min-w-10 place-items-center rounded-full bg-zinc-900 lg:min-h-18 lg:min-w-18">
-            <TbMoneybag className="h-8 w-8 text-zinc-50" />
+            <TbMoneybag className="h-8 w-8" />
           </div>
           <div className="flex flex-col gap-1 text-zinc-900">
             <h5 className="text-xs tracking-tight md:text-lg lg:text-xl">
@@ -74,7 +74,7 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
           <div className="grid min-h-10 min-w-10 place-items-center rounded-full bg-zinc-50 lg:min-h-18 lg:min-w-18">
             <TbChartPie className="h-8 w-8 text-zinc-900" />
           </div>
-          <div className="flex flex-col gap-1 text-zinc-50">
+          <div className="flex flex-col gap-1">
             <h5 className="text-xs tracking-tight md:text-lg lg:text-lg">
               Total Investment
             </h5>
@@ -108,7 +108,7 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
             <div className="grid min-h-10 min-w-10 place-items-center rounded-full bg-zinc-50 lg:min-h-18 lg:min-w-18">
               <TbPlus className="h-8 w-8 text-zinc-900" size={18} />
             </div>
-            <div className="flex flex-col gap-1 text-zinc-50">
+            <div className="flex flex-col gap-1">
               <h5 className="tracking-tight md:text-lg xl:text-xl">
                 Add a
                 <br />

@@ -58,20 +58,19 @@ const Sidebar = ({
               onClick={() => sidebarSetter(sidebarStatus ? false : true)}
               className={`absolute -right-13.5 cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${sidebarStatus && "rotate-y-180"} `}
             >
-              <TiChevronRightOutline className="h-8 w-8 text-zinc-50" />
+              <TiChevronRightOutline className="h-8 w-8" />
             </div>
             <NavLink className="" to="/">
               <img className="h-9" src="/logo.svg" alt="" />
             </NavLink>
             <NavLink className="ml-1 flex items-center" to="/">
-              <h1 className="font-roboto relative text-center text-3xl font-semibold tracking-tighter text-zinc-50">
+              <h1 className="font-roboto relative text-center text-3xl font-semibold tracking-tighter">
                 Despesa
               </h1>
               <span className="mb-1 aspect-square h-6 w-4 overflow-clip text-center">
-                <div className="animate-currency flex flex-col text-zinc-50">
+                <div className="animate-currency flex flex-col">
                   <motion.pre className="inline">$</motion.pre>
                   <motion.pre className="inline">₣</motion.pre>
-                  <motion.pre className="inline">₩</motion.pre>
                   <motion.pre className="inline">€</motion.pre>
                   <motion.pre className="inline">₱</motion.pre>
                   <motion.pre className="inline">₹</motion.pre>
@@ -106,7 +105,7 @@ const Sidebar = ({
               icon={<TbReportAnalytics className="mr-1 ml-2 h-5 w-5" />}
             />
           </nav>
-          <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2 text-zinc-50">
+          <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2">
             <div className="font-roboto mb-2 text-sm font-bold">
               {!authData?.authUser?.username ? (
                 <Skeleton className="h-full min-w-18" />
@@ -144,7 +143,7 @@ const Sidebar = ({
               onClick={() => sidebarSetter(sidebarStatus ? false : true)}
               className={`absolute -right-12 cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${sidebarStatus && "rotate-y-180"} `}
             >
-              <TiChevronRightOutline className="h-6 w-6 text-zinc-50" />
+              <TiChevronRightOutline className="h-6 w-6" />
             </div>
             <NavLink className="" to="/">
               <img className="h-12" src="/logo.svg" alt="" />
@@ -205,7 +204,7 @@ const Sidebar = ({
               />
             </div>
           </nav>
-          <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2 text-zinc-50">
+          <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2">
             <div className="flex flex-col items-center justify-center gap-2">
               <div className="rounded-lg bg-zinc-500 p-1">
                 {!authData?.authUser?.profilePicture ? (
