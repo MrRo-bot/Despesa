@@ -109,13 +109,13 @@ const Transactions = () => {
         >
           <BiSearchAlt className="mt-0.5 h-7 w-7 text-zinc-800" />
           <input
-            ref={searchRef}
             onChange={(e) => setSearch(e.currentTarget.value)}
             value={search}
+            ref={searchRef}
             type="text"
             name="search"
             id="search"
-            className="font-roboto mb-0.5 w-full appearance-none text-zinc-800 focus:outline-none"
+            className="font-roboto focus:shadow-accent mb-0.5 w-full appearance-none text-zinc-800 focus:outline-none"
           />
           <kbd className="absolute top-1/2 right-4 flex -translate-y-1/2 justify-between gap-1 opacity-45">
             <div className="rounded-sm bg-zinc-600/80 px-1 text-zinc-50">

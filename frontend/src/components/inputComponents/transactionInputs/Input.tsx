@@ -24,6 +24,7 @@ const Input = ({
           onChange={change}
           autoComplete="on"
           required
+          autoFocus={title === "description" ? true : false}
         />
       </div>
     </fieldset>
