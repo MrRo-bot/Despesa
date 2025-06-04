@@ -32,7 +32,7 @@ const userResolver = {
         await context.login(newUser);
         return newUser;
       } catch (error: any) {
-        console.error(`Error signing up: ${error}`);
+        console.error(error);
         throw new Error(error.message || `Internal Server Error`);
       }
     },
@@ -47,7 +47,7 @@ const userResolver = {
         await context.login(user);
         return user;
       } catch (error: any) {
-        console.error(`Error in login: ${error}`);
+        console.error(error);
         throw new Error(error.message || `Internal Server Error`);
       }
     },
@@ -60,7 +60,7 @@ const userResolver = {
         context.res.clearCookie("connect.sid");
         return { message: "Logged out Successfully!" };
       } catch (error: any) {
-        console.error(`Error in logout: ${error}`);
+        console.error(error);
         throw new Error(error.message || `Internal Server Error`);
       }
     },
@@ -71,7 +71,7 @@ const userResolver = {
         const user = await context.getUser();
         return user;
       } catch (error: any) {
-        console.error(`Error in authUser: ${error}`);
+        console.error(error);
         throw new Error(error.message || `Internal Server Error`);
       }
     },
@@ -80,7 +80,7 @@ const userResolver = {
         const user = await User.findById(userId);
         return user;
       } catch (error: any) {
-        console.error(`Error in user query: ${error}`);
+        console.error(error);
         throw new Error(error.message || `Error getting Error`);
       }
     },

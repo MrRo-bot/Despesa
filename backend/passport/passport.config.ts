@@ -29,13 +29,15 @@ passport.use(
     try {
       const user = await User.findOne({ username });
       if (!user) {
-        throw new Error("Invalid Username or Password");
+        throw new Error("Invalid Username");
       }
-      const validPassword = bcrypt.compare(password, user.password);
-      if (!validPassword) {
-        throw new Error("Invalid Username or Password");
+      const matchPassword = await bcrypt.compare(password, user.password);
+
+      if (!matchPassword) {
+        throw new Error("Invalid Password");
+      } else {
+        return done(null, user);
       }
-      return done(null, user);
     } catch (error) {
       return done(error);
     }
