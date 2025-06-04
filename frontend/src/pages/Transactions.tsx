@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { useQuery } from "@apollo/client";
 import { Virtuoso } from "react-virtuoso";
@@ -22,8 +22,31 @@ const Transactions = () => {
     TransactionObjectType[]
   >([]);
 
+  const searchRef = useRef<HTMLInputElement>(null);
+
   const { data: transaction, loading: transactionLoading } =
     useQuery(GET_TRANSACTIONS);
+
+  //focus on search bar using cmd + ctrl + k
+  useEffect(() => {
+    const handleKeyDown = (e: {
+      ctrlKey: boolean;
+      key: string;
+      preventDefault: () => void;
+    }) => {
+      if (e.ctrlKey && e.key === "k") {
+        e.preventDefault(); // Prevent browser's default behavior
+        // searchRef.current.focus();
+        searchRef.current?.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   //search bar
   useEffect(() => {
@@ -82,18 +105,25 @@ const Transactions = () => {
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, type: "spring" }}
-          className="shadow-main flex w-full gap-2 rounded-full bg-zinc-50 px-2 py-1 transition-colors duration-100 ease-in-out hover:bg-purple-100 focus:bg-purple-100"
+          className="shadow-main relative flex w-full gap-2 rounded-full bg-zinc-50 px-2 py-1 transition-colors duration-100 ease-in-out hover:bg-purple-100"
         >
           <BiSearchAlt className="mt-0.5 h-7 w-7 text-zinc-800" />
           <input
+            ref={searchRef}
             onChange={(e) => setSearch(e.currentTarget.value)}
             value={search}
             type="text"
             name="search"
             id="search"
             className="font-roboto mb-0.5 w-full appearance-none text-zinc-800 focus:outline-none"
-            placeholder="Search transactions..."
           />
+          <kbd className="absolute top-1/2 right-4 flex -translate-y-1/2 justify-between gap-1 opacity-45">
+            <div className="rounded-sm bg-zinc-600/80 px-1 text-zinc-50">
+              ctrl
+            </div>
+            <div className="text-zinc-600">+</div>
+            <div className="rounded-sm bg-zinc-600/80 px-1 text-zinc-50">K</div>
+          </kbd>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
