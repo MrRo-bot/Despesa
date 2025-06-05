@@ -180,7 +180,7 @@ Project Link: [https://github.com/MrRo-bot/Despesa](https://github.com/MrRo-bot/
 
 <!-- ACKNOWLEDGMENT -->
 
-# Acknowledgment 🆘
+# Acknowledgment 📝
 
 - [![daily.dev]][daily.dev-url]
 - [![Dev.to]][Dev.to-url]
