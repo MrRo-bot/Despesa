@@ -58,31 +58,11 @@ const server = new ApolloServer({
 
 await server.start();
 
-// Defined allowed origins for development and production
-const allowedOrigins = [
-  "https://despesa-five.vercel.app", // My production frontend
-  "http://localhost:3000", // Common for React/Next.js dev
-  "http://localhost:5173", // Common for Vite dev
-  // Adding any Vercel preview URLs if needed:
-  "https://despesa-git-main-mrro13ot.vercel.app/",
-];
-
 app.use(
-  "/", // Applies to all routes
+  "/graphql",
   cors<cors.CorsRequest>({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (like same-origin requests or curl)
-      // or if the origin is in our allowed list
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        console.error(`CORS error: Origin ${origin} not allowed`); // Log the blocked origin
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin: "http://localhost:3000",
     credentials: true,
-    methods: ["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"], // Explicitly allow methods my GraphQL endpoint will use
-    allowedHeaders: ["Content-Type", "Authorization", "Accept"], // Common headers for GraphQL
   }),
   express.json(),
   //@ts-ignore // Keeping this because having type issues with expressMiddleware
@@ -97,4 +77,4 @@ await new Promise<void>((resolve) =>
 
 await connectDB();
 
-console.log(`🚀 Server ready at https://despesa-backend.vercel.app/`);
+console.log(`🚀 Server ready at http://localhost:4000/graphql`);
