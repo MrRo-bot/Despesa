@@ -65,7 +65,7 @@ const allowedOrigins = [
 ];
 
 app.use(
-  "/graphql",
+  "/",
   cors<cors.CorsRequest>({
     origin: (origin, callback) => {
       // Allow requests with no origin (like mobile apps or curl requests)
@@ -91,4 +91,4 @@ await new Promise<void>((resolve) =>
 
 await connectDB();
 
-console.log(`🚀 Server ready at https://despesa-backend.vercel.app/graphql`);
+console.log(`🚀 Server ready at https://despesa-backend.vercel.app`);
