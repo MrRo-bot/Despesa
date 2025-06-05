@@ -178,9 +178,9 @@ Discord: [Mr.RO130T](https://discordapp.com/users/434001308484239381)
 
 Project Link: [https://github.com/MrRo-bot/Despesa](https://github.com/MrRo-bot/Despesa)
 
-<!-- ACKNOWLEDGMENTS -->
+<!-- ACKNOWLEDGMENT -->
 
-# Acknowledgments 🆘
+# Acknowledgment 🆘
 
 - [![daily.dev]][daily.dev-url]
 - [![Dev.to]][Dev.to-url]
