@@ -58,13 +58,25 @@ const server = new ApolloServer({
 
 await server.start();
 
+const allowedOrigins = [
+  "https://despesa-five.vercel.app", // Production frontend
+  "https://despesa-git-main-mrro13ot.vercel.app", // Add other preview Vercel URLs if you test with them
+  "http://localhost:3000", // Local frontend
+];
+
 app.use(
   "/",
   cors<cors.CorsRequest>({
-    origin: "https://despesa-five.vercel.app/",
-    credentials: true, // If you're using cookies/authentication
-    methods: "GET,PUT,POST,DELETE",
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      // or if the origin is in our allowed list
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   }),
   express.json(),
   //@ts-ignore
@@ -79,4 +91,4 @@ await new Promise<void>((resolve) =>
 
 await connectDB();
 
-console.log(`🚀 Server ready at https://despesa-backend.vercel.app/`);
+console.log(`🚀 Server ready at https://despesa-backend.vercel.app`);

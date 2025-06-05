@@ -22,7 +22,7 @@
   <h1 align="center">DESPESA</h3>
 
   <p align="center">
-    <a href="https://despesa-five.vercel.app/">View Demo</a>
+    <a href="https://despesa-five.vercel.app">View Demo</a>
     &middot;
     <a href="https://github.com/MrRo-bot/Despesa/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
