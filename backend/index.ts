@@ -62,7 +62,9 @@ app.use(
   "/graphql",
   cors<cors.CorsRequest>({
     origin: "https://despesa-five.vercel.app/",
-    credentials: true,
+    credentials: true, // If you're using cookies/authentication
+    methods: "GET,PUT,POST,DELETE",
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
   express.json(),
   //@ts-ignore
