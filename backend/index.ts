@@ -91,4 +91,4 @@ await new Promise<void>((resolve) =>
 
 await connectDB();
 
-console.log(`🚀 Server ready`);
+console.log(`🚀 Server ready at https://despesa-backend.vercel.app/graphql`);
