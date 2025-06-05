@@ -25,7 +25,7 @@ export const configurePassport = async () => {
 
 passport.use(
   //@ts-ignore
-  new GraphQLLocalStrategy(async (username: string, password: string, done) => {
+  new GraphQLLocalStrategy(async (username, password: string, done) => {
     try {
       const user = await User.findOne({ username });
       if (!user) {

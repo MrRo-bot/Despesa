@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsx index.ts",
-    "build": "tsx && node index.ts"
+    "build": "tsc && node index.ts"
   },
   "type": "module",
   "keywords": [],
