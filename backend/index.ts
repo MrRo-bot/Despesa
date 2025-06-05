@@ -61,7 +61,7 @@ await server.start();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>({
-    origin: "http://localhost:3000",
+    origin: "https://despesa-five.vercel.app/",
     credentials: true,
   }),
   express.json(),
@@ -77,4 +77,4 @@ await new Promise<void>((resolve) =>
 
 await connectDB();
 
-console.log(`🚀 Server ready at http://localhost:4000/graphql`);
+console.log(`🚀 Server ready at https://despesa-backend.vercel.app/`);
