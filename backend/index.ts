@@ -59,7 +59,7 @@ const server = new ApolloServer({
 await server.start();
 
 app.use(
-  "/",
+  "/graphql",
   cors<cors.CorsRequest>({
     origin: "https://despesa-five.vercel.app/",
     credentials: true, // If you're using cookies/authentication
