@@ -9,10 +9,10 @@ import { ToastContainer } from "react-toastify";
 export function getApolloServerUri() {
   if (process.env.NODE_ENV === "production") {
     // In a production build, use the production URI
-    return process.env.REACT_APP_GRAPHQL_URI_PROD;
+    return import.meta.env.VITE_REACT_APP_GRAPHQL_URI_PROD;
   } else {
     // In a development build, use the development URI
-    return process.env.REACT_APP_GRAPHQL_URI_DEV;
+    return import.meta.env.VITE_REACT_APP_GRAPHQL_URI_DEV;
   }
 }
 
