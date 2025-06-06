@@ -5,7 +5,7 @@ import {
   income,
   expenses,
   account,
-} from "../../frontend/src/utils/constants.js";
+} from "../../../frontend/src/utils/constants.js";
 
 const transactionSchema = new mongoose.Schema({
   userId: {
