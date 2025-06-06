@@ -6,8 +6,8 @@
 <a href="https://linkedin.com/in/cm-ch">
 <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555">
 </a>
-<a href="https://despesa-frontend.vercel.app">
-<img src="https://deploy-badge.vercel.app/vercel/despesa-frontend?style=for-the-badge">
+<a href="https://despesa-frontend.netlify.app">
+<img src="https://api.netlify.com/api/v1/badges/d5df54ae-3ed2-4e52-9e13-24f8b8a9b1ed/deploy-status">
 </a>
 
 </p>
@@ -22,7 +22,7 @@
   <h1 align="center">DESPESA</h3>
 
   <p align="center">
-    <a href="https://despesa-frontend.vercel.app/">View Demo</a>
+    <a href="https://despesa-frontend.netlify.app/">View Demo</a>
     &middot;
     <a href="https://github.com/MrRo-bot/Despesa/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     &middot;
@@ -238,5 +238,3 @@ Project Link: [https://github.com/MrRo-bot/Despesa](https://github.com/MrRo-bot/
 [NPM-url]: https://npmjs.com/
 [Medium]: https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white
 [Medium-url]: https://medium.com/
-[vercel]: https://deploy-badge.vercel.app/vercel/despesa-frontend?style=for-the-badge
-[vercel-url]: https://vercel.com/mrro13ot/despesa

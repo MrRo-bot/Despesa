@@ -70,7 +70,7 @@ await server.start();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>({
-    origin: ["http://localhost:3000", ""],
+    origin: ["http://localhost:3000", "https://despesa-frontend.netlify.app"],
     credentials: true,
   }),
   express.json(),
