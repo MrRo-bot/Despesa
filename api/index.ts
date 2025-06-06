@@ -70,7 +70,7 @@ await server.start();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>({
-    origin: ["http://localhost:3000", "https://despesa-frontend.vercel.app"],
+    origin: ["http://localhost:3000", ""],
     credentials: true,
   }),
   express.json(),
@@ -82,13 +82,15 @@ app.use(
 
 await connectDB();
 
-const port = parseInt(process.env.PORT || "4000", 10);
-if (isNaN(port)) {
-  throw new Error("PORT environment variable must be a valid number");
-}
+app.get("/", (req, res) => {
+  res.send({
+    activeStatus: true,
+    error: false,
+  });
+}); //vercel
 
 await new Promise<void>((resolve, reject) => {
-  httpServer.listen({ port }, resolve).on("error", reject);
+  httpServer.listen({ port: 4000 }, resolve).on("error", reject);
 }).catch((err) => {
   console.error("Failed to start server:", err);
   process.exit(1);
