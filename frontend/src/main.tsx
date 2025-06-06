@@ -7,7 +7,7 @@ import App from "./App.tsx";
 import { ToastContainer } from "react-toastify";
 
 const client = new ApolloClient({
-  uri: import.meta.env.VITE_BACKEND_URL,
+  uri: import.meta.env.VERCEL_BACKEND_URI || "http://localhost:4000/graphql", // Fallback for safety
   cache: new InMemoryCache(), //now apollo client supports caching of query data
   credentials: "include", //for sending cookies to server
 });
