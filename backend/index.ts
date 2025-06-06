@@ -90,7 +90,7 @@ app.use(
       }
     },
     credentials: true,
-    methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   }),
   express.json(),
