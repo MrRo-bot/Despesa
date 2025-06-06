@@ -94,11 +94,6 @@ await new Promise<void>((resolve, reject) => {
   process.exit(1);
 });
 
-if (process.env.NODE_ENV === "production" && process.env.VERCEL) {
-  //@ts-ignore
-  app.get("/", (_, res: express.Response) => res.send("Backend is running"));
-}
-
 const gracefulShutdown = async () => {
   console.log("Shutting down server...");
   await server.stop();
