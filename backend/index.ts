@@ -58,11 +58,27 @@ const server = new ApolloServer({
 
 await server.start();
 
+const allowedOrigins = [
+  "https://despesa-eight.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "https://despesa-git-main-mrro13ot.vercel.app",
+];
+
 app.use(
   "/graphql",
   cors<cors.CorsRequest>({
-    origin: "http://localhost:3000",
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.error(`CORS error: Origin ${origin} not allowed`);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "OPTIONS", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   }),
   express.json(),
   //@ts-ignore // Keeping this because having type issues with expressMiddleware
@@ -77,4 +93,4 @@ await new Promise<void>((resolve) =>
 
 await connectDB();
 
-console.log(`🚀 Server ready at http://localhost:4000/graphql`);
+console.log(`🚀 Server ready at ${origin}`);
