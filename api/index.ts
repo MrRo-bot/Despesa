@@ -14,10 +14,10 @@ import { buildContext } from "graphql-passport";
 
 import connectMongo from "connect-mongodb-session";
 
-import mergedResolvers from "./resolvers/index.js";
-import mergedTypeDefs from "./typeDefs/index.js";
-import { connectDB } from "./db/connectDB.js";
-import { configurePassport } from "./passport/passport.config.js";
+import mergedResolvers from "./src/resolvers/index.js";
+import mergedTypeDefs from "./src/typeDefs/index.js";
+import { connectDB } from "./src/db/connectDB.js";
+import { configurePassport } from "./src/passport/passport.config.js";
 
 dotenv.config();
 configurePassport();
@@ -70,7 +70,7 @@ await server.start();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://despesa-frontend.vercel.app"],
     credentials: true,
   }),
   express.json(),

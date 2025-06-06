@@ -6,11 +6,8 @@ import "./index.css";
 import App from "./App.tsx";
 import { ToastContainer } from "react-toastify";
 
-const backendUri =
-  import.meta.env.VITE_GRAPHQL_URI || process.env.REACT_APP_GRAPHQL_URI;
-
 const client = new ApolloClient({
-  uri: backendUri,
+  uri: import.meta.env.VITE_GRAPHQL_URI || "/graphql", //left one for local and right one for vercel
   cache: new InMemoryCache(), //now apollo client supports caching of query data
   credentials: "include", //for sending cookies to server
 });
