@@ -71,11 +71,17 @@ app.use(
   })
 );
 
+// For Vercel serverless
+//@ts-ignore
+app.get("/", (_, res) => res.send("Backend is running"));
+
 await connectDB();
 
 await new Promise<void>(
   (resolve) => httpServer.listen({ port: process.env.PORT || 4000 }, resolve) //for vercel if port is different
 );
+
+console.log(`Server running on port ${process.env.PORT}`);
 
 // A simple health check route (optional but good practice)
 app.get("/health", (_, res) => {
