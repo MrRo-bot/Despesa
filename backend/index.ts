@@ -1,16 +1,17 @@
 import { ApolloServer } from "@apollo/server";
 
 import express from "express";
+import { expressMiddleware } from "@apollo/server/express4";
 import http from "http";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 
 import passport from "passport";
 import session from "express-session";
 import { buildContext } from "graphql-passport";
+
 import connectMongo from "connect-mongodb-session";
 
 import mergedResolvers from "./resolvers/index.js";
@@ -26,13 +27,6 @@ const app = express();
 const httpServer = http.createServer(app);
 
 const MongoDBStore = connectMongo(session);
-
-if (!process.env.MONGO_URI) {
-  throw new Error("MONGO_URI environment variable is not defined");
-}
-if (!process.env.SESSION_SECRET) {
-  throw new Error("SESSION_SECRET environment variable is not defined");
-}
 
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI || "",

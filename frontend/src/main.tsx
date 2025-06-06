@@ -7,7 +7,7 @@ import App from "./App.tsx";
 import { ToastContainer } from "react-toastify";
 
 const backendUri =
-  process.env.REACT_APP_GRAPHQL_URI || import.meta.env.VITE_GRAPHQL_URI;
+  import.meta.env.VITE_GRAPHQL_URI || process.env.REACT_APP_GRAPHQL_URI;
 
 const client = new ApolloClient({
   uri: backendUri,
