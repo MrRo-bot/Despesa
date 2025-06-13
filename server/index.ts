@@ -24,6 +24,9 @@ configurePassport();
 
 const app = express();
 
+// Trust Vercel’s proxy
+app.set("trust proxy", 1);
+
 const httpServer = http.createServer(app);
 
 const MongoDBStore = connectMongo(session);
@@ -47,10 +50,16 @@ app.use(
       maxAge: 1000 * 60 * 60 * 24 * 14, // Cookie expires in 14 days
       httpOnly: true, // Prevents client-side JavaScript access to cookie
       secure: process.env.NODE_ENV === "production", // Sends cookie only over HTTPS in production
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
     store: store, // Custom session store (e.g., MongoDB, Redis)
   })
 );
+
+app.use((req, res, next) => {
+  console.log("Session:", req.session);
+  next();
+});
 
 app.use(passport.initialize());
 app.use(passport.session());
