@@ -9,16 +9,7 @@
   "routes": [
     {
       "src": "/graphql",
-      "dest": "index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.ts"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
+      "dest": "index.ts",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
