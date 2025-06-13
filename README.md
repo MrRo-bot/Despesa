@@ -7,9 +7,8 @@
 <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555">
 </a>
 <a href="https://despesa-frontend.vercel.app">
-<img src="https://vercelbadge.vercel.app/api/mrro13ot/despesa-frontend?style=for-the-badge">
+<img src="https://deploy-badge.vercel.app/vercel/despesa-frontend?style=for-the-badge" alt="Vercel Deploy"/>
 </a>
-
 </p>
 
 <!-- PROJECT LOGO -->
@@ -100,13 +99,13 @@ _Made with love ❤️ by [MrRo-bot](https://github.com/MrRo-bot)_
 - [![Vite]][Vite-url]
 - [![NPM]][NPM-url]
 - ![Firefox]
-- [Passport.js Auth Library](https://choosealicense.com)
-- [React Virtuoso](https://choosealicense.com)
-- [React Toastify](https://choosealicense.com)
-- [React Loading Skeleton](https://choosealicense.com)
-- [React Number Format](https://choosealicense.com)
-- [Nanoid](https://choosealicense.com)
-- [Bcrypt](https://choosealicense.com)
+- [Passport.js Auth Library](https://www.passportjs.org/)
+- [React Virtuoso](https://virtuoso.dev/)
+- [React Toastify](https://fkhadra.github.io/react-toastify/introduction)
+- [React Loading Skeleton](https://github.com/dvtng/react-loading-skeleton)
+- [React Number Format](https://s-yadav.github.io/react-number-format/docs/intro/)
+- [Nanoid](https://zelark.github.io/nano-id-cc/)
+- [Bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
 - [React Icons](https://react-icons.github.io/react-icons/search)
 
 <!-- BASIC SETUP -->
