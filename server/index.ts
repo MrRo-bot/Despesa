@@ -29,7 +29,7 @@ const httpServer = http.createServer(app);
 const MongoDBStore = connectMongo(session);
 
 const store = new MongoDBStore({
-  uri: process.env.MONGO_URI || "",
+  uri: process.env.MONGO_URI,
   collection: "sessions",
 });
 
@@ -40,14 +40,13 @@ store.on("error", (err: any) => {
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "", // Secret for signing session ID cookie
+    secret: process.env.SESSION_SECRET, // Secret for signing session ID cookie
     resave: false, // Don't save session if unmodified
     saveUninitialized: false, // Don't create session until something is stored
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 14, // Cookie expires in 14 days
       httpOnly: true, // Prevents client-side JavaScript access to cookie
       secure: process.env.NODE_ENV === "production", // Sends cookie only over HTTPS in production
-      sameSite: "none", //Allow cross-site cookies (if needed)
     },
     store: store, // Custom session store (e.g., MongoDB, Redis)
   })
