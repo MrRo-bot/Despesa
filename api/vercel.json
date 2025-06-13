@@ -3,18 +3,19 @@
   "buildCommand": "npm run build",
   "builds": [
     {
-      "src": "index.ts",
+      "src": "/index.ts",
       "use": "@vercel/node",
       "config": {
         "maxDuration": 30,
-        "memory": 256
+        "memory": 256,
+        "outDir": "dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/graphql",
-      "dest": "dist/index.js",
+      "dest": "api/dist/index.js",
       "methods": ["GET", "POST", "OPTIONS"],
       "headers": {
         "Access-Control-Allow-Origin": "https://despesa-frontend.netlify.app",
