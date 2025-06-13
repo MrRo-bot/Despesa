@@ -15,5 +15,24 @@
       "src": "/(.*)",
       "dest": "/index.ts"
     }
+  ],
+  "headers": [
+    {
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://despesa-frontend.vercel.app"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        },
+        { "key": "Access-Control-Allow-Credentials", "value": "true" }
+      ]
+    }
   ]
 }
