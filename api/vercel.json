@@ -1,18 +1,26 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "builds": [
     {
-      "src": "dist/index.js",
+      "src": "index.ts",
       "use": "@vercel/node",
-      "config": { "includeFiles": ["dist/**"] }
+      "config": {
+        "maxDuration": 30,
+        "memory": 256
+      }
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/graphql",
-      "destination": "dist/index.js"
+      "src": "/graphql",
+      "dest": "api/index.ts",
+      "methods": ["GET", "POST", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "https://despesa-frontend.netlify.app",
+        "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+      }
     }
   ]
 }
