@@ -89,12 +89,15 @@ app.get("/", (req, res) => {
   });
 }); //vercel
 
-await new Promise<void>((resolve, reject) => {
-  httpServer.listen({ port: 4000 }, resolve).on("error", reject);
-}).catch((err) => {
-  console.error("Failed to start server:", err);
-  process.exit(1);
-});
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => console.log(`Listening on port: ${port}`));
+// await new Promise<void>((resolve, reject) => {
+//   httpServer.listen({ port }, resolve).on("error", reject);
+// }).catch((err) => {
+//   console.error("Failed to start server:", err);
+//   process.exit(1);
+// });
 
 const gracefulShutdown = async () => {
   console.log("Shutting down server...");
