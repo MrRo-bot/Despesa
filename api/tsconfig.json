@@ -5,7 +5,7 @@
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "nodenext",
-    "outDir": "./dist",
+    "outDir": "dist",
     "skipLibCheck": true //to overcome type clash between passport graphql-passport and express types
   },
   "exclude": ["node_modules"]

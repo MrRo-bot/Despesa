@@ -3,11 +3,7 @@
   "builds": [
     {
       "src": "index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "distDir": "api/dist",
-        "outDir": "api/dist"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
