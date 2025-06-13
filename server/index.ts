@@ -37,17 +37,19 @@ store.on("error", (err: any) => {
   console.error("MongoDB session store error:", err);
   // Optionally, add logic to handle critical errors (e.g., notify admin, exit process)
 });
+
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "",
-    resave: false, // this specifies whether to save the session to the store on every request (dont want multiple sessions of same user)
-    saveUninitialized: false,
+    secret: process.env.SESSION_SECRET || "", // Secret for signing session ID cookie
+    resave: false, // Don't save session if unmodified
+    saveUninitialized: false, // Don't create session until something is stored
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 14, //for preventing xss attack (cross-site scripting)
-      httpOnly: true, //14 days session time limit
-      secure: process.env.NODE_ENV === "production", // Only set secure cookies in production
+      maxAge: 1000 * 60 * 60 * 24 * 14, // Cookie expires in 14 days
+      httpOnly: true, // Prevents client-side JavaScript access to cookie
+      secure: process.env.NODE_ENV === "production", // Sends cookie only over HTTPS in production
+      sameSite: "none", //Allow cross-site cookies (if needed)
     },
-    store: store,
+    store: store, // Custom session store (e.g., MongoDB, Redis)
   })
 );
 
