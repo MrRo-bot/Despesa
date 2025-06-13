@@ -9,7 +9,7 @@
   "rewrites": [{ "source": "/graphql", "destination": "index.ts" }],
   "headers": [
     {
-      "src": "/graphql",
+      "source": "/graphql",
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
