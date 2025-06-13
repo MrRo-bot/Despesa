@@ -29,6 +29,7 @@ const httpServer = http.createServer(app);
 const MongoDBStore = connectMongo(session);
 
 const store = new MongoDBStore({
+  //@ts-expect-error value have to be defined
   uri: process.env.MONGO_URI,
   collection: "sessions",
 });
@@ -43,6 +44,7 @@ app.set("trust proxy", 1);
 
 app.use(
   session({
+    //@ts-expect-error value have to be defined
     secret: process.env.SESSION_SECRET, // Secret for signing session ID cookie
     resave: false, // Don't save session if unmodified
     saveUninitialized: false, // Don't create session until something is stored
