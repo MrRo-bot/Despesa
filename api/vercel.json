@@ -2,21 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.ts",
+      "src": "index.ts",
       "use": "@vercel/node",
       "config": {
-        "distDir": "api/dist"
+        "distDir": "api/dist",
+        "outDir": "api/dist"
       }
     }
   ],
   "routes": [
     {
       "src": "/graphql",
-      "dest": "api/index.ts"
+      "dest": "index.ts"
     },
     {
       "src": "/(.*)",
-      "dest": "api/index.ts"
+      "dest": "index.ts"
     }
   ]
 }
