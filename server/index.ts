@@ -70,7 +70,11 @@ await server.start();
 app.use(
   "/graphql",
   cors<cors.CorsRequest>({
-    origin: ["http://localhost:5173", "http://localhost:4173"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:4173",
+      "https://despesa-frontend.vercel.app",
+    ],
     credentials: true,
   }),
   express.json(),
