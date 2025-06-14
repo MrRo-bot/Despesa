@@ -5,14 +5,14 @@ const LoginHeader = () => {
   return (
     <>
       <div className="mb-5 py-2 sm:mb-10">
-        <Link className="flex items-center justify-center" to="/">
+        <Link className="flex items-center justify-center gap-1" to="/">
           <motion.img
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
               delay: 0.1,
             }}
-            className="mt-2 mr-1 h-9"
+            className="h-9"
             src="/logo.svg"
             alt=""
           />
@@ -22,7 +22,7 @@ const LoginHeader = () => {
             transition={{
               delay: 0.2,
             }}
-            className="font-roboto relative z-50 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-center text-3xl leading-16 font-bold text-transparent sm:text-4xl md:text-5xl"
+            className="font-roboto relative z-50 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-center text-4xl leading-16 font-bold text-transparent md:text-5xl xl:text-6xl"
           >
             Despesa
           </motion.h1>

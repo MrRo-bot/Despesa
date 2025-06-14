@@ -30,10 +30,10 @@ const SignUp = ({
         <div className="w-full text-center">
           <form className="" onSubmit={handleSubmitSignUp}>
             <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
-              <SiNamemc className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
+              <SiNamemc className="absolute left-3 h-5 w-5 text-[#ffeba7] md:h-7 md:w-7" />
 
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[40px] leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)] md:pl-[50px] md:text-lg"
                 id="name"
                 type="text"
                 name="name"
@@ -46,10 +46,10 @@ const SignUp = ({
             </div>
 
             <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
-              <TbUser className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
+              <TbUser className="absolute left-3 h-5 w-5 text-[#ffeba7] md:h-7 md:w-7" />
 
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[40px] leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)] md:pl-[50px] md:text-lg"
                 id="username"
                 type="text"
                 name="username"
@@ -63,10 +63,10 @@ const SignUp = ({
             </div>
 
             <div className="relative mx-auto mt-2 flex max-w-max items-center justify-center">
-              <TbPassword className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
+              <TbPassword className="absolute left-3 h-5 w-5 text-[#ffeba7] md:h-7 md:w-7" />
 
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[40px] leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)] md:pl-[50px] md:text-lg"
                 id="password"
                 type="password"
                 name="password"
@@ -79,8 +79,8 @@ const SignUp = ({
               />
             </div>
             <div className="mt-4 flex justify-center gap-10">
-              <div className="flex items-center gap-2">
-                <TbGenderMale className="h-7 w-7 text-[#ffeba7]" />
+              <div className="flex items-center md:gap-2">
+                <TbGenderMale className="h-5 w-5 text-[#ffeba7] md:h-7 md:w-7" />
 
                 <div className="inline-flex items-center">
                   <label
@@ -99,8 +99,8 @@ const SignUp = ({
                   </label>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <TbGenderFemale className="h-7 w-7 text-[#ffeba7]" />
+              <div className="flex items-center md:gap-2">
+                <TbGenderFemale className="h-5 w-5 text-[#ffeba7] md:h-7 md:w-7" />
 
                 <div className="inline-flex items-center">
                   <label
@@ -124,7 +124,7 @@ const SignUp = ({
             <button
               type="submit"
               disabled={signUpLoading}
-              className="font-roboto mt-10 inline-flex h-11 cursor-pointer items-center justify-center rounded-sm border-none bg-[#ffeba7] px-8 text-center text-sm font-semibold tracking-widest text-[#102770] uppercase shadow-[0_8px_24px_0_rgba(255,255,167,.2)] transition-all duration-200 ease-linear hover:bg-[#102770] hover:text-[#ffeba7] hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#102770] focus:text-[#ffeba7] focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#102770] active:text-[#ffeba7] active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
+              className="font-roboto mt-7 inline-flex h-10 cursor-pointer items-center justify-center rounded-sm border-none bg-[#ffeba7] px-4 text-center text-xs font-semibold tracking-widest text-[#102770] uppercase shadow-[0_8px_24px_0_rgba(255,255,167,.2)] transition-all duration-200 ease-linear hover:bg-[#102770] hover:text-[#ffeba7] hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#102770] focus:text-[#ffeba7] focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#102770] active:text-[#ffeba7] active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50 md:mt-10 md:px-8 md:text-sm"
             >
               {signUpLoading ? "loading" : "Sign up"}
             </button>

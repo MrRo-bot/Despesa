@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useMutation } from "@apollo/client";
 
 import { LOGIN, SIGN_UP } from "../graphql/mutations/user.mutation";
@@ -14,6 +14,7 @@ import { SignInType, SignUpType } from "../types/types";
 
 const Authentication = () => {
   const [toggle, setToggle] = useState<boolean>(false);
+  const [isToggle, setIsToggle] = useState<boolean>(false);
 
   const [loginData, setLoginData] = useState<SignInType>({
     username: "",
@@ -108,7 +109,7 @@ const Authentication = () => {
   };
 
   return (
-    <>
+    <div className="relative h-screen">
       <LoginHeader />
       <main className="relative flex flex-col items-center gap-2">
         <motion.div
@@ -119,10 +120,10 @@ const Authentication = () => {
           }}
           className="rounded-full bg-zinc-50/50 px-3 py-1"
         >
-          <h2 className="relative z-50 flex gap-6 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-xl font-black text-transparent sm:text-2xl">
+          <p className="relative z-50 flex gap-6 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-xl font-bold text-transparent md:text-2xl xl:text-3xl">
             <span>SignIn</span>
             <span>SignUp</span>
-          </h2>
+          </p>
         </motion.div>
         <motion.label
           initial={{ opacity: 0 }}
@@ -149,45 +150,7 @@ const Authentication = () => {
           }}
           className="relative my-10 h-[45vh] min-h-96 w-1/4 min-w-80 perspective-[800px] transform-3d sm:my-5"
         >
-          {/* 
-          <div className="absolute top-0 -right-6.75 flex">
-            <div className="font-roboto writingMode cursor-pointer rounded-md bg-[#170b35b4] px-1 -tracking-[0.25em] select-none">
-              hint
-            </div>
-          </div>
-          <AnimatePresence>
-            {isVisible && (
-              <motion.div
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                className="shadow-main absolute top-[102%] left-1/2 !min-w-max -translate-x-1/2 rounded-md bg-zinc-800 lg:top-0 lg:left-0 lg:translate-x-90"
-              >
-                <pre className="p-1 text-left text-xs xl:text-sm">
-                  <strong className="text-orange-500">USERNAME:</strong>
-                  <span className="text-fuchsia-400">
-                    <br />- 3 and 20 characters
-                    <br />- Does not start with _, ., or -
-                    <br />- Does not end with _, ., or -
-                    <br />- Does not contain consecutive _, ., or -
-                    <br />- Consists only _ -
-                    <br />
-                  </span>
-                  <br />
-                  <strong className="text-orange-500">PASSWORD:</strong>
-                  <span className="text-fuchsia-400">
-                    <br />- (8-16) characters with no space
-                    <br />- Must contain 1 number
-                    <br />- Must contain 1 uppercase letter
-                    <br />- Must contain 1 lowercase letter
-                    <br />- Must contain 1 non-alpha number
-                  </span>
-                </pre>
-              </motion.div>
-            )}
-          </AnimatePresence> */}
-
-          <div className="font-roboto absolute -bottom-7 left-1/2 flex w-max -translate-x-1/2 cursor-pointer items-center justify-between gap-2 rounded-md bg-[#170b35b4] px-2 py-0.5">
+          <div className="font-roboto absolute -bottom-7 left-1/2 flex w-max -translate-x-1/2 cursor-pointer items-center justify-between gap-2 rounded-md bg-[#170b35b4] px-2 py-0.5 text-sm md:-bottom-8 md:text-base">
             Secured by
             <img
               className="h-4 w-4"
@@ -214,7 +177,37 @@ const Authentication = () => {
           </div>
         </motion.section>
       </main>
-    </>
+      <div onClick={() => setIsToggle(!isToggle)}>
+        <div className="font-roboto absolute bottom-1 left-1/2 -translate-x-1/2 cursor-pointer bg-[#170b3535] px-1 select-none">
+          hints
+        </div>
+      </div>
+      <AnimatePresence>
+        {isToggle && (
+          <motion.div
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            className="shadow-main absolute bottom-9 left-1/2 max-w-10/12 -translate-x-1/2 rounded-md bg-zinc-800"
+          >
+            <pre className="flex flex-col gap-1 p-1 text-left text-xs xl:text-sm">
+              <div>
+                <strong className="text-orange-500">USERNAME: </strong>
+                <p className="text-wrap text-fuchsia-400">
+                  Input must start and end with alphanumeric characters, cannot
+                  have consecutive special characters, and can only contain
+                  alphanumeric characters, underscores, and hyphens.
+                </p>
+              </div>
+              <div>
+                <strong className="text-orange-500">PASSWORD: </strong>
+                <span className="text-indigo-400">eg. MyP@ssw0rd1</span>
+              </div>
+            </pre>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

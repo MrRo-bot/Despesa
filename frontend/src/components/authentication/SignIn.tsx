@@ -32,7 +32,7 @@ const SignIn = ({
             >
               <TbUserHeart className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)] md:text-lg"
                 id="username"
                 type="text"
                 name="username"
@@ -57,7 +57,7 @@ const SignIn = ({
               <TbLock className="absolute left-3 h-7 w-7 text-[#ffeba7]" />
 
               <input
-                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] text-lg leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)]"
+                className="mt-1 w-full rounded-sm bg-[#110828] px-5 py-3.5 pl-[50px] leading-6 font-medium tracking-wider transition-all duration-200 ease-linear outline-none valid:shadow-[0_2px_8px_1px_rgb(39,150,92)] invalid:shadow-[0_2px_8px_1px_rgb(200,19,92)] md:text-lg"
                 id="password"
                 type="password"
                 name="password"
@@ -72,7 +72,7 @@ const SignIn = ({
 
             <button
               disabled={loginLoading}
-              className="font-roboto mx-auto mt-10 inline-flex h-11 w-max cursor-pointer items-center justify-center rounded-sm border-none bg-[#ffeba7] px-8 text-center text-sm font-semibold tracking-widest text-[#102770] uppercase shadow-[0_8px_24px_0_rgba(255,255,167,.2)] transition-all duration-200 ease-linear hover:bg-[#102770] hover:text-[#ffeba7] hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#102770] focus:text-[#ffeba7] focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#102770] active:text-[#ffeba7] active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
+              className="font-roboto mx-auto mt-10 inline-flex h-10 w-max cursor-pointer items-center justify-center rounded-sm border-none bg-[#ffeba7] px-4 text-center text-xs font-semibold tracking-widest text-[#102770] uppercase shadow-[0_8px_24px_0_rgba(255,255,167,.2)] transition-all duration-200 ease-linear hover:bg-[#102770] hover:text-[#ffeba7] hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#102770] focus:text-[#ffeba7] focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#102770] active:text-[#ffeba7] active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50 md:px-8 md:text-sm"
             >
               {loginLoading ? "loading..." : "Sign In"}
             </button>
