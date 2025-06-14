@@ -82,9 +82,9 @@ const Card = ({
           transactionId: transactionData._id,
         },
       });
-      customToastFunction(`❌👋 POOF!! Gone`, "top-center", "light", "");
+      customToastFunction(`❌👋 POOF!! Gone`, "bottom-right", "light", "");
     } catch (error) {
-      customToastFunction(`${error}`, "top-center", "colored", "");
+      customToastFunction(`${error}`, "bottom-right", "colored", "");
     }
   };
 

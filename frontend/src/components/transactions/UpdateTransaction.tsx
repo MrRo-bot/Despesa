@@ -38,14 +38,14 @@ const UpdateTransaction = ({ id }: { id: string }) => {
   });
 
   if (getErr) {
-    customToastFunction(`${getErr}`, "top-center", "colored", "error");
+    customToastFunction(`${getErr}`, "bottom-right", "colored", "error");
   }
 
   const [updateTransaction, { loading: updateLoading, error: updateErr }] =
     useMutation(UPDATE_TRANSACTION);
 
   if (updateErr) {
-    customToastFunction(`${updateErr}`, "top-center", "colored", "error");
+    customToastFunction(`${updateErr}`, "bottom-right", "colored", "error");
   }
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
@@ -59,9 +59,9 @@ const UpdateTransaction = ({ id }: { id: string }) => {
           },
         },
       });
-      customToastFunction(`📝 Changes Made`, "top-center", "light", "");
+      customToastFunction(`📝 Changes Made`, "bottom-right", "light", "");
     } catch (error) {
-      customToastFunction(`${error}`, "top-center", "colored", "error");
+      customToastFunction(`${error}`, "bottom-right", "colored", "error");
     }
   };
 

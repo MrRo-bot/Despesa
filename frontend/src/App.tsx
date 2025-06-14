@@ -27,7 +27,7 @@ function App() {
     }
     customToastFunction(
       isOnline ? "We're back Online 🛜✔️" : "Offline 🛜❌",
-      "top-center",
+      "bottom-right",
       "light",
       "",
     );

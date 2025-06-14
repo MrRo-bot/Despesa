@@ -62,9 +62,9 @@ const AddTransaction = () => {
         date: "",
       });
       refetch();
-      customToastFunction("Transaction added! 🥳", "top-center", "light", "");
+      customToastFunction("Transaction added! 🥳", "bottom-right", "light", "");
     } catch (error) {
-      customToastFunction(`${error}`, "top-center", "colored", "error");
+      customToastFunction(`${error}`, "bottom-right", "colored", "error");
     }
   };
 
