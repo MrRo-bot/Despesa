@@ -29,7 +29,7 @@ const Balances = ({ balance }: { balance: BalancesType }) => {
       baseColor="rgba(220,220,220,0.2)"
       customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
     >
-      <div className="flex flex-wrap items-center justify-around gap-2 md:justify-center md:gap-4 lg:justify-normal lg:gap-8 xl:flex-nowrap">
+      <div className="flex flex-wrap items-center justify-around gap-2 md:justify-center md:gap-4 lg:justify-normal lg:gap-8 2xl:flex-nowrap">
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}

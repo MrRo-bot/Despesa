@@ -12,7 +12,7 @@ const Header = ({ total }: { total: string }) => {
           initial={{ opacity: 0, x: -400, scale: 0.5 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 0.6, type: "spring" }}
-          className="font-roboto bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text px-2 text-xl font-black tracking-tighter text-transparent sm:text-2xl md:text-3xl"
+          className="font-roboto bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text px-5 text-xl font-black tracking-tighter text-transparent sm:text-2xl md:text-3xl"
         >
           {location.pathname.slice(1, 2).toUpperCase() +
             location.pathname.slice(2) ||

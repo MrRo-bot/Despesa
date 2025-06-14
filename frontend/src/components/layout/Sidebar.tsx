@@ -52,11 +52,15 @@ const Sidebar = ({
       customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
     >
       {sidebarStatus ? (
-        <div className="text-zinc flex h-screen min-w-80 flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform">
+        <div
+          className={`text-zinc ${window.innerWidth < 1280 && "absolute bg-zinc-900/90"} z-50 flex h-screen min-w-80 flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform xl:static xl:translate-0`}
+        >
           <div className="relative flex h-20 w-full items-center justify-start gap-2">
             <div
-              onClick={() => sidebarSetter(sidebarStatus ? false : true)}
-              className={`absolute -right-13.5 cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${sidebarStatus && "rotate-y-180"} `}
+              onClick={() => {
+                sidebarSetter(sidebarStatus ? false : true);
+              }}
+              className={`absolute top-10 -right-20 cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out xl:top-auto xl:-right-13.5 ${sidebarStatus && "rotate-y-180"} `}
             >
               <TiChevronRightOutline className="h-8 w-8" />
             </div>
@@ -137,11 +141,11 @@ const Sidebar = ({
           </footer>
         </div>
       ) : (
-        <div className="text-zinc flex h-screen flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform">
+        <div className="text-zinc absolute z-50 flex h-screen -translate-x-full flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform xl:static xl:translate-0">
           <div className="relative flex h-20 w-full items-center justify-start gap-2">
             <div
               onClick={() => sidebarSetter(sidebarStatus ? false : true)}
-              className={`absolute -right-12 cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out ${sidebarStatus && "rotate-y-180"} `}
+              className={`absolute top-10 -right-18 cursor-pointer rounded-full border bg-red-600 p-2 transition-all duration-500 ease-in-out xl:top-auto xl:-right-12 ${sidebarStatus && "rotate-y-180"} `}
             >
               <TiChevronRightOutline className="h-6 w-6" />
             </div>
