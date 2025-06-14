@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  assetsInclude: ["**/*.svg", "**/*.webp"], // Ensure SVGs are treated as assets
   server: {
     port: 5173,
     host: true,

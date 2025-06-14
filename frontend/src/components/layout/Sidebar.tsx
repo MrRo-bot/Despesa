@@ -52,7 +52,7 @@ const Sidebar = ({
       customHighlightBackground="linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255, 127, 144,0.25)15%, rgba(196, 153, 252,0.35)40%, rgba(255, 139, 152,0.45) 60%, rgba(255, 222, 148,0.25)85%, rgba(255,255,255,0.1) 100%)"
     >
       {sidebarStatus ? (
-        <div className="text-zinc flex h-screen min-w-80 flex-col justify-start bg-zinc-900 bg-[url('navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform">
+        <div className="text-zinc flex h-screen min-w-80 flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform">
           <div className="relative flex h-20 w-full items-center justify-start gap-2">
             <div
               onClick={() => sidebarSetter(sidebarStatus ? false : true)}
@@ -137,7 +137,7 @@ const Sidebar = ({
           </footer>
         </div>
       ) : (
-        <div className="text-zinc flex h-screen flex-col justify-start bg-zinc-900 bg-[url('navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform">
+        <div className="text-zinc flex h-screen flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform">
           <div className="relative flex h-20 w-full items-center justify-start gap-2">
             <div
               onClick={() => sidebarSetter(sidebarStatus ? false : true)}
