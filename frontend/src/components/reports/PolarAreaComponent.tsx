@@ -174,9 +174,17 @@ const PolarAreaComponent = ({
               if (context.active) {
                 c = getHoverColor(c);
               }
-              const mid = color(c).desaturate(0.2).darken(0.2).rgbString();
-              const start = color(c).lighten(0.2).rotate(270).rgbString();
-              const end = color(c).lighten(0.1).rgbString();
+              const mid = color(c)
+                .desaturate(0.2)
+                .darken(0.2)
+                .alpha(0.8)
+                .rgbString();
+              const start = color(c)
+                .lighten(0.2)
+                .rotate(270)
+                .alpha(0.8)
+                .rgbString();
+              const end = color(c).lighten(0.1).alpha(0.8).rgbString();
               return createRadialGradient3(context, start, mid, end);
             },
           },
