@@ -69,8 +69,8 @@ const DoughnutComponent = ({
   return (
     <>
       {expCategoryMap.length && (
-        <div className="pointer-events-none absolute -top-8 right-0 flex rotate-6 flex-col items-center justify-center gap-1 md:top-0">
-          <div className="rounded-2xl bg-amber-400 py-1 text-center font-bold text-amber-950 md:px-4 md:text-lg">
+        <div className="pointer-events-none absolute -top-4 right-0 flex rotate-6 flex-col items-center justify-center gap-1 md:top-0">
+          <div className="rounded-2xl bg-amber-400 p-1 text-center font-bold text-amber-950 md:px-4 md:text-lg">
             CLICK TO TOGGLE
           </div>
           <motion.div

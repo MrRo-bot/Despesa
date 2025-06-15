@@ -79,7 +79,7 @@ const AddTransaction = () => {
   };
 
   return (
-    <div className="flex h-[90vh] flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <div className="shadow-main flex flex-col gap-4 rounded-2xl bg-zinc-800/20 py-2 sm:gap-6 lg:w-[60vw] lg:justify-between lg:gap-7 lg:px-4 2xl:max-w-[60rem]">
         <div className="mx-auto rounded-full bg-zinc-900/10 px-4 py-1">
           <motion.h3
