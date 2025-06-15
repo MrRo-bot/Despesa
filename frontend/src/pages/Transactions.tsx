@@ -100,7 +100,7 @@ const Transactions = () => {
 
   return (
     <div className="mx-auto h-full w-[95%]">
-      <div className="flex flex-col items-center gap-2 pt-4 pb-5 sm:mx-auto sm:max-w-5/6 sm:px-2 md:gap-4 lg:max-w-10/12 lg:flex-row-reverse lg:justify-between lg:gap-0 xl:max-w-8/12 2xl:max-w-7/12">
+      <div className="flex flex-col items-center gap-2 pt-4 pb-5 sm:mx-auto sm:max-w-5/6 md:gap-4 lg:flex-row-reverse lg:justify-between lg:gap-0 xl:max-w-10/12 2xl:max-w-9/12">
         <motion.div
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -136,12 +136,12 @@ const Transactions = () => {
         </motion.div>
       </div>
 
-      <div className="mx-auto flex h-[90%] w-full justify-between gap-5 sm:max-w-5/6">
+      <div className="mx-auto flex h-[90%] w-full justify-between gap-5 sm:max-w-5/6 2xl:max-w-9/12">
         {transactionLoading && (
           <div className="h-10 w-10 animate-spin rounded-full border-8 border-b-fuchsia-950"></div>
         )}
         {transaction?.transactions?.length === 0 && (
-          <div className="mx-auto text-xl font-black text-zinc-600">
+          <div className="mx-auto text-2xl font-black text-zinc-600">
             No transactions found
           </div>
         )}
@@ -156,7 +156,7 @@ const Transactions = () => {
             components={{
               Footer: function Footer() {
                 return (
-                  <div className="text-center text-xl font-black text-zinc-600">
+                  <div className="text-center text-2xl font-black text-zinc-600">
                     End of transactions
                   </div>
                 );

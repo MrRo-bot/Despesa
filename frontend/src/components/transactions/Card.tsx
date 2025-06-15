@@ -98,11 +98,11 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="mb-4 grid cursor-no-drop grid-cols-[0.5fr_1fr_1fr_0.75fr] grid-rows-[1.5fr_1fr] gap-2 rounded-2xl bg-zinc-50 p-2 text-lg shadow-sm shadow-zinc-50/70 transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100 sm:px-4 sm:py-3 xl:mx-auto xl:max-w-10/12 xl:grid-cols-[0.5fr_1fr_1fr_0.75fr] xl:grid-rows-[2fr_1fr] xl:px-8 2xl:mx-auto 2xl:max-w-9/12 2xl:grid-cols-[0.5fr_1fr_1fr_0.5fr] 2xl:grid-rows-[2.5fr_1.5fr] 2xl:px-10"
+      className="mb-4 grid cursor-no-drop grid-cols-[0.5fr_1fr_1fr_0.75fr] grid-rows-[1.5fr_1fr] gap-2 rounded-2xl bg-zinc-50 p-2 text-lg shadow-sm shadow-zinc-50/70 transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100 sm:px-4 sm:py-3 lg:grid-cols-[0.25fr_1fr_1fr_0.25fr] xl:mx-auto xl:grid-rows-[2fr_1fr] xl:px-8 2xl:mx-auto 2xl:grid-rows-[2.5fr_1.5fr] 2xl:px-10"
     >
       {/* icon */}
       <div
-        className={`${dynamicCategoryColor(category)} grid aspect-square min-h-12 w-max min-w-12 place-items-center rounded-2xl p-2 md:min-h-13 md:min-w-13 2xl:min-h-14 2xl:min-w-14`}
+        className={`${dynamicCategoryColor(category)} grid aspect-square min-h-12 w-max min-w-12 place-items-center rounded-2xl p-2 md:min-h-13 md:min-w-13 2xl:min-h-14 2xl:min-w-16`}
       >
         {<DynamicIcon icon={category} />}
       </div>
@@ -110,18 +110,18 @@ const Card = ({
       {/* description */}
       {/* date */}
       <div className="col-start-2 col-end-4 flex flex-col gap-1">
-        <div className="line-clamp-2 rounded-2xl bg-blue-50 px-2 font-bold text-ellipsis text-stone-800 md:text-xl">
+        <div className="line-clamp-2 rounded-2xl bg-blue-50 px-2 font-bold text-ellipsis text-stone-800 md:text-xl 2xl:text-2xl">
           {description.slice(0, 1).toUpperCase() + description.slice(1)}
         </div>
 
-        <div className="pl-2 text-left text-sm font-semibold text-slate-700 md:text-base">
+        <div className="pl-2 text-left text-sm font-semibold text-slate-700 md:text-base 2xl:text-lg">
           {dateStr}
         </div>
       </div>
 
       {/* amount */}
       <div
-        className={`font-roboto mx-auto flex h-max max-w-max gap-1 rounded-2xl bg-amber-100/40 px-2 text-sm md:px-3 md:text-base ${cardClassText} md:font-medium`}
+        className={`font-roboto mx-auto flex h-max max-w-max gap-1 rounded-2xl bg-amber-100/40 px-2 text-sm md:px-3 md:text-base ${cardClassText} md:font-medium 2xl:text-xl 2xl:font-semibold`}
       >
         ₹
         <NumericFormat
@@ -189,18 +189,18 @@ const Card = ({
       {/* location */}
       <div className="col-start-2 col-end-4 row-start-2 row-end-3 my-auto flex flex-wrap items-end justify-start gap-2 pl-2 md:gap-8 xl:gap-14">
         <div
-          className={`${cardClassText} ${cardClassBg} max-w-max rounded-2xl px-2 py-0.5 text-sm font-semibold md:text-base`}
+          className={`${cardClassText} ${cardClassBg} 2xl:text-semibold max-w-max rounded-full px-2 py-0.5 text-sm font-semibold md:text-base 2xl:px-4 2xl:py-1 2xl:text-lg`}
         >
           {account[0].toUpperCase() + account.slice(1)}
         </div>
 
         <div
-          className={`max-w-max rounded-2xl bg-purple-400/20 px-2 py-0.5 text-sm font-semibold text-purple-800 md:text-base`}
+          className={`2xl:text-semibold max-w-max rounded-full bg-purple-400/20 px-2 py-0.5 text-sm font-semibold text-purple-800 md:text-base 2xl:px-4 2xl:py-1 2xl:text-lg`}
         >
           {category[0].toUpperCase() + category.slice(1)}
         </div>
 
-        <div className="rounded-2xl bg-zinc-200/80 px-2 py-0.5 text-sm font-semibold text-slate-800 md:text-base">
+        <div className="2xl:text-semibold rounded-full bg-zinc-200/80 px-2 py-0.5 text-sm font-semibold text-slate-800 md:text-base 2xl:px-4 2xl:py-1 2xl:text-lg">
           {location.slice(0, 1).toUpperCase() + location.slice(1)}
         </div>
       </div>
