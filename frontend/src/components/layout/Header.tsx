@@ -23,7 +23,7 @@ const Header = ({ total }: { total: string }) => {
         initial={{ opacity: 0, x: 400, scale: 0.5 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ duration: 0.6, type: "spring" }}
-        className="font-roboto shadow-main flex items-center justify-between gap-2 border border-zinc-700 p-1 tracking-wider text-zinc-700 md:gap-3 md:p-2"
+        className="font-roboto shadow-main flex items-center justify-between gap-1 border border-zinc-700 p-0.5 text-zinc-700 md:gap-3 md:p-2 md:tracking-wider"
       >
         <span className="text-sm font-extrabold tracking-tighter md:text-base">
           My Balance

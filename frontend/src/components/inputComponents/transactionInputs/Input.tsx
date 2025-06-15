@@ -10,7 +10,7 @@ const Input = ({
 }: InputType) => {
   return (
     <fieldset className="fieldset">
-      <legend className="fieldset-legend font-roboto ml-8 text-base md:text-lg">
+      <legend className="fieldset-legend font-roboto ml-8 text-base text-zinc-50 md:text-lg">
         {title.slice(0, 1).toUpperCase() + title.slice(1)}
       </legend>
       <div className="flex items-center gap-2">

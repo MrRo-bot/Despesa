@@ -9,7 +9,7 @@ const SelectInput = ({
 }: SelectType) => {
   return (
     <fieldset className="fieldset">
-      <legend className="fieldset-legend font-roboto ml-8 flex items-center text-base md:text-lg">
+      <legend className="fieldset-legend font-roboto ml-8 flex items-center text-base text-zinc-50 md:text-lg">
         {title.slice(0, 1).toUpperCase() + title.slice(1)}
       </legend>
       <div className="flex items-center gap-2">
