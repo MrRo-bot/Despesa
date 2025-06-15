@@ -102,7 +102,7 @@ const Card = ({
     >
       {/* icon */}
       <div
-        className={`${dynamicCategoryColor(category)} grid aspect-square min-h-12 w-max min-w-12 place-items-center rounded-2xl p-2 md:min-h-13 md:min-w-13 2xl:min-h-14 2xl:min-w-16`}
+        className={`${dynamicCategoryColor(category)} grid aspect-square w-12 place-items-center rounded-2xl p-2 md:w-14 2xl:w-16`}
       >
         {<DynamicIcon icon={category} />}
       </div>
