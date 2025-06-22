@@ -27,7 +27,7 @@ const Transactions = () => {
   const { data: transaction, loading: transactionLoading } =
     useQuery(GET_TRANSACTIONS);
 
-  //focus on search bar using cmd + ctrl + k
+  //focus on search bar using cmd / ctrl + k
   useEffect(() => {
     const handleKeyDown = (e: {
       ctrlKey: boolean;
@@ -105,7 +105,7 @@ const Transactions = () => {
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, type: "spring" }}
-          className="shadow-main relative flex w-full gap-2 rounded-full bg-zinc-50 px-2 py-1 transition-colors duration-100 ease-in-out hover:bg-purple-100"
+          className="relative flex w-full gap-2 px-2 py-1 transition-colors duration-100 ease-in-out rounded-full shadow-main bg-zinc-50 hover:bg-purple-100"
         >
           <BiSearchAlt className="mt-0.5 h-7 w-7 text-zinc-800" />
           <input
@@ -117,19 +117,19 @@ const Transactions = () => {
             id="search"
             className="font-roboto focus:shadow-accent mb-0.5 w-full appearance-none text-zinc-800 focus:outline-none"
           />
-          <kbd className="absolute top-1/2 right-4 flex -translate-y-1/2 justify-between gap-1 opacity-45">
-            <div className="rounded-sm bg-zinc-600/80 px-1 text-zinc-50">
+          <kbd className="absolute flex justify-between gap-1 -translate-y-1/2 top-1/2 right-4 opacity-45">
+            <div className="px-1 rounded-sm bg-zinc-600/80 text-zinc-50">
               ctrl
             </div>
             <div className="text-zinc-600">+</div>
-            <div className="rounded-sm bg-zinc-600/80 px-1 text-zinc-50">K</div>
+            <div className="px-1 rounded-sm bg-zinc-600/80 text-zinc-50">K</div>
           </kbd>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6, type: "spring" }}
-          className="flex w-full items-center justify-between sm:justify-evenly lg:justify-normal lg:gap-4"
+          className="flex items-center justify-between w-full sm:justify-evenly lg:justify-normal lg:gap-4"
         >
           <SortBy sortBy={sortBy} setSortBy={setSortBy} />
           <OrderBy orderBy={orderBy} setOrderBy={setOrderBy} />
@@ -138,7 +138,7 @@ const Transactions = () => {
 
       <div className="mx-auto flex h-[90%] w-full justify-between gap-5 sm:max-w-5/6 2xl:max-w-9/12">
         {transactionLoading && (
-          <div className="h-10 w-10 animate-spin rounded-full border-8 border-b-fuchsia-950"></div>
+          <div className="w-10 h-10 border-8 rounded-full animate-spin border-b-fuchsia-950"></div>
         )}
         {transaction?.transactions?.length === 0 && (
           <div className="mx-auto text-2xl font-black text-zinc-600">
@@ -147,7 +147,7 @@ const Transactions = () => {
         )}
         {!transactionLoading && transaction?.transactions?.length > 0 && (
           <Virtuoso
-            className="no-scrollbar h-full w-full"
+            className="w-full h-full no-scrollbar"
             totalCount={filteredTransactions?.length}
             data={filteredTransactions}
             itemContent={(_, t: TransactionObjectType) => (
@@ -156,7 +156,7 @@ const Transactions = () => {
             components={{
               Footer: function Footer() {
                 return (
-                  <div className="text-center text-2xl font-black text-zinc-600">
+                  <div className="text-2xl font-black text-center text-zinc-600">
                     End of transactions
                   </div>
                 );
