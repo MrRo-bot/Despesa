@@ -11,7 +11,7 @@ import FullPageLoading from "../components/layout/FullPageLoading";
 import { BalancesType } from "../types/types";
 
 const Layout = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>();
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -54,17 +54,19 @@ const Layout = () => {
     };
   }, [location]);
 
+  console.log(isSidebarOpen);
+
   return (
     <>
       {!loading ? (
         <FullPageLoading />
       ) : (
-        <div className="no-scrollbar flex w-screen justify-stretch">
+        <div className="flex w-screen no-scrollbar justify-stretch">
           <Sidebar
             sidebarStatus={isSidebarOpen}
             sidebarSetter={setIsSidebarOpen}
           />
-          <main className="h-screen w-full overflow-y-scroll">
+          <main className="w-full h-screen overflow-y-scroll">
             <Header
               total={(
                 balance?.income +
@@ -72,7 +74,13 @@ const Layout = () => {
                 (balance?.expense + balance?.investment)
               ).toFixed(2)}
             />
-            <Outlet context={balance} />
+            <Outlet
+              context={{
+                balance: balance,
+                sidebarStatus: isSidebarOpen,
+                sidebarSetter: setIsSidebarOpen,
+              }}
+            />
           </main>
         </div>
       )}

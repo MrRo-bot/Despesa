@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-/* * {
+* {
   outline: 0.1px solid red;
-} */
+}
 
 @media (max-width: 600px) {
   .Toastify__toast-container {

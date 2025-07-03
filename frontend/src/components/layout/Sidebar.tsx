@@ -22,7 +22,7 @@ const Sidebar = ({
   sidebarStatus,
   sidebarSetter,
 }: {
-  sidebarStatus: boolean;
+  sidebarStatus: boolean | undefined;
   sidebarSetter: React.Dispatch<boolean>;
 }) => {
   const [logout, { client }] = useMutation(LOGOUT, {
@@ -55,24 +55,24 @@ const Sidebar = ({
         <div
           className={`text-zinc ${window.innerWidth < 1280 && "absolute bg-zinc-900/95"} z-50 flex h-screen min-w-60 flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform md:min-w-80 xl:static xl:translate-0`}
         >
-          <div className="relative flex h-20 w-full items-center justify-start gap-2">
+          <div className="relative flex items-center justify-start w-full h-20 gap-2">
             <div
               onClick={() => {
-                sidebarSetter(sidebarStatus ? false : true);
+                sidebarSetter(!sidebarStatus);
               }}
               className={`absolute top-10 -right-16 cursor-pointer rounded-full border bg-red-600 p-1 transition-all duration-500 ease-in-out md:-right-20 md:p-2 xl:top-auto xl:-right-13.5 ${sidebarStatus && "rotate-y-180"} `}
             >
-              <TiChevronRightOutline className="h-6 w-6" />
+              <TiChevronRightOutline className="w-6 h-6" />
             </div>
             <NavLink className="" to="/">
               <img className="h-9" src="/logo.svg" alt="" />
             </NavLink>
-            <NavLink className="ml-1 flex items-center" to="/">
-              <h1 className="font-roboto relative text-center text-3xl font-semibold tracking-tighter">
+            <NavLink className="flex items-center ml-1" to="/">
+              <h1 className="relative text-3xl font-semibold tracking-tighter text-center font-roboto">
                 Despesa
               </h1>
-              <span className="mb-1 aspect-square h-6 w-4 overflow-clip text-center">
-                <div className="animate-currency flex flex-col">
+              <span className="w-4 h-6 mb-1 text-center aspect-square overflow-clip">
+                <div className="flex flex-col animate-currency">
                   <motion.pre className="inline">$</motion.pre>
                   <motion.pre className="inline">₣</motion.pre>
                   <motion.pre className="inline">€</motion.pre>
@@ -84,33 +84,33 @@ const Sidebar = ({
               </span>
             </NavLink>
           </div>
-          <h4 className="mt-7 mb-6 text-sm tracking-tighter text-zinc-400">
+          <h4 className="mb-6 text-sm tracking-tighter mt-7 text-zinc-400">
             Navigation
           </h4>
-          <nav className="mb-auto flex flex-col gap-8">
+          <nav className="flex flex-col gap-8 mb-auto">
             <NavItem
               navigateTo={"/"}
               title={"Dashboard"}
-              icon={<BiPieChart className="mr-1 ml-2 h-5 w-5" />}
+              icon={<BiPieChart className="w-5 h-5 ml-2 mr-1" />}
             />
             <NavItem
               navigateTo={"/transactions"}
               title={"Transactions"}
-              icon={<GrTransaction className="mr-1 ml-2 h-5 w-5" />}
+              icon={<GrTransaction className="w-5 h-5 ml-2 mr-1" />}
             />
             <NavItem
               navigateTo={"/transaction"}
               title={"Add Transaction"}
-              icon={<HiOutlineDocumentAdd className="mr-1 ml-2 h-5 w-5" />}
+              icon={<HiOutlineDocumentAdd className="w-5 h-5 ml-2 mr-1" />}
             />
             <NavItem
               navigateTo={"/reports"}
               title={"Reports"}
-              icon={<TbReportAnalytics className="mr-1 ml-2 h-5 w-5" />}
+              icon={<TbReportAnalytics className="w-5 h-5 ml-2 mr-1" />}
             />
           </nav>
-          <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2">
-            <div className="font-roboto mb-2 text-sm font-bold">
+          <footer className="p-2 mx-auto my-2 border w-max rounded-xl border-zinc-300">
+            <div className="mb-2 text-sm font-bold font-roboto">
               {!authData?.authUser?.username ? (
                 <Skeleton className="h-full min-w-18" />
               ) : (
@@ -118,22 +118,22 @@ const Sidebar = ({
               )}
             </div>
             <div className="flex items-center justify-center gap-2">
-              <div className="rounded-lg bg-zinc-500 p-1">
+              <div className="p-1 rounded-lg bg-zinc-500">
                 {!authData?.authUser?.profilePicture ? (
-                  <TbUser className="h-6 w-6" />
+                  <TbUser className="w-6 h-6" />
                 ) : (
                   <img
                     referrerPolicy="no-referrer"
                     src={authData?.authUser?.profilePicture}
-                    className="h-6 w-6"
+                    className="w-6 h-6"
                     alt=""
                   />
                 )}
               </div>
 
-              <div className="cursor-pointer rounded-lg bg-red-500 p-1">
+              <div className="p-1 bg-red-500 rounded-lg cursor-pointer">
                 <TbPower
-                  className="h-6 w-6 cursor-pointer"
+                  className="w-6 h-6 cursor-pointer"
                   onClick={handleLogout}
                 />
               </div>
@@ -142,19 +142,19 @@ const Sidebar = ({
         </div>
       ) : (
         <div className="text-zinc absolute z-50 flex h-screen -translate-x-full flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform xl:static xl:translate-0">
-          <div className="relative flex h-20 w-full items-center justify-start gap-2">
+          <div className="relative flex items-center justify-start w-full h-20 gap-2">
             <div
               onClick={() => sidebarSetter(sidebarStatus ? false : true)}
               className={`absolute top-10 -right-16 cursor-pointer rounded-full border bg-red-600 p-1 transition-all duration-500 ease-in-out md:-right-18 md:p-2 xl:top-auto xl:-right-12 ${sidebarStatus && "rotate-y-180"} `}
             >
-              <TiChevronRightOutline className="h-6 w-6" />
+              <TiChevronRightOutline className="w-6 h-6" />
             </div>
             <NavLink className="" to="/">
               <img className="h-12" src="/logo.svg" alt="" />
             </NavLink>
           </div>
-          <h4 className="mt-7 mb-6 ml-3 tracking-tighter text-zinc-400">Nav</h4>
-          <nav className="mb-auto flex flex-col gap-8">
+          <h4 className="mb-6 ml-3 tracking-tighter mt-7 text-zinc-400">Nav</h4>
+          <nav className="flex flex-col gap-8 mb-auto">
             <div className="tooltip tooltip-right">
               <div className="tooltip-content shadow-main bg-zinc-800">
                 <div className="text-base font-black text-orange-400">
@@ -165,7 +165,7 @@ const Sidebar = ({
               <NavItem
                 navigateTo={"/"}
                 title={""}
-                icon={<BiPieChart className="mr-1 ml-2 h-7 w-7" />}
+                icon={<BiPieChart className="ml-2 mr-1 h-7 w-7" />}
               />
             </div>
             <div className="tooltip tooltip-right">
@@ -178,7 +178,7 @@ const Sidebar = ({
               <NavItem
                 navigateTo={"/transactions"}
                 title={""}
-                icon={<GrTransaction className="mr-1 ml-2 h-7 w-7" />}
+                icon={<GrTransaction className="ml-2 mr-1 h-7 w-7" />}
               />
             </div>
             <div className="tooltip tooltip-right">
@@ -191,7 +191,7 @@ const Sidebar = ({
               <NavItem
                 navigateTo={"/transaction"}
                 title={""}
-                icon={<HiOutlineDocumentAdd className="mr-1 ml-2 h-7 w-7" />}
+                icon={<HiOutlineDocumentAdd className="ml-2 mr-1 h-7 w-7" />}
               />
             </div>
             <div className="tooltip tooltip-right">
@@ -204,20 +204,20 @@ const Sidebar = ({
               <NavItem
                 navigateTo={"/reports"}
                 title={""}
-                icon={<TbReportAnalytics className="mr-1 ml-2 h-7 w-7" />}
+                icon={<TbReportAnalytics className="ml-2 mr-1 h-7 w-7" />}
               />
             </div>
           </nav>
-          <footer className="mx-auto my-2 w-max rounded-xl border border-zinc-300 p-2">
+          <footer className="p-2 mx-auto my-2 border w-max rounded-xl border-zinc-300">
             <div className="flex flex-col items-center justify-center gap-2">
-              <div className="rounded-lg bg-zinc-500 p-1">
+              <div className="p-1 rounded-lg bg-zinc-500">
                 {!authData?.authUser?.profilePicture ? (
-                  <TbUser className="h-6 w-6" />
+                  <TbUser className="w-6 h-6" />
                 ) : (
                   <img
                     referrerPolicy="no-referrer"
                     src={authData?.authUser?.profilePicture}
-                    className="h-6 w-6"
+                    className="w-6 h-6"
                     alt=""
                   />
                 )}
@@ -228,9 +228,9 @@ const Sidebar = ({
                     Logout
                   </div>
                 </div>
-                <div className="cursor-pointer rounded-lg bg-red-500 p-1">
+                <div className="p-1 bg-red-500 rounded-lg cursor-pointer">
                   <TbPower
-                    className="h-6 w-6 cursor-pointer"
+                    className="w-6 h-6 cursor-pointer"
                     onClick={handleLogout}
                   />
                 </div>

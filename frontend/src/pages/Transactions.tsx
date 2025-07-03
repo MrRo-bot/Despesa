@@ -12,7 +12,8 @@ import SortBy from "../components/transactions/SortBy";
 import OrderBy from "../components/transactions/OrderBy";
 import formatDate from "../utils/formatDate";
 
-import { TransactionObjectType } from "../types/types";
+import { BalancesType, TransactionObjectType } from "../types/types";
+import { useOutletContext } from "react-router-dom";
 
 const Transactions = () => {
   const [search, setSearch] = useState<string>("");
@@ -23,6 +24,18 @@ const Transactions = () => {
   >([]);
 
   const searchRef = useRef<HTMLInputElement>(null);
+
+  const { sidebarStatus, sidebarSetter } = useOutletContext<{
+    balance: BalancesType;
+    sidebarStatus: boolean;
+    sidebarSetter: React.Dispatch<boolean>;
+  }>();
+
+  useEffect(() => {
+    if (window.innerWidth < 1280 && sidebarStatus) {
+      sidebarSetter(!sidebarStatus);
+    }
+  }, []);
 
   const { data: transaction, loading: transactionLoading } =
     useQuery(GET_TRANSACTIONS);

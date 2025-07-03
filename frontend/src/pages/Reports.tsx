@@ -8,8 +8,23 @@ import BarComponent from "../components/reports/BarComponent";
 import PieComponent from "../components/reports/PieComponent";
 import LineComponent from "../components/reports/LineComponent";
 import PolarAreaComponent from "../components/reports/PolarAreaComponent";
+import { useOutletContext } from "react-router-dom";
+import { BalancesType } from "../types/types";
+import { useEffect } from "react";
 
 const Reports = () => {
+  const { sidebarStatus, sidebarSetter } = useOutletContext<{
+    balance: BalancesType;
+    sidebarStatus: boolean;
+    sidebarSetter: React.Dispatch<boolean>;
+  }>();
+
+  useEffect(() => {
+    if (window.innerWidth < 1280 && sidebarStatus) {
+      sidebarSetter(!sidebarStatus);
+    }
+  }, []);
+
   const { data: transaction } = useQuery(GET_TRANSACTIONS);
 
   return (

@@ -6,9 +6,20 @@ import Investments from "../components/overview/Investments";
 import RecentTransactions from "../components/overview/RecentTransactions";
 
 import { BalancesType } from "../types/types";
+import { useEffect } from "react";
 
 const Overview = () => {
-  const balance = useOutletContext<BalancesType>();
+  const { balance, sidebarStatus, sidebarSetter } = useOutletContext<{
+    balance: BalancesType;
+    sidebarStatus: boolean;
+    sidebarSetter: React.Dispatch<boolean>;
+  }>();
+
+  useEffect(() => {
+    if (window.innerWidth < 1280 && sidebarStatus) {
+      sidebarSetter(!sidebarStatus);
+    }
+  }, []);
 
   return (
     <div className="mx-auto flex w-full flex-col px-3 py-4 sm:px-6 md:px-10 lg:flex-row lg:justify-between lg:gap-10 lg:pt-4 lg:pb-2">

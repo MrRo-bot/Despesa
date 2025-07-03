@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 
 import {
@@ -23,10 +23,11 @@ import SelectInput from "../components/inputComponents/transactionInputs/SelectI
 
 import { account, income, expenses, paymentType } from "../utils/constants";
 
-import { TransactionFormType } from "../types/types";
+import { BalancesType, TransactionFormType } from "../types/types";
 
 const AddTransaction = () => {
   const category = [...expenses, ...income];
+
   const [formData, setFormData] = useState<TransactionFormType>({
     description: "",
     paymentType: "",
@@ -36,6 +37,18 @@ const AddTransaction = () => {
     location: "",
     date: "",
   });
+
+  const { sidebarStatus, sidebarSetter } = useOutletContext<{
+    balance: BalancesType;
+    sidebarStatus: boolean;
+    sidebarSetter: React.Dispatch<boolean>;
+  }>();
+
+  useEffect(() => {
+    if (window.innerWidth < 1280 && sidebarStatus) {
+      sidebarSetter(!sidebarStatus);
+    }
+  }, []);
 
   const navigate = useNavigate();
 
