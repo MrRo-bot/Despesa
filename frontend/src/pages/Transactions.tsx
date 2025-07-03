@@ -16,8 +16,8 @@ import { TransactionObjectType } from "../types/types";
 
 const Transactions = () => {
   const [search, setSearch] = useState<string>("");
-  const [sortBy, setSortBy] = useState<string>("");
-  const [orderBy, setOrderBy] = useState<string>("");
+  const [sortBy, setSortBy] = useState<string>("date");
+  const [orderBy, setOrderBy] = useState<string>("descending");
   const [filteredTransactions, setFilteredTransactions] = useState<
     TransactionObjectType[]
   >([]);
@@ -75,27 +75,18 @@ const Transactions = () => {
 
   //sort and order
   useEffect(() => {
-    if (sortBy === "" && orderBy === "") {
-      const copy = [...transaction.transactions];
-      setFilteredTransactions(
-        copy?.sort((a: { date: string }, b: { date: string }) =>
-          b.date.localeCompare(a.date),
-        ),
-      );
-    } else {
-      //@ts-expect-error: x and y are TransactionObjectType
-      const finalSorted = transaction?.transactions?.toSorted((x, y) => {
-        const a = x[sortBy];
-        const b = y[sortBy];
-        if (orderBy === "ascending") {
-          return typeof a === "number" ? a - b : a.localeCompare(b);
-        }
-        if (orderBy === "descending") {
-          return typeof b === "number" ? b - a : b.localeCompare(a);
-        }
-      });
-      setFilteredTransactions(finalSorted);
-    }
+    //@ts-expect-error: x and y are TransactionObjectType
+    const finalSorted = transaction?.transactions?.toSorted((x, y) => {
+      const a = x[sortBy];
+      const b = y[sortBy];
+      if (orderBy === "ascending") {
+        return typeof a === "number" ? a - b : a.localeCompare(b);
+      }
+      if (orderBy === "descending") {
+        return typeof b === "number" ? b - a : b.localeCompare(a);
+      }
+    });
+    setFilteredTransactions(finalSorted);
   }, [transaction?.transactions, sortBy, orderBy]);
 
   return (
@@ -138,7 +129,7 @@ const Transactions = () => {
 
       <div className="mx-auto flex h-[90%] w-full justify-between gap-5 sm:max-w-5/6 2xl:max-w-9/12">
         {transactionLoading && (
-          <div className="w-10 h-10 border-8 rounded-full animate-spin border-b-fuchsia-950"></div>
+          <div className="border-8 rounded-full size-10 animate-spin border-b-fuchsia-950"></div>
         )}
         {transaction?.transactions?.length === 0 && (
           <div className="mx-auto text-2xl font-black text-zinc-600">
