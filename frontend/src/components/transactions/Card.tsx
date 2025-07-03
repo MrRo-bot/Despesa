@@ -98,7 +98,7 @@ const Card = ({
       initial={{ scale: 0.9 }}
       animate={{ scale: 1 }}
       transition={{ duration: 0.3, type: "tween" }}
-      className="pb-4"
+      className="py-1"
     >
       <div className="grid cursor-no-drop grid-cols-[0.5fr_1fr_1fr_0.75fr] grid-rows-[1.5fr_1fr] gap-2 rounded-2xl bg-zinc-50 p-2 text-lg shadow-sm shadow-zinc-50/70 transition-colors duration-100 ease-in-out hover:bg-pink-100 focus:bg-pink-100 sm:px-4 sm:py-3 lg:grid-cols-[0.25fr_1fr_1fr_0.25fr] xl:mx-auto xl:grid-rows-[2fr_1fr] xl:px-8 2xl:mx-auto 2xl:grid-rows-[2.5fr_1.5fr] 2xl:px-10">
         {/* icon */}
@@ -110,12 +110,12 @@ const Card = ({
 
         {/* description */}
         {/* date */}
-        <div className="col-start-2 col-end-4 flex flex-col gap-1">
-          <div className="line-clamp-2 rounded-2xl bg-blue-50 px-2 font-bold text-ellipsis text-stone-800 md:text-xl 2xl:text-2xl">
+        <div className="flex flex-col col-start-2 col-end-4 gap-1">
+          <div className="px-2 font-bold line-clamp-2 rounded-2xl bg-blue-50 text-ellipsis text-stone-800 md:text-xl 2xl:text-2xl">
             {description.slice(0, 1).toUpperCase() + description.slice(1)}
           </div>
 
-          <div className="pl-2 text-left text-sm font-semibold text-slate-700 md:text-base 2xl:text-lg">
+          <div className="pl-2 text-sm font-semibold text-left text-slate-700 md:text-base 2xl:text-lg">
             {dateStr}
           </div>
         </div>
@@ -134,7 +134,7 @@ const Card = ({
         </div>
 
         {/* actions */}
-        <div className="justify-left col-start-1 col-end-2 row-start-2 row-end-3 my-auto ml-1 flex items-end gap-2">
+        <div className="flex items-end col-start-1 col-end-2 row-start-2 row-end-3 gap-2 my-auto ml-1 justify-left">
           {!delLoading && (
             <>
               <button id="delete" onClick={openModal}>
@@ -142,14 +142,14 @@ const Card = ({
               </button>
               <dialog ref={delDialogRef} className="modal">
                 <div className="modal-box shadow-main flex aspect-square w-10/12 flex-col justify-around bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat sm:h-4/12 sm:w-1/2 2xl:h-[25%] 2xl:w-1/6">
-                  <div className="mx-auto w-max rounded-2xl bg-zinc-900/10 px-4 py-1">
-                    <h3 className="bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text text-2xl font-black text-transparent">
+                  <div className="px-4 py-1 mx-auto w-max rounded-2xl bg-zinc-900/10">
+                    <h3 className="text-2xl font-black text-transparent bg-gradient-to-r from-pink-800 via-indigo-800 to-pink-800 bg-clip-text">
                       Are you SURE!!!!
                     </h3>
                   </div>
 
                   <form method="dialog">
-                    <div className="mx-auto flex max-w-max items-center justify-center gap-3">
+                    <div className="flex items-center justify-center gap-3 mx-auto max-w-max">
                       <button
                         className="font-roboto btn mx-auto mt-5 w-max rounded-xl border-[#591660] bg-[#622069] py-2 font-black text-white shadow-[0_8px_24px_0_rgba(255,255,167,.2)] hover:bg-[#ffeba7] hover:text-zinc-900 hover:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] focus:bg-[#ffeba7] focus:text-zinc-900 focus:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] active:bg-[#ffeba7] active:text-zinc-900 active:shadow-[0_8px_24px_0_rgba(16,39,112,.2)] disabled:cursor-none disabled:bg-[rgba(255,255,167,.2)] disabled:text-zinc-50"
                         onClick={handleDelete}
@@ -170,13 +170,13 @@ const Card = ({
           )}
 
           <button id="update" onClick={openModal}>
-            <HiPencilAlt className="cursor-pointer text-yellow-600" size={20} />
+            <HiPencilAlt className="text-yellow-600 cursor-pointer" size={20} />
           </button>
           <dialog ref={updDialogRef} className="modal">
             <div className="modal-box shadow-main flex !h-[80vh] flex-col bg-zinc-50 bg-[url('/bg_enhanced.webp')] bg-cover bg-fixed bg-center bg-no-repeat pt-10 xl:!max-w-[60vw] 2xl:!max-w-[50vw]">
               {isOpen && <UpdateTransaction id={_id} />}
               <button
-                className="btn btn-sm btn-circle btn-secondary absolute top-2 right-2"
+                className="absolute btn btn-sm btn-circle btn-secondary top-2 right-2"
                 onClick={closeModal}
               >
                 ✕
@@ -188,7 +188,7 @@ const Card = ({
         {/* account */}
         {/* category */}
         {/* location */}
-        <div className="col-start-2 col-end-4 row-start-2 row-end-3 my-auto flex flex-wrap items-end justify-start gap-2 pl-2 md:gap-8 xl:gap-14">
+        <div className="flex flex-wrap items-end justify-start col-start-2 col-end-4 row-start-2 row-end-3 gap-2 pl-2 my-auto md:gap-8 xl:gap-14">
           <div
             className={`${cardClassText} ${cardClassBg} 2xl:text-semibold max-w-max rounded-full px-2 py-0.5 text-sm font-semibold md:text-base 2xl:px-4 2xl:py-1 2xl:text-lg`}
           >
@@ -207,7 +207,7 @@ const Card = ({
         </div>
 
         {/* paymentType */}
-        <div className="row-start-2 row-end-3 my-auto text-center text-sm md:text-base">
+        <div className="row-start-2 row-end-3 my-auto text-sm text-center md:text-base">
           <div className="font-semibold text-zinc-500">
             {paymentType.slice(0, 1).toUpperCase() + paymentType.slice(1)}
           </div>

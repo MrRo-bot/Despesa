@@ -10,6 +10,7 @@ import {
   ToastContentProps,
   ToastPosition,
 } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const customToastFunction = (
   message:

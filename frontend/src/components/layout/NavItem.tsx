@@ -25,7 +25,7 @@ const NavItem = ({
         to={navigateTo}
       >
         {icon}
-        <span className="font-roboto ml-2 text-lg tracking-tighter">
+        <span className="ml-2 tracking-tighter font-roboto md:text-lg">
           {title}
         </span>
       </NavLink>

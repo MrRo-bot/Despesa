@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-* {
+/* * {
   outline: 0.1px solid red;
-}
+} */
 
 @media (max-width: 600px) {
   .Toastify__toast-container {
@@ -30,33 +30,25 @@
   --animate-currency: autoScrolling 10s infinite cubic-bezier(1, 0, 0, 1);
   @keyframes autoScrolling {
     0%,
-    7%,
+    20%,
     100% {
       transform: translate3d(0, 0, 0);
     }
-    14%,
-    21% {
-      transform: translate3d(0, -15%, 0);
+    20%,
+    40% {
+      transform: translate3d(0, -20%, 0);
     }
-    28%,
-    35% {
-      transform: translate3d(0, -29%, 0);
+    40%,
+    60% {
+      transform: translate3d(0, -40%, 0);
     }
-    42%,
-    49% {
-      transform: translate3d(0, -43%, 0);
+    60%,
+    80% {
+      transform: translate3d(0, -60%, 0);
     }
-    56%,
-    63% {
-      transform: translate3d(0, -58%, 0);
-    }
-    70%,
-    77% {
-      transform: translate3d(0, -72%, 0);
-    }
-    84%,
-    91% {
-      transform: translate3d(0, -86%, 0);
+    80%,
+    99% {
+      transform: translate3d(0, -80%, 0);
     }
   }
   @keyframes tick {

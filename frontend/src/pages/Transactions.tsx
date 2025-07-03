@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import { motion } from "motion/react";
 import { useQuery } from "@apollo/client";
 import { Virtuoso } from "react-virtuoso";
@@ -10,10 +11,10 @@ import { GET_TRANSACTIONS } from "../graphql/queries/transaction.query";
 import Card from "../components/transactions/Card";
 import SortBy from "../components/transactions/SortBy";
 import OrderBy from "../components/transactions/OrderBy";
+
 import formatDate from "../utils/formatDate";
 
 import { BalancesType, TransactionObjectType } from "../types/types";
-import { useOutletContext } from "react-router-dom";
 
 const Transactions = () => {
   const [search, setSearch] = useState<string>("");
@@ -35,6 +36,7 @@ const Transactions = () => {
     if (window.innerWidth < 1280 && sidebarStatus) {
       sidebarSetter(!sidebarStatus);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { data: transaction, loading: transactionLoading } =
@@ -104,7 +106,7 @@ const Transactions = () => {
 
   return (
     <div className="mx-auto h-full w-[95%]">
-      <div className="flex flex-col items-center gap-2 pt-4 pb-5 sm:mx-auto sm:max-w-5/6 md:gap-4 lg:flex-row-reverse lg:justify-between lg:gap-0 xl:max-w-10/12 2xl:max-w-9/12">
+      <div className="flex flex-col items-center gap-2 pt-4 pb-4 sm:mx-auto sm:max-w-5/6 md:gap-4 md:pb-5 lg:flex-row-reverse lg:justify-between lg:gap-0 xl:max-w-10/12 2xl:max-w-9/12">
         <motion.div
           initial={{ opacity: 0, y: -400, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}

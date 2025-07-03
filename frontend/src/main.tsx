@@ -1,10 +1,10 @@
 import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ToastContainer } from "react-toastify";
 
 import "./index.css";
 import App from "./App.tsx";
-import { ToastContainer } from "react-toastify";
 
 export function getApolloServerUri() {
   if (process.env.NODE_ENV === "production") {

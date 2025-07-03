@@ -53,38 +53,36 @@ const Sidebar = ({
     >
       {sidebarStatus ? (
         <div
-          className={`text-zinc ${window.innerWidth < 1280 && "absolute bg-zinc-900/95"} z-50 flex h-screen min-w-60 flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-7 transition-transform md:min-w-80 xl:static xl:translate-0`}
+          className={`text-zinc ${window.innerWidth < 1280 && "absolute bg-zinc-900/95"} md:py-auto z-50 flex h-full min-w-60 flex-col justify-start bg-zinc-900 bg-[url('/navBg.svg')] bg-[auto_70%] bg-bottom bg-no-repeat px-3 py-5 transition-transform md:min-w-80 md:px-7 xl:static xl:h-screen xl:translate-0`}
         >
-          <div className="relative flex items-center justify-start w-full h-20 gap-2">
+          <div className="relative flex items-center justify-start w-full h-12 gap-2 md:h-20">
             <div
               onClick={() => {
                 sidebarSetter(!sidebarStatus);
               }}
-              className={`absolute top-10 -right-16 cursor-pointer rounded-full border bg-red-600 p-1 transition-all duration-500 ease-in-out md:-right-20 md:p-2 xl:top-auto xl:-right-13.5 ${sidebarStatus && "rotate-y-180"} `}
+              className={`absolute top-10.5 -right-12 cursor-pointer rounded-full border bg-red-600 p-1 transition-all duration-500 ease-in-out md:-right-20 md:p-2 xl:top-auto xl:-right-13.5 ${sidebarStatus && "rotate-y-180"} `}
             >
               <TiChevronRightOutline className="w-6 h-6" />
             </div>
             <NavLink className="" to="/">
-              <img className="h-9" src="/logo.svg" alt="" />
+              <img className="h-7 md:h-9" src="/logo.svg" alt="" />
             </NavLink>
             <NavLink className="flex items-center ml-1" to="/">
-              <h1 className="relative text-3xl font-semibold tracking-tighter text-center font-roboto">
+              <h1 className="relative text-xl font-semibold tracking-tighter text-center font-roboto md:text-3xl">
                 Despesa
               </h1>
               <span className="w-4 h-6 mb-1 text-center aspect-square overflow-clip">
                 <div className="flex flex-col animate-currency">
                   <motion.pre className="inline">$</motion.pre>
-                  <motion.pre className="inline">₣</motion.pre>
                   <motion.pre className="inline">€</motion.pre>
-                  <motion.pre className="inline">₱</motion.pre>
                   <motion.pre className="inline">₹</motion.pre>
-                  <motion.pre className="inline">₽</motion.pre>
-                  <motion.pre className="inline">₿</motion.pre>
+                  <motion.pre className="inline">¥</motion.pre>
+                  <motion.pre className="inline">£</motion.pre>
                 </div>
               </span>
             </NavLink>
           </div>
-          <h4 className="mb-6 text-sm tracking-tighter mt-7 text-zinc-400">
+          <h4 className="mb-4 text-sm tracking-tighter mt-7 text-zinc-400 md:mb-6">
             Navigation
           </h4>
           <nav className="flex flex-col gap-8 mb-auto">
@@ -145,9 +143,9 @@ const Sidebar = ({
           <div className="relative flex items-center justify-start w-full h-20 gap-2">
             <div
               onClick={() => sidebarSetter(sidebarStatus ? false : true)}
-              className={`absolute top-10 -right-16 cursor-pointer rounded-full border bg-red-600 p-1 transition-all duration-500 ease-in-out md:-right-18 md:p-2 xl:top-auto xl:-right-12 ${sidebarStatus && "rotate-y-180"} `}
+              className={`absolute top-11.5 -right-14 cursor-pointer rounded-full border bg-red-600 p-0.5 transition-all duration-500 ease-in-out md:-right-18 md:p-2 xl:top-auto xl:-right-12 ${sidebarStatus && "rotate-y-180"} `}
             >
-              <TiChevronRightOutline className="w-6 h-6" />
+              <TiChevronRightOutline className="w-5 h-5 rounded-full" />
             </div>
             <NavLink className="" to="/">
               <img className="h-12" src="/logo.svg" alt="" />

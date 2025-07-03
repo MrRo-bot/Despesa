@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 
 import Balances from "../components/overview/Balances";
@@ -6,7 +7,6 @@ import Investments from "../components/overview/Investments";
 import RecentTransactions from "../components/overview/RecentTransactions";
 
 import { BalancesType } from "../types/types";
-import { useEffect } from "react";
 
 const Overview = () => {
   const { balance, sidebarStatus, sidebarSetter } = useOutletContext<{
@@ -19,10 +19,11 @@ const Overview = () => {
     if (window.innerWidth < 1280 && sidebarStatus) {
       sidebarSetter(!sidebarStatus);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="mx-auto flex w-full flex-col px-3 py-4 sm:px-6 md:px-10 lg:flex-row lg:justify-between lg:gap-10 lg:pt-4 lg:pb-2">
+    <div className="flex flex-col w-full px-3 py-4 mx-auto sm:px-6 md:px-10 lg:flex-row lg:justify-between lg:gap-10 lg:pt-4 lg:pb-2">
       <div className="flex flex-col items-stretch gap-4 lg:w-[65%] lg:gap-5">
         <Balances balance={balance} />
         <Chart />
