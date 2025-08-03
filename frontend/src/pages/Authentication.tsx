@@ -118,9 +118,9 @@ const Authentication = () => {
           transition={{
             delay: 0.4,
           }}
-          className="rounded-full bg-zinc-50/50 px-3 py-1"
+          className="px-3 py-1 rounded-full bg-zinc-50/50"
         >
-          <p className="relative z-50 flex gap-6 bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text text-xl font-bold text-transparent md:text-2xl xl:text-3xl">
+          <p className="relative z-50 flex gap-6 text-xl font-bold text-transparent bg-gradient-to-r from-pink-600 via-indigo-500 to-pink-400 bg-clip-text md:text-2xl xl:text-3xl">
             <span>SignIn</span>
             <span>SignUp</span>
           </p>
@@ -153,7 +153,7 @@ const Authentication = () => {
           <div className="font-roboto absolute -bottom-7 left-1/2 flex w-max -translate-x-1/2 cursor-pointer items-center justify-between gap-2 rounded-md bg-[#170b35b4] px-2 py-0.5 text-sm md:-bottom-8 md:text-base">
             Secured by
             <img
-              className="h-4 w-4"
+              className="w-4 h-4"
               src="https://www.passportjs.org/images/logo.svg"
               alt="P"
             />
@@ -185,12 +185,13 @@ const Authentication = () => {
       <AnimatePresence>
         {isToggle && (
           <motion.div
+            key="authenticationToggle"
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            className="shadow-main absolute bottom-9 left-1/2 max-w-10/12 -translate-x-1/2 rounded-md bg-zinc-800"
+            className="absolute -translate-x-1/2 rounded-md shadow-main bottom-9 left-1/2 max-w-10/12 bg-zinc-800"
           >
-            <pre className="flex flex-col gap-1 p-1 text-left text-xs xl:text-sm">
+            <pre className="flex flex-col gap-1 p-1 text-xs text-left xl:text-sm">
               <div>
                 <strong className="text-orange-500">USERNAME: </strong>
                 <p className="text-wrap text-fuchsia-400">
